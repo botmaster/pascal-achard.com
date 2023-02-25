@@ -1,18 +1,5 @@
 <template>
-  <div>
-    <p class="myClass">
-      {{ toto }}
-    </p>
-    <MySuperComponent />
-  </div>
+  <NuxtLayout>
+    <NuxtPage />
+  </NuxtLayout>
 </template>
-<script setup lang="ts">
-const toto = "toto";
-console.log(toto);
-</script>
-
-<style>
-.myClass {
-  @apply text-red;
-}
-</style>
