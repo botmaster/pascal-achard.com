@@ -4,13 +4,17 @@ console.log(toto);
 </script>
 
 <template>
-  <div>
+  <main class="mainClass">
     <h1>Je suis la page d'accueil</h1>
     <p class="myClass">
       {{ toto }}
     </p>
     <MySuperComponent />
-  </div>
+  </main>
 </template>
 
-<style scoped></style>
+<style scoped lang="scss">
+.myClass {
+  color: red;
+}
+</style>
