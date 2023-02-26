@@ -4,7 +4,7 @@ console.log(toto);
 </script>
 
 <template>
-  <main class="mainClass">
+  <main class="container mx-auto">
     <h1>Je suis la page d'accueil</h1>
     <p class="myClass">
       {{ toto }}

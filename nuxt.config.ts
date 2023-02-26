@@ -1,4 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import svgLoader from "vite-svg-loader";
+
 export default defineNuxtConfig({
   typescript: {
     strict: true,
@@ -6,5 +8,8 @@ export default defineNuxtConfig({
   tailwindcss: {
     cssPath: "~/assets/scss/main.scss",
   },
-  modules: ["@nuxtjs/tailwindcss"],
+  vite: {
+    plugins: [svgLoader()],
+  },
+  modules: ["@nuxtjs/tailwindcss", "@vueuse/nuxt", "@nuxtjs/color-mode"],
 });
