@@ -1,0 +1,17 @@
+/**
+ * In CSS, the order of the rules in your stylesheet decides which declaration wins when two selectors have the same specificity.
+ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// Styles placed in layers won't be included in your compiled CSS unless you actually use it.
+// https://tailwindcss.com/docs/adding-custom-styles#removing-unused-custom-css
+@layer base {
+  @import 'base/index';
+}
+
+@layer components {
+  @import 'components/index';
+}

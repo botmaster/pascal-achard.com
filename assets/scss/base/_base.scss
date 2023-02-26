@@ -1,0 +1,29 @@
+//
+//
+// Created by PhpStorm.
+// User: pascal
+// Date: 2019-07-16
+// Time: 17:05
+//
+
+body {
+  position: relative;
+  @apply font-rubik-regular text-polarnight-nord-3 dark:text-snowstorm-nord-4 bg-body-background dark:bg-body-backgrounddark;
+}
+
+// Liens
+a,
+button {
+  @apply text-polarnight-nord-3 dark:text-frost-nord-8 underline;
+  text-decoration-color: theme("colors.current");
+  text-decoration-thickness: from-font;
+  text-underline-offset: 1px;
+  text-decoration-style: solid;
+  transition: color 0.4s;
+
+  &:hover,
+  &:focus {
+    @apply text-frost-nord-10 dark:text-snowstorm-nord-6;
+    text-decoration-color: theme("colors.current");
+  }
+}

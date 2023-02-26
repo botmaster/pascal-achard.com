@@ -9,6 +9,9 @@ console.log(toto);
     <p class="myClass">
       {{ toto }}
     </p>
+    <p>
+      <button class="btn btn--black">Button</button>
+    </p>
     <MySuperComponent />
   </main>
 </template>

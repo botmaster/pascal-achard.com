@@ -3,9 +3,8 @@ export default defineNuxtConfig({
   typescript: {
     strict: true,
   },
+  tailwindcss: {
+    cssPath: "~/assets/scss/main.scss",
+  },
   modules: ["@nuxtjs/tailwindcss"],
-  css: [
-    // SCSS file in the project
-    "@/assets/styles/main.scss",
-  ],
 });
