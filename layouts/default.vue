@@ -1,12 +1,7 @@
 <template>
-  <div>
-    <header>
-      <p>Je suis le header</p>
-    </header>
+  <div class="flex flex-col min-h-screen">
+    <the-header />
     <slot />
-    <footer>
-      <p>Je suis le footer</p>
-    </footer>
+    <the-footer class="mt-auto" />
   </div>
 </template>
-<script></script>

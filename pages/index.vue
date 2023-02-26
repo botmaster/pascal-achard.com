@@ -13,6 +13,11 @@ console.log(toto);
       <button class="btn btn--black">Button</button>
     </p>
     <MySuperComponent />
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci atque
+      ducimus ea eos hic similique sint temporibus veritatis. Deserunt dolore
+      doloribus iste porro quas unde. Accusantium harum qui repudiandae vel.
+    </p>
   </main>
 </template>
 
