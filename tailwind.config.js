@@ -3,6 +3,7 @@ import defaultColors from "tailwindcss/colors";
 const srcDir = ".";
 
 export default {
+  darkMode: "class",
   content: [
     `${srcDir}/components/**/*.{vue,js,ts}`,
     `${srcDir}/layouts/**/*.vue`,

@@ -8,6 +8,9 @@ export default defineNuxtConfig({
   tailwindcss: {
     cssPath: "~/assets/scss/main.scss",
   },
+  colorMode: {
+    classSuffix: "",
+  },
   vite: {
     plugins: [svgLoader()],
   },
