@@ -6,6 +6,7 @@ export default {
   darkMode: "class",
   content: [
     `${srcDir}/components/**/*.{vue,js,ts}`,
+    `${srcDir}/content/**/*.{vue,md}`,
     `${srcDir}/layouts/**/*.vue`,
     `${srcDir}/pages/**/*.vue`,
     `${srcDir}/composables/**/*.{js,ts}`,
