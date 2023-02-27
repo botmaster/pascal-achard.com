@@ -11,8 +11,13 @@ export default defineNuxtConfig({
   colorMode: {
     classSuffix: "",
   },
+  content: {
+    highlight: {
+        theme: "github-light"
+    }
+  },
   vite: {
     plugins: [svgLoader()],
   },
-  modules: ["@nuxtjs/tailwindcss", "@vueuse/nuxt", "@nuxtjs/color-mode"],
+  modules: ["@nuxtjs/tailwindcss", "@vueuse/nuxt", "@nuxtjs/color-mode", '@nuxt/content'],
 });
