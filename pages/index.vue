@@ -1,19 +1,21 @@
 <script setup lang="ts">
+const { data } = await useAsyncData("Index", () => queryContent("/").findOne());
+
 onMounted(() => {
-  console.log("mounted");
+  // console.log("mounted");
   resizeHandler();
   // We listen to the resize event
   window.addEventListener("resize", resizeHandler);
 });
 
 onBeforeUnmount(() => {
-  console.log("unmounted");
+  // console.log("unmounted");
   window.removeEventListener("resize", resizeHandler);
 });
 
 const resizeHandler = () => {
-  console.log("resize");
-  // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
+  // console.log("resize");
+  // First we get the viewport height and we multiply it by 1% to get a value for a vh unit
   const vh = window.innerHeight * 0.01;
   // Then we set the value in the --vh custom property to the root of the document
   document.documentElement.style.setProperty("--vh", `${vh}px`);
@@ -24,9 +26,9 @@ const resizeHandler = () => {
   <main class="page-index">
     <div class="page-index__cover">
       <cover-component
-        title="Titre"
-        subtitle="Subtitle"
-        info=""
+        :title="data.title"
+        :subtitle="data.subtitle"
+        :info="data.info"
       ></cover-component>
     </div>
     <div class="page-index__content">
