@@ -15,7 +15,7 @@ J'adore **apprendre** des nouvelles technologies, techniques, méthodes. J'aime 
         class="inline-flex items-center"
         href="mailto:pascal.achard@gmail.com"
         >
-        <span class="text-2xl"><icon-component class="mr-1" name="mi-email"></icon-component></span>
+        <span class="text-2xl"><Icon class="mr-1" name="mi-email"></Icon></span>
         <span class="leading-none mt-1">Contactez-moi</span>
     </a>
     <a
@@ -24,7 +24,7 @@ J'adore **apprendre** des nouvelles technologies, techniques, méthodes. J'aime 
         target="_blank"
         rel="noopener"
         >
-         <span class="text-2xl"><icon-component class="mr-1" name="mi-document"></icon-component></span>
+         <span class="text-2xl"><Icon class="mr-1" name="mi-document"></Icon></span>
         <span class="leading-none mt-1">CV <span class="no-underline text-xs">(PDF, 46Ko)</span></span>
     </a>
 </p>

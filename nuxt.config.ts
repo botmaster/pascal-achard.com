@@ -1,6 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import svgLoader from "vite-svg-loader";
 
+
 export default defineNuxtConfig({
   typescript: {
     strict: true,
@@ -13,11 +14,17 @@ export default defineNuxtConfig({
   },
   content: {
     highlight: {
-        theme: "github-light"
-    }
+      theme: "github-light",
+    },
   },
   vite: {
     plugins: [svgLoader()],
   },
-  modules: ["@nuxtjs/tailwindcss", "@vueuse/nuxt", "@nuxtjs/color-mode", '@nuxt/content'],
+  modules: [
+    "@nuxtjs/tailwindcss",
+    "@vueuse/nuxt",
+    "@nuxtjs/color-mode",
+    "@nuxt/content",
+    "nuxt-icon",
+  ],
 });

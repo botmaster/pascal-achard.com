@@ -9,7 +9,7 @@
         :class="{ 'is-current': modelValue === theme.name }"
         @click="clickHandler(theme)"
       >
-        <icon-component :name="theme.icon"></icon-component>
+          <Icon :name="theme.icon" />
       </button>
     </client-only>
   </div>

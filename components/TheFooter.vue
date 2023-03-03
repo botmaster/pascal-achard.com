@@ -4,7 +4,7 @@ interface ILink {
   "aria-label": string;
   icon: {
     title: string;
-    svg: string;
+    name: string;
   };
 }
 
@@ -15,7 +15,7 @@ const links: ILink[] = [
     "aria-label": "GitHub",
     icon: {
       title: "GitHub icon",
-      svg: "cib-github",
+      name: "cib-github",
     },
   },
   {
@@ -23,7 +23,7 @@ const links: ILink[] = [
     "aria-label": "LinkedIn",
     icon: {
       title: "LinkedIn icon",
-      svg: "cib-linkedin",
+      name: "cib-linkedin",
     },
   },
   {
@@ -31,7 +31,7 @@ const links: ILink[] = [
     "aria-label": "CodePen",
     icon: {
       title: "CodePen icon",
-      svg: "cib-codepen",
+      name: "cib-codepen",
     },
   },
   {
@@ -39,7 +39,7 @@ const links: ILink[] = [
     "aria-label": "Instagram",
     icon: {
       title: "Instagram icon",
-      svg: "cib-instagram",
+      name: "cib-instagram",
     },
   },
   {
@@ -47,7 +47,7 @@ const links: ILink[] = [
     "aria-label": "Twitter",
     icon: {
       title: "Twitter icon",
-      svg: "cib-twitter",
+      name: "cib-twitter",
     },
   },
   {
@@ -55,7 +55,7 @@ const links: ILink[] = [
     "aria-label": "Last.fm",
     icon: {
       title: "Last.fm icon",
-      svg: "cib-last-fm",
+      name: "cib-last-fm",
     },
   },
 ];
@@ -93,7 +93,8 @@ const themeList = [
             :aria-label="item['aria-label']"
           >
             <div class="social-item__icon">
-              <icon-component :name="item.icon.svg"></icon-component>
+<!--              <icon-component :name="item.icon.name"></icon-component>-->
+                <Icon :name="item.icon.name" />
             </div>
           </a>
         </div>
