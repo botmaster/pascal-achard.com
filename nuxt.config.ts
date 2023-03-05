@@ -1,7 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import svgLoader from "vite-svg-loader";
 
-
 export default defineNuxtConfig({
   typescript: {
     strict: true,
@@ -13,8 +12,17 @@ export default defineNuxtConfig({
     classSuffix: "",
   },
   content: {
+    // https://content.nuxtjs.org/api/configuration
     highlight: {
-      theme: "github-light",
+      theme: "nord",
+    },
+    markdown: {
+      anchorLinks: {
+        level: [2, 3, 4],
+      },
+      prism: {
+        theme: "prism-themes/themes/prism-material-oceanic.css",
+      },
     },
   },
   vite: {
