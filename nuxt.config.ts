@@ -17,9 +17,7 @@ export default defineNuxtConfig({
       theme: "nord",
     },
     markdown: {
-      anchorLinks: {
-        level: [2, 3, 4],
-      },
+      anchorLinks: false,
       prism: {
         theme: "prism-themes/themes/prism-material-oceanic.css",
       },

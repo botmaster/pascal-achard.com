@@ -30,14 +30,14 @@ J'adore **apprendre** des nouvelles technologies, techniques, méthodes. J'aime 
 </p>
 
 ### En ce moment je suis fan de
-[Vue.js](https://vuejs.org/), [Nuxt.js](https://nuxt.com/), [Pinia](https://pinia.vuejs.org/), [TypeScript](https://www.typescriptlang.org/), [Craftcms](https://craftcms.com/), [Twig](https://twig.symfony.com/), [Tailwindcss](https://tailwindcss.com/), [Docker](https://www.docker.com/), [Node.js](https://nodejs.org/), [Webpack](https://webpack.js.org/), [Vite](https://vitejs.dev/), [Prettier](https://prettier.io/), [Notion](https://www.notion.so), [Netlify](https://www.netlify.com/), [render](https://www.render.com/)...
+[Vue.js](https://vuejs.org/){target="_blank" rel="noopener"}, [Nuxt.js](https://nuxt.com/){target="_blank" rel="noopener"}, [Pinia](https://pinia.vuejs.org/){target="_blank" rel="noopener"}, [TypeScript](https://www.typescriptlang.org/){target="_blank" rel="noopener"}, [Craftcms](https://craftcms.com/){target="_blank" rel="noopener"}, [Twig](https://twig.symfony.com/){target="_blank" rel="noopener"}, [Tailwindcss](https://tailwindcss.com/){target="_blank" rel="noopener"}, [Docker](https://www.docker.com/){target="_blank" rel="noopener"}, [Node.js](https://nodejs.org/){target="_blank" rel="noopener"}, [Webpack](https://webpack.js.org/){target="_blank" rel="noopener"}, [Vite](https://vitejs.dev/){target="_blank" rel="noopener"}, [Prettier](https://prettier.io/){target="_blank" rel="noopener"}, [Notion](https://www.notion.so){target="_blank" rel="noopener"}, [Netlify](https://www.netlify.com/){target="_blank" rel="noopener"}, [render](https://www.render.com/){target="_blank" rel="noopener"}...
 
 ### Projets coup de coeur
-[antidiscriminations.fr](https://www.antidiscriminations.fr/)
+[antidiscriminations.fr](https://www.antidiscriminations.fr/){target="_blank" rel="noopener"}
 
-Agir contre les discriminations, un projet pas comme les autres. J'en parle [ici](https://www.linkedin.com/pulse/un-projet-pas-comme-les-autres-pascal-achard/).
+Agir contre les discriminations, un projet pas comme les autres. J'en parle [ici](https://www.linkedin.com/pulse/un-projet-pas-comme-les-autres-pascal-achard/){target="_blank" rel="noopener"}.
 ### Dernière expérimentation
-[pascal is listening](https://pascal-is-listening.onrender.com/)
+[pascal is listening](https://pascal-is-listening.onrender.com/){target="_blank" rel="noopener"}
 
 Application web musicale du type "x is listening" qui affiche ce qu'une personne est en train d'écouter sur Spotify.
 
