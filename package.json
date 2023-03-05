@@ -1,4 +1,8 @@
 {
+  "name": "pascal-achard.me",
+  "version": "1.0.0",
+  "description": "Pascal Achard's personal website",
+  "author": "Pascal Achard",
   "private": true,
   "scripts": {
     "build": "nuxt build",

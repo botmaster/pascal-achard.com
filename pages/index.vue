@@ -1,5 +1,14 @@
 <script setup lang="ts">
-const { data } = await useAsyncData("Index", () => queryContent("/").findOne());
+import type { MarkdownParsedContent } from "@nuxt/content/dist/runtime/types";
+interface IPage extends MarkdownParsedContent {
+  coverTitle: string;
+  coverSubtitle: string;
+  coverInfo: string;
+}
+
+const { data } = await useAsyncData("Index", () =>
+  queryContent<IPage>("/").findOne()
+);
 
 onMounted(() => {
   // console.log("mounted");
@@ -26,9 +35,9 @@ const resizeHandler = () => {
   <main class="page-index">
     <div class="page-index__cover">
       <cover-component
-        :title="data.title"
-        :subtitle="data.subtitle"
-        :info="data.info"
+        :title="data?.coverTitle"
+        :subtitle="data?.coverSubtitle"
+        :info="data?.coverInfo"
       ></cover-component>
     </div>
     <div class="page-index__content">
@@ -44,7 +53,7 @@ const resizeHandler = () => {
 <style scoped lang="scss">
 .page-index {
   &__cover {
-    transition: all 1s;
+    //transition: all 1s;
 
     // https://css-tricks.com/the-trick-to-viewport-units-on-mobile/
     min-height: 100vh; /* Use vh as a fallback for browsers that do not support Custom Properties */

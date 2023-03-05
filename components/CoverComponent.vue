@@ -56,10 +56,8 @@ const onScroll = () => {
 </script>
 
 <template>
-  <div
-    class="section cover flex items-end relative overflow-hidden py-6 md:py-32"
-  >
-    <div class="cover__background absolute inset-0 w-full h-full">
+  <div class="cover">
+    <div class="cover__background">
       <img
         :style="imageStyle"
         alt="Pascal Achard - Senior Frontend Developer"
@@ -129,8 +127,10 @@ const onScroll = () => {
 
 <style scoped lang="scss">
 .cover {
+  @apply relative flex items-end overflow-hidden py-6 md:py-32;
+
   &__background {
-    display: block;
+    @apply absolute inset-0 block w-full h-full;
 
     > img {
       transform: scale(1);
