@@ -3,7 +3,7 @@ const route = useRoute();
 useHead({
   title: `${
     route.meta?.title ||
-    "Senior Frontend Developer - Full stack (node.js/vue.js)"
+    "Senior Frontend Developer"
   }`,
   meta: [
     {
