@@ -79,7 +79,7 @@ const themeList = [
 
 <template>
   <footer ref="target" class="py-8">
-    <div class="container mx-auto">
+    <div class="mx-8">
       <div class="md:flex md:justify-between md:items-center">
         <div class="flex gap-4 mb-6 md:mb-0">
           <a
@@ -93,8 +93,7 @@ const themeList = [
             :aria-label="item['aria-label']"
           >
             <div class="social-item__icon">
-<!--              <icon-component :name="item.icon.name"></icon-component>-->
-                <Icon :name="item.icon.name" />
+              <Icon :name="item.icon.name" />
             </div>
           </a>
         </div>

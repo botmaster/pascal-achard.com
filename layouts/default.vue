@@ -1,10 +1,7 @@
 <script setup lang="ts">
 const route = useRoute();
 useHead({
-  title: `${
-    route.meta?.title ||
-    "Senior Frontend Developer"
-  }`,
+  title: `${route.meta?.title || "Senior Frontend Developer"}`,
   meta: [
     {
       property: "og:image",
@@ -22,7 +19,7 @@ useHead({
 </script>
 <template>
   <div class="flex flex-col min-h-screen">
-    <!--    <the-header />-->
+    <the-header />
     <slot />
     <the-footer class="mt-auto" />
   </div>
