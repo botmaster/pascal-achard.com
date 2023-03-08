@@ -1,8 +1,9 @@
-import defaultColors from "tailwindcss/colors";
+import type { Config } from "tailwindcss";
+import defaultTheme from "tailwindcss/defaultTheme";
 
 const srcDir = ".";
 
-export default {
+export default <Partial<Config>>{
   darkMode: "class",
   content: [
     `${srcDir}/components/**/*.{vue,js,ts}`,
@@ -18,9 +19,9 @@ export default {
   ],
   theme: {
     colors: {
+      primary: defaultTheme.colors.green,
       yolo: "yellow",
       red: "red",
-      primary: defaultColors.green,
       transparent: "transparent",
       current: "currentColor",
       white: "#FFFFFF",
