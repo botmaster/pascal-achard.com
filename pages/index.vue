@@ -42,7 +42,7 @@ const resizeHandler = () => {
     </div>
     <div class="page-index__content">
       <div class="container mx-auto mt-8">
-        <div class="w-10/12">
+        <div class="md:w-10/12">
           <ContentDoc class="nuxt-content" />
         </div>
       </div>

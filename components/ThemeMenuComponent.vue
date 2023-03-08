@@ -38,37 +38,47 @@ const clickHandler = (theme: ITheme) => {
       <MenuButton class="menu-button"
         ><Icon :name="currentTheme.icon"
       /></MenuButton>
-      <MenuItems as="ul" class="menu-items">
-        <MenuItem
-          v-for="(theme, index) in props.themeList"
-          v-slot="{}"
-          :key="index"
-          as="li"
-        >
-          <button
-            :title="theme.label"
-            class="menu-item-btn"
-            :class="[{ 'is-current': modelValue === theme.name }]"
-            @click="clickHandler(theme)"
+      <transition
+        enter-active-class="transition duration-100 ease-out"
+        enter-from-class="transform scale-75 opacity-0"
+        enter-to-class="transform scale-100 opacity-100"
+        leave-active-class="transition duration-75 ease-in"
+        leave-from-class="transform scale-100 opacity-100"
+        leave-to-class="transform scale-75 opacity-0"
+      >
+        <MenuItems as="ul" class="menu-items">
+          <MenuItem
+            v-for="(theme, index) in props.themeList"
+            v-slot="{}"
+            :key="index"
+            as="li"
           >
-            <Icon :name="theme.icon" /><span>{{ theme.label }}</span>
-          </button>
-        </MenuItem>
-      </MenuItems>
+            <button
+              :title="theme.label"
+              class="menu-item-btn"
+              :class="[{ 'is-current': modelValue === theme.name }]"
+              @click="clickHandler(theme)"
+            >
+              <Icon :name="theme.icon" /><span>{{ theme.label }}</span>
+            </button>
+          </MenuItem>
+        </MenuItems>
+      </transition>
     </Menu>
   </ClientOnly>
 </template>
 
 <style scoped lang="scss">
 .menu {
-  @apply relative inline-block text-left drop-shadow-none;
+  @apply text-left;
 
   &-button {
-    //
+    //;
   }
 
   &-items {
-    @apply absolute top-full left-1/2 mt-3 -translate-x-1/2 space-y-1 rounded-sm bg-body-background dark:bg-body-backgrounddark  ring-1 ring-inset ring-snowstorm-nord-4 px-2 py-1.5 text-sm;
+    @apply absolute w-44 top-full right-0 mt-3 px-6 py-5 space-y-2 rounded-lg bg-body-background
+    dark:bg-body-backgrounddark ring-1 ring-inset ring-snowstorm-nord-4 dark:ring-polarnight-nord-2;
   }
 }
 
