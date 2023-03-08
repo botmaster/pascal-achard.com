@@ -2,28 +2,26 @@
 // Color mode
 const colorMode = useColorMode();
 const themeList = [
-  { name: "system", label: "Changer le thème", icon: "mi-computer" },
-  { name: "dark", label: "Changer le thème", icon: "mi-moon" },
-  { name: "light", label: "Changer le thème", icon: "mi-sun" },
+  { name: "system", label: "System", icon: "mi-computer" },
+  { name: "dark", label: "Dark", icon: "mi-moon" },
+  { name: "light", label: "Light", icon: "mi-sun" },
 ];
 </script>
 
 <template>
-  <header
-    class="z-10 fixed inset-x-0 top-0 py-1 bg-body-background/40 dark:bg-body-backgrounddark backdrop-blur"
-  >
-    <div class="mx-2 md:mx-8">
+  <header class="z-10 fixed inset-x-0 top-0 py-1">
+    <div class="mx-2 md:mx-8 md:mt-4">
       <div class="flex justify-between items-center">
         <p></p>
-        <div class="flex items-center gap-4">
-          <NuxtLink to="/about">About</NuxtLink>
-          <theme-switcher-component
+        <nav
+          class="flex items-center gap-4 text-2xl bg-body-background dark:bg-body-backgrounddark rounded-none px-6 py-2"
+        >
+          <NuxtLink class="no-underline" to="/about">About</NuxtLink>
+          <ThemeMenuComponent
             v-model="colorMode.preference"
             :theme-list="themeList"
-            size="sm"
-            is-narrow
           />
-        </div>
+        </nav>
       </div>
     </div>
   </header>

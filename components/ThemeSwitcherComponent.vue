@@ -23,7 +23,7 @@ const props = withDefaults(
     themeList: ITheme[];
     modelValue: string;
     isNarrow?: boolean;
-    size?: "sm" | "md" | "lg";
+    size?: "xs" | "sm" | "md" | "lg";
   }>(),
   {
     isNarrow: false,
@@ -38,6 +38,7 @@ const emit = defineEmits<{
 const classes = computed(() => {
   return {
     "theme-switcher--is-narrow": props.isNarrow,
+    "theme-switcher--is-xs": props.size === "xs",
     "theme-switcher--is-sm": props.size === "sm",
     "theme-switcher--is-md": props.size === "md",
     "theme-switcher--is-lg": props.size === "lg",
@@ -45,13 +46,7 @@ const classes = computed(() => {
 });
 
 const clickHandler = (theme: ITheme) => {
-  emit(
-    "update:modelValue",
-    props.isNarrow
-      ? props.themeList.at(props.themeList.indexOf(theme) + 1)?.name ??
-          props.themeList[0].name
-      : theme.name
-  );
+  emit("update:modelValue", theme.name);
 };
 </script>
 
@@ -67,15 +62,9 @@ const clickHandler = (theme: ITheme) => {
     }
   }
 
-  &--is-narrow {
-    @apply flex-col;
-
+  &--is-xs {
     .btn-theme {
-      @apply hidden;
-
-      &.is-current {
-        @apply block;
-      }
+      @apply text-base leading-none;
     }
   }
 
