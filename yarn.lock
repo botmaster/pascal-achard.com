@@ -824,6 +824,11 @@
   resolved "https://registry.yarnpkg.com/@eslint/js/-/js-8.35.0.tgz#b7569632b0b788a0ca0e438235154e45d42813a7"
   integrity sha512-JXdzbRiWclLVoD8sNUjR443VVlYqiYmDVT6rGUEIEHU5YJW0gaVZwV2xgM7D4arkvASqD0IlLUVjHiFuxaftRw==
 
+"@headlessui/vue@^1.0.0":
+  version "1.7.12"
+  resolved "https://registry.yarnpkg.com/@headlessui/vue/-/vue-1.7.12.tgz#963b2eb2f548278c49f2d1e67f0a4a84f54078da"
+  integrity sha512-IV0k1I2I8Bj37HljFF231Y9cpldfiucf+inMCxA/VPoQT6UTxo0N/rb78CrogBxXNfsPxKmz3y/nlv+eRz6zvg==
+
 "@humanwhocodes/config-array@^0.11.8":
   version "0.11.8"
   resolved "https://registry.yarnpkg.com/@humanwhocodes/config-array/-/config-array-0.11.8.tgz#03595ac2075a4dc0f191cc2131de14fbd7d410b9"
@@ -5897,6 +5902,15 @@ nuxt-config-schema@^0.4.4:
     jiti "^1.16.2"
     pathe "^1.0.0"
     untyped "^1.2.2"
+
+nuxt-headlessui@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/nuxt-headlessui/-/nuxt-headlessui-1.1.1.tgz#ae0207fc4a2d8463596368bc10562937ca4fe451"
+  integrity sha512-sf8qZQvGDaI+uNnKuynFGY+VXScDNEj3W0LMjv2XH4jO4ksQzbliCB9Hl5cdd/VIFPVmnZm+dnneURSI4/1fXw==
+  dependencies:
+    "@headlessui/vue" "^1.0.0"
+    "@nuxt/kit" "^3.0.0"
+    pathe "^1.0.0"
 
 nuxt-icon@^0.3.2:
   version "0.3.2"
