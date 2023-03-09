@@ -62,7 +62,7 @@ const resizeHandler = () => {
     @apply flex flex-col;
 
     > * {
-      flex-grow: 1;
+      @apply flex-grow;
     }
   }
 

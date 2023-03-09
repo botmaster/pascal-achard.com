@@ -1,8 +1,4 @@
-<script setup lang="ts">
-definePageMeta({
-  title: "About Page",
-});
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <div class="container mx-auto mt-20">

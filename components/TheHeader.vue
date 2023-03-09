@@ -18,6 +18,7 @@ const themeList = [
         >
           <NuxtLink class="no-underline" to="/">Home</NuxtLink>
           <NuxtLink class="no-underline" to="/about">About</NuxtLink>
+          <NuxtLink class="no-underline" to="/test">Test</NuxtLink>
           <ThemeMenuComponent
             v-model="colorMode.preference"
             :theme-list="themeList"

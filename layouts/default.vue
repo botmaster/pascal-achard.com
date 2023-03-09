@@ -1,7 +1,8 @@
 <script setup lang="ts">
 const route = useRoute();
+
+// Head info for this layout. Can be overriden by child pages
 useHead({
-  title: `${route.meta?.title || "Senior Frontend Developer"}`,
   meta: [
     {
       property: "og:image",
@@ -16,6 +17,14 @@ useHead({
     return titleChunk ? `Pascal Achard - ${titleChunk}` : "Pascal Achard";
   },
 });
+/* watch(
+  route,
+  (value) => {
+    console.log(value.meta?.title);
+    useHead({ title: value.meta?.title || "" });
+  },
+  { immediate: true }
+); */
 </script>
 <template>
   <div class="flex flex-col min-h-screen">
