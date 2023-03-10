@@ -99,5 +99,6 @@ export default defineNuxtConfig({
     "@nuxt/content",
     "nuxt-icon",
     "nuxt-headlessui",
+    "@nuxtjs/fontaine",
   ],
 });
