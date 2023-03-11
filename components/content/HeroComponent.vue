@@ -3,19 +3,23 @@
 <template>
   <div class="hero">
     <div class="hero__background">
-      <img src="~/assets/images/hero.jpg" alt="" />
+      <slot name="background">
+        <img src="https://picsum.photos/1920/1080" alt="" />
+      </slot>
     </div>
 
     <div class="hero__dimmer absolute inset-0"></div>
-    <div class="relative container mx-auto">
-      <h1 class="text-white">Hero</h1>
+    <div class="hero__content">
+      <slot name="content">
+        <h1>Titre</h1>
+      </slot>
     </div>
   </div>
 </template>
 
 <style scoped lang="scss">
 .hero {
-  @apply relative flex items-end overflow-hidden py-6 md:py-32 md:min-h-[60vh];
+  @apply relative flex items-end overflow-hidden py-6 min-h-[30vh] md:py-32 md:min-h-[60vh];
 
   &__background {
     @apply absolute inset-0 block w-full h-full;
@@ -30,6 +34,11 @@
     // background-color: rgba(0, 0, 0, 0.5);
   }
 
+  &__content {
+    @apply relative container mx-auto;
+  }
+
+  h1,
   h2 {
     @apply text-white;
   }

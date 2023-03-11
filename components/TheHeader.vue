@@ -9,24 +9,42 @@ const themeList = [
 </script>
 
 <template>
-  <header class="z-10 fixed inset-x-0 top-0 py-1">
-    <div class="mx-2 mt-1 md:mx-8 md:mt-4">
-      <div class="flex justify-between items-center">
-        <p></p>
-        <nav
-          class="relative text-base flex items-center gap-4 bg-body-background dark:bg-body-backgrounddark rounded-lg px-6 py-2 ring-1 ring-inset ring-snowstorm-nord-4 dark:ring-polarnight-nord-2"
-        >
-          <NuxtLink class="no-underline" to="/">Home</NuxtLink>
-          <NuxtLink class="no-underline" to="/about">About</NuxtLink>
-          <NuxtLink class="no-underline" to="/test">Test</NuxtLink>
-          <ThemeMenuComponent
-            v-model="colorMode.preference"
-            :theme-list="themeList"
-          />
-        </nav>
-      </div>
-    </div>
+  <header class="the-header">
+    <nav class="the-header__nav">
+      <NuxtLink class="the-header__nav-item the-header__nav-link" to="/"
+        >Home</NuxtLink
+      >
+      <NuxtLink class="the-header__nav-item the-header__nav-link" to="/about"
+        >about it</NuxtLink
+      >
+      <!--      <NuxtLink class="the-header__nav-item" to="/test">Test</NuxtLink>-->
+      <ThemeMenuComponent
+        v-model="colorMode.preference"
+        :theme-list="themeList"
+        class="the-header__nav-item leading-tight"
+      />
+    </nav>
   </header>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.the-header {
+  @apply flex justify-between items-center mx-2 mt-1 md:mx-8 md:mt-4 z-10 fixed inset-x-0 top-0 py-1;
+
+  &__nav {
+    @apply relative flex items-center gap-4 ml-auto px-6 pt-2.5 pb-2 text-base uppercase leading-none bg-body-background dark:bg-body-backgrounddark rounded-lg ring-1 ring-inset ring-snowstorm-nord-4 dark:ring-polarnight-nord-2;
+  }
+
+  &__nav-item {
+    //@apply no-underline;
+  }
+
+  &__nav-link {
+    @apply no-underline;
+
+    &.router-link-exact-active {
+      @apply text-frost-nord-10 dark:text-[inherit];
+    }
+  }
+}
+</style>

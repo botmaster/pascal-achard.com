@@ -19,7 +19,19 @@ useHead({
 <template>
   <div class="flex flex-col min-h-screen">
     <the-header />
-    <slot />
+    <HeroComponent>
+      <template #content>
+        <slot name="heroContent" />
+      </template>
+      <template #background>
+        <slot name="heroBackground" />
+      </template>
+    </HeroComponent>
+    <div class="container mx-auto mt-20">
+      <div class="md:w-10/12">
+        <slot />
+      </div>
+    </div>
     <the-footer class="mt-auto" />
   </div>
 </template>

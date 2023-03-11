@@ -33,39 +33,37 @@ const clickHandler = (theme: ITheme) => {
 </script>
 
 <template>
-  <ClientOnly>
-    <Menu as="div" class="menu">
-      <MenuButton class="menu-button"
-        ><Icon :name="currentTheme.icon"
-      /></MenuButton>
-      <transition
-        enter-active-class="transition duration-100 ease-out"
-        enter-from-class="transform scale-75 opacity-0"
-        enter-to-class="transform scale-100 opacity-100"
-        leave-active-class="transition duration-75 ease-in"
-        leave-from-class="transform scale-100 opacity-100"
-        leave-to-class="transform scale-75 opacity-0"
-      >
-        <MenuItems as="ul" class="menu-items">
-          <MenuItem
-            v-for="(theme, index) in props.themeList"
-            v-slot="{}"
-            :key="index"
-            as="li"
+  <Menu as="div" class="menu">
+    <MenuButton class="menu-button"
+      ><Icon :name="currentTheme.icon"
+    /></MenuButton>
+    <transition
+      enter-active-class="transition duration-100 ease-out"
+      enter-from-class="transform scale-75 opacity-0"
+      enter-to-class="transform scale-100 opacity-100"
+      leave-active-class="transition duration-75 ease-in"
+      leave-from-class="transform scale-100 opacity-100"
+      leave-to-class="transform scale-75 opacity-0"
+    >
+      <MenuItems as="ul" class="menu-items">
+        <MenuItem
+          v-for="(theme, index) in props.themeList"
+          v-slot="{}"
+          :key="index"
+          as="li"
+        >
+          <button
+            :title="theme.label"
+            class="menu-item-btn"
+            :class="[{ 'is-current': modelValue === theme.name }]"
+            @click="clickHandler(theme)"
           >
-            <button
-              :title="theme.label"
-              class="menu-item-btn"
-              :class="[{ 'is-current': modelValue === theme.name }]"
-              @click="clickHandler(theme)"
-            >
-              <Icon :name="theme.icon" /><span>{{ theme.label }}</span>
-            </button>
-          </MenuItem>
-        </MenuItems>
-      </transition>
-    </Menu>
-  </ClientOnly>
+            <Icon :name="theme.icon" /><span>{{ theme.label }}</span>
+          </button>
+        </MenuItem>
+      </MenuItems>
+    </transition>
+  </Menu>
 </template>
 
 <style scoped lang="scss">
@@ -77,7 +75,7 @@ const clickHandler = (theme: ITheme) => {
   }
 
   &-items {
-    @apply absolute w-44 top-full right-0 mt-3 px-6 py-5 space-y-2 rounded-lg bg-body-background
+    @apply absolute min-w-min top-full right-0 mt-3 px-5 py-4 space-y-3 rounded-lg bg-body-background
     dark:bg-body-backgrounddark ring-1 ring-inset ring-snowstorm-nord-4 dark:ring-polarnight-nord-2;
   }
 }

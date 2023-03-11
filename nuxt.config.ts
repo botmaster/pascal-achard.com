@@ -1,5 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import svgLoader from "vite-svg-loader";
+import pkg from "./package.json";
 
 export default defineNuxtConfig({
   app: {
@@ -79,14 +80,11 @@ export default defineNuxtConfig({
   },
   content: {
     // https://content.nuxtjs.org/api/configuration
-    highlight: {
-      theme: "nord",
-    },
     markdown: {
       anchorLinks: false,
-      prism: {
-        theme: "prism-themes/themes/prism-material-oceanic.css",
-      },
+    },
+    highlight: {
+      theme: "github-light",
     },
   },
   vite: {
@@ -101,4 +99,10 @@ export default defineNuxtConfig({
     "nuxt-headlessui",
     "@nuxtjs/fontaine",
   ],
+  runtimeConfig: {
+    public: {
+      pkg: JSON.stringify(pkg),
+    },
+  },
 });
+console.log(pkg);

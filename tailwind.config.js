@@ -58,7 +58,7 @@ export default {
       },
     },
     fontFamily: {
-      display: ["rubik_lightregular", "sans-serif"],
+      display: ["rubik_blackregular", "sans-serif"],
       body: ["rubikregular", "sans-serif"],
       "rubik-black": ["rubik_blackregular", "sans-serif"],
       "rubik-bold": ["rubikbold", "sans-serif"],
