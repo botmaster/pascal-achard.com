@@ -84,7 +84,12 @@ export default defineNuxtConfig({
       anchorLinks: false,
     },
     highlight: {
-      theme: "github-light",
+      theme: {
+        // Default theme (same as single string)
+        default: "github-light",
+        // Theme used if `html.dark`
+        dark: "github-dark",
+      },
     },
   },
   vite: {
@@ -105,4 +110,3 @@ export default defineNuxtConfig({
     },
   },
 });
-console.log(pkg);

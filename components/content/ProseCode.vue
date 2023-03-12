@@ -53,7 +53,9 @@ export default defineComponent({
 </script>
 
 <template>
-  {{ $props }}
+  <pre>
+    {{ $props }}
+  </pre>
   <pre v-if="extra">
     {{ JSON.parse(extra) }}
   </pre>
