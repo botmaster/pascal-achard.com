@@ -39,11 +39,11 @@ const dependencies = computed(() => {
       <ContentRenderer class="nuxt-content" :value="data" />
       <div class="nuxt-content mt-2">
         <div class="flex">
-          <ul class="">
+          <ul class="!list-none">
             <li v-for="(value, key, index) in dependencies" :key="index">
-              <p>
+              <span>
                 {{ key }}: <span class="text-aurora-nord-14">{{ value }}</span>
-              </p>
+              </span>
             </li>
           </ul>
         </div>

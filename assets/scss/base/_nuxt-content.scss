@@ -59,4 +59,9 @@ $content-heading-line-height: 1.125;
         // font-size: 1em;
         margin-bottom: 1em;
     }
+
+    ol,
+    ul{
+        list-style: inside;
+    }
 }

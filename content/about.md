@@ -5,10 +5,7 @@ test: toto
 ## Le point créatif
 Responsive, mobile first.  
 Couleurs : déclinaison du thème [Nord](https://www.nordtheme.com/)  
-Typographie : [Rubik](https://fonts.google.com/specimen/Rubik)  
-
-_TODO_  
-Lien vers le design system de Tailwindcss
+Typographie : [Rubik](https://fonts.google.com/specimen/Rubik)
 
 ## Le point technique
 Language : [Typescript](https://www.typescriptlang.org/)  
