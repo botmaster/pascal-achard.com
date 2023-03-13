@@ -2,4 +2,4 @@
   package = "@netlify/plugin-lighthouse"
 
   [[plugins.inputs.audits]]
-    url = "https://resplendent-croquembouche-3fa4c0.netlify.app/
+    url = "https://resplendent-croquembouche-3fa4c0.netlify.app/"
