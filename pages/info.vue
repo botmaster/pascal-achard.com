@@ -32,7 +32,7 @@ const dependencies = computed(() => {
 
 <template>
   <div>
-    <NuxtLayout name="custom">
+    <NuxtLayout v-if="data" name="custom">
       <template #heroBackground>
         <img src="~/assets/images/hero.jpg" alt="" />
       </template>

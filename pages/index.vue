@@ -49,7 +49,7 @@ const resizeHandler = () => {
     </div>
     <div class="page-index__content">
       <div class="container mx-auto mt-8">
-        <div class="md:w-10/12">
+        <div v-if="data" class="md:w-10/12">
           <ContentRenderer class="nuxt-content" :value="data" />
         </div>
       </div>
