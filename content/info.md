@@ -1,5 +1,6 @@
 ---
 test: toto
+coverTitle: Info
 ---
 
 ## Le point créatif

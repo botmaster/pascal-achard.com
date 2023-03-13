@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { Ref } from "vue";
+import { ParsedContent } from "@nuxt/content/dist/runtime/types";
 import { definePageMeta } from "#imports";
 
 definePageMeta({
@@ -8,14 +10,17 @@ definePageMeta({
 const runtimeConfig = useRuntimeConfig();
 const pkg = JSON.parse(runtimeConfig.pkg);
 
-const { data } = await useAsyncData("About", () => {
-  return queryContent("/about")
+const { data } = await useAsyncData("info", () => {
+  return queryContent("/info")
     .findOne()
     .then((data) => {
-      data.pkg = runtimeConfig.pkg;
+      data.pkg = pkg;
+      data.subtitle = pkg.description;
       return data;
     });
 });
+
+if (data) useContentHead(data as Ref<ParsedContent>);
 
 const dependencies = computed(() => {
   return {
@@ -32,9 +37,9 @@ const dependencies = computed(() => {
         <img src="~/assets/images/hero.jpg" alt="" />
       </template>
       <template #heroContent>
-        <h1 class="text-white">Info</h1>
+        <p class="text-white">v{{ pkg.version }}</p>
+        <h1 class="text-white">{{ data.coverTitle }}</h1>
         <h2 class="text-white h3">{{ pkg.name }}</h2>
-        <p class="text-white mt-0">v{{ pkg.version }}</p>
       </template>
       <ContentRenderer class="nuxt-content" :value="data" />
       <div class="nuxt-content mt-2">

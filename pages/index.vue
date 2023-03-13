@@ -1,5 +1,9 @@
 <script setup lang="ts">
-import type { MarkdownParsedContent } from "@nuxt/content/dist/runtime/types";
+import type {
+  MarkdownParsedContent,
+  ParsedContent,
+} from "@nuxt/content/dist/runtime/types";
+import { Ref } from "vue";
 interface IPage extends MarkdownParsedContent {
   coverTitle: string;
   coverSubtitle: string;
@@ -9,6 +13,8 @@ interface IPage extends MarkdownParsedContent {
 const { data } = await useAsyncData("Index", () =>
   queryContent<IPage>("/").findOne()
 );
+
+if (data) useContentHead(data as Ref<ParsedContent>);
 
 onMounted(() => {
   // console.log("mounted");
@@ -35,9 +41,10 @@ const resizeHandler = () => {
   <main class="page-index">
     <div class="page-index__cover">
       <cover-component
-        :title="data?.coverTitle"
-        :subtitle="data?.coverSubtitle"
-        :info="data?.coverInfo"
+        v-if="data"
+        :title="data.coverTitle"
+        :subtitle="data.coverSubtitle"
+        :info="data.coverInfo"
       ></cover-component>
     </div>
     <div class="page-index__content">

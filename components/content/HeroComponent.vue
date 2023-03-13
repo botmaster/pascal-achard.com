@@ -8,7 +8,7 @@
       </slot>
     </div>
 
-    <div class="hero__dimmer absolute inset-0"></div>
+    <div class="hero__dimmer"></div>
     <div class="hero__content">
       <slot name="content">
         <h1>Titre</h1>
@@ -30,7 +30,7 @@
   }
 
   &__dimmer {
-    @apply bg-polarnight-nord-0/30;
+    @apply absolute inset-0 bg-polarnight-nord-0/50;
     // background-color: rgba(0, 0, 0, 0.5);
   }
 
