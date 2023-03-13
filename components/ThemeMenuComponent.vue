@@ -35,8 +35,10 @@ const clickHandler = (theme: ITheme) => {
 <template>
   <Menu as="div" class="menu">
     <MenuButton class="menu-button"
-      ><Icon :name="currentTheme.icon"
-    /></MenuButton>
+      ><Icon :name="currentTheme.icon" /><span class="sr-only"
+        >Sélecteur de thème</span
+      ></MenuButton
+    >
     <transition
       enter-active-class="transition duration-100 ease-out"
       enter-from-class="transform scale-75 opacity-0"

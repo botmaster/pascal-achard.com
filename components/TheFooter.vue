@@ -71,9 +71,9 @@ useIntersectionObserver(target, ([{ isIntersecting }]) => {
 // Color mode
 const colorMode = useColorMode();
 const themeList = [
-  { name: "system", label: "Système", icon: "mi-computer" },
-  { name: "dark", label: "Sombre", icon: "mi-moon" },
-  { name: "light", label: "Claire", icon: "mi-sun" },
+  { name: "system", label: "Thème système", icon: "mi-computer" },
+  { name: "dark", label: "Thème sombre", icon: "mi-moon" },
+  { name: "light", label: "Thème claire", icon: "mi-sun" },
 ];
 </script>
 
@@ -92,9 +92,9 @@ const themeList = [
             :class="{ 'is-inview': targetIsVisible }"
             :aria-label="item['aria-label']"
           >
-            <div class="social-item__icon">
+            <span class="social-item__icon">
               <Icon :name="item.icon.name" />
-            </div>
+            </span>
           </a>
         </div>
         <div
