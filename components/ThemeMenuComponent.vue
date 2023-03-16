@@ -17,14 +17,8 @@ const emit = defineEmits<{
   (event: "update:modelValue", value: string): void;
 }>();
 
-const currentTheme = computed<ITheme>(() => {
-  const theme = props.themeList.find(
-    (theme) => theme.name === props.modelValue
-  );
-  if (!theme) {
-    throw new Error("No theme found");
-  }
-  return theme;
+const currentTheme = computed<ITheme | undefined>(() => {
+  return props.themeList.find((theme) => theme.name === props.modelValue);
 });
 
 const clickHandler = (theme: ITheme) => {
@@ -35,10 +29,10 @@ const clickHandler = (theme: ITheme) => {
 <template>
   <Menu as="div" class="menu">
     <MenuButton class="menu-button"
-      ><Icon :name="currentTheme.icon" /><span class="sr-only"
-        >Sélecteur de thème</span
-      ></MenuButton
-    >
+      ><span class="sr-only">Sélecteur de thème</span
+      ><Icon :name="currentTheme?.icon || 'mi-computer'" />
+    </MenuButton>
+
     <transition
       enter-active-class="transition duration-100 ease-out"
       enter-from-class="transform scale-75 opacity-0"
@@ -47,17 +41,22 @@ const clickHandler = (theme: ITheme) => {
       leave-from-class="transform scale-100 opacity-100"
       leave-to-class="transform scale-75 opacity-0"
     >
-      <MenuItems as="ul" class="menu-items">
+      <MenuItems class="menu-items">
         <MenuItem
           v-for="(theme, index) in props.themeList"
-          v-slot="{}"
+          v-slot="{ active }"
           :key="index"
-          as="li"
         >
           <button
             :title="theme.label"
             class="menu-item-btn"
-            :class="[{ 'is-current': modelValue === theme.name }]"
+            :class="[
+              { 'is-current': modelValue === theme.name },
+              {
+                'text-frost-nord-10 dark:text-snowstorm-nord-6 outline-dotted outline-1 outline-offset-2':
+                  active,
+              },
+            ]"
             @click="clickHandler(theme)"
           >
             <Icon :name="theme.icon" /><span>{{ theme.label }}</span>
@@ -78,7 +77,7 @@ const clickHandler = (theme: ITheme) => {
 
   &-items {
     @apply absolute min-w-min top-full right-0 mt-3 px-5 py-4 space-y-3 rounded-lg bg-body-background
-    dark:bg-body-backgrounddark ring-1 ring-inset ring-snowstorm-nord-4 dark:ring-polarnight-nord-2;
+    dark:bg-body-backgrounddark ring-1 ring-inset ring-snowstorm-nord-4 dark:ring-polarnight-nord-2 focus:outline-none;
   }
 }
 

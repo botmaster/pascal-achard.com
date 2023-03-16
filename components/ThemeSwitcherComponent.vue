@@ -22,11 +22,9 @@ const props = withDefaults(
   defineProps<{
     themeList: ITheme[];
     modelValue: string;
-    isNarrow?: boolean;
     size?: "xs" | "sm" | "md" | "lg";
   }>(),
   {
-    isNarrow: false,
     size: "lg",
   }
 );
@@ -37,7 +35,6 @@ const emit = defineEmits<{
 
 const classes = computed(() => {
   return {
-    "theme-switcher--is-narrow": props.isNarrow,
     "theme-switcher--is-xs": props.size === "xs",
     "theme-switcher--is-sm": props.size === "sm",
     "theme-switcher--is-md": props.size === "md",

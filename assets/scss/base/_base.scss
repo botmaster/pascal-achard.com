@@ -20,9 +20,12 @@ button {
   text-decoration-style: solid;
   transition: color 0.4s;
 
-  &:hover,
-  &:focus {
+  &:hover {
     @apply text-frost-nord-10 dark:text-snowstorm-nord-6;
     text-decoration-color: theme("colors.current");
+  }
+
+  &:focus {
+    @apply outline-dotted outline-current;
   }
 }

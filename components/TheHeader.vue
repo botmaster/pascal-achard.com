@@ -19,11 +19,15 @@ const themeList = [
         ><Icon name="material-symbols:info"></Icon
         ><span class="sr-only">Page info</span></NuxtLink
       >
-      <ThemeMenuComponent
-        v-model="colorMode.preference"
-        :theme-list="themeList"
-        class="the-header__nav-item leading-tight"
-      />
+      <div class="the-header__nav-item">
+        <ClientOnly>
+          <ThemeMenuComponent
+            v-model="colorMode.preference"
+            :theme-list="themeList"
+            class="the-header__nav-item leading-tight"
+          />
+        </ClientOnly>
+      </div>
     </nav>
   </header>
 </template>
@@ -37,7 +41,7 @@ const themeList = [
   }
 
   &__nav-item {
-    //@apply no-underline;
+    @apply leading-none min-w-[1rem];
   }
 
   &__nav-link {
