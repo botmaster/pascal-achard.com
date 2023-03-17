@@ -26,6 +26,8 @@ button {
   }
 
   &:focus {
-    @apply outline-dotted outline-current;
+    @apply outline-1 outline-offset-2 outline-dotted outline-current;
   }
 }
+
+

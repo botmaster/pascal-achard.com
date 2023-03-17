@@ -27,7 +27,7 @@ useHead({
         <slot name="heroBackground" />
       </template>
     </HeroComponent>
-    <div class="container mx-auto mt-20">
+    <div class="container mx-auto mt-8 mb-12 md:mt-20 md:mb-24">
       <div class="md:w-10/12">
         <slot />
       </div>

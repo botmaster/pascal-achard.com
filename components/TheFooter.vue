@@ -78,10 +78,10 @@ const themeList = [
 </script>
 
 <template>
-  <footer ref="target" class="py-8">
-    <div class="mx-8">
+  <footer ref="target" class="py-6 md:py-8">
+    <div class="mx-4 md:mx-8">
       <div class="md:flex md:justify-between md:items-center">
-        <div class="flex gap-4 mb-6 md:mb-0">
+        <div class="flex gap-4 mb-4 md:mb-0">
           <a
             v-for="(item, index) in links"
             :key="index"
