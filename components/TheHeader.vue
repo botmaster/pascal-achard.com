@@ -11,11 +11,17 @@ const themeList = [
 <template>
   <header class="the-header">
     <nav class="the-header__nav">
-      <NuxtLink class="the-header__nav-item the-header__nav-link" to="/"
+      <NuxtLink
+        class="the-header__nav-item the-header__nav-link"
+        to="/"
+        title="Page d'accueil"
         ><Icon name="material-symbols:home"></Icon
         ><span class="sr-only">Page d'accueil</span></NuxtLink
       >
-      <NuxtLink class="the-header__nav-item the-header__nav-link" to="/info"
+      <NuxtLink
+        class="the-header__nav-item the-header__nav-link"
+        to="/info"
+        title="Page info"
         ><Icon name="material-symbols:info"></Icon
         ><span class="sr-only">Page info</span></NuxtLink
       >
