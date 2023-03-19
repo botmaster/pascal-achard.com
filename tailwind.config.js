@@ -1,5 +1,3 @@
-import defaultColors from "tailwindcss/colors";
-
 const srcDir = ".";
 
 export default {
@@ -7,9 +5,6 @@ export default {
   content: [`${srcDir}/content/**/*.{vue,md}`],
   theme: {
     colors: {
-      primary: defaultColors.green,
-      yolo: "yellow",
-      red: "red",
       transparent: "transparent",
       current: "currentColor",
       white: "#FFFFFF",
@@ -31,7 +26,6 @@ export default {
         background: "#f2f4f8",
         backgrounddark: "#2E3440",
       },
-      "red-oneplus": "#f50514",
       polarnight: {
         "nord-0": "#2E3440",
         "nord-1": "#3B4252",
