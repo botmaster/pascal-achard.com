@@ -11,6 +11,7 @@ $content-heading-line-height: 1.125;
     ul,
     blockquote,
     pre,
+    img,
     table {
         &:not(:last-child) {
             margin-bottom: 1em;

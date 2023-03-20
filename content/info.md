@@ -16,5 +16,10 @@ Framework css : [Tailwindcss](https://tailwindcss.com/)
 Hébergement : [Netlify](https://www.netlify.com/)  
 CMS : [NuxtContent](https://content.nuxtjs.org/). Contenu sous forme de fichiers markdown.
 
+### Les performances
+#### PageSpeed Insights
+![my image](/img/lighthouse.png)
+[Rapport](https://pagespeed.web.dev/analysis/https-pascal-achard-me/qkyedj3msk?form_factor=desktop)  du 20 mars 2023.
+
 ### La liste complète des dépendances
 ##### package.json
