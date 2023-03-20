@@ -1,6 +1,6 @@
 const srcDir = ".";
 
-export default {
+module.exports = {
   darkMode: "class",
   content: [`${srcDir}/content/**/*.{vue,md}`],
   theme: {
