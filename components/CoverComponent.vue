@@ -58,7 +58,7 @@ const onScroll = () => {
 <template>
   <div class="cover">
     <div class="cover__background">
-      <img
+      <!--      <img
         :style="imageStyle"
         alt="Pascal Achard - Senior Frontend Developer"
         class="inset-0 w-full h-full"
@@ -71,6 +71,14 @@ const onScroll = () => {
           ~/assets/images/20102017-DSC06728_ufitab_c_scale_w_2560.jpg 2560w
         "
         width="1920"
+      />-->
+      <nuxt-img
+        :style="imageStyle"
+        src="/cover/cover-image.jpg"
+        class="inset-0 w-full h-full"
+        sizes="lg:100vw xl:100vw xxl:1936px"
+        format="webp"
+        alt="Pascal Achard - Senior Frontend Developer"
       />
     </div>
 
