@@ -13,8 +13,8 @@ framework **Vue.js/Nuxt.js**.
 
 Mes journées professionnelles s'articulent principalement dans la conception et la réalisation d'applications web
 conçues avec des framework javascript (Vue.js, Alpine.js, ...) connectées à des API. Je participe aux sessions de design
-et aux rituels agiles. Je suis soucieux de respecter les **bonnes pratiques** d'intégration HTML/CSS, de la *
-*performance**, du respect du **graphisme** (pixel perfect) et d'être conforme aux exigences d'**accessibilité** (
+et aux rituels agiles. Je suis soucieux de respecter les **bonnes pratiques** d'intégration HTML/CSS, de la
+**performance**, du respect du **graphisme** (pixel perfect) et d'être conforme aux exigences d'**accessibilité** (
 RGAA/WCAG).
 
 J'adore **apprendre** des nouvelles technologies, techniques, méthodes. J'aime **transmettre** mes connaissances et
