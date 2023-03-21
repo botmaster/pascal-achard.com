@@ -34,7 +34,8 @@ const dependencies = computed(() => {
   <div>
     <NuxtLayout v-if="data" name="custom">
       <template #heroBackground>
-        <img src="~/assets/images/hero.jpg" alt="" />
+        <!--        <img src="~/assets/images/hero.jpg" alt="" />-->
+        <nuxt-img class="" src="/img/hero.jpg"></nuxt-img>
       </template>
       <template #heroContent>
         <p class="text-white">v{{ pkg.version }}</p>

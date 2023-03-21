@@ -24,8 +24,8 @@
   &__background {
     @apply absolute inset-0 block w-full h-full;
 
-    > img {
-      @apply block object-cover bg-center w-full h-full;
+    :slotted(img) {
+      @apply w-full h-full object-cover object-center;
     }
   }
 
