@@ -1,7 +1,7 @@
-# Nuxt 3 Minimal Starter
+# pascal-achard.com
+[![Netlify Status](https://api.netlify.com/api/v1/badges/39211acd-87fe-4556-8658-a9ced321164a/deploy-status)](https://app.netlify.com/sites/pascal-achard/deploys)
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
-
+My personnal website built with [Nuxt.js](https://nuxtjs.org) and hosted by [Netlify](https://www.netlify.com/).
 ## Setup
 
 Make sure to install the dependencies:
