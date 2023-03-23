@@ -10,8 +10,8 @@ definePageMeta({
 const runtimeConfig = useRuntimeConfig();
 const pkg = JSON.parse(runtimeConfig.pkg);
 
-const { data } = await useAsyncData("info", () => {
-  return queryContent("/info")
+const { data } = await useAsyncData("about", () => {
+  return queryContent("/about")
     .findOne()
     .then((data) => {
       data.pkg = pkg;
@@ -38,7 +38,7 @@ const dependencies = computed(() => {
           sizes="(max-width: 2170px) 100vw, 2170px"
           srcset="
             ~/assets/images/infos/hero_rsbr7p_c_scale_w_768.jpg   768w,
-            ~/assets/images/infos/hero_rsbr7p_c_scale_w_1773.jpg 1773,
+            ~/assets/images/infos/hero_rsbr7p_c_scale_w_1773.jpg 1773w,
             ~/assets/images/infos/hero_rsbr7p_c_scale_w_2170.jpg 2170w
           "
           src="~/assets/images/infos/hero_rsbr7p_c_scale_w_2170.jpg"

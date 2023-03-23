@@ -20,7 +20,7 @@ const themeList = [
       >
       <NuxtLink
         class="the-header__nav-item the-header__nav-link"
-        to="/info"
+        to="/about"
         title="Page info"
         ><Icon name="material-symbols:info"></Icon
         ><span class="sr-only">Page info</span></NuxtLink
