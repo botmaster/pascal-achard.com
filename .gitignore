@@ -9,3 +9,6 @@ dist
 
 # IDE / Editor
 .idea
+
+# Local Netlify folder
+.netlify
