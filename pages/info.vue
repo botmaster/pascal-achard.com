@@ -34,7 +34,18 @@ const dependencies = computed(() => {
   <div>
     <NuxtLayout v-if="data" name="custom">
       <template #heroBackground>
-        <img src="~/assets/images/hero.jpg" alt="" />
+        <img
+          sizes="(max-width: 2170px) 100vw, 2170px"
+          srcset="
+            ~/assets/images/infos/hero_rsbr7p_c_scale_w_768.jpg   768w,
+            ~/assets/images/infos/hero_rsbr7p_c_scale_w_1773.jpg 1773,
+            ~/assets/images/infos/hero_rsbr7p_c_scale_w_2170.jpg 2170w
+          "
+          src="~/assets/images/infos/hero_rsbr7p_c_scale_w_2170.jpg"
+          width="2170"
+          height="1174"
+          alt=""
+        />
       </template>
       <template #heroContent>
         <p class="text-white">v{{ pkg.version }}</p>

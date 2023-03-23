@@ -20,6 +20,8 @@ CMS : [NuxtContent](https://content.nuxtjs.org/). Contenu sous forme de fichiers
 
 ### Les performances
 
+Performances mesurées sur la page d'accueil.
+
 #### PageSpeed Insights
 
 ![my image](/img/lighthouse.png){width="400"}
@@ -32,4 +34,4 @@ CMS : [NuxtContent](https://content.nuxtjs.org/). Contenu sous forme de fichiers
 
 ### La liste complète des dépendances
 
-##### package.json
+#### package.json

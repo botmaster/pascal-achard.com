@@ -14,8 +14,7 @@ framework **Vue.js/Nuxt.js**.
 Mes journées professionnelles s'articulent principalement dans la conception et la réalisation d'applications web
 conçues avec des framework javascript (Vue.js, Alpine.js, ...) connectées à des API. Je participe aux sessions de design
 et aux rituels agiles. Je suis soucieux de respecter les **bonnes pratiques** d'intégration HTML/CSS, de la
-**performance**, du respect du **graphisme** (pixel perfect) et d'être conforme aux exigences d'**accessibilité** (
-RGAA/WCAG).
+**performance**, du respect du **graphisme** (pixel perfect) et d'être conforme aux exigences d'**accessibilité** (RGAA/WCAG).
 
 J'adore **apprendre** des nouvelles technologies, techniques, méthodes. J'aime **transmettre** mes connaissances et
 travailler en équipe. Je passe beaucoup de temps à faire de la veille technologique et à expérimenter de nouveaux
@@ -35,7 +34,7 @@ outils. J'ai une appétence pour le graphisme et la musique.
         target="_blank"
         rel="noopener"
         >
-         <span class="text-2xl"><Icon class="mr-1" name="mi-document"></Icon></span>
+        <span class="text-2xl"><Icon class="mr-1" name="mi-document"></Icon></span>
         <span class="leading-none mt-1">CV <span class="no-underline text-xs">(PDF, 46Ko)</span></span>
     </a>
 </p>
