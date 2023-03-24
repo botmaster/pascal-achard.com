@@ -4,8 +4,6 @@ import pkg from "./package.json";
 
 export default defineNuxtConfig({
   app: {
-    // https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-app
-    // https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-head
     head: {
       htmlAttrs: {
         lang: "fr-fr",
@@ -17,16 +15,12 @@ export default defineNuxtConfig({
           content: "width=device-width, initial-scale=1",
         },
         {
-          name: "google-site-verification",
-          content: "_ylnpIhPAnWMoDDWYnai5HYIKcjxnkqFS8yeNf75z-0",
-        },
-        {
           property: "og:image",
-          content: "https://www.pascal-achard.me/social-fb.jpg",
+          content: "https://www.pascal-achard.me/social/social-fb.jpg",
         },
         {
           property: "twitter:image",
-          content: "https://www.pascal-achard.me/social-fb.jpg",
+          content: "https://www.pascal-achard.me/social/social-fb.jpg",
         },
         {
           name: "msapplication-TileColor",

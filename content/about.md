@@ -24,12 +24,12 @@ Performances mesurées sur la page d'accueil.
 
 #### PageSpeed Insights
 
-![my image](/img/lighthouse.png){width="400"}
+![my image](/images/content/lighthouse.png){width="400"}
 [Rapport](https://pagespeed.web.dev/analysis/https-pascal-achard-me/qkyedj3msk?form_factor=desktop) du 20 mars 2023.
 
 #### Gt-metrix
 
-![my image](/img/gt-metrix.png){width="400"}
+![my image](/images/content/gt-metrix.png){width="400"}
 [Rapport](https://gtmetrix.com/reports/www.pascal-achard.com/dmOlhaun/) du 21 mars 2023.
 
 ### La liste complète des dépendances

@@ -30,7 +30,7 @@ outils. J'ai une appétence pour le graphisme et la musique.
     </a>
     <a
         class="inline-flex items-center"
-        href="/CV-Pascal-Achard-2022.pdf"
+        href="/pdf/CV-Pascal-Achard-2022.pdf"
         target="_blank"
         rel="noopener"
         >
@@ -39,7 +39,7 @@ outils. J'ai une appétence pour le graphisme et la musique.
     </a>
 </p>
 
-### En ce moment, je suis fan de
+### En ce moment, je suis fan de :
 [Vue.js](https://vuejs.org/){target="_blank" rel="noopener"}, [Nuxt.js](https://nuxt.com/){target="_blank" rel="noopener"}, [Pinia](https://pinia.vuejs.org/){target="_blank" rel="noopener"}, [TypeScript](https://www.typescriptlang.org/){target="_blank" rel="noopener"}, [Craftcms](https://craftcms.com/){target="_blank" rel="noopener"}, [Twig](https://twig.symfony.com/){target="_blank" rel="noopener"}, [Tailwindcss](https://tailwindcss.com/){target="_blank" rel="noopener"}, [Docker](https://www.docker.com/){target="_blank" rel="noopener"}, [Node.js](https://nodejs.org/){target="_blank" rel="noopener"}, [Webpack](https://webpack.js.org/){target="_blank" rel="noopener"}, [Vite](https://vitejs.dev/){target="_blank" rel="noopener"}, [Prettier](https://prettier.io/){target="_blank" rel="noopener"}, [Notion](https://www.notion.so){target="_blank" rel="noopener"}, [Netlify](https://www.netlify.com/){target="_blank" rel="noopener"}, [render](https://www.render.com/){target="_blank" rel="noopener"}...
 
 ### Projets coup de coeur

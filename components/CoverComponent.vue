@@ -72,14 +72,6 @@ const onScroll = () => {
         "
         width="1920"
       />
-      <!--      <nuxt-img
-        :style="imageStyle"
-        src="/cover-image.jpg"
-        class="inset-0 w-full h-full"
-        sizes="lg:100vw xl:100vw xxl:1936px"
-        format="webp"
-        alt="Pascal Achard - Senior Frontend Developer"
-      />-->
     </div>
 
     <div
