@@ -6,17 +6,17 @@ coverTitle: Info
 ## Le point créatif
 
 Responsive, mobile first.  
-Couleurs : déclinaison du thème [Nord](https://www.nordtheme.com/)  
-Typographie : [Rubik](https://fonts.google.com/specimen/Rubik)
+Couleurs : déclinaison du thème [Nord](https://www.nordtheme.com/){target="_blank" rel="noopener"}  
+Typographie : [Rubik](https://fonts.google.com/specimen/Rubik){target="_blank" rel="noopener"}
 
 ## Le point technique
 
-Type : [JAMstack](https://jamstack.org/)  
-Language : [Typescript](https://www.typescriptlang.org/)  
-Framework js : [Nuxt.js](https://nuxtjs.org)  
-Framework css : [Tailwindcss](https://tailwindcss.com/)  
-Hébergement : [Netlify](https://www.netlify.com/)  
-CMS : [NuxtContent](https://content.nuxtjs.org/). Contenu sous forme de fichiers markdown.
+Type : [JAMstack](https://jamstack.org/){target="_blank" rel="noopener"}  
+Language : [Typescript](https://www.typescriptlang.org/){target="_blank" rel="noopener"}  
+Framework js : [Nuxt.js](https://nuxtjs.org){target="_blank" rel="noopener"}  
+Framework css : [Tailwindcss](https://tailwindcss.com/){target="_blank" rel="noopener"}  
+Hébergement : [Netlify](https://www.netlify.com/){target="_blank" rel="noopener"}  
+CMS : [NuxtContent](https://content.nuxtjs.org/){target="_blank" rel="noopener"}. Contenu sous forme de fichiers markdown.
 
 ### Les performances
 
@@ -25,12 +25,12 @@ Performances mesurées sur la page d'accueil.
 #### PageSpeed Insights
 
 ![my image](/images/content/lighthouse.png){width="400"}
-[Rapport](https://pagespeed.web.dev/analysis/https-pascal-achard-me/qkyedj3msk?form_factor=desktop) du 20 mars 2023.
+[Rapport](https://pagespeed.web.dev/analysis/https-pascal-achard-me/qkyedj3msk?form_factor=desktop){target="_blank" rel="noopener"} du 20 mars 2023.
 
 #### Gt-metrix
 
 ![my image](/images/content/gt-metrix.png){width="400"}
-[Rapport](https://gtmetrix.com/reports/www.pascal-achard.com/dmOlhaun/) du 21 mars 2023.
+[Rapport](https://gtmetrix.com/reports/www.pascal-achard.com/dmOlhaun/){target="_blank" rel="noopener"} du 21 mars 2023.
 
 ### La liste complète des dépendances
 
