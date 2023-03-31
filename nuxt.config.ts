@@ -99,10 +99,13 @@ export default defineNuxtConfig({
     "nuxt-headlessui",
     "@nuxtjs/fontaine",
     "@nuxt/image-edge",
+    "nuxt-simple-sitemap",
   ],
   runtimeConfig: {
     public: {
       pkg: JSON.stringify(pkg),
+      siteUrl:
+        process.env.NUXT_PUBLIC_SITE_URL || "https://www.pascal-achard.com",
     },
   },
 });
