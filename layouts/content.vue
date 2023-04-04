@@ -25,9 +25,9 @@
       </template>
     </HeroComponent>
     <div class="container mx-auto mt-8 mb-12 md:mt-20 md:mb-24">
-      <div class="md:w-10/12">
+      <SheetElevation shadow="lg" class="md:w-9/12">
         <slot />
-      </div>
+      </SheetElevation>
     </div>
     <the-footer class="mt-auto" />
   </div>

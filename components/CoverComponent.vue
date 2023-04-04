@@ -77,9 +77,9 @@ const onScroll = () => {
     <div
       :style="{
         // backgroundColor: `rgba(0, 0, 0, ${0.5 + scrollPercent * 0.5})`,
-        opacity: 0.5 + scrollPercent,
+        opacity: 0.6 + scrollPercent,
       }"
-      class="cover__dimmer absolute inset-0"
+      class="cover__dimmer"
     ></div>
     <div class="container mx-auto px-container md:px-container-md relative">
       <div>
@@ -88,7 +88,7 @@ const onScroll = () => {
             transform: `translateY(-${0.36 * scrollPosition}px)`,
             opacity: 1 - scrollPercent * 2.1,
           }"
-          class="text-white block"
+          class="text-polarnight-nord-0 dark:text-white block"
         >
           {{ uptitle }}
         </p>
@@ -97,7 +97,7 @@ const onScroll = () => {
             transform: `translateY(-${0.26 * scrollPosition}px)`,
             opacity: 1 - scrollPercent * 1.9,
           }"
-          class="text-white"
+          class="text-polarnight-nord-0 dark:text-white"
         >
           {{ title }}
         </h1>
@@ -106,7 +106,7 @@ const onScroll = () => {
             transform: `translateY(-${0.18 * scrollPosition}px)`,
             opacity: 1 - scrollPercent * 1.7,
           }"
-          class="text-white h3"
+          class="text-polarnight-nord-0 dark:text-white h3"
         >
           {{ subtitle }}
         </h2>
@@ -116,7 +116,7 @@ const onScroll = () => {
             transform: `translateY(-${0.12 * scrollPosition}px)`,
             opacity: 1 - scrollPercent * 1.5,
           }"
-          class="text-white mt-0"
+          class="text-polarnight-nord-0 dark:text-white mt-0"
         >
           {{ info }}
         </p>
@@ -140,12 +140,7 @@ const onScroll = () => {
   }
 
   &__dimmer {
-    @apply bg-polarnight-nord-0;
-    // background-color: rgba(0, 0, 0, 0.5);
-  }
-
-  h2 {
-    @apply text-white;
+    @apply absolute inset-0 bg-body-background dark:bg-body-backgrounddark;
   }
 }
 </style>

@@ -24,7 +24,7 @@ module.exports = {
       },
       body: {
         background: "#f2f4f8",
-        backgrounddark: "#2E3440",
+        backgrounddark: "#242933",
       },
       polarnight: {
         "nord-0": "#2E3440",

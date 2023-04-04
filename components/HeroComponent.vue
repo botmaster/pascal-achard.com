@@ -30,8 +30,7 @@
   }
 
   &__dimmer {
-    @apply absolute inset-0 bg-polarnight-nord-0/50;
-    // background-color: rgba(0, 0, 0, 0.5);
+    @apply absolute inset-0 bg-body-background/50 dark:bg-body-backgrounddark/50;
   }
 
   &__content {

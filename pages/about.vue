@@ -32,7 +32,7 @@ const dependencies = computed(() => {
 
 <template>
   <div>
-    <NuxtLayout v-if="data" name="custom">
+    <NuxtLayout v-if="data" name="content">
       <template #heroBackground>
         <img
           sizes="(max-width: 2170px) 100vw, 2170px"
@@ -48,9 +48,9 @@ const dependencies = computed(() => {
         />
       </template>
       <template #heroContent>
-        <p class="text-white">v{{ pkg.version }}</p>
-        <h1 class="text-white">{{ data.coverTitle }}</h1>
-        <h2 class="text-white h3">{{ pkg.name }}</h2>
+        <p class="dark:text-white">v{{ pkg.version }}</p>
+        <h1 class="dark:text-white">{{ data.coverTitle }}</h1>
+        <h2 class="dark:text-white h3">{{ pkg.name }}</h2>
       </template>
       <ContentRenderer class="nuxt-content" :value="data" />
       <div class="nuxt-content mt-2">
