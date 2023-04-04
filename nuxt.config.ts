@@ -98,7 +98,6 @@ export default defineNuxtConfig({
     "nuxt-icon",
     "nuxt-headlessui",
     "@nuxtjs/fontaine",
-    "@nuxt/image-edge",
     "nuxt-simple-sitemap",
   ],
   runtimeConfig: {
