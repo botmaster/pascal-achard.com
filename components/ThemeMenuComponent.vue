@@ -85,7 +85,7 @@ const clickHandler = (theme: ITheme) => {
   @apply flex items-center gap-2 text-left no-underline;
 
   &.is-current {
-    @apply text-frost-nord-10 dark:text-[inherit];
+    @apply text-primary;
   }
 }
 </style>

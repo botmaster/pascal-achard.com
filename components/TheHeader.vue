@@ -51,7 +51,7 @@ const themeList = [
     @apply no-underline;
 
     &.router-link-exact-active {
-      @apply text-frost-nord-10 dark:text-[inherit];
+      @apply text-primary;
     }
   }
 }
