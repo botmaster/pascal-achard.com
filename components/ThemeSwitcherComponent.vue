@@ -55,7 +55,7 @@ const clickHandler = (theme: ITheme) => {
 
   .btn-theme {
     &.is-current {
-      @apply text-frost-nord-10 dark:text-snowstorm-nord-6;
+      @apply text-primary;
     }
   }
 

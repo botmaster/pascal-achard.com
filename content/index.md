@@ -25,7 +25,7 @@ outils. J'ai une appétence pour le graphisme et la musique.
         class="inline-flex items-center"
         href="https://www.linkedin.com/in/pascal-achard" target="_blank" rel="noopener"
         >
-        <span class="text-2xl"><Icon class="mr-1" name="ph:linkedin-logo-bold"></Icon></span>
+        <span class="text-2xl"><Icon class="mr-1 text-primary" name="ph:linkedin-logo-bold"></Icon></span>
         <span class="leading-none mt-1">Contactez-moi</span>
     </a>
     <a
@@ -34,7 +34,7 @@ outils. J'ai une appétence pour le graphisme et la musique.
         target="_blank"
         rel="noopener"
         >
-        <span class="text-2xl"><Icon class="mr-1" name="mi-document"></Icon></span>
+        <span class="text-2xl"><Icon class="mr-1 text-primary" name="mi-document"></Icon></span>
         <span class="leading-none mt-1">CV <span class="no-underline text-xs">(PDF, 46Ko)</span></span>
     </a>
 </p>
@@ -45,7 +45,7 @@ outils. J'ai une appétence pour le graphisme et la musique.
 
 ### Projets coup de cœur
 
-> <span class="mr-2 font-bold">ℹ️</span>  <span class="font-rubik-medium">Info</span>
+> <span class="mr-2">ℹ️</span>  <span class="font-rubik-medium text-primary">Info</span>
 >   
 > La version actuellement en ligne du site antidiscriminations.fr n'est plus celle dont je parle ici 😕.
 

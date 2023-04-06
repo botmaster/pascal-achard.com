@@ -6,6 +6,24 @@
 // Time: 17:05
 //
 
+// Nord css variables
+@each $name, $color in $nords {
+  :root {
+    --color-#{$name}: #{red($color)} #{green($color)} #{blue($color)};
+  }
+}
+
+// Named colors
+:root {
+  --color-primary: #{red($nord-10) green($nord-10) blue($nord-10)};
+  --color-secondary: #{red($nord-11) green($nord-11) blue($nord-11)};
+
+  &[class="dark"] {
+    --color-primary: #{red($nord-8) green($nord-8) blue($nord-8)};
+    --color-secondary: #{red($nord-11) green($nord-11) blue($nord-11)};
+  }
+}
+
 body {
   @apply relative font-rubik-regular text-base text-polarnight-nord-3 dark:text-snowstorm-nord-4 bg-body-background dark:bg-body-backgrounddark;
 }
@@ -13,7 +31,8 @@ body {
 // Liens
 a,
 button {
-  @apply text-polarnight-nord-3 dark:text-frost-nord-8 underline;
+  @apply text-[inherit] underline;
+
   text-decoration-color: theme("colors.current");
   text-decoration-thickness: from-font;
   text-underline-offset: 1px;
@@ -21,7 +40,7 @@ button {
   transition: color 0.4s;
 
   &:hover {
-    @apply text-frost-nord-10 dark:text-snowstorm-nord-6;
+    @apply text-primary;
     text-decoration-color: theme("colors.current");
   }
 
