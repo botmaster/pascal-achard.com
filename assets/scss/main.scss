@@ -6,6 +6,9 @@
 @tailwind components;
 @tailwind utilities;
 
+// Import abstracts
+@import 'abstracts/index';
+
 // Styles placed in layers won't be included in your compiled CSS unless you actually use it.
 // https://tailwindcss.com/docs/adding-custom-styles#removing-unused-custom-css
 @layer base {
