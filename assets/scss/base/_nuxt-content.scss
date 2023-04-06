@@ -68,7 +68,7 @@ $content-heading-line-height: 1.125;
     }
 
     blockquote {
-        @apply border-l-4 border-current pl-5 pt-1.5 pb-1;
+        @apply border-l-4 border-primary pl-5 pt-1.5 pb-1;
 
         p {
             &:not(:last-child) {
