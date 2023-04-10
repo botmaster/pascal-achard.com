@@ -28,6 +28,7 @@
     "nuxt": "^3.3.3",
     "nuxt-headlessui": "^1.1.1",
     "nuxt-icon": "^0.3.3",
+    "nuxt-simple-robots": "^2.1.1",
     "nuxt-simple-sitemap": "^2.4.3",
     "prettier": "^2.8.7",
     "sass": "^1.60.0",

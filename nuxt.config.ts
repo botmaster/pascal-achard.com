@@ -99,6 +99,7 @@ export default defineNuxtConfig({
     "nuxt-headlessui",
     "@nuxtjs/fontaine",
     "nuxt-simple-sitemap",
+    "nuxt-simple-robots",
   ],
   runtimeConfig: {
     public: {
