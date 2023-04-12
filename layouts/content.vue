@@ -12,6 +12,19 @@
     },
   ],
 }); */
+
+const runtimeConfig = useRuntimeConfig();
+
+const route = useRoute();
+
+useHead(() => ({
+  link: [
+    {
+      rel: "canonical",
+      href: runtimeConfig.public.siteUrl + route.path,
+    },
+  ],
+}));
 </script>
 <template>
   <div class="flex flex-col min-h-screen">
