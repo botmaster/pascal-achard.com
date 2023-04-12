@@ -62,17 +62,21 @@ export default defineNuxtConfig({
       ],
     },
   },
+
   typescript: {
     strict: true,
     typeCheck: false,
   },
+
   tailwindcss: {
     cssPath: "~/assets/scss/main.scss",
     configPath: "~/tailwind.config.js",
   },
+
   colorMode: {
     classSuffix: "",
   },
+
   content: {
     // https://content.nuxtjs.org/api/configuration
     markdown: {
@@ -87,9 +91,11 @@ export default defineNuxtConfig({
       },
     },
   },
+
   vite: {
     plugins: [svgLoader()],
   },
+
   modules: [
     "@nuxtjs/tailwindcss",
     "@vueuse/nuxt",
@@ -101,6 +107,7 @@ export default defineNuxtConfig({
     "nuxt-simple-sitemap",
     "nuxt-simple-robots",
   ],
+
   runtimeConfig: {
     public: {
       pkg: JSON.stringify(pkg),
