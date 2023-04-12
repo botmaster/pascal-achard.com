@@ -58,7 +58,7 @@ const dependencies = computed(() => {
           <ul class="!list-none">
             <li v-for="(value, key, index) in dependencies" :key="index">
               <span>
-                {{ key }}: <span class="text-primary">{{ value }}</span>
+                {{ key }}: <span class="text-primary-content">{{ value }}</span>
               </span>
             </li>
           </ul>

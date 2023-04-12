@@ -16,10 +16,13 @@
 // Named colors
 :root {
   --color-primary: #{red($nord-10) green($nord-10) blue($nord-10)};
+  --color-primary-content: #{red(darken($nord-10, 10%)) green(darken($nord-10, 10%)) blue(darken($nord-10, 10%))};
   --color-secondary: #{red($nord-11) green($nord-11) blue($nord-11)};
+  --color-secondary-content: #{red(darken($nord-11, 10%)) green(darken($nord-11, 10%)) blue(darken($nord-11, 10%))};
 
   &[class="dark"] {
     --color-primary: #{red($nord-8) green($nord-8) blue($nord-8)};
+    --color-primary-content: #{red(lighten($nord-8, 10%)) green(lighten($nord-8, 10%)) blue(lighten($nord-8, 10%))};
     --color-secondary: #{red($nord-11) green($nord-11) blue($nord-11)};
   }
 }

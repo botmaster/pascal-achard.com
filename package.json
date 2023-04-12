@@ -15,7 +15,6 @@
   },
   "devDependencies": {
     "@nuxt/content": "^2.5.2",
-    "@nuxt/devtools": "^0.4.0",
     "@nuxtjs/color-mode": "^3.2.0",
     "@nuxtjs/eslint-config-typescript": "^12.0.0",
     "@nuxtjs/fontaine": "^0.2.4",
@@ -23,6 +22,7 @@
     "@types/node": "^18.15.11",
     "@typescript-eslint/parser": "^5.58.0",
     "color2k": "^2.0.2",
+    "consola": "^3.0.1",
     "eslint": "^8.38.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
