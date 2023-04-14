@@ -62,17 +62,21 @@ export default defineNuxtConfig({
       ],
     },
   },
+
   typescript: {
     strict: true,
     typeCheck: false,
   },
+
   tailwindcss: {
     cssPath: "~/assets/scss/main.scss",
     configPath: "~/tailwind.config.js",
   },
+
   colorMode: {
     classSuffix: "",
   },
+
   content: {
     // https://content.nuxtjs.org/api/configuration
     markdown: {
@@ -87,9 +91,11 @@ export default defineNuxtConfig({
       },
     },
   },
+
   vite: {
     plugins: [svgLoader()],
   },
+
   modules: [
     "@nuxtjs/tailwindcss",
     "@vueuse/nuxt",
@@ -100,12 +106,18 @@ export default defineNuxtConfig({
     "@nuxtjs/fontaine",
     "nuxt-simple-sitemap",
     "nuxt-simple-robots",
+    "@nuxt/devtools",
   ],
+
   runtimeConfig: {
     public: {
       pkg: JSON.stringify(pkg),
       siteUrl:
         process.env.NUXT_PUBLIC_SITE_URL || "https://www.pascal-achard.com",
     },
+  },
+
+  devtools: {
+    enabled: true,
   },
 });

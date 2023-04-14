@@ -8,7 +8,7 @@ definePageMeta({
 });
 
 const runtimeConfig = useRuntimeConfig();
-const pkg = JSON.parse(runtimeConfig.pkg);
+const pkg = JSON.parse(runtimeConfig.public.pkg);
 
 const { data } = await useAsyncData("about", () => {
   return queryContent("/about")
@@ -58,7 +58,7 @@ const dependencies = computed(() => {
           <ul class="!list-none">
             <li v-for="(value, key, index) in dependencies" :key="index">
               <span>
-                {{ key }}: <span class="text-aurora-nord-11">{{ value }}</span>
+                {{ key }}: <span class="text-primary-content">{{ value }}</span>
               </span>
             </li>
           </ul>

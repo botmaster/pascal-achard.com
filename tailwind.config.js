@@ -2,33 +2,6 @@
 
 const srcDir = ".";
 
-/* const nord = {
-  polarnight: {
-    "nord-0": "#2E3440",
-    "nord-1": "#3B4252",
-    "nord-2": "#434C5E",
-    "nord-3": "#4C566A",
-  },
-  snowstorm: {
-    "nord-4": "#D8DEE9",
-    "nord-5": "#E5E9F0",
-    "nord-6": "#ECEFF4",
-  },
-  frost: {
-    "nord-7": darken("#8FBCBB", 0.15),
-    "nord-8": darken("#88C0D0", 0.15),
-    "nord-9": darken("#81A1C1", 0.15),
-    "nord-10": darken("#5E81AC", 0.15),
-  },
-  aurora: {
-    "nord-11": darken("#BF616A", 0.15),
-    "nord-12": darken("#D08770", 0.15),
-    "nord-13": darken("#EBCB8B", 0.15),
-    "nord-14": darken("#A3BE8C", 0.15),
-    "nord-15": darken("#B48EAD", 0.15),
-  },
-}; */
-
 const nord = {
   polarnight: {
     "nord-0": "rgb(var(--color-nord-0) / <alpha-value>)",
@@ -64,6 +37,7 @@ module.exports = {
       transparent: "transparent",
       current: "currentColor",
       primary: "rgb(var(--color-primary) / <alpha-value>)",
+      "primary-content": "rgb(var(--color-primary-content) / <alpha-value>)",
       secondary: "rgb(var(--color-secondary) / <alpha-value>)",
       white: "#FFFFFF",
       black: "#000000",
