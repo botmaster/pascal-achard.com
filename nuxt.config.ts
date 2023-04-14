@@ -106,6 +106,7 @@ export default defineNuxtConfig({
     "@nuxtjs/fontaine",
     "nuxt-simple-sitemap",
     "nuxt-simple-robots",
+    "@nuxt/devtools",
   ],
 
   runtimeConfig: {
@@ -114,5 +115,9 @@ export default defineNuxtConfig({
       siteUrl:
         process.env.NUXT_PUBLIC_SITE_URL || "https://www.pascal-achard.com",
     },
+  },
+
+  devtools: {
+    enabled: true,
   },
 });
