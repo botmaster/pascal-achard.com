@@ -1,6 +1,6 @@
 {
   "name": "pascal-achard.com",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "Pascal Achard's personal website",
   "author": "Pascal Achard",
   "private": true,
@@ -39,6 +39,6 @@
     "vue-tsc": "^1.2.0"
   },
   "dependencies": {
-    "@vueuse/nuxt": "^10.0.0"
+    "@vueuse/nuxt": "^10.0.2"
   }
 }
