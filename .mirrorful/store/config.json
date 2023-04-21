@@ -1,0 +1,76 @@
+{
+	"primitives": {
+		"colors": {
+			"My Super Color": {
+				"base": {
+					"id": "2af992ed-618f-44b0-a5ed-17e809a54360",
+					"value": "#df01df",
+					"type": "color"
+				}
+			},
+			"Nord 0": {
+				"base": {
+					"id": "bcb90159-df70-48a2-9730-42f1f854bf93",
+					"value": "#2e3440",
+					"type": "color"
+				}
+			},
+			"Nord 1": {
+				"content": {
+					"id": "159a6815-911f-4677-be4d-c9847b050c62",
+					"value": "#2d3340",
+					"type": "color"
+				},
+				"base": {
+					"id": "2caca97e-5017-489c-93c2-6ccad1ce622c",
+					"value": "#3b4252",
+					"type": "color"
+				}
+			},
+			"Nord 2": {
+				"base": {
+					"id": "fc91c843-ce8c-49f8-a060-60cb55c5d8b3",
+					"value": "#434c5e",
+					"type": "color"
+				}
+			},
+			"Nord 3": {
+				"base": {
+					"id": "dbe6de19-1742-4776-ade5-1754e6c4c4db",
+					"value": "#4c566a",
+					"type": "color"
+				}
+			},
+			"Nord 41": {
+				"test": {
+					"id": "71d4bc2e-5e40-4920-9585-4ac7fa0104a2",
+					"value": "#d12626",
+					"type": "color"
+				},
+				"base": {
+					"id": "e6dff66d-c097-4dbc-8fa0-9af4e73606b6",
+					"value": "#d8dee9",
+					"type": "color"
+				}
+			}
+		},
+		"typography": {
+			"fontSizes": {},
+			"fontWeights": {},
+			"lineHeights": {}
+		},
+		"shadows": {}
+	},
+	"themes": [],
+	"files": [
+		"css",
+		"scss",
+		"js",
+		"ts"
+	],
+	"__internal__": {
+		"migrations": {
+			"version": "0.0.6"
+		}
+	}
+}
