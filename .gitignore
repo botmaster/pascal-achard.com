@@ -12,7 +12,6 @@ dist
 
 .netlify
 .npmrc
-.mirrorful
 
 # OS
 *.DS_Store
