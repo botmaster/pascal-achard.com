@@ -10,7 +10,12 @@ dist
 # IDE / Editor
 .idea
 
-# Local Netlify folder
 .netlify
-
 .npmrc
+.mirrorful
+
+# OS
+*.DS_Store
+.AppleDouble
+.LSOverride
+
