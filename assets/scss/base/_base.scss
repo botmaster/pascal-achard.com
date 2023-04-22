@@ -15,15 +15,16 @@
 
 // Named colors
 :root {
-  --color-primary: #{red($nord-10) green($nord-10) blue($nord-10)};
-  --color-primary-content: #{red(darken($nord-10, 10%)) green(darken($nord-10, 10%)) blue(darken($nord-10, 10%))};
-  --color-secondary: #{red($nord-11) green($nord-11) blue($nord-11)};
-  --color-secondary-content: #{red(darken($nord-11, 10%)) green(darken($nord-11, 10%)) blue(darken($nord-11, 10%))};
+  --color-primary: #{red($color-primary-base) green($color-primary-base) blue($color-primary-base)};
+  --color-primary-content: #{red($color-primary-content) green($color-primary-content) blue($color-primary-content)};
+  --color-secondary: #{red($color-secondary-base) green($color-secondary-base) blue($color-secondary-base)};
+  --color-secondary-content: #{red($color-secondary-content) green($color-secondary-content) blue($color-secondary-content)};
 
   &[class="dark"] {
-    --color-primary: #{red($nord-8) green($nord-8) blue($nord-8)};
-    --color-primary-content: #{red(lighten($nord-8, 10%)) green(lighten($nord-8, 10%)) blue(lighten($nord-8, 10%))};
-    --color-secondary: #{red($nord-11) green($nord-11) blue($nord-11)};
+    --color-primary: #{red($color-primary-dark-base) green($color-primary-dark-base) blue($color-primary-dark-base)};
+    --color-primary-content: #{red($color-primary-dark-content) green($color-primary-dark-content) blue($color-primary-dark-content)};
+    --color-secondary: #{red($color-secondary-dark-base) green($color-secondary-dark-base) blue($color-secondary-dark-base)};
+    --color-secondary-content: #{red($color-secondary-dark-content) green($color-secondary-dark-content) blue($color-secondary-dark-content)};
   }
 }
 

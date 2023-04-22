@@ -1,36 +1,47 @@
 // Nord
-$nord-0: #2e3440;
-$nord-1: #3b4252;
-$nord-2: #434c5e;
-$nord-3: #4c566a;
-$nord-4: #d8dee9;
-$nord-5: #e5e9f0;
-$nord-6: #eceff4;
-$nord-7: #8fbcbb;
-$nord-8: #88c0d0;
-$nord-9: #81a1c1;
-$nord-10: #5e81ac;
-$nord-11: #bf616a;
-$nord-12: #d08770;
-$nord-13: #ebcb8b;
-$nord-14: #a3be8c;
-$nord-15: #b48ead;
+$color-nord-0-base: #2e3440;
+$color-nord-1-base: #3b4252;
+$color-nord-2-base: #434c5e;
+$color-nord-3-base: #4c566a;
+$color-nord-4-base: #d8dee9;
+$color-nord-5-base: #e5e9f0;
+$color-nord-6-base: #eceff4;
+$color-nord-7-base: #8fbcbb;
+$color-nord-8-base: #88c0d0;
+$color-nord-9-base: #81a1c1;
+$color-nord-10-base: #5e81ac;
+$color-nord-11-base: #bf616a;
+$color-nord-12-base: #d08770;
+$color-nord-13-base: #ebcb8b;
+$color-nord-14-base: #a3be8c;
+$color-nord-15-base: #b48ead;
+
+$color-primary-base: #5e81ac;
+$color-primary-content: #4f6f95;
+$color-secondary-base: #bf616a;
+$color-secondary-content: #ad525b;
+$color-primary-dark-base: #88c0d0;
+$color-primary-dark-content: #75afc0;
+$color-secondary-dark-base: #bf616a;
+$color-secondary-dark-content: #9d4951;
+
+
 
 $nords: (
-        "nord-0": $nord-0,
-        "nord-1": $nord-1,
-        "nord-2": $nord-2,
-        "nord-3": $nord-3,
-        "nord-4": $nord-4,
-        "nord-5": $nord-5,
-        "nord-6": $nord-6,
-        "nord-7": $nord-7,
-        "nord-8": $nord-8,
-        "nord-9": $nord-9,
-        "nord-10": $nord-10,
-        "nord-11": $nord-11,
-        "nord-12": $nord-12,
-        "nord-13": $nord-13,
-        "nord-14": $nord-14,
-        "nord-15": $nord-15,
+        "nord-0": $color-nord-0-base,
+        "nord-1": $color-nord-1-base,
+        "nord-2": $color-nord-2-base,
+        "nord-3": $color-nord-3-base,
+        "nord-4": $color-nord-4-base,
+        "nord-5": $color-nord-5-base,
+        "nord-6": $color-nord-6-base,
+        "nord-7": $color-nord-7-base,
+        "nord-8": $color-nord-8-base,
+        "nord-9": $color-nord-9-base,
+        "nord-10": $color-nord-10-base,
+        "nord-11": $color-nord-11-base,
+        "nord-12": $color-nord-12-base,
+        "nord-13": $color-nord-13-base,
+        "nord-14": $color-nord-14-base,
+        "nord-15": $color-nord-15-base,
 );
