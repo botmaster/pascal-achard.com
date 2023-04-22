@@ -45,7 +45,7 @@ outils. J'ai une appétence pour le graphisme et la musique.
 
 ### Projets coup de cœur
 
-> <span class="mr-2">ℹ️</span>  <span class="font-rubik-medium text-primary">Info</span>
+> <span class="mr-2">ℹ️</span>  <span class="font-rubik-medium text-primary-content">Info</span>
 >   
 > La version actuellement en ligne du site antidiscriminations.fr n'est plus celle dont je parle ici 😕.
 
