@@ -16,11 +16,6 @@
 				}
 			},
 			"Nord 1": {
-				"content": {
-					"id": "159a6815-911f-4677-be4d-c9847b050c62",
-					"value": "#2d3340",
-					"type": "color"
-				},
 				"base": {
 					"id": "2caca97e-5017-489c-93c2-6ccad1ce622c",
 					"value": "#3b4252",
@@ -41,15 +36,135 @@
 					"type": "color"
 				}
 			},
-			"Nord 41": {
-				"test": {
-					"id": "71d4bc2e-5e40-4920-9585-4ac7fa0104a2",
-					"value": "#d12626",
-					"type": "color"
-				},
+			"Nord 4": {
 				"base": {
 					"id": "e6dff66d-c097-4dbc-8fa0-9af4e73606b6",
 					"value": "#d8dee9",
+					"type": "color"
+				}
+			},
+			"Nord 5": {
+				"base": {
+					"id": "6bb55f77-7548-424d-8086-890751de120c",
+					"value": "#e5e9f0",
+					"type": "color"
+				}
+			},
+			"Nord 6": {
+				"base": {
+					"id": "bce554ae-d4df-4429-ba49-535568d49bc2",
+					"value": "#eceff4",
+					"type": "color"
+				}
+			},
+			"Nord 7": {
+				"base": {
+					"id": "5baa0a1c-23a6-4853-af69-5afa22d56efe",
+					"value": "#8fbcbb",
+					"type": "color"
+				}
+			},
+			"Nord 8": {
+				"base": {
+					"id": "d97936f9-abd2-4c23-ab56-b089335787d1",
+					"value": "#88c0d0",
+					"type": "color"
+				}
+			},
+			"Nord 9": {
+				"base": {
+					"id": "d9cf8661-08a5-4c92-a47e-e6c3be07342f",
+					"value": "#81a1c1",
+					"type": "color"
+				}
+			},
+			"Nord 10": {
+				"base": {
+					"id": "59ba62f8-a47e-40d0-814f-262b1e313d4c",
+					"value": "#5e81ac",
+					"type": "color"
+				}
+			},
+			"Nord 11": {
+				"base": {
+					"id": "34805c49-29e9-4693-8e0c-5f4fc28cb1b0",
+					"value": "#bf616a",
+					"type": "color"
+				}
+			},
+			"Nord 12": {
+				"base": {
+					"id": "f067abc4-aa83-410d-8b9c-616e451dd52f",
+					"value": "#d08770",
+					"type": "color"
+				}
+			},
+			"Nord 13": {
+				"base": {
+					"id": "932ca66f-ecdb-42d3-b475-121ffec86d46",
+					"value": "#ebcb8b",
+					"type": "color"
+				}
+			},
+			"Nord 14": {
+				"base": {
+					"id": "8a9cef13-21ea-4739-b76e-4225123b0f9a",
+					"value": "#a3be8c",
+					"type": "color"
+				}
+			},
+			"Nord 15": {
+				"base": {
+					"id": "3a9f9906-9b29-486a-9b0d-64d18adeee50",
+					"value": "#b48ead",
+					"type": "color"
+				}
+			},
+			"Primary": {
+				"base": {
+					"id": "50002e36-2c91-4e07-bd37-48748b6d266f",
+					"value": "#5e81ac",
+					"type": "color"
+				},
+				"Content": {
+					"id": "249bba1d-f809-43c1-a8db-ae70521341da",
+					"value": "#4f6f95",
+					"type": "color"
+				}
+			},
+			"Secondary": {
+				"base": {
+					"id": "5ba115bb-93b5-431c-8d76-0b765cc8aafa",
+					"value": "#bf616a",
+					"type": "color"
+				},
+				"Content": {
+					"id": "5a1b5302-04ee-43b6-b345-4aee1c0110ef",
+					"value": "#ad525b",
+					"type": "color"
+				}
+			},
+			"Primary dark": {
+				"base": {
+					"id": "f491dbc3-b1d7-4783-950f-3a7c4b72b371",
+					"value": "#88c0d0",
+					"type": "color"
+				},
+				"Content": {
+					"id": "e1f4a383-a395-4def-a74f-7d5dc7d32de3",
+					"value": "#75afc0",
+					"type": "color"
+				}
+			},
+			"Secondary Dark": {
+				"base": {
+					"id": "6f81c752-c825-4c46-8289-fbeae4fd1a9c",
+					"value": "#bf616a",
+					"type": "color"
+				},
+				"Content": {
+					"id": "cf2998a4-84a0-4bf4-8306-e10b9f109d52",
+					"value": "#9d4951",
 					"type": "color"
 				}
 			}
