@@ -6,6 +6,12 @@ const themeList = [
   { name: "dark", label: "Dark", icon: "mi-moon" },
   { name: "light", label: "Light", icon: "mi-sun" },
 ];
+
+const { locale, locales, t } = useI18n();
+const switchLocalePath = useSwitchLocalePath();
+const availableLocales = computed(() => {
+  return locales.value.filter((i) => i.code !== locale.value);
+});
 </script>
 
 <template>
@@ -31,6 +37,15 @@ const themeList = [
         class="the-header__nav-item leading-tight"
       />
     </nav>
+    <div>
+      <p>{{ t("pages.top.description") }}</p>
+      <p>{{ t("pages.top.languages") }}</p>
+      <span v-for="locale in availableLocales" :key="locale.code">
+        <NuxtLink :to="switchLocalePath(locale.code) || ''">{{
+          locale.name
+        }}</NuxtLink>
+      </span>
+    </div>
   </header>
 </template>
 

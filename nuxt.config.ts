@@ -5,9 +5,6 @@ import pkg from "./package.json";
 export default defineNuxtConfig({
   app: {
     head: {
-      htmlAttrs: {
-        lang: "fr-fr",
-      },
       meta: [
         { charset: "utf-8" },
         {
@@ -92,6 +89,30 @@ export default defineNuxtConfig({
     },
   },
 
+  i18n: {
+    vueI18n: "./i18n.config.ts",
+    locales: [
+      {
+        code: "en",
+        iso: "en-US",
+        name: "English",
+      },
+      {
+        code: "fr",
+        iso: "fr-FR",
+        name: "Français",
+      },
+    ],
+    defaultLocale: "en",
+    baseUrl: "http://localhost:3000",
+    detectBrowserLanguage: {
+      useCookie: false,
+      alwaysRedirect: false,
+      cookieKey: "i18n_redirected",
+      redirectOn: "root", // recommended
+    },
+  },
+
   vite: {
     plugins: [svgLoader()],
   },
@@ -107,6 +128,7 @@ export default defineNuxtConfig({
     "nuxt-simple-sitemap",
     "nuxt-simple-robots",
     "@nuxt/devtools",
+    "@nuxtjs/i18n",
   ],
 
   runtimeConfig: {
