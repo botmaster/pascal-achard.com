@@ -1,24 +1,20 @@
 ---
 coverTitle: Pascal Achard
 coverSubtitle: Senior frontend developer
+coverUpTitle: Hi, I'm
 title: Senior frontend developer
 description: Pascal Achard, senior frontend developer, 20+ years of experience, Vue.js, Nuxt.js, TypeScript, Craftcms, Tailwindcss, Docker, Node.js, Webpack, Prettier, Notion, Netlify, render...
 ---
 
-## À propos de moi EN
+## About me
 
-Je suis un **développeur front-end senior** avec 7 ans d'expérience et plus de 20 ans d'expérience professionnelle dans la
-création de sites et d'applications web. Je me suis spécialisé dans **JavaScript/TypeScript** et j'ai une expertise dans le
-framework **Vue.js/Nuxt.js**.
+I am a **senior front-end developer** with 7 years of experience and over 20 years of professional experience building websites and web applications. I specialize in **JavaScript/TypeScript** and have expertise in the **Vue.js/Nuxt.js** framework.
 
-Mes journées professionnelles s'articulent principalement dans la conception et la réalisation d'applications web
-conçues avec des framework javascript (Vue.js, Alpine.js, ...) connectées à des API. Je participe aux sessions de design
-et aux rituels agiles. Je suis soucieux de respecter les **bonnes pratiques** d'intégration HTML/CSS, de la
-**performance**, du respect du **graphisme** (pixel perfect) et d'être conforme aux exigences d'**accessibilité** (RGAA/WCAG).
+My professional days are mainly focused on the design and development of web applications built with javascript frameworks (Vue.js, Alpine.js, ...) connected to APIs. I participate in design sessions and agile rituals. I am concerned about respecting the best practices of HTML/CSS integration, **performance**, respect of **graphics** (pixel perfect) and compliance with **accessibility** requirements (RGAA/WCAG).
 
-J'adore **apprendre** des nouvelles technologies, techniques, méthodes. J'aime **transmettre** mes connaissances et
-travailler en équipe. Je passe beaucoup de temps à faire de la veille technologique et à expérimenter de nouveaux
-outils. J'ai une appétence pour le graphisme et la musique.
+I love **learning** new technologies, trics, methods. I like to **transmit** my knowledge and
+work in a team. I spend a lot of time on technology watch and experimenting with new
+tools. I have an interest in graphic design and music.
 
 <p class="mt-6 flex gap-3 md:gap-5 flex-wrap">
     <a
@@ -26,7 +22,7 @@ outils. J'ai une appétence pour le graphisme et la musique.
         href="https://www.linkedin.com/in/pascal-achard" target="_blank" rel="noopener"
         >
         <span class="text-2xl"><Icon class="mr-1 text-primary" name="ph:linkedin-logo-bold"></Icon></span>
-        <span class="leading-none mt-1">Contactez-moi</span>
+        <span class="leading-none mt-1">Contact me at</span>
     </a>
     <a
         class="inline-flex items-center"
@@ -39,34 +35,27 @@ outils. J'ai une appétence pour le graphisme et la musique.
     </a>
 </p>
 
-### En ce moment, je suis fan de :
+### At the moment, I am a fan of:
 
 [Vue.js](https://vuejs.org/){target="_blank" rel="noopener"}, [Nuxt.js](https://nuxt.com/){target="_blank" rel="noopener"}, [Pinia](https://pinia.vuejs.org/){target="_blank" rel="noopener"}, [TypeScript](https://www.typescriptlang.org/){target="_blank" rel="noopener"}, [Craftcms](https://craftcms.com/){target="_blank" rel="noopener"}, [Twig](https://twig.symfony.com/){target="_blank" rel="noopener"}, [Tailwindcss](https://tailwindcss.com/){target="_blank" rel="noopener"}, [Docker](https://www.docker.com/){target="_blank" rel="noopener"}, [Node.js](https://nodejs.org/){target="_blank" rel="noopener"}, [Webpack](https://webpack.js.org/){target="_blank" rel="noopener"}, [Vite](https://vitejs.dev/){target="_blank" rel="noopener"}, [Prettier](https://prettier.io/){target="_blank" rel="noopener"}, [Notion](https://www.notion.so){target="_blank" rel="noopener"}, [Netlify](https://www.netlify.com/){target="_blank" rel="noopener"}, [render](https://www.render.com/){target="_blank" rel="noopener"}...
 
-### Projets coup de cœur
+### Favourite projects
 
-> <span class="mr-2">ℹ️</span>  <span class="font-rubik-medium text-primary">Info</span>
+> <span class="mr-2">ℹ️</span>  <span class="font-rubik-medium text-primary-content">Info</span>
 >   
-> La version actuellement en ligne du site antidiscriminations.fr n'est plus celle dont je parle ici 😕.
+> The current online version of the antidiscriminations.fr website is no longer the one I am talking about here 😕.
 
 [antidiscriminations.fr](https://www.antidiscriminations.fr/){target="_blank" rel="noopener"}
 
-Agir contre les discriminations, un projet pas comme les autres. J'en
-parle [ici](https://www.linkedin.com/pulse/un-projet-pas-comme-les-autres-pascal-achard/){target="_blank" rel="
+Acting against discrimination, a project like no other. I talk about it [here](https://www.linkedin.com/pulse/un-projet-pas-comme-les-autres-pascal-achard/){target="_blank" rel="
 noopener"}.
 
-### Dernière expérimentation
+### Last experiment
 
 [pascal is listening](https://pascal-is-listening.onrender.com/){target="_blank" rel="noopener"}
 
-Application web qui affiche les titres des chansons que je suis en train d'écouter sur Spotify.
+Web application that displays the titles of the songs I'm listening to on Spotify.
 
-Projet construit à l'aide des écosystèmes Node.js et npm, Github pour stocker le code, Render en tant qu'hôte, Render's
-Redis pour mettre en cache les réponses de l'API Spotify. L'application et l'API interne sont entièrement construites à
-l'aide du système Nuxt. Nuxt est un framework js basé sur Vue.js qui permet, entre autres, de faire du rendu côté
-serveur (SSR), du rendu côté client (SPA) et de générer des sites statiques.
+Project built using Node.js and npm ecosystems, Github to store the code, Render as host, Render's Redis to cache Spotify API responses. The application and internal API are built entirely using Nuxt. Nuxt is a js framework based on Vue.js that allows, among other things, server-side rendering (SSR), client-side rendering (SPA) and static site generation.
 
-Ce projet m'a permis de mettre en pratique Redis dont je ne connaissais que la théorie. L'API de Spotify est très bien
-faite et particulièrement bien documentée. Nuxt.js m'a permis de capitaliser mon savoir faire en Vue.js et de construire
-rapidement une application rendue côté serveur. La plateforme Render est très utile et simple à utiliser. Elle ressemble
-beaucoup à Netlify en plus riche.
+This project allowed me to put into practice Redis of which I only knew the theory. The Spotify API is very well done and particularly well documented. Nuxt.js allowed me to capitalize on my Vue.js knowledge and to quickly build a server-side rendered application. The Render platform is very useful and easy to use. It is very similar to Netlify but richer.

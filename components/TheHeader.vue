@@ -1,19 +1,15 @@
 <script setup lang="ts">
+const { t } = useI18n();
+
 // Color mode
 const colorMode = useColorMode();
-const themeList = [
-  { name: "system", label: "System", icon: "mi-computer" },
-  { name: "dark", label: "Dark", icon: "mi-moon" },
-  { name: "light", label: "Light", icon: "mi-sun" },
-];
 
-const { locale: currentLocale, locales, t } = useI18n();
-
+const themeList = computed(() => [
+  { name: "system", label: t("common.system"), icon: "mi-computer" },
+  { name: "dark", label: t("common.dark"), icon: "mi-moon" },
+  { name: "light", label: t("common.light"), icon: "mi-sun" },
+]);
 const localePath = useLocalePath();
-const switchLocalePath = useSwitchLocalePath();
-const availableLocales = computed(() => {
-  return locales.value.filter((i) => i.code !== currentLocale.value);
-});
 </script>
 
 <template>
@@ -22,30 +18,28 @@ const availableLocales = computed(() => {
       <NuxtLink
         class="the-header__nav-item the-header__nav-link"
         :to="localePath({ name: 'index' })"
-        title="Page d'accueil"
+        :title="t('navigation.home')"
         ><Icon name="material-symbols:home"></Icon
-        ><span class="sr-only">Page d'accueil</span></NuxtLink
+        ><span class="sr-only">{{ t("navigation.home") }}</span></NuxtLink
       >
       <NuxtLink
         class="the-header__nav-item the-header__nav-link"
         :to="localePath({ name: 'about' })"
-        title="Page info"
+        :title="t('navigation.about')"
         ><Icon name="material-symbols:info"></Icon
-        ><span class="sr-only">Page info</span></NuxtLink
+        ><span class="sr-only">{{ t("navigation.about") }}</span></NuxtLink
       >
       <ThemeMenuComponent
         v-model="colorMode.preference"
         :theme-list="themeList"
         class="the-header__nav-item leading-tight"
+        :title="t('navigation.themeSelector')"
+      />
+      <LangSwitcher
+        class="the-header__nav-item"
+        :title="t('navigation.languageSelector')"
       />
     </nav>
-    <div>
-      <span v-for="locale in availableLocales" :key="locale.code">
-        <NuxtLink :to="switchLocalePath(locale.code) || ''">{{
-          locale.name
-        }}</NuxtLink>
-      </span>
-    </div>
   </header>
 </template>
 

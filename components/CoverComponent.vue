@@ -2,7 +2,7 @@
 defineProps({
   uptitle: {
     type: String,
-    default: "Hi, that's me",
+    required: true,
   },
   title: {
     type: String,

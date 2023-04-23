@@ -12,7 +12,7 @@ Typographie : [Rubik](https://fonts.google.com/specimen/Rubik){target="_blank" r
 ## Le point technique
 
 Type : [JAMstack](https://jamstack.org/){target="_blank" rel="noopener"}  
-Language : [Typescript](https://www.typescriptlang.org/){target="_blank" rel="noopener"}  
+Langage : [Typescript](https://www.typescriptlang.org/){target="_blank" rel="noopener"}  
 Framework js : [Nuxt.js](https://nuxtjs.org){target="_blank" rel="noopener"}  
 Framework css : [Tailwindcss](https://tailwindcss.com/){target="_blank" rel="noopener"}  
 Hébergement : [Netlify](https://www.netlify.com/){target="_blank" rel="noopener"}  

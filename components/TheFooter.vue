@@ -8,6 +8,8 @@ interface ILink {
   };
 }
 
+const { t } = useI18n();
+
 // links
 const links: ILink[] = [
   {
@@ -70,11 +72,11 @@ useIntersectionObserver(target, ([{ isIntersecting }]) => {
 
 // Color mode
 const colorMode = useColorMode();
-const themeList = [
-  { name: "system", label: "Thème système", icon: "mi-computer" },
-  { name: "dark", label: "Thème sombre", icon: "mi-moon" },
-  { name: "light", label: "Thème claire", icon: "mi-sun" },
-];
+const themeList = computed(() => [
+  { name: "system", label: t("common.system"), icon: "mi-computer" },
+  { name: "dark", label: t("common.dark"), icon: "mi-moon" },
+  { name: "light", label: t("common.light"), icon: "mi-sun" },
+]);
 </script>
 
 <template>
@@ -91,6 +93,7 @@ const themeList = [
             class="social-item"
             :class="{ 'is-inview': targetIsVisible }"
             :aria-label="item['aria-label']"
+            :title="item['aria-label']"
           >
             <span class="social-item__icon">
               <Icon :name="item.icon.name" />

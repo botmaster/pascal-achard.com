@@ -7,16 +7,16 @@ const head = useLocaleHead({
   addSeoAttributes: true,
 });
 
-const title = computed(() =>
+/* const title = computed(() =>
   t("layouts.title", { title: t(String(route.meta.title) ?? "TBD") }, "❤️")
-);
+); */
 </script>
 
 <template>
   <div>
     <Html :lang="head.htmlAttrs.lang" :dir="head.htmlAttrs.dir">
       <Head>
-        <Title>{{ title }}</Title>
+        <!--        <Title>{{ title }}</Title>-->
         <template v-for="link in head.link" :key="link.id">
           <Link
             :id="link.id"

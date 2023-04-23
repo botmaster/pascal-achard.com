@@ -47,6 +47,7 @@ const resizeHandler = () => {
         v-if="data"
         :title="data.coverTitle"
         :subtitle="data.coverSubtitle"
+        :uptitle="data.coverUpTitle"
         :info="data.coverInfo"
       ></cover-component>
     </div>
