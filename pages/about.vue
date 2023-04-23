@@ -10,8 +10,10 @@ definePageMeta({
 const runtimeConfig = useRuntimeConfig();
 const pkg = JSON.parse(runtimeConfig.public.pkg);
 
+const { locale: currentLocale } = useI18n();
+
 const { data } = await useAsyncData("about", () => {
-  return queryContent("/about")
+  return queryContent(`${currentLocale.value}/about`)
     .findOne()
     .then((data) => {
       data.pkg = pkg;

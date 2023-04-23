@@ -7,10 +7,12 @@ const themeList = [
   { name: "light", label: "Light", icon: "mi-sun" },
 ];
 
-const { locale, locales, t } = useI18n();
+const { locale: currentLocale, locales, t } = useI18n();
+
+const localePath = useLocalePath();
 const switchLocalePath = useSwitchLocalePath();
 const availableLocales = computed(() => {
-  return locales.value.filter((i) => i.code !== locale.value);
+  return locales.value.filter((i) => i.code !== currentLocale.value);
 });
 </script>
 
@@ -19,14 +21,14 @@ const availableLocales = computed(() => {
     <nav class="the-header__nav">
       <NuxtLink
         class="the-header__nav-item the-header__nav-link"
-        to="/"
+        :to="localePath({ name: 'index' })"
         title="Page d'accueil"
         ><Icon name="material-symbols:home"></Icon
         ><span class="sr-only">Page d'accueil</span></NuxtLink
       >
       <NuxtLink
         class="the-header__nav-item the-header__nav-link"
-        to="/about"
+        :to="localePath({ name: 'about' })"
         title="Page info"
         ><Icon name="material-symbols:info"></Icon
         ><span class="sr-only">Page info</span></NuxtLink
@@ -38,8 +40,6 @@ const availableLocales = computed(() => {
       />
     </nav>
     <div>
-      <p>{{ t("pages.top.description") }}</p>
-      <p>{{ t("pages.top.languages") }}</p>
       <span v-for="locale in availableLocales" :key="locale.code">
         <NuxtLink :to="switchLocalePath(locale.code) || ''">{{
           locale.name

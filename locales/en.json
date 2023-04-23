@@ -1,0 +1,20 @@
+{
+  "common": {
+    "languages": "Language",
+    "no": "No",
+    "yes": "Yes"
+  },
+  "layouts": {
+    "title": "Page - {title}"
+  },
+  "pages": {
+    "about": {
+      "description": "This is the page about this site",
+      "title": "about this site"
+    },
+    "home": {
+      "description": "This is the home page",
+      "title": "Home"
+    }
+  }
+}

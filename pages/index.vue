@@ -4,14 +4,17 @@ import type {
   ParsedContent,
 } from "@nuxt/content/dist/runtime/types";
 import { Ref } from "vue";
+
 interface IPage extends MarkdownParsedContent {
   coverTitle: string;
   coverSubtitle: string;
   coverInfo: string;
 }
 
+const { locale: currentLocale } = useI18n();
+
 const { data } = await useAsyncData("Index", () =>
-  queryContent<IPage>("/").findOne()
+  queryContent<IPage>(`${currentLocale.value}/`).findOne()
 );
 
 if (data) useContentHead(data as Ref<ParsedContent>);
