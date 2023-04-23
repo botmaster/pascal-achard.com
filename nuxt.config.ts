@@ -109,7 +109,7 @@ export default defineNuxtConfig({
     ],
     debug: true,
     defaultLocale: "en",
-    baseUrl: "http://localhost:3000",
+    baseUrl: process.env.NUXT_PUBLIC_SITE_URL || "http://localhost:3000",
     detectBrowserLanguage: {
       useCookie: false,
       alwaysRedirect: false,
@@ -139,8 +139,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       pkg: JSON.stringify(pkg),
-      siteUrl:
-        process.env.NUXT_PUBLIC_SITE_URL || "https://www.pascal-achard.com",
+      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || "http://localhost:3000",
     },
   },
 
