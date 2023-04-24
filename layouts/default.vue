@@ -14,7 +14,7 @@ const head = useLocaleHead({
 
 <template>
   <div>
-    <Html :lang="head.htmlAttrs.lang" :dir="head.htmlAttrs.dir">
+    <Html :lang="head.htmlAttrs?.lang" :dir="head.htmlAttrs?.dir">
       <Head>
         <!--        <Title>{{ title }}</Title>-->
         <template v-for="link in head.link" :key="link.id">

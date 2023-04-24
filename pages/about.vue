@@ -12,15 +12,17 @@ const pkg = JSON.parse(runtimeConfig.public.pkg);
 
 const { locale: currentLocale } = useI18n();
 
-const { data } = await useAsyncData("about", () => {
-  return queryContent(`${currentLocale.value}/about`)
+// TODO: use IPage interface ?
+const { data } = await useAsyncData(`about-${currentLocale.value}`, () =>
+  queryContent()
+    .where({ _locale: currentLocale.value, _path: "/about" })
     .findOne()
     .then((data) => {
       data.pkg = pkg;
       data.subtitle = pkg.description;
       return data;
-    });
-});
+    })
+);
 
 if (data) useContentHead(data as Ref<ParsedContent>);
 

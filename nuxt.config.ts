@@ -87,16 +87,21 @@ export default defineNuxtConfig({
         dark: "github-dark",
       },
     },
+    locales: ["en", "fr"],
   },
 
   i18n: {
     debug: false,
-    vueI18n: "./i18n.config.ts",
+    vueI18n: {
+      legacy: false,
+      locale: "en",
+      fallbackLocale: "fr",
+    },
 
-    precompile: {
+    /* precompile: {
       strictMessage: false,
       escapeHtml: true,
-    },
+    }, */
     langDir: "locales",
     lazy: false,
     locales: [
