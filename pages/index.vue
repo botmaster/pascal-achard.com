@@ -4,14 +4,20 @@ import type {
   ParsedContent,
 } from "@nuxt/content/dist/runtime/types";
 import { Ref } from "vue";
+
+// Todo: move to a separate file.
 interface IPage extends MarkdownParsedContent {
   coverTitle: string;
   coverSubtitle: string;
   coverInfo: string;
 }
 
-const { data } = await useAsyncData("Index", () =>
-  queryContent<IPage>("/").findOne()
+const { locale: currentLocale } = useI18n();
+
+const { data } = await useAsyncData(`home-${currentLocale.value}`, () =>
+  queryContent<IPage>()
+    .where({ _locale: currentLocale.value, _path: "/" })
+    .findOne()
 );
 
 if (data) useContentHead(data as Ref<ParsedContent>);
@@ -44,6 +50,7 @@ const resizeHandler = () => {
         v-if="data"
         :title="data.coverTitle"
         :subtitle="data.coverSubtitle"
+        :uptitle="data.coverUpTitle"
         :info="data.coverInfo"
       ></cover-component>
     </div>

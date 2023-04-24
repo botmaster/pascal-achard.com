@@ -10,15 +10,19 @@ definePageMeta({
 const runtimeConfig = useRuntimeConfig();
 const pkg = JSON.parse(runtimeConfig.public.pkg);
 
-const { data } = await useAsyncData("about", () => {
-  return queryContent("/about")
+const { locale: currentLocale } = useI18n();
+
+// TODO: use IPage interface ?
+const { data } = await useAsyncData(`about-${currentLocale.value}`, () =>
+  queryContent()
+    .where({ _locale: currentLocale.value, _path: "/about" })
     .findOne()
     .then((data) => {
       data.pkg = pkg;
       data.subtitle = pkg.description;
       return data;
-    });
-});
+    })
+);
 
 if (data) useContentHead(data as Ref<ParsedContent>);
 

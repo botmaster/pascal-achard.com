@@ -1,0 +1,19 @@
+{
+  "common": {
+    "dark": "Dark",
+    "languages": "Language",
+    "light": "Light",
+    "no": "No",
+    "system": "System",
+    "yes": "Yes"
+  },
+  "layouts": {
+    "title": "Pascal Achard - {title}"
+  },
+  "navigation": {
+    "about": "About page",
+    "home": "Home page",
+    "languageSelector": "Language selector",
+    "themeSelector": "Theme selector"
+  }
+}

@@ -1,8 +1,9 @@
 ---
 coverTitle: Pascal Achard
-coverSubtitle: Senior frontend developer
-title: Senior frontend developer
-description: Pascal Achard, senior frontend developer, 20+ years of experience, Vue.js, Nuxt.js, TypeScript, Craftcms, Tailwindcss, Docker, Node.js, Webpack, Prettier, Notion, Netlify, render...
+coverSubtitle: Développeur frontend senior
+coverUpTitle: Salut, je suis
+title: Développeur frontend senior
+description: Pascal Achard, développeur frontend senior, 20+ ans d'expérience, Vue.js, Nuxt.js, TypeScript, Craftcms, Tailwindcss, Docker, Node.js, Webpack, Prettier, Notion, Netlify, render...
 ---
 
 ## À propos de moi
@@ -12,7 +13,7 @@ création de sites et d'applications web. Je me suis spécialisé dans **JavaScr
 framework **Vue.js/Nuxt.js**.
 
 Mes journées professionnelles s'articulent principalement dans la conception et la réalisation d'applications web
-conçues avec des framework javascript (Vue.js, Alpine.js, ...) connectées à des API. Je participe aux sessions de design
+conçues avec des frameworks javascript (Vue.js, Alpine.js, ...) connectées à des API. Je participe aux sessions de design
 et aux rituels agiles. Je suis soucieux de respecter les **bonnes pratiques** d'intégration HTML/CSS, de la
 **performance**, du respect du **graphisme** (pixel perfect) et d'être conforme aux exigences d'**accessibilité** (RGAA/WCAG).
 
@@ -45,7 +46,7 @@ outils. J'ai une appétence pour le graphisme et la musique.
 
 ### Projets coup de cœur
 
-> <span class="mr-2">ℹ️</span>  <span class="font-rubik-medium text-primary">Info</span>
+> <span class="mr-2">ℹ️</span>  <span class="font-rubik-medium text-primary-content">Info</span>
 >   
 > La version actuellement en ligne du site antidiscriminations.fr n'est plus celle dont je parle ici 😕.
 

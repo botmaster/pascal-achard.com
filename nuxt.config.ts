@@ -5,9 +5,6 @@ import pkg from "./package.json";
 export default defineNuxtConfig({
   app: {
     head: {
-      htmlAttrs: {
-        lang: "fr-fr",
-      },
       meta: [
         { charset: "utf-8" },
         {
@@ -90,6 +87,58 @@ export default defineNuxtConfig({
         dark: "github-dark",
       },
     },
+    locales: ["en", "fr"],
+    defaultLocale: "fr",
+  },
+
+  i18n: {
+    debug: false,
+    vueI18n: {
+      legacy: false,
+      locale: "fr",
+      fallbackLocale: "en",
+    },
+
+    /* precompile: {
+      strictMessage: false,
+      escapeHtml: true,
+    }, */
+    langDir: "locales",
+    lazy: false,
+    locales: [
+      {
+        code: "en",
+        iso: "en-US",
+        name: "English",
+        file: "en.json",
+      },
+      {
+        code: "fr",
+        iso: "fr-FR",
+        name: "Français",
+        file: "fr.json",
+      },
+    ],
+    defaultLocale: "fr",
+    baseUrl: process.env.NUXT_PUBLIC_SITE_URL || "http://localhost:3000",
+    detectBrowserLanguage: {
+      useCookie: false,
+      alwaysRedirect: false,
+      cookieKey: "i18n_redirected",
+      redirectOn: "root", // recommended
+    },
+  },
+
+  // Simple robots.txt
+  robots: {
+    disallow: "/test",
+  },
+
+  // Simple sitemap
+  routeRules: {
+    "/test": {
+      index: false,
+    },
   },
 
   vite: {
@@ -107,13 +156,13 @@ export default defineNuxtConfig({
     "nuxt-simple-sitemap",
     "nuxt-simple-robots",
     "@nuxt/devtools",
+    "@nuxtjs/i18n",
   ],
 
   runtimeConfig: {
     public: {
       pkg: JSON.stringify(pkg),
-      siteUrl:
-        process.env.NUXT_PUBLIC_SITE_URL || "https://www.pascal-achard.com",
+      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || "http://localhost:3000",
     },
   },
 

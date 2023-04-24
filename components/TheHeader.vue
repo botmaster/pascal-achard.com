@@ -1,11 +1,15 @@
 <script setup lang="ts">
+const { t } = useI18n();
+
 // Color mode
 const colorMode = useColorMode();
-const themeList = [
-  { name: "system", label: "System", icon: "mi-computer" },
-  { name: "dark", label: "Dark", icon: "mi-moon" },
-  { name: "light", label: "Light", icon: "mi-sun" },
-];
+
+const themeList = computed(() => [
+  { name: "system", label: t("common.system"), icon: "mi-computer" },
+  { name: "dark", label: t("common.dark"), icon: "mi-moon" },
+  { name: "light", label: t("common.light"), icon: "mi-sun" },
+]);
+const localePath = useLocalePath();
 </script>
 
 <template>
@@ -13,22 +17,27 @@ const themeList = [
     <nav class="the-header__nav">
       <NuxtLink
         class="the-header__nav-item the-header__nav-link"
-        to="/"
-        title="Page d'accueil"
+        :to="localePath({ name: 'index' })"
+        :title="t('navigation.home')"
         ><Icon name="material-symbols:home"></Icon
-        ><span class="sr-only">Page d'accueil</span></NuxtLink
+        ><span class="sr-only">{{ t("navigation.home") }}</span></NuxtLink
       >
       <NuxtLink
         class="the-header__nav-item the-header__nav-link"
-        to="/about"
-        title="Page info"
+        :to="localePath({ name: 'about' })"
+        :title="t('navigation.about')"
         ><Icon name="material-symbols:info"></Icon
-        ><span class="sr-only">Page info</span></NuxtLink
+        ><span class="sr-only">{{ t("navigation.about") }}</span></NuxtLink
       >
       <ThemeMenuComponent
         v-model="colorMode.preference"
         :theme-list="themeList"
         class="the-header__nav-item leading-tight"
+        :title="t('navigation.themeSelector')"
+      />
+      <LangSwitcher
+        class="the-header__nav-item"
+        :title="t('navigation.languageSelector')"
       />
     </nav>
   </header>

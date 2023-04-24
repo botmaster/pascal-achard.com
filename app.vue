@@ -1,9 +1,12 @@
 <script setup lang="ts">
+const { t } = useI18n();
+
 useHead({
   titleTemplate: (titleChunk) => {
-    return titleChunk ? `Pascal Achard - ${titleChunk}` : "Pascal Achard";
+    return titleChunk
+      ? t("layouts.title", { title: titleChunk })
+      : "Pascal Achard";
   },
-  title: "Pascal Achard",
 });
 </script>
 

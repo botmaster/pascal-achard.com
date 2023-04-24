@@ -39,21 +39,10 @@ module.exports = {
       primary: "rgb(var(--color-primary) / <alpha-value>)",
       "primary-content": "rgb(var(--color-primary-content) / <alpha-value>)",
       secondary: "rgb(var(--color-secondary) / <alpha-value>)",
+      "secondary-content":
+        "rgb(var(--color-secondary-content) / <alpha-value>)",
       white: "#FFFFFF",
       black: "#000000",
-      gray: {
-        50: "#FAFAFA",
-        100: "#F5F5F5",
-        200: "#EEEEEE",
-        300: "#E0E0E0",
-        400: "#BDBDBD",
-        500: "#9E9E9E",
-        600: "#757575",
-        700: "#616161",
-        800: "#424242",
-        900: "#212121",
-        950: "#151414",
-      },
       body: {
         background: "#f2f4f8",
         backgrounddark: "#242933",
