@@ -128,6 +128,18 @@ export default defineNuxtConfig({
     },
   },
 
+  // Simple robots.txt
+  robots: {
+    disallow: "/test",
+  },
+
+  // Simple sitemap
+  routeRules: {
+    "/test": {
+      index: false,
+    },
+  },
+
   vite: {
     plugins: [svgLoader()],
   },
