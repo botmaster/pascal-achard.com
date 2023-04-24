@@ -5,9 +5,17 @@ const { t } = useI18n();
 const colorMode = useColorMode();
 
 const themeList = computed(() => [
-  { name: "system", label: t("common.system"), icon: "mi-computer" },
-  { name: "dark", label: t("common.dark"), icon: "mi-moon" },
-  { name: "light", label: t("common.light"), icon: "mi-sun" },
+  {
+    name: "system",
+    label: t("common.system"),
+    icon: "material-symbols:computer",
+  },
+  { name: "dark", label: t("common.dark"), icon: "material-symbols:dark-mode" },
+  {
+    name: "light",
+    label: t("common.light"),
+    icon: "material-symbols:light-mode",
+  },
 ]);
 const localePath = useLocalePath();
 </script>

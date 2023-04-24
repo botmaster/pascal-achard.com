@@ -59,7 +59,9 @@ const clickHandler = (theme: ITheme) => {
             ]"
             @click="clickHandler(theme)"
           >
-            <Icon :name="theme.icon" /><span>{{ theme.label }}</span>
+            <Icon :name="theme.icon" /><span class="text-base">{{
+              theme.label
+            }}</span>
           </button>
         </MenuItem>
       </MenuItems>
