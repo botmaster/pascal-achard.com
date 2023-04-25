@@ -56,7 +56,7 @@ const resizeHandler = () => {
     </div>
     <div class="page-index__content">
       <div class="container mx-auto mt-8">
-        <SheetElevation v-if="data" shadow="lg" class="md:w-9/12">
+        <SheetElevation v-if="data" shadow="lg" class="xl:w-9/12">
           <ContentRenderer class="nuxt-content" :value="data" />
         </SheetElevation>
       </div>

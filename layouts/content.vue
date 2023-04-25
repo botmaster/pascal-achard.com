@@ -1,19 +1,4 @@
 <script setup lang="ts">
-// const runtimeConfig = useRuntimeConfig();
-// const route = useRoute();
-
-/*
-useHead(() => ({
-  link: [
-    {
-      rel: "canonical",
-      href: runtimeConfig.public.siteUrl + route.path,
-    },
-  ],
-}));
-*/
-
-// const { t } = useI18n();
 const head = useLocaleHead({
   addDirAttribute: true,
   identifierAttribute: "id",
@@ -52,7 +37,7 @@ const head = useLocaleHead({
             </template>
           </HeroComponent>
           <div class="container mx-auto mt-8 mb-12 md:mt-20 md:mb-24">
-            <SheetElevation shadow="lg" class="md:w-9/12">
+            <SheetElevation shadow="lg" class="lg:w-9/12">
               <slot />
             </SheetElevation>
           </div>

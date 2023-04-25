@@ -14,3 +14,9 @@ dist
 .netlify
 
 .npmrc
+
+
+# OS
+*.DS_Store
+.AppleDouble
+.LSOverride

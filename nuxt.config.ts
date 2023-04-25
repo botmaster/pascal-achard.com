@@ -13,11 +13,19 @@ export default defineNuxtConfig({
         },
         {
           property: "og:image",
-          content: "https://www.pascal-achard.me/images/social/social-fb.jpg",
+          content: "https://www.pascal-achard.com/images/social/social-fb.jpg",
+        },
+        {
+          property: "og:url",
+          content: "https://www.pascal-achard.com",
+        },
+        {
+          property: "og:type",
+          content: "website",
         },
         {
           property: "twitter:image",
-          content: "https://www.pascal-achard.me/images/social/social-fb.jpg",
+          content: "https://www.pascal-achard.com/images/social/social-fb.jpg",
         },
         {
           name: "msapplication-TileColor",
