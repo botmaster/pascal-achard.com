@@ -68,6 +68,14 @@ export default defineNuxtConfig({
     },
   },
 
+  nitro: {
+    prerender: {
+      crawlLinks: true,
+      routes: ["/"],
+      ignore: ["/test"],
+    },
+  },
+
   typescript: {
     strict: true,
     typeCheck: false,
