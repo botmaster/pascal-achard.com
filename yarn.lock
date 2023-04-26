@@ -1845,7 +1845,7 @@
   resolved "https://registry.yarnpkg.com/@vueuse/metadata/-/metadata-10.1.0.tgz#041ab49abb17e760170606199c612c8937d2968f"
   integrity sha512-cM28HjDEw5FIrPE9rgSPFZvQ0ZYnOLAOr8hl1XM6tFl80U3WAR5ROdnAqiYybniwP5gt9MKKAJAqd/ab2aHkqg==
 
-"@vueuse/nuxt@^10.0.2":
+"@vueuse/nuxt@^10.1.0":
   version "10.1.0"
   resolved "https://registry.yarnpkg.com/@vueuse/nuxt/-/nuxt-10.1.0.tgz#be248aa9e3735a4f32f4d0a09e06460aa38d2502"
   integrity sha512-p2QfoKs0hMbOz/hzKn8hzQvfFMLnDceRLjtvHFtMgRp8Z0Dckji7KhFwbbrIMCyjpr57HkNB46g42h9K4Sn0lg==

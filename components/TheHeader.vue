@@ -39,6 +39,7 @@ const localePath = useLocalePath();
       >
       <ThemeMenuComponent
         v-model="colorMode.preference"
+        :is-unkown="colorMode.unknown"
         :theme-list="themeList"
         class="the-header__nav-item leading-tight"
         :title="t('navigation.themeSelector')"
@@ -61,7 +62,7 @@ const localePath = useLocalePath();
   }
 
   &__nav-item {
-    //@apply no-underline;
+    @apply min-w-[1em];
   }
 
   &__nav-link {
