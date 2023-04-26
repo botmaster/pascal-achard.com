@@ -6,16 +6,16 @@ const props = withDefaults(
   defineProps<{
     themeList: ITheme[];
     modelValue: string;
-    size?: "xs" | "sm" | "md" | "lg";
+    isUnkown?: boolean;
   }>(),
-  {
-    size: "md",
-  }
+  {}
 );
 
 const emit = defineEmits<{
   (event: "update:modelValue", value: string): void;
 }>();
+
+const { t } = useI18n();
 
 const currentTheme = computed<ITheme | undefined>(() => {
   return props.themeList.find((theme) => theme.name === props.modelValue);
@@ -29,8 +29,13 @@ const clickHandler = (theme: ITheme) => {
 <template>
   <Menu as="div" class="menu">
     <MenuButton class="menu-button"
-      ><span class="sr-only">Sélecteur de thème</span
-      ><Icon :name="currentTheme?.icon || 'mi-computer'" />
+      ><span class="sr-only">{{ t("navigation.themeSelector") }}</span>
+      <ClientOnly>
+        <Icon :name="currentTheme?.icon || 'material-symbols:computer'" />
+        <template #fallback>
+          <Icon name="material-symbols:computer" />
+        </template>
+      </ClientOnly>
     </MenuButton>
 
     <transition
