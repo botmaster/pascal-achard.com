@@ -58,13 +58,12 @@ const clickHandler = (theme: ITheme) => {
             :class="[
               { 'is-current': modelValue === theme.name },
               {
-                'text-frost-nord-10 dark:text-snowstorm-nord-6 outline-dotted outline-1 outline-offset-2':
-                  active,
+                'is-active': active,
               },
             ]"
             @click="clickHandler(theme)"
           >
-            <Icon :name="theme.icon" /><span class="text-base">{{
+            <Icon :name="theme.icon" /><span class="menu-item-btn__label">{{
               theme.label
             }}</span>
           </button>
@@ -89,10 +88,18 @@ const clickHandler = (theme: ITheme) => {
 }
 
 .menu-item-btn {
-  @apply flex items-center gap-2 text-left no-underline;
+  @apply flex items-end gap-2 text-left no-underline;
+
+  &__label {
+    @apply text-base leading-none;
+  }
 
   &.is-current {
     @apply text-primary;
+  }
+
+  &.is-active {
+    @apply text-frost-nord-10 dark:text-snowstorm-nord-6 outline-dotted outline-1 outline-offset-2;
   }
 }
 </style>

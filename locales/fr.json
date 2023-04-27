@@ -1,10 +1,7 @@
 {
   "common": {
-    "dark": "Sombre",
     "languages": "Langue",
-    "light": "Claire",
     "no": "Non",
-    "system": "Système",
     "yes": "Oui"
   },
   "layouts": {
@@ -15,5 +12,10 @@
     "home": "Page d'info",
     "languageSelector": "Sélecteur de langue",
     "themeSelector": "Sélecteur de thème"
+  },
+  "theme": {
+    "auto": "Auto",
+    "dark": "Sombre",
+    "light": "Claire"
   }
 }

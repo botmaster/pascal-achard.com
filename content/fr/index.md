@@ -52,6 +52,8 @@ outils. J'ai une appétence pour le graphisme et la musique.
 
 [antidiscriminations.fr](https://www.antidiscriminations.fr/){target="_blank" rel="noopener"}
 
+![Image site 'antidiscriminations.fr'](/images/content/antidiscriminations.fr.webp){width="824" height="499"}
+
 Agir contre les discriminations, un projet pas comme les autres. J'en
 parle [ici](https://www.linkedin.com/pulse/un-projet-pas-comme-les-autres-pascal-achard/){target="_blank" rel="
 noopener"}.
@@ -59,6 +61,8 @@ noopener"}.
 ### Dernière expérimentation
 
 [pascal is listening](https://pascal-is-listening.onrender.com/){target="_blank" rel="noopener"}
+
+![Image site 'pascal is listening'](/images/content/pascal-is-listening.webp){width="824" height="499"}
 
 Application web qui affiche les titres des chansons que je suis en train d'écouter sur Spotify.
 

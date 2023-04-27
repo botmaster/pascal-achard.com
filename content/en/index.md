@@ -47,12 +47,16 @@ tools. I have an interest in graphic design and music.
 
 [antidiscriminations.fr](https://www.antidiscriminations.fr/){target="_blank" rel="noopener"}
 
+![Image 'antidiscriminations.fr'](/images/content/antidiscriminations.fr.webp){width="824" height="499"}
+
 Acting against discrimination, a project like no other. I talk about it [here](https://www.linkedin.com/pulse/un-projet-pas-comme-les-autres-pascal-achard/){target="_blank" rel="
 noopener"}.
 
 ### Last experiment
 
 [pascal is listening](https://pascal-is-listening.onrender.com/){target="_blank" rel="noopener"}
+
+![Image 'pascal is listening'](/images/content/pascal-is-listening.webp){width="824" height="499"}
 
 Web application that displays the titles of the songs I'm listening to on Spotify.
 

@@ -24,12 +24,12 @@ Performance measured on the home page.
 
 #### PageSpeed Insights
 
-![my image](/images/content/lighthouse.png){width="400" height="82"}
+![Report PageSpeed Insights](/images/content/lighthouse.png){width="400" height="82"}
 [Report](https://pagespeed.web.dev/analysis/https-pascal-achard-me/qkyedj3msk?form_factor=desktop){target="_blank" rel="noopener"} of March 20, 2023.
 
 #### Gt-metrix
 
-![my image](/images/content/gt-metrix.png){width="400" height="94"}
+![Report Gt-metirx](/images/content/gt-metrix.png){width="400" height="94"}
 [Report](https://gtmetrix.com/reports/www.pascal-achard.com/dmOlhaun/){target="_blank" rel="noopener"} of March 21, 2023.
 
 ### The complete list of dependencies

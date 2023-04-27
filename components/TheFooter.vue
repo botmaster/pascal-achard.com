@@ -75,13 +75,13 @@ const colorMode = useColorMode();
 const themeList = computed(() => [
   {
     name: "system",
-    label: t("common.system"),
+    label: t("theme.auto"),
     icon: "material-symbols:computer",
   },
-  { name: "dark", label: t("common.dark"), icon: "material-symbols:dark-mode" },
+  { name: "dark", label: t("theme.dark"), icon: "material-symbols:dark-mode" },
   {
     name: "light",
-    label: t("common.light"),
+    label: t("theme.light"),
     icon: "material-symbols:light-mode",
   },
 ]);
