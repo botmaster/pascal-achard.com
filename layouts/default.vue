@@ -1,13 +1,9 @@
 <script setup lang="ts">
 const head = useLocaleHead({
   addDirAttribute: true,
-  identifierAttribute: "id",
+  // identifierAttribute: "id",
   addSeoAttributes: true,
 });
-
-/* const title = computed(() =>
-  t("layouts.title", { title: t(String(route.meta.title) ?? "TBD") }, "❤️")
-); */
 </script>
 
 <template>

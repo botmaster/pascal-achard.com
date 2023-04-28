@@ -3,6 +3,10 @@ import svgLoader from "vite-svg-loader";
 import pkg from "./package.json";
 
 export default defineNuxtConfig({
+  devtools: {
+    enabled: true,
+  },
+
   app: {
     head: {
       meta: [
@@ -68,13 +72,13 @@ export default defineNuxtConfig({
     },
   },
 
-  nitro: {
+  /* nitro: {
     prerender: {
       crawlLinks: true,
       routes: ["/"],
       ignore: ["/test"],
     },
-  },
+  }, */
 
   typescript: {
     strict: true,
@@ -138,7 +142,7 @@ export default defineNuxtConfig({
     defaultLocale: "fr",
     baseUrl: process.env.NUXT_PUBLIC_SITE_URL || "http://localhost:3000",
     detectBrowserLanguage: {
-      useCookie: false,
+      useCookie: true,
       alwaysRedirect: false,
       cookieKey: "i18n_redirected",
       redirectOn: "root", // recommended
@@ -161,6 +165,13 @@ export default defineNuxtConfig({
     plugins: [svgLoader()],
   },
 
+  runtimeConfig: {
+    public: {
+      pkg: JSON.stringify(pkg),
+      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || "http://localhost:3000",
+    },
+  },
+
   modules: [
     "@nuxtjs/tailwindcss",
     "@vueuse/nuxt",
@@ -174,15 +185,4 @@ export default defineNuxtConfig({
     "@nuxt/devtools",
     "@nuxtjs/i18n",
   ],
-
-  runtimeConfig: {
-    public: {
-      pkg: JSON.stringify(pkg),
-      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || "http://localhost:3000",
-    },
-  },
-
-  devtools: {
-    enabled: true,
-  },
 });

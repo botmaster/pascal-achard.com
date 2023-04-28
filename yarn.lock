@@ -1436,10 +1436,10 @@
   resolved "https://registry.yarnpkg.com/@types/ms/-/ms-0.7.31.tgz#31b7ca6407128a3d2bbc27fe2d21b345397f6197"
   integrity sha512-iiUgKzV9AuaEkZqkOLDIvlQiL6ltuZd9tGcW3gwpnX8JbuiuhFlEGmmFXEXkN50Cvq7Os88IY2v0dkDqXYWVgA==
 
-"@types/node@*", "@types/node@^18.16.1":
-  version "18.16.1"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.16.1.tgz#5db121e9c5352925bb1f1b892c4ae620e3526799"
-  integrity sha512-DZxSZWXxFfOlx7k7Rv4LAyiMroaxa3Ly/7OOzZO8cBNho0YzAi4qlbrx8W27JGqG57IgR/6J7r+nOJWw6kcvZA==
+"@types/node@*", "@types/node@^18.16.2":
+  version "18.16.2"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.16.2.tgz#2f610ea71034b3971c312192377f8a7178eb57f1"
+  integrity sha512-GQW/JL/5Fz/0I8RpeBG9lKp0+aNcXEaVL71c0D2Q0QHDTFvlYKT7an0onCUXj85anv7b4/WesqdfchLc0jtsCg==
 
 "@types/node@^17.0.5":
   version "17.0.45"
@@ -6588,18 +6588,18 @@ nuxt-icon@^0.4.0:
     "@nuxt/kit" "^3.4.2"
 
 nuxt-simple-robots@^1.0.6:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/nuxt-simple-robots/-/nuxt-simple-robots-1.0.6.tgz#1ec5c61c8d548a752d7688e4bcd63200278cf77d"
-  integrity sha512-zDlVWkeGl5vLCDRU+qwCVWAVgzLDLQMytMy5rNCtIONYYAhZCHYB6YdfxNS232Mbr587mcbq4FoG44B2TiXCIA==
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/nuxt-simple-robots/-/nuxt-simple-robots-1.0.9.tgz#0a5d083b5f044fe72db07058d6530073ad5fb7bc"
+  integrity sha512-KR4zbVnHG2lKV97LOZeLIb8KR90VNfzRX9wj1qXZSbt3wzTgS6YM10QMoXWXjDN5YAVlq99QwJ6OERgq1Fwj7g==
   dependencies:
     "@nuxt/kit" "3.4.2"
     pathe "^1.1.0"
     ufo "^1.1.1"
 
 nuxt-simple-sitemap@^1.0.10:
-  version "1.0.10"
-  resolved "https://registry.yarnpkg.com/nuxt-simple-sitemap/-/nuxt-simple-sitemap-1.0.10.tgz#27e43e947bc5335afe552f1be6bc3b318f1fd1d0"
-  integrity sha512-2svfwJlKGO+Mu4AfU2Lg9i05D1KWyq5YJp4gzX2RT6O9dRnoznx3z8LVfSUCuedSKMluuMoUklnatZqs1N313g==
+  version "1.0.11"
+  resolved "https://registry.yarnpkg.com/nuxt-simple-sitemap/-/nuxt-simple-sitemap-1.0.11.tgz#e4c86878a34f4fc45be287cdc7983882d06941c7"
+  integrity sha512-FW4kxAKW0FHA3+y2yT790bz4yupHV5qPkf1aaY0Xi3Ct4jKQE4BwX9oKlqz8F4qq3WURETkV7ttzxWmXlNcDsg==
   dependencies:
     "@nuxt/kit" "3.4.2"
     chalk "^5.2.0"

@@ -64,11 +64,11 @@ const onScroll = () => {
         class="inset-0 w-full h-full"
         height="1280"
         sizes="(max-width: 1024px) 100vw, 2560px"
-        src="~/assets/images/pascal-achard/pascal-achard.jpg"
+        src="@/assets/images/pascal-achard/pascal-achard.jpg"
         srcset="
-          ~/assets/images/pascal-achard/20102017-DSC06728_ufitab_c_scale_w_1024.jpg 1024w,
-          ~/assets/images/pascal-achard/20102017-DSC06728_ufitab_c_scale_w_1936.jpg 1936w,
-          ~/assets/images/pascal-achard/20102017-DSC06728_ufitab_c_scale_w_2560.jpg 2560w
+          @/assets/images/pascal-achard/20102017-DSC06728_ufitab_c_scale_w_1024.jpg 1024w,
+          @/assets/images/pascal-achard/20102017-DSC06728_ufitab_c_scale_w_1936.jpg 1936w,
+          @/assets/images/pascal-achard/20102017-DSC06728_ufitab_c_scale_w_2560.jpg 2560w
         "
         width="1920"
       />
