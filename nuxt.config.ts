@@ -72,14 +72,6 @@ export default defineNuxtConfig({
     },
   },
 
-  /* nitro: {
-    prerender: {
-      crawlLinks: true,
-      routes: ["/"],
-      ignore: ["/test"],
-    },
-  }, */
-
   typescript: {
     strict: true,
     typeCheck: false,
@@ -95,7 +87,6 @@ export default defineNuxtConfig({
   },
 
   content: {
-    // https://content.nuxtjs.org/api/configuration
     markdown: {
       anchorLinks: false,
     },
@@ -118,11 +109,6 @@ export default defineNuxtConfig({
       locale: "fr",
       fallbackLocale: "en",
     },
-
-    /* precompile: {
-      strictMessage: false,
-      escapeHtml: true,
-    }, */
     langDir: "locales",
     lazy: false,
     locales: [
@@ -180,9 +166,9 @@ export default defineNuxtConfig({
     "nuxt-icon",
     "nuxt-headlessui",
     "@nuxtjs/fontaine",
-    "nuxt-simple-sitemap",
-    "nuxt-simple-robots",
-    "@nuxt/devtools",
     "@nuxtjs/i18n",
+    "nuxt-simple-robots",
+    "nuxt-simple-sitemap",
+    "@nuxt/devtools",
   ],
 });
