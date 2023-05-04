@@ -16,7 +16,7 @@
 </template>
 
 <script setup lang="ts">
-import { ITheme } from "~/types/theme";
+import { ITheme } from "~/types/types";
 
 const props = withDefaults(
   defineProps<{

@@ -1,5 +1,8 @@
 <script setup lang="ts">
-const { locale: currentLocale, locales } = useI18n();
+import { Ref } from "vue";
+
+const { locale: currentLocale, locales }: { locale: Ref; locales: Ref<any[]> } =
+  useI18n();
 
 const switchLocalePath = useSwitchLocalePath();
 const availableLocales = computed(() => {
