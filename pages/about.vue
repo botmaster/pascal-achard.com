@@ -2,6 +2,7 @@
 import { Ref } from "vue";
 import { ParsedContent } from "@nuxt/content/dist/runtime/types";
 import { definePageMeta } from "#imports";
+import { IPage } from "@/types/types";
 
 definePageMeta({
   layout: false,
@@ -12,9 +13,8 @@ const pkg = JSON.parse(runtimeConfig.public.pkg);
 
 const { locale: currentLocale } = useI18n();
 
-// TODO: use IPage interface ?
 const { data } = await useAsyncData(`about-${currentLocale.value}`, () =>
-  queryContent()
+  queryContent<IPage>()
     .where({ _locale: currentLocale.value, _path: "/about" })
     .findOne()
     .then((data) => {

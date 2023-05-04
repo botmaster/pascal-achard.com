@@ -88,7 +88,11 @@ export default defineNuxtConfig({
 
   content: {
     markdown: {
-      anchorLinks: false,
+      // Workaround for this issue: https://github.com/nuxt/content/issues/1856#issuecomment-1406737835
+      anchorLinks: {
+        depth: 0,
+        exclude: [1, 2, 3, 4, 5, 6],
+      },
     },
     highlight: {
       theme: {

@@ -1,16 +1,7 @@
 <script setup lang="ts">
-import type {
-  MarkdownParsedContent,
-  ParsedContent,
-} from "@nuxt/content/dist/runtime/types";
+import type { ParsedContent } from "@nuxt/content/dist/runtime/types";
 import { Ref } from "vue";
-
-// Todo: move to a separate file.
-interface IPage extends MarkdownParsedContent {
-  coverTitle: string;
-  coverSubtitle: string;
-  coverInfo: string;
-}
+import type { IPage } from "@/types/types";
 
 const { locale: currentLocale } = useI18n();
 
@@ -49,8 +40,8 @@ const resizeHandler = () => {
       <cover-component
         v-if="data"
         :title="data.coverTitle"
-        :subtitle="data.coverSubtitle"
-        :uptitle="data.coverUpTitle"
+        :subtitle="data.coverSubtitle ?? ''"
+        :uptitle="data.coverUpTitle ?? ''"
         :info="data.coverInfo"
       ></cover-component>
     </div>
