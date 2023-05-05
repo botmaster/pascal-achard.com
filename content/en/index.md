@@ -6,6 +6,10 @@ title: Senior frontend developer
 description: Pascal Achard, senior frontend developer, 20+ years of experience, Vue.js, Nuxt.js, TypeScript, Craftcms, Tailwindcss, Docker, Node.js, Webpack, Prettier, Notion, Netlify, render...
 ---
 
+> <span class="mr-2">💡</span>  <span class="font-rubik-medium text-primary-content">Info</span>
+>
+> This site is a pretext to experiment with technologies and development methods. It is in constant evolution.
+
 ## About me
 
 I am a **senior front-end developer** with 7 years of experience and over 20 years of professional experience building websites and web applications. I specialize in **JavaScript/TypeScript** and have expertise in the **Vue.js/Nuxt.js** framework.
