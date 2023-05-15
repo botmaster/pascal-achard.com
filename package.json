@@ -41,5 +41,6 @@
   },
   "dependencies": {
     "@vueuse/nuxt": "^10.1.2"
-  }
+  },
+  "packageManager": "pnpm@8.4.0"
 }
