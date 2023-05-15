@@ -76,4 +76,15 @@ $content-heading-line-height: 1.125;
             }
         }
     }
+
+    code {
+        @apply bg-snowstorm-nord-5 text-polarnight-nord-0 dark:bg-polarnight-nord-3 dark:text-snowstorm-nord-6 text-xs rounded-sm px-1;
+    }
+
+    pre {
+        @apply block px-4 py-0 bg-snowstorm-nord-5 text-polarnight-nord-0 dark:bg-polarnight-nord-3 dark:text-snowstorm-nord-6 text-xs leading-5 rounded-md overflow-auto;
+        code {
+            @apply bg-transparent text-[inherit] rounded-none;
+        }
+    }
 }
