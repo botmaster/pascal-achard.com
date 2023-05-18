@@ -141,12 +141,15 @@ export default defineNuxtConfig({
 
   // Simple robots.txt
   robots: {
-    disallow: "/test",
+    disallow: ["/test", "/en/test"],
   },
 
   // Simple sitemap
   routeRules: {
     "/test": {
+      index: false,
+    },
+    "en/test": {
       index: false,
     },
   },
