@@ -52,23 +52,20 @@ Software engineer frontend sénior chez <img src="/images/content/jsk.png" alt="
 
 [Vue.js](https://vuejs.org/){target="_blank" rel="noopener"}, [Nuxt.js](https://nuxt.com/){target="_blank" rel="noopener"}, [Pinia](https://pinia.vuejs.org/){target="_blank" rel="noopener"}, [TypeScript](https://www.typescriptlang.org/){target="_blank" rel="noopener"}, [Craftcms](https://craftcms.com/){target="_blank" rel="noopener"}, [Twig](https://twig.symfony.com/){target="_blank" rel="noopener"}, [Tailwindcss](https://tailwindcss.com/){target="_blank" rel="noopener"}, [Docker](https://www.docker.com/){target="_blank" rel="noopener"}, [Node.js](https://nodejs.org/){target="_blank" rel="noopener"}, [Webpack](https://webpack.js.org/){target="_blank" rel="noopener"}, [Vite](https://vitejs.dev/){target="_blank" rel="noopener"}, [Prettier](https://prettier.io/){target="_blank" rel="noopener"}, [Notion](https://www.notion.so){target="_blank" rel="noopener"}, [Netlify](https://www.netlify.com/){target="_blank" rel="noopener"}, [render](https://www.render.com/){target="_blank" rel="noopener"}...
 
-### Projets coup de cœur
+### Dernières expérimentations
 
-> <span class="mr-2">ℹ️</span>  <span class="font-rubik-medium text-primary-content">Info</span>
->   
-> La version actuellement en ligne du site antidiscriminations.fr n'est plus celle dont je parle ici 😕.
 
-[antidiscriminations.fr](https://www.antidiscriminations.fr/){target="_blank" rel="noopener"}
+#### Zégut PG
+[https://zegut-pg.netlify.app/](https://zegut-pg.netlify.app/){target="_blank" rel="noopener"}
 
-![Image site 'antidiscriminations.fr'](/images/content/antidiscriminations.fr.webp){width="1024" height="620"}
+![Image site 'Zégut PG'](/images/content/zégut-pg.webp){width="1024" height="620"}
 
-Agir contre les discriminations, un projet pas comme les autres. J'en
-parle [ici](https://www.linkedin.com/pulse/un-projet-pas-comme-les-autres-pascal-achard/){target="_blank" rel="
-noopener"}.
+Zégut PG est une application web qui me permet de créer des playlists Spotify à partir des épisodes du podcast de l'émission RTL2 Pop-Rock Station présentée par Francis Zégut & Marjorie Hache. C'est aussi un prétexte pour moi de faire mumuse avec Vue.js et l'API Spotify 🤓. J'en parle [ici](https://www.linkedin.com/pulse/z%25C3%25A9gut-pg-cr%25C3%25A9ez-des-playlists-spotify-%25C3%25A0-partir-de-l%25C3%25A9mission-achard).
 
-### Dernière expérimentation
 
-[pascal is listening](https://pascal-is-listening.onrender.com/){target="_blank" rel="noopener"}
+#### Pascal is listening
+
+[https://pascal-is-listening.onrender.com/](https://pascal-is-listening.onrender.com/){target="_blank" rel="noopener"}
 
 ![Image site 'pascal is listening'](/images/content/pascal-is-listening.webp){width="1024" height="620"}
 
@@ -83,3 +80,19 @@ Ce projet m'a permis de mettre en pratique Redis dont je ne connaissais que la t
 faite et particulièrement bien documentée. Nuxt.js m'a permis de capitaliser mon savoir faire en Vue.js et de construire
 rapidement une application rendue côté serveur. La plateforme Render est très utile et simple à utiliser. Elle ressemble
 beaucoup à Netlify en plus riche.
+
+### Projets coup de cœur
+
+> <span class="mr-2">ℹ️</span>  <span class="font-rubik-medium text-primary-content">Info</span>
+>   
+> La version actuellement en ligne du site antidiscriminations.fr n'est plus celle dont je parle ici 😕.
+
+[antidiscriminations.fr](https://www.antidiscriminations.fr/){target="_blank" rel="noopener"}
+
+![Image site 'antidiscriminations.fr'](/images/content/antidiscriminations.fr.webp){width="1024" height="620"}
+
+Agir contre les discriminations, un projet pas comme les autres. J'en
+parle [ici](https://www.linkedin.com/pulse/un-projet-pas-comme-les-autres-pascal-achard/){target="_blank" rel="
+noopener"}.
+
+
