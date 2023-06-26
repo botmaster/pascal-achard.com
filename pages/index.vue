@@ -12,26 +12,6 @@ const { data } = await useAsyncData(`home-${currentLocale.value}`, () =>
 );
 
 if (data) useContentHead(data as Ref<ParsedContent>);
-
-onMounted(() => {
-  // console.log("mounted");
-  resizeHandler();
-  // We listen to the resize event
-  window.addEventListener("resize", resizeHandler);
-});
-
-onBeforeUnmount(() => {
-  // console.log("unmounted");
-  window.removeEventListener("resize", resizeHandler);
-});
-
-const resizeHandler = () => {
-  // console.log("resize");
-  // First we get the viewport height and we multiply it by 1% to get a value for a vh unit
-  const vh = window.innerHeight * 0.01;
-  // Then we set the value in the --vh custom property to the root of the document
-  document.documentElement.style.setProperty("--vh", `${vh}px`);
-};
 </script>
 
 <template>
@@ -58,11 +38,9 @@ const resizeHandler = () => {
 <style scoped lang="scss">
 .page-index {
   &__cover {
-    //transition: all 1s;
-
-    // https://css-tricks.com/the-trick-to-viewport-units-on-mobile/
-    min-height: 100vh; /* Use vh as a fallback for browsers that do not support Custom Properties */
-    min-height: calc(var(--vh, 1vh) * 100);
+    transition: min-height 0.25s;
+    transition-timing-function: ease-out;
+    min-height: 100svh;
 
     @apply flex flex-col;
 
