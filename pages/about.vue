@@ -21,7 +21,7 @@ const { data } = await useAsyncData(`about-${currentLocale.value}`, () =>
       data.pkg = pkg;
       data.subtitle = pkg.description;
       return data;
-    })
+    }),
 );
 
 if (data) useContentHead(data as Ref<ParsedContent>);
@@ -41,13 +41,13 @@ const dependencies = computed(() => {
         <img
           sizes="(max-width: 2170px) 100vw, 2170px"
           srcset="
-            ~/assets/images/infos/hero_rsbr7p_c_scale_w_768.jpg   768w,
-            ~/assets/images/infos/hero_rsbr7p_c_scale_w_1773.jpg 1773w,
-            ~/assets/images/infos/hero_rsbr7p_c_scale_w_2170.jpg 2170w
+            @/assets/images/infos/hero_rsbr7p_c_scale_w_768.jpg   768w,
+            @/assets/images/infos/hero_rsbr7p_c_scale_w_1773.jpg 1773w,
+            @/assets/images/infos/hero_rsbr7p_c_scale_w_2170.jpg 2170w
           "
-          src="~/assets/images/infos/hero_rsbr7p_c_scale_w_2170.jpg"
+          src="@/assets/images/infos/hero_rsbr7p_c_scale_w_2170.jpg"
           width="2170"
-          height="1174"
+          height="1074"
           alt=""
         />
       </template>
