@@ -108,11 +108,7 @@ export default defineNuxtConfig({
 
   i18n: {
     debug: false,
-    vueI18n: {
-      legacy: false,
-      locale: "fr",
-      fallbackLocale: "en",
-    },
+    vueI18n: "./i18n.config.ts",
     langDir: "locales",
     lazy: false,
     locales: [
