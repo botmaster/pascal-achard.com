@@ -1,7 +1,5 @@
-/*
-export default defineI18nConfig((nuxt) => ({
+export default defineI18nConfig(() => ({
   legacy: false,
-  locale: "en",
-  fallbackLocale: "fr",
+  locale: "fr",
+  fallbackLocale: "en",
 }));
-*/

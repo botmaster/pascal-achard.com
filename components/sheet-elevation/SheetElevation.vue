@@ -53,7 +53,7 @@ const props = defineProps({
   }
 
   &--is-nome {
-    @apply drop-shadow-lg;
+    @apply drop-shadow-none;
   }
 }
 </style>
