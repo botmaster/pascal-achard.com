@@ -3,9 +3,7 @@ import svgLoader from "vite-svg-loader";
 import pkg from "./package.json";
 
 export default defineNuxtConfig({
-  devtools: {
-    enabled: true,
-  },
+  devtools: { enabled: true },
 
   app: {
     head: {
