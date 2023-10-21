@@ -31,7 +31,7 @@ const scrollPercent = computed(() => {
 const imageStyle = computed(() => {
   return {
     transform: `translateY(${Math.round(
-      scrollPosition.value * 0.4
+      scrollPosition.value * 0.4,
     )}px) perspective(50px) translateZ(${scrollPercent.value / 0.08}px)`,
   };
 });

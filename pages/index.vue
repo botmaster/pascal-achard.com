@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import type { Ref } from "vue";
 import type { ParsedContent } from "@nuxt/content/dist/runtime/types";
-import { Ref } from "vue";
 import type { IPage } from "@/types/types";
 
 const { locale: currentLocale } = useI18n();
@@ -8,7 +8,7 @@ const { locale: currentLocale } = useI18n();
 const { data } = await useAsyncData(`home-${currentLocale.value}`, () =>
   queryContent<IPage>()
     .where({ _locale: currentLocale.value, _path: "/" })
-    .findOne()
+    .findOne(),
 );
 
 if (data) useContentHead(data as Ref<ParsedContent>);

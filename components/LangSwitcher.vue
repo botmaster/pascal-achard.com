@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Ref } from "vue";
+import type { Ref } from "vue";
 
 const { locale: currentLocale, locales }: { locale: Ref; locales: Ref<any[]> } =
   useI18n();

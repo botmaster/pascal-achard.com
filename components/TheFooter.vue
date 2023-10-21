@@ -149,7 +149,8 @@ const themeList = computed(() => [
 
     opacity: 0;
     transform: translateY(30px);
-    transition: opacity 0.4s cubic-bezier(0.215, 0.61, 0.355, 1),
+    transition:
+      opacity 0.4s cubic-bezier(0.215, 0.61, 0.355, 1),
       transform 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
 
     svg {
@@ -161,7 +162,8 @@ const themeList = computed(() => [
 .theme-switcher-wrapper {
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.4s cubic-bezier(0.215, 0.61, 0.355, 1),
+  transition:
+    opacity 0.4s cubic-bezier(0.215, 0.61, 0.355, 1),
     transform 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
   &.is-inview {
     transition-delay: 0.7s;

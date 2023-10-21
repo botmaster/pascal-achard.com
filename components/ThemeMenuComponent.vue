@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
-import { ITheme } from "~/types/types";
+import type { ITheme } from "~/types/types";
 
 const props = withDefaults(
   defineProps<{
@@ -8,7 +8,7 @@ const props = withDefaults(
     modelValue: string;
     isUnkown?: boolean;
   }>(),
-  {}
+  {},
 );
 
 const emit = defineEmits<{

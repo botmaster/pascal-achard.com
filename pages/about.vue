@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import { Ref } from "vue";
-import { ParsedContent } from "@nuxt/content/dist/runtime/types";
+import type { Ref } from "vue";
 import { definePageMeta } from "#imports";
-import { IPage } from "@/types/types";
+import type { IPage } from "@/types/types";
 
 definePageMeta({
   layout: false,
@@ -24,7 +23,7 @@ const { data } = await useAsyncData(`about-${currentLocale.value}`, () =>
     }),
 );
 
-if (data) useContentHead(data as Ref<ParsedContent>);
+if (data) useContentHead(data as Ref<IPage>);
 
 const dependencies = computed(() => {
   return {

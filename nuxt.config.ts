@@ -3,8 +3,6 @@ import svgLoader from "vite-svg-loader";
 import pkg from "./package.json";
 
 export default defineNuxtConfig({
-  devtools: { enabled: true },
-
   app: {
     head: {
       meta: [
@@ -72,7 +70,7 @@ export default defineNuxtConfig({
 
   typescript: {
     strict: true,
-    typeCheck: false,
+    typeCheck: true,
   },
 
   tailwindcss: {
