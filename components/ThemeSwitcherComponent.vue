@@ -16,7 +16,7 @@
 </template>
 
 <script setup lang="ts">
-import { ITheme } from "~/types/types";
+import type { ITheme } from "~/types/types";
 
 const props = withDefaults(
   defineProps<{
@@ -26,7 +26,7 @@ const props = withDefaults(
   }>(),
   {
     size: "lg",
-  }
+  },
 );
 
 const emit = defineEmits<{
