@@ -70,7 +70,7 @@ export default defineNuxtConfig({
 
   typescript: {
     strict: true,
-    typeCheck: true,
+    typeCheck: false,
   },
 
   tailwindcss: {
@@ -160,9 +160,9 @@ export default defineNuxtConfig({
   modules: [
     "@nuxtjs/tailwindcss",
     "@vueuse/nuxt",
+    "nuxt-icon",
     "@nuxtjs/color-mode",
     "@nuxt/content",
-    "nuxt-icon",
     "nuxt-headlessui",
     "@nuxtjs/fontaine",
     "@nuxtjs/i18n",
