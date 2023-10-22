@@ -31,6 +31,25 @@ const dependencies = computed(() => {
     ...pkg.devDependencies,
   };
 });
+
+const latestVersions = ref<Record<string, string>>({});
+
+const fetchLatestVersion = async (pkgName: string) => {
+  const response = await fetch(`https://unpkg.com/${pkgName}/package.json`);
+  const data = await response.json();
+  return data.version;
+};
+
+// On mounted
+onMounted(async () => {
+  // fetch latest versions in parallel
+  await Promise.all(
+    Object.keys(dependencies.value).map(async (pkgName) => {
+      latestVersions.value[pkgName] = "loading...";
+      latestVersions.value[pkgName] = await fetchLatestVersion(pkgName);
+    }),
+  );
+});
 </script>
 
 <template>
@@ -57,15 +76,32 @@ const dependencies = computed(() => {
       </template>
       <ContentRenderer class="nuxt-content" :value="data" />
       <div class="nuxt-content mt-2">
-        <div class="flex">
-          <ul class="!list-none">
-            <li v-for="(value, key, index) in dependencies" :key="index">
-              <span>
-                {{ key }}: <span class="text-primary-content">{{ value }}</span>
-              </span>
-            </li>
-          </ul>
-        </div>
+        <ul class="!list-none">
+          <li
+            v-for="(value, key, index) in dependencies"
+            :key="index"
+            class="md:flex gap-2 align-baseline"
+          >
+            <p class="!mb-0">
+              {{ key }}: <span class="text-primary-content">{{ value }}</span>
+            </p>
+
+            <ClientOnly>
+              <p class="m-0 leading-[inherit] ml-auto">
+                <span v-if="latestVersions[key]" class="text-xs">
+                  latest: {{ latestVersions[key] }}
+                  <span
+                    v-if="latestVersions[key] !== value.replace('^', '').trim()"
+                    ><Icon name="material-symbols:arrow-circle-up"></Icon
+                  ></span>
+                  <span v-else
+                    ><Icon name="material-symbols:check-box-rounded"></Icon
+                  ></span>
+                </span>
+              </p>
+            </ClientOnly>
+          </li>
+        </ul>
       </div>
     </NuxtLayout>
   </div>
