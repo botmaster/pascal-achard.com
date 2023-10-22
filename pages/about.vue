@@ -45,8 +45,7 @@ const fetchLatestVersion = async (pkgName: string) => {
   }
 };
 
-// On mounted
-onMounted(async () => {
+const fetchLatestVersions = async () => {
   // fetch latest versions in parallel
   const promises = Object.keys(dependencies.value).map(async (pkgName) => {
     latestVersions.value[pkgName] = "loading";
@@ -57,6 +56,17 @@ onMounted(async () => {
     }
   });
   await Promise.all(promises);
+};
+
+const depsTarget = ref<HTMLElement | null>(null);
+
+useIntersectionObserver(depsTarget, ([{ isIntersecting }]) => {
+  if (isIntersecting) {
+    // If latest versions are not yet fetched, fetch them
+    if (Object.keys(latestVersions.value).length === 0) {
+      fetchLatestVersions();
+    }
+  }
 });
 </script>
 
