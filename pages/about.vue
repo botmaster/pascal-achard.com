@@ -35,20 +35,38 @@ const dependencies = computed(() => {
 const latestVersions = ref<Record<string, string>>({});
 
 const fetchLatestVersion = async (pkgName: string) => {
-  const response = await fetch(`https://unpkg.com/${pkgName}/package.json`);
-  const data = await response.json();
-  return data.version;
+  try {
+    const response = await fetch(`https://unpkg.com/${pkgName}/package.json`);
+    const data = await response.json();
+    return data.version;
+  } catch (error) {
+    console.error(`Failed to fetch version for package ${pkgName}:`, error);
+    return null;
+  }
 };
 
-// On mounted
-onMounted(async () => {
+const fetchLatestVersions = async () => {
   // fetch latest versions in parallel
-  await Promise.all(
-    Object.keys(dependencies.value).map(async (pkgName) => {
-      latestVersions.value[pkgName] = "loading...";
+  const promises = Object.keys(dependencies.value).map(async (pkgName) => {
+    latestVersions.value[pkgName] = "loading";
+    try {
       latestVersions.value[pkgName] = await fetchLatestVersion(pkgName);
-    }),
-  );
+    } catch (error) {
+      latestVersions.value[pkgName] = "error";
+    }
+  });
+  await Promise.all(promises);
+};
+
+const depsTarget = ref<HTMLElement | null>(null);
+
+useIntersectionObserver(depsTarget, ([{ isIntersecting }]) => {
+  if (isIntersecting) {
+    // If latest versions are not yet fetched, fetch them
+    if (Object.keys(latestVersions.value).length === 0) {
+      fetchLatestVersions();
+    }
+  }
 });
 </script>
 
@@ -76,7 +94,7 @@ onMounted(async () => {
       </template>
       <ContentRenderer class="nuxt-content" :value="data" />
       <div class="nuxt-content mt-2">
-        <ul class="!list-none">
+        <ul ref="depsTarget" class="!list-none">
           <li
             v-for="(value, key, index) in dependencies"
             :key="index"
@@ -88,14 +106,40 @@ onMounted(async () => {
 
             <ClientOnly>
               <p class="m-0 leading-[inherit] ml-auto">
-                <span v-if="latestVersions[key]" class="text-xs">
+                <span
+                  v-if="latestVersions[key] === 'error'"
+                  title="Failed to fetch latest version"
+                >
+                  <Icon
+                    name="ic:baseline-error"
+                    class="text-aurora-nord-11"
+                  ></Icon>
+                </span>
+
+                <span
+                  v-else-if="latestVersions[key] === 'loading'"
+                  title="Loading"
+                >
+                  <Icon
+                    name="eos-icons:three-dots-loading"
+                    class="text-primary"
+                  ></Icon>
+                </span>
+                <span v-else-if="latestVersions[key]" class="text-xs">
                   latest: {{ latestVersions[key] }}
                   <span
                     v-if="latestVersions[key] !== value.replace('^', '').trim()"
-                    ><Icon name="material-symbols:arrow-circle-up"></Icon
+                    title="Update available"
+                    ><Icon
+                      name="material-symbols:arrow-circle-up"
+                      class="text-base text-aurora-nord-14"
+                    ></Icon
                   ></span>
-                  <span v-else
-                    ><Icon name="material-symbols:check-box-rounded"></Icon
+                  <span v-else title="Up to date"
+                    ><Icon
+                      name="material-symbols:check-box-rounded"
+                      class="text-base text-primary"
+                    ></Icon
                   ></span>
                 </span>
               </p>
