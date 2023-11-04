@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import type { Ref } from "vue";
-import { definePageMeta } from "#imports";
 import type { IPage } from "@/types/types";
 
 definePageMeta({
   layout: false,
 });
+
+const { t } = useI18n();
 
 const runtimeConfig = useRuntimeConfig();
 const pkg = JSON.parse(runtimeConfig.public.pkg);
@@ -40,6 +41,7 @@ const fetchLatestVersion = async (pkgName: string) => {
     const data = await response.json();
     return data.version;
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.error(`Failed to fetch version for package ${pkgName}:`, error);
     return null;
   }
@@ -108,7 +110,7 @@ useIntersectionObserver(depsTarget, ([{ isIntersecting }]) => {
               <p class="m-0 leading-[inherit] ml-auto">
                 <span
                   v-if="latestVersions[key] === 'error'"
-                  title="Failed to fetch latest version"
+                  :title="t('dependencyList.infos.errorFetchingVersion')"
                 >
                   <Icon
                     name="ic:baseline-error"
@@ -118,7 +120,7 @@ useIntersectionObserver(depsTarget, ([{ isIntersecting }]) => {
 
                 <span
                   v-else-if="latestVersions[key] === 'loading'"
-                  title="Loading"
+                  :title="t('dependencyList.infos.loadingVersion')"
                 >
                   <Icon
                     name="eos-icons:three-dots-loading"
@@ -129,13 +131,13 @@ useIntersectionObserver(depsTarget, ([{ isIntersecting }]) => {
                   latest: {{ latestVersions[key] }}
                   <span
                     v-if="latestVersions[key] !== value.replace('^', '').trim()"
-                    title="Update available"
+                    :title="t('dependencyList.infos.outdated')"
                     ><Icon
                       name="material-symbols:arrow-circle-up"
                       class="text-base text-aurora-nord-14"
                     ></Icon
                   ></span>
-                  <span v-else title="Up to date"
+                  <span v-else :title="t('dependencyList.infos.upToDate')"
                     ><Icon
                       name="material-symbols:check-box-rounded"
                       class="text-base text-primary"

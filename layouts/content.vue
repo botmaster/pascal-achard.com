@@ -5,6 +5,7 @@ const head = useLocaleHead({
   addSeoAttributes: true,
 });
 </script>
+
 <template>
   <div>
     <Html :lang="head.htmlAttrs?.lang" :dir="head.htmlAttrs?.dir">
@@ -26,6 +27,7 @@ const head = useLocaleHead({
         </template>
       </Head>
       <Body>
+        layout content
         <div class="flex flex-col min-h-screen">
           <the-header />
           <HeroComponent>

@@ -4,6 +4,14 @@
     "no": "Non",
     "yes": "Oui"
   },
+  "dependencyList": {
+    "infos": {
+      "errorFetchingVersion": "Échec de la recherche de la dernière version",
+      "loadingVersion": "Chargement",
+      "outdated": "Mise à jour disponible",
+      "upToDate": "À jour"
+    }
+  },
   "layouts": {
     "title": "Pascal Achard - {title}"
   },

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useTransitionComposable } from "~/composables/transition-composable";
+
 const { t } = useI18n();
 
 useHead({
@@ -8,10 +10,18 @@ useHead({
       : "Pascal Achard";
   },
 });
+
+const { toggleTransitionComplete } = useTransitionComposable();
+
+onMounted(() => {
+  toggleTransitionComplete(true);
+});
 </script>
 
 <template>
-  <NuxtLayout>
-    <NuxtPage />
-  </NuxtLayout>
+  <div>
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
+  </div>
 </template>

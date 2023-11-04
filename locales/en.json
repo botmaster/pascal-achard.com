@@ -4,6 +4,14 @@
     "no": "No",
     "yes": "Yes"
   },
+  "dependencyList": {
+    "infos": {
+      "errorFetchingVersion": "Failed to fetch latest version",
+      "loadingVersion": "Loading",
+      "outdated": "Update available ",
+      "upToDate": "Up to date"
+    }
+  },
   "layouts": {
     "title": "Pascal Achard - {title}"
   },

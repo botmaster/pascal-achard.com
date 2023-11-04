@@ -28,6 +28,7 @@ const head = useLocaleHead({
         </template>
       </Head>
       <Body>
+        layout default
         <div class="flex flex-col min-h-screen">
           <the-header />
           <slot />

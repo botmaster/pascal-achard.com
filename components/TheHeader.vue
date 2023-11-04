@@ -37,6 +37,13 @@ const localePath = useLocalePath();
         ><Icon name="material-symbols:info"></Icon
         ><span class="sr-only">{{ t("navigation.about") }}</span></NuxtLink
       >
+      <NuxtLink
+        class="the-header__nav-item the-header__nav-link"
+        :to="localePath({ name: 'news' })"
+        title="News"
+        ><Icon name="material-symbols:news"></Icon
+        ><span class="sr-only">{{ t("navigation.about") }}</span></NuxtLink
+      >
       <ThemeMenuComponent
         v-model="colorMode.preference"
         :is-unkown="colorMode.unknown"

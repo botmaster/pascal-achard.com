@@ -131,21 +131,6 @@ export default defineNuxtConfig({
     },
   },
 
-  // Simple robots.txt
-  robots: {
-    disallow: ["/test", "/en/test"],
-  },
-
-  // Simple sitemap
-  routeRules: {
-    "/test": {
-      index: false,
-    },
-    "en/test": {
-      index: false,
-    },
-  },
-
   vite: {
     plugins: [svgLoader()],
   },
@@ -155,6 +140,10 @@ export default defineNuxtConfig({
       pkg: JSON.stringify(pkg),
       siteUrl: process.env.NUXT_PUBLIC_SITE_URL || "http://localhost:3000",
     },
+  },
+
+  build: {
+    transpile: ["gsap"],
   },
 
   modules: [
@@ -170,4 +159,10 @@ export default defineNuxtConfig({
     "nuxt-simple-sitemap",
     "@nuxt/devtools",
   ],
+
+  devtools: {
+    timeline: {
+      enabled: true,
+    },
+  },
 });
