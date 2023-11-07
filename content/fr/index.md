@@ -30,7 +30,7 @@ outils. J'ai une appétence pour le graphisme et la musique.
         class="inline-flex items-center"
         href="https://www.linkedin.com/in/pascal-achard" target="_blank" rel="noopener"
         >
-        <span class="text-2xl"><Icon class="mr-1 text-primary" name="ph:linkedin-logo-bold"></Icon></span>
+        <span class="text-2xl"><Icon class="mr-1 text-primary" name="mdi:linkedin"></Icon></span>
         <span class="leading-none mt-1">Contactez-moi</span>
     </a>
     <a
@@ -39,7 +39,7 @@ outils. J'ai une appétence pour le graphisme et la musique.
         target="_blank"
         rel="noopener"
         >
-        <span class="text-2xl"><Icon class="mr-1 text-primary" name="mi-document"></Icon></span>
+        <span class="text-2xl"><Icon class="mr-1 text-primary" name="mdi:file-document"></Icon></span>
         <span class="leading-none mt-1">CV <span class="no-underline text-xs">(PDF, 46Ko)</span></span>
     </a>
 </p>

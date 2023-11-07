@@ -132,19 +132,19 @@ export default defineNuxtConfig({
   },
 
   // Simple robots.txt
-  robots: {
+  /* robots: {
     disallow: ["/test", "/en/test"],
-  },
+  }, */
 
   // Simple sitemap
-  routeRules: {
+  /* routeRules: {
     "/test": {
       index: false,
     },
     "en/test": {
       index: false,
     },
-  },
+  }, */
 
   vite: {
     plugins: [svgLoader()],
