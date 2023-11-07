@@ -17,7 +17,7 @@ const links: ILink[] = [
     "aria-label": "GitHub",
     icon: {
       title: "GitHub icon",
-      name: "cib-github",
+      name: "cib:github",
     },
   },
   {
@@ -25,7 +25,7 @@ const links: ILink[] = [
     "aria-label": "LinkedIn",
     icon: {
       title: "LinkedIn icon",
-      name: "cib-linkedin",
+      name: "cib:linkedin",
     },
   },
   {
@@ -33,7 +33,7 @@ const links: ILink[] = [
     "aria-label": "CodePen",
     icon: {
       title: "CodePen icon",
-      name: "cib-codepen",
+      name: "cib:codepen",
     },
   },
   {
@@ -41,7 +41,7 @@ const links: ILink[] = [
     "aria-label": "Instagram",
     icon: {
       title: "Instagram icon",
-      name: "cib-instagram",
+      name: "cib:instagram",
     },
   },
   {
@@ -49,7 +49,7 @@ const links: ILink[] = [
     "aria-label": "Twitter",
     icon: {
       title: "Twitter icon",
-      name: "cib-twitter",
+      name: "cib:twitter",
     },
   },
   {
@@ -57,7 +57,7 @@ const links: ILink[] = [
     "aria-label": "Last.fm",
     icon: {
       title: "Last.fm icon",
-      name: "cib-last-fm",
+      name: "cib:last-fm",
     },
   },
 ];
