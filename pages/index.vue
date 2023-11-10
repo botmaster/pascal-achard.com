@@ -23,7 +23,7 @@ let ctx: gsap.Context;
 const scrollTriggerConfig: ScrollTrigger.Vars = {
   start: "top 90%",
   end: "100 84%",
-  scrub: 0.8,
+  scrub: 2.8,
   markers: false,
 };
 

@@ -1,5 +1,7 @@
 <script setup lang="ts">
-defineProps({
+import { gsap } from "gsap";
+
+const props = defineProps({
   uptitle: {
     type: String,
     required: true,
@@ -18,43 +20,113 @@ defineProps({
   },
 });
 
-const scrollPosition = ref(0);
+// const scrollPosition = ref(0);
 
-const scrollPercent = computed(() => {
+/* const scrollPercent = computed(() => {
   if (process.client) {
     return parseFloat((scrollPosition.value / window.innerHeight).toFixed(2));
   }
   return 0;
-});
+}); */
 
-const imageStyle = computed(() => {
+/* const imageStyle = computed(() => {
   return {
     transform: `translateY(${Math.round(
       scrollPosition.value * 0.4,
     )}px) perspective(50px) translateZ(${scrollPercent.value / 0.08}px)`,
   };
-});
+}); */
+
+// Effects setup
+const contextScope = ref<gsap.Context[]>();
+let ctx: gsap.Context;
+const scrollTriggerConfig: ScrollTrigger.Vars = {
+  markers: false,
+  start: "bottom bottom",
+  end: "bottom 50%",
+  scrub: 2.8,
+};
 
 onMounted(() => {
-  window.addEventListener("scroll", onScroll);
+  // window.addEventListener("scroll", onScroll);
+
+  if (!process.client) return;
+
+  ctx = gsap.context((self) => {
+    if (!self || !self.selector) return;
+
+    const trigger = self.selector(".cover__background");
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        ...scrollTriggerConfig,
+        trigger,
+      },
+    });
+
+    tl.to(
+      self.selector("#cover__uptitle"),
+      {
+        opacity: -0.3,
+        y: -200,
+      },
+      0,
+    );
+    tl.to(
+      self.selector("#cover__title"),
+      {
+        opacity: -0.2,
+        y: -110,
+      },
+      0,
+    );
+    tl.to(
+      self.selector("#cover__subtitle"),
+      {
+        opacity: -0.1,
+        y: -60,
+      },
+      0,
+    );
+
+    if (props.info) {
+      tl.to(
+        self.selector("#cover__info"),
+        {
+          opacity: 0,
+          y: -15,
+        },
+        0,
+      );
+    }
+
+    tl.to(
+      self.selector("#cover__bg-img"),
+      {
+        opacity: -0.5,
+      },
+      0,
+    );
+  }, contextScope.value);
 });
 
-onBeforeUnmount(() => {
-  window.removeEventListener("scroll", onScroll);
+onUnmounted(() => {
+  if (!process.client) return;
+  ctx.revert();
 });
 
-const onScroll = () => {
+/* const onScroll = () => {
   scrollPosition.value = window.scrollY;
-};
+}; */
 </script>
 
 <template>
-  <div class="cover">
+  <div ref="contextScope" class="cover">
     <div class="cover__background">
       <img
-        :style="imageStyle"
+        id="cover__bg-img"
         alt="Pascal Achard - Senior Frontend Developer"
-        class="inset-0 w-full h-full"
+        class="cover__bg-image"
         height="1280"
         sizes="(max-width: 1024px) 100vw, 2560px"
         src="@/assets/images/pascal-achard/pascal-achard.jpg"
@@ -67,48 +139,27 @@ const onScroll = () => {
       />
     </div>
 
-    <div
-      :style="{
-        // backgroundColor: `rgba(0, 0, 0, ${0.5 + scrollPercent * 0.5})`,
-        opacity: 0.6 + scrollPercent,
-      }"
-      class="cover__dimmer"
-    ></div>
+    <div class="cover__dimmer"></div>
     <div class="container mx-auto px-container md:px-container-md relative">
       <div>
         <p
-          :style="{
-            transform: `translateY(-${0.36 * scrollPosition}px)`,
-            opacity: 1 - scrollPercent * 2.1,
-          }"
+          id="cover__uptitle"
           class="text-polarnight-nord-0 dark:text-white block"
         >
           {{ uptitle }}
         </p>
-        <h1
-          :style="{
-            transform: `translateY(-${0.26 * scrollPosition}px)`,
-            opacity: 1 - scrollPercent * 1.9,
-          }"
-          class="text-polarnight-nord-0 dark:text-white"
-        >
+        <h1 id="cover__title" class="text-polarnight-nord-0 dark:text-white">
           {{ title }}
         </h1>
         <h2
-          :style="{
-            transform: `translateY(-${0.18 * scrollPosition}px)`,
-            opacity: 1 - scrollPercent * 1.7,
-          }"
+          id="cover__subtitle"
           class="text-polarnight-nord-0 dark:text-white h3"
         >
           {{ subtitle }}
         </h2>
         <p
           v-if="info"
-          :style="{
-            transform: `translateY(-${0.12 * scrollPosition}px)`,
-            opacity: 1 - scrollPercent * 1.5,
-          }"
+          id="cover__info"
           class="text-polarnight-nord-0 dark:text-white mt-0"
         >
           {{ info }}
@@ -123,17 +174,20 @@ const onScroll = () => {
   @apply relative flex items-end overflow-hidden py-6 md:py-32;
 
   &__background {
+    transform-style: preserve-3d;
     @apply absolute inset-0 block w-full h-full;
-
-    > img {
-      transform: scale(1);
-      display: block;
-      object-fit: cover;
-    }
   }
 
   &__dimmer {
-    @apply absolute inset-0 bg-body-background dark:bg-body-backgrounddark;
+    @apply absolute inset-0 bg-body-background dark:bg-body-backgrounddark opacity-60;
+  }
+
+  &__bg-image {
+    transform-style: preserve-3d;
+    transform: scale(1);
+    display: block;
+    object-fit: cover;
+    @apply inset-0 w-full h-full;
   }
 }
 </style>
