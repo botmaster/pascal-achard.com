@@ -20,10 +20,10 @@ if (data) useContentHead(data as Ref<ParsedContent>);
 // Animation setup
 const contextScope = ref<gsap.Context[]>();
 let ctx: gsap.Context;
-const scrollTriggerConfig = {
+const scrollTriggerConfig: ScrollTrigger.Vars = {
   start: "top 90%",
-  end: "100 80%",
-  scrub: true,
+  end: "100 84%",
+  scrub: 0.8,
   markers: false,
 };
 
@@ -33,8 +33,8 @@ onMounted(() => {
     self.selector(".sheet-elevation").map((sheet: HTMLElement) => {
       const tl = gsap.timeline({
         scrollTrigger: {
-          trigger: sheet,
           ...scrollTriggerConfig,
+          trigger: sheet,
         },
       });
 
@@ -60,7 +60,6 @@ onMounted(() => {
         scrollTrigger: {
           ...scrollTriggerConfig,
           trigger: sheet,
-          scrub: false,
         },
       });
 
@@ -68,11 +67,11 @@ onMounted(() => {
         sheet,
         {
           opacity: 0,
-          y: 10,
+          x: 20,
         },
         {
           opacity: 1,
-          y: 0,
+          x: 0,
         },
       );
 
