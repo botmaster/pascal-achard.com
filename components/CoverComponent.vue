@@ -18,7 +18,6 @@ defineProps({
   },
 });
 
-const isScrolling = ref(false);
 const scrollPosition = ref(0);
 
 const scrollPercent = computed(() => {
@@ -45,13 +44,7 @@ onBeforeUnmount(() => {
 });
 
 const onScroll = () => {
-  if (!isScrolling.value) {
-    window.requestAnimationFrame(() => {
-      scrollPosition.value = window.scrollY;
-      isScrolling.value = false;
-    });
-    isScrolling.value = true;
-  }
+  scrollPosition.value = window.scrollY;
 };
 </script>
 

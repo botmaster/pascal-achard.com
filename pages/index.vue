@@ -25,11 +25,11 @@ if (data) useContentHead(data as Ref<ParsedContent>);
         :info="data.coverInfo"
       ></cover-component>
     </div>
-    <div class="page-index__content">
+    <div class="page-index__content-wrapper">
       <div class="container mx-auto mt-8">
-        <SheetElevation v-if="data" shadow="lg" class="xl:w-9/12">
-          <ContentRenderer class="nuxt-content" :value="data" />
-        </SheetElevation>
+        <div class="page-index__content">
+          <ContentRenderer v-if="data" class="nuxt-content" :value="data" />
+        </div>
       </div>
     </div>
   </main>
@@ -37,6 +37,8 @@ if (data) useContentHead(data as Ref<ParsedContent>);
 
 <style scoped lang="scss">
 .page-index {
+  $self: &;
+
   &__cover {
     transition: min-height 0.25s;
     transition-timing-function: ease-out;
@@ -49,8 +51,18 @@ if (data) useContentHead(data as Ref<ParsedContent>);
     }
   }
 
-  &__content {
+  &__content-wrapper {
     @apply py-16 md:py-24;
+  }
+
+  &__content {
+    @apply xl:w-8/12;
+  }
+
+  & :deep(.nuxt-content) {
+    .sheet-elevation + .sheet-elevation {
+      @apply mt-8 lg:mt-14 xl:mt-20;
+    }
   }
 }
 </style>
