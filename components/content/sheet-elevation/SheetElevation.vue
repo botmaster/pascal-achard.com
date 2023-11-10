@@ -6,7 +6,10 @@
       { 'sheet-elevation--is-borderless': props.isBorderless },
     ]"
   >
-    <slot />
+    <div class="sheet-elevation__content">
+      <slot />
+    </div>
+    <div class="sheet-elevation__shadow"></div>
   </div>
 </template>
 
@@ -30,30 +33,44 @@ const props = defineProps({
 .sheet-elevation {
   $self: &;
 
-  @apply bg-white dark:bg-polarnight-nord-0 rounded-lg px-3 py-6 md:px-8 md:py-8;
+  @apply relative px-3 py-6 md:px-8 md:py-8;
+
+  &__shadow {
+    @apply absolute inset-0 bg-white dark:bg-polarnight-nord-0 rounded-lg -z-10;
+  }
 
   &--is-borderless {
     @apply p-0;
   }
 
   &--is-default {
-    @apply drop-shadow;
+    #{$self}__shadow {
+      @apply drop-shadow;
+    }
   }
 
   &--is-md {
-    @apply drop-shadow-md;
+    #{$self}__shadow {
+      @apply drop-shadow-md;
+    }
   }
 
   &--is-sm {
-    @apply drop-shadow-sm;
+    #{$self}__shadow {
+      @apply drop-shadow-sm;
+    }
   }
 
   &--is-lg {
-    @apply drop-shadow-lg;
+    #{$self}__shadow {
+      @apply drop-shadow-lg;
+    }
   }
 
   &--is-nome {
-    @apply drop-shadow-none;
+    #{$self}__shadow {
+      @apply drop-shadow-none;
+    }
   }
 }
 </style>
