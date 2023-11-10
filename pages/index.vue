@@ -1,7 +1,11 @@
 <script setup lang="ts">
 import type { Ref } from "vue";
 import type { ParsedContent } from "@nuxt/content/dist/runtime/types";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import type { IPage } from "@/types/types";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const { locale: currentLocale } = useI18n();
 
@@ -12,6 +16,74 @@ const { data } = await useAsyncData(`home-${currentLocale.value}`, () =>
 );
 
 if (data) useContentHead(data as Ref<ParsedContent>);
+
+// Animation setup
+const contextScope = ref<gsap.Context[]>();
+let ctx: gsap.Context;
+const scrollTriggerConfig = {
+  start: "top 90%",
+  end: "100 80%",
+  scrub: true,
+  markers: false,
+};
+
+onMounted(() => {
+  ctx = gsap.context((self) => {
+    if (!self || !self.selector) return;
+    self.selector(".sheet-elevation").map((sheet: HTMLElement) => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sheet,
+          ...scrollTriggerConfig,
+        },
+      });
+
+      tl.fromTo(
+        sheet,
+        {
+          filter: "saturate(0%) blur(5px)",
+          opacity: 0,
+          y: 120,
+        },
+        {
+          filter: "saturate(100%) blur(0px)",
+          opacity: 1,
+          y: 0,
+        },
+      );
+
+      return tl;
+    }, contextScope.value);
+
+    self.selector(["h2", "h3"]).map((sheet: HTMLElement) => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          ...scrollTriggerConfig,
+          trigger: sheet,
+          scrub: false,
+        },
+      });
+
+      tl.fromTo(
+        sheet,
+        {
+          opacity: 0,
+          y: 10,
+        },
+        {
+          opacity: 1,
+          y: 0,
+        },
+      );
+
+      return tl;
+    });
+  }, contextScope.value);
+});
+
+onUnmounted(() => {
+  ctx.revert();
+});
 </script>
 
 <template>
@@ -25,11 +97,11 @@ if (data) useContentHead(data as Ref<ParsedContent>);
         :info="data.coverInfo"
       ></cover-component>
     </div>
-    <div class="page-index__content">
+    <div class="page-index__content-wrapper">
       <div class="container mx-auto mt-8">
-        <SheetElevation v-if="data" shadow="lg" class="xl:w-9/12">
-          <ContentRenderer class="nuxt-content" :value="data" />
-        </SheetElevation>
+        <div ref="contextScope" class="page-index__content">
+          <ContentRenderer v-if="data" class="nuxt-content" :value="data" />
+        </div>
       </div>
     </div>
   </main>
@@ -37,6 +109,8 @@ if (data) useContentHead(data as Ref<ParsedContent>);
 
 <style scoped lang="scss">
 .page-index {
+  $self: &;
+
   &__cover {
     transition: min-height 0.25s;
     transition-timing-function: ease-out;
@@ -49,8 +123,18 @@ if (data) useContentHead(data as Ref<ParsedContent>);
     }
   }
 
-  &__content {
+  &__content-wrapper {
     @apply py-16 md:py-24;
+  }
+
+  &__content {
+    @apply xl:w-8/12;
+  }
+
+  & :deep(.nuxt-content) {
+    .sheet-elevation + .sheet-elevation {
+      @apply mt-8 lg:mt-14 xl:mt-20;
+    }
   }
 }
 </style>

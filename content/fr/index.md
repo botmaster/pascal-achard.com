@@ -2,15 +2,18 @@
 coverTitle: Pascal Achard
 coverSubtitle: Développeur frontend senior
 coverUpTitle: Salut, je suis
-title: Développeur frontend senior
+title: Développeur frontend senior !!!
 description: Pascal Achard, développeur frontend senior, 20+ ans d'expérience, Vue.js, Nuxt.js, TypeScript, Craftcms, Tailwindcss, Docker, Node.js, Webpack, Prettier, Notion, Netlify, render...
 ---
+
+
+
+::sheetElevation
+## À propos de moi
 
 > <span class="mr-2">💡</span>  <span class="font-rubik-medium text-primary-content">Info</span>
 >
 > Ce site est un prétexte pour expérimenter des technologies et des méthodes de développement. Il est en constante évolution.
-
-## À propos de moi
 
 Je suis un **développeur front-end senior** avec 7 ans d'expérience et plus de 20 ans d'expérience professionnelle dans la
 création de sites et d'applications web. Je me suis spécialisé dans **JavaScript/TypeScript** et j'ai une expertise dans le
@@ -43,15 +46,21 @@ outils. J'ai une appétence pour le graphisme et la musique.
         <span class="leading-none mt-1">CV <span class="no-underline text-xs">(PDF, 46Ko)</span></span>
     </a>
 </p>
+::
 
+::sheetElevation
 ### Dernière expérience
 
 Software engineer frontend sénior chez <img src="/images/content/jsk.png" alt="Logo Jellysmack" width="64" height="64" class="inline-block w-[1.3em] !mb-0"> [Jellysmack](https://jellysmack.com/fr/){target="_blank" rel="noopener"} depuis le 7 mars 2022.
+::
 
+::sheetElevation
 ### En ce moment, je suis fan de :
 
 [Vue.js](https://vuejs.org/){target="_blank" rel="noopener"}, [Nuxt.js](https://nuxt.com/){target="_blank" rel="noopener"}, [Pinia](https://pinia.vuejs.org/){target="_blank" rel="noopener"}, [TypeScript](https://www.typescriptlang.org/){target="_blank" rel="noopener"}, [Craftcms](https://craftcms.com/){target="_blank" rel="noopener"}, [Twig](https://twig.symfony.com/){target="_blank" rel="noopener"}, [Tailwindcss](https://tailwindcss.com/){target="_blank" rel="noopener"}, [Docker](https://www.docker.com/){target="_blank" rel="noopener"}, [Node.js](https://nodejs.org/){target="_blank" rel="noopener"}, [Webpack](https://webpack.js.org/){target="_blank" rel="noopener"}, [Vite](https://vitejs.dev/){target="_blank" rel="noopener"}, [Prettier](https://prettier.io/){target="_blank" rel="noopener"}, [Notion](https://www.notion.so){target="_blank" rel="noopener"}, [Netlify](https://www.netlify.com/){target="_blank" rel="noopener"}, [render](https://www.render.com/){target="_blank" rel="noopener"}...
+::
 
+::sheetElevation
 ### Dernières expérimentations
 
 
@@ -80,7 +89,9 @@ Ce projet m'a permis de mettre en pratique Redis dont je ne connaissais que la t
 faite et particulièrement bien documentée. Nuxt.js m'a permis de capitaliser mon savoir faire en Vue.js et de construire
 rapidement une application rendue côté serveur. La plateforme Render est très utile et simple à utiliser. Elle ressemble
 beaucoup à Netlify en plus riche.
+::
 
+::sheetElevation
 ### Projets coup de cœur
 
 > <span class="mr-2">ℹ️</span>  <span class="font-rubik-medium text-primary-content">Info</span>
@@ -94,5 +105,6 @@ beaucoup à Netlify en plus riche.
 Agir contre les discriminations, un projet pas comme les autres. J'en
 parle [ici](https://www.linkedin.com/pulse/un-projet-pas-comme-les-autres-pascal-achard/){target="_blank" rel="
 noopener"}.
+::
 
 
