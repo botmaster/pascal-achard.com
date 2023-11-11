@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import type { Ref } from "vue";
-import type { ParsedContent } from "@nuxt/content/dist/runtime/types";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import type { IPage } from "@/types/types";
@@ -15,7 +13,7 @@ const { data } = await useAsyncData(`home-${currentLocale.value}`, () =>
     .findOne(),
 );
 
-if (data) useContentHead(data as Ref<ParsedContent>);
+if (data) useContentHead(data as any); // TODO: fix type
 
 // Animation setup
 const contextScope = ref<gsap.Context[]>();
