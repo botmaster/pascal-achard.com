@@ -29,7 +29,7 @@ onMounted(() => {
   if (!process.client) return;
 
   const scrollTriggerConfig: ScrollTrigger.Vars = {
-    markers: true,
+    markers: false,
     start: "bottom 90%",
     end: ScrollTrigger.isTouch === 1 ? "bottom 30%" : "bottom 50%",
     scrub: ScrollTrigger.isTouch === 1 ? true : 2.8,
