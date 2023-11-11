@@ -63,7 +63,6 @@ Software engineer frontend sénior chez <img src="/images/content/jsk.png" alt="
 ::sheetElevation
 ### Dernières expérimentations
 
-
 #### Zégut PG
 [https://zegut-pg.netlify.app/](https://zegut-pg.netlify.app/){target="_blank" rel="noopener"}
 
