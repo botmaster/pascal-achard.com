@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const props = defineProps({
   uptitle: {
@@ -20,37 +21,19 @@ const props = defineProps({
   },
 });
 
-// const scrollPosition = ref(0);
-
-/* const scrollPercent = computed(() => {
-  if (process.client) {
-    return parseFloat((scrollPosition.value / window.innerHeight).toFixed(2));
-  }
-  return 0;
-}); */
-
-/* const imageStyle = computed(() => {
-  return {
-    transform: `translateY(${Math.round(
-      scrollPosition.value * 0.4,
-    )}px) perspective(50px) translateZ(${scrollPercent.value / 0.08}px)`,
-  };
-}); */
-
 // Effects setup
 const contextScope = ref<gsap.Context[]>();
 let ctx: gsap.Context;
-const scrollTriggerConfig: ScrollTrigger.Vars = {
-  markers: false,
-  start: "bottom bottom",
-  end: "bottom 50%",
-  scrub: 2.8,
-};
 
 onMounted(() => {
-  // window.addEventListener("scroll", onScroll);
-
   if (!process.client) return;
+
+  const scrollTriggerConfig: ScrollTrigger.Vars = {
+    markers: false,
+    start: "bottom 90%",
+    end: ScrollTrigger.isTouch === 1 ? "bottom 30%" : "bottom 50%",
+    scrub: ScrollTrigger.isTouch === 1 ? true : 2.8,
+  };
 
   ctx = gsap.context((self) => {
     if (!self || !self.selector) return;
@@ -114,10 +97,6 @@ onUnmounted(() => {
   if (!process.client) return;
   ctx.revert();
 });
-
-/* const onScroll = () => {
-  scrollPosition.value = window.scrollY;
-}; */
 </script>
 
 <template>
@@ -174,7 +153,6 @@ onUnmounted(() => {
   @apply relative flex items-end overflow-hidden py-6 md:py-32;
 
   &__background {
-    transform-style: preserve-3d;
     @apply absolute inset-0 block w-full h-full;
   }
 
@@ -183,11 +161,8 @@ onUnmounted(() => {
   }
 
   &__bg-image {
-    transform-style: preserve-3d;
-    transform: scale(1);
-    display: block;
     object-fit: cover;
-    @apply inset-0 w-full h-full;
+    @apply inset-0 w-full h-full object-cover;
   }
 }
 </style>

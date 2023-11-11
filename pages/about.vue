@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { Ref } from "vue";
 import { definePageMeta } from "#imports";
 import type { IPage } from "@/types/types";
 
@@ -23,7 +22,7 @@ const { data } = await useAsyncData(`about-${currentLocale.value}`, () =>
     }),
 );
 
-if (data) useContentHead(data as Ref<IPage>);
+if (data) useContentHead(data as any); // TODO: fix type
 
 const dependencies = computed(() => {
   return {

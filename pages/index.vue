@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import type { Ref } from "vue";
-import type { ParsedContent } from "@nuxt/content/dist/runtime/types";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import type { IPage } from "@/types/types";
@@ -15,19 +13,22 @@ const { data } = await useAsyncData(`home-${currentLocale.value}`, () =>
     .findOne(),
 );
 
-if (data) useContentHead(data as Ref<ParsedContent>);
+if (data) useContentHead(data as any); // TODO: fix type
 
 // Animation setup
 const contextScope = ref<gsap.Context[]>();
 let ctx: gsap.Context;
-const scrollTriggerConfig: ScrollTrigger.Vars = {
-  start: "top 90%",
-  end: "100 84%",
-  scrub: 2.8,
-  markers: false,
-};
 
 onMounted(() => {
+  if (!process.client) return;
+
+  const scrollTriggerConfig: ScrollTrigger.Vars = {
+    start: "top 90%",
+    end: "100 84%",
+    scrub: ScrollTrigger.isTouch === 1 ? true : 2.8,
+    markers: false,
+  };
+
   ctx = gsap.context((self) => {
     if (!self || !self.selector) return;
     self.selector(".sheet-elevation").map((sheet: HTMLElement) => {
@@ -81,6 +82,7 @@ onMounted(() => {
 });
 
 onUnmounted(() => {
+  if (!process.client) return;
   ctx.revert();
 });
 </script>
