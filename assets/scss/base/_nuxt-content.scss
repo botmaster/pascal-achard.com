@@ -24,9 +24,34 @@ $content-heading-line-height: 1.125;
     h4,
     h5,
     h6 {
-        // color: $content-heading-color;
-        // font-weight: $content-heading-weight;
         line-height: $content-heading-line-height;
+        position: relative;
+        > a {
+            text-decoration: none;
+            color: inherit;
+
+            &:before {
+                position: absolute;
+                bottom: 0.3em;
+                left: 0;
+                height: 1em;
+                content: "#";
+                color: theme("colors.primary");
+                opacity: 0;
+                transform: translateX(0);
+                font-size: 0.6em;
+                font-family: theme("fontFamily.body"), serif;
+                transition: transform 0.4s, opacity 0.2s;
+                z-index: -1;
+            }
+
+            &:hover, &:focus {
+                &:before {
+                    opacity: 1;
+                    transform: translateX(-100%);
+                }
+            }
+        }
     }
     h1 {
         // font-size: 2em;

@@ -85,9 +85,21 @@ export default defineNuxtConfig({
   content: {
     markdown: {
       // Workaround for this issue: https://github.com/nuxt/content/issues/1856#issuecomment-1406737835
-      anchorLinks: {
-        depth: 0,
-        exclude: [1, 2, 3, 4, 5, 6],
+      remarkAutolinkHeadings: {
+        // Option 1
+        linkProperties: {
+          ariaHidden: "true",
+          tabIndex: -1,
+          title: "Link to Section",
+        },
+
+        // Option 2
+        content: {
+          type: "element",
+          tagName: "span",
+          properties: { className: ["icon", "icon-link"] },
+          children: [{ type: "text", value: "Link to Section" }],
+        },
       },
     },
     highlight: {
