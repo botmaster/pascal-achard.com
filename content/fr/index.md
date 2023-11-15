@@ -66,7 +66,7 @@ Software engineer frontend sénior chez <img src="/images/content/jsk.png" alt="
 #### Zégut PG
 [https://zegut-pg.netlify.app/](https://zegut-pg.netlify.app/){target="_blank" rel="noopener"}
 
-![Image site 'Zégut PG'](/images/content/zégut-pg.webp){width="1024" height="620"}
+![Image site 'Zégut PG'](/images/content/zégut-pg.webp){width="1024" height="620" loading="lazy"}
 
 Zégut PG est une application web qui me permet de créer des playlists Spotify à partir des épisodes du podcast de l'émission RTL2 Pop-Rock Station présentée par Francis Zégut & Marjorie Hache. C'est aussi un prétexte pour moi de faire mumuse avec Vue.js et l'API Spotify 🤓. J'en parle [ici](https://www.linkedin.com/pulse/z%25C3%25A9gut-pg-cr%25C3%25A9ez-des-playlists-spotify-%25C3%25A0-partir-de-l%25C3%25A9mission-achard).
 
@@ -75,7 +75,7 @@ Zégut PG est une application web qui me permet de créer des playlists Spotify 
 
 [https://pascal-is-listening.onrender.com/](https://pascal-is-listening.onrender.com/){target="_blank" rel="noopener"}
 
-![Image site 'pascal is listening'](/images/content/pascal-is-listening.webp){width="1024" height="620"}
+![Image site 'pascal is listening'](/images/content/pascal-is-listening.webp){width="1024" height="620" loading="lazy"}
 
 Application web qui affiche les titres des chansons que je suis en train d'écouter sur Spotify.
 
@@ -99,7 +99,7 @@ beaucoup à Netlify en plus riche.
 
 [antidiscriminations.fr](https://www.antidiscriminations.fr/){target="_blank" rel="noopener"}
 
-![Image site 'antidiscriminations.fr'](/images/content/antidiscriminations.fr.webp){width="1024" height="620"}
+![Image site 'antidiscriminations.fr'](/images/content/antidiscriminations.fr.webp){width="1024" height="620" loading="lazy"}
 
 Agir contre les discriminations, un projet pas comme les autres. J'en
 parle [ici](https://www.linkedin.com/pulse/un-projet-pas-comme-les-autres-pascal-achard/){target="_blank" rel="

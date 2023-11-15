@@ -158,6 +158,12 @@ export default defineNuxtConfig({
     },
   }, */
 
+  router: {
+    options: {
+      scrollBehaviorType: "smooth",
+    },
+  },
+
   vite: {
     plugins: [svgLoader()],
   },
