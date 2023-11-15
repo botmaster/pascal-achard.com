@@ -2,13 +2,6 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-// Import images
-import { useImage } from "@vueuse/core";
-import coverImageSrc from "@/assets/images/pascal-achard/pascal-achard.jpg";
-import coverImage1024 from "@/assets/images/pascal-achard/20102017-DSC06728_ufitab_c_scale_w_1024.jpg";
-import coverImage1936 from "@/assets/images/pascal-achard/20102017-DSC06728_ufitab_c_scale_w_1936.jpg";
-import coverImage2560 from "@/assets/images/pascal-achard/20102017-DSC06728_ufitab_c_scale_w_2560.jpg";
-
 const props = defineProps({
   uptitle: {
     type: String,
@@ -205,13 +198,13 @@ onBeforeUnmount(() => {
         class="cover__bg-image"
         height="1280"
         sizes="(max-width: 1024px) 100vw, 2560px"
-        :src="coverImageSrc"
-        :srcset="`${coverImage1024}
-        1024w,
-        ${coverImage1936}
-        1936w,
-        ${coverImage2560}
-        2560w`"
+        src="/images/pascal-achard/pascal-achard.jpg"
+        srcset="
+          /images/pascal-achard/20102017-DSC06728_ufitab_c_scale_w_1024.jpg 1024w,
+          /images/pascal-achard/20102017-DSC06728_ufitab_c_scale_w_1936.jpg 1936w,
+          /images/pascal-achard/20102017-DSC06728_ufitab_c_scale_w_2560.jpg 2560w
+        "
+        width="1920"
       />
     </div>
 
