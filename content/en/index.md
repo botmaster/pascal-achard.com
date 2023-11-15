@@ -61,14 +61,14 @@ Senior frontend software engineer at <img src="/images/content/jsk.png" alt="Jel
 #### Zégut PG
 [https://zegut-pg.netlify.app/](https://zegut-pg.netlify.app/){target="_blank" rel="noopener"}
 
-![Image site 'Zégut PG'](/images/content/zégut-pg.webp){width="1024" height="620"}
+![Image site 'Zégut PG'](/images/content/zégut-pg.webp){width="1024" height="620" loading="lazy"}
 
 Zégut PG is a web application that allows me to create Spotify playlists from the podcast episodes of the {link} show presented by Francis Zégut & Marjorie Hache. It's also an excuse for me to play around with Vue.js and the Spotify API 🤓. I talk about it [here](https://www.linkedin.com/pulse/z%25C3%25A9gut-pg-cr%25C3%25A9ez-des-playlists-spotify-%25C3%25A0-partir-de-l%25C3%25A9mission-achard).
 
 
 #### Pascal is listening
 
-[https://pascal-is-listening.onrender.com/](https://pascal-is-listening.onrender.com/){target="_blank" rel="noopener"}
+[https://pascal-is-listening.onrender.com/](https://pascal-is-listening.onrender.com/){target="_blank" rel="noopener" loading="lazy"}
 
 ![Image 'pascal is listening'](/images/content/pascal-is-listening.webp){width="1024" height="620"}
 
@@ -88,7 +88,7 @@ This project allowed me to put into practice Redis of which I only knew the theo
 
 [antidiscriminations.fr](https://www.antidiscriminations.fr/){target="_blank" rel="noopener"}
 
-![Image 'antidiscriminations.fr'](/images/content/antidiscriminations.fr.webp){width="1024" height="620"}
+![Image 'antidiscriminations.fr'](/images/content/antidiscriminations.fr.webp){width="1024" height="620" loading="lazy"}
 
 Acting against discrimination, a project like no other. I talk about it [here](https://www.linkedin.com/pulse/un-projet-pas-comme-les-autres-pascal-achard/){target="_blank" rel="
 noopener"}.

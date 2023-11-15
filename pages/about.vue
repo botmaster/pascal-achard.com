@@ -39,6 +39,7 @@ const fetchLatestVersion = async (pkgName: string) => {
     const data = await response.json();
     return data.version;
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.error(`Failed to fetch version for package ${pkgName}:`, error);
     return null;
   }

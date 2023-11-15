@@ -21,98 +21,188 @@ const props = defineProps({
   },
 });
 
+// Loading images
+/* const { isReady } = useImage({
+  src: coverImageSrc,
+  srcset: [coverImage1024, coverImage1936, coverImage2560].join(", "),
+  sizes: "(max-width: 1024px) 100vw, 2560px",
+}); */
+
 // Effects setup
-const contextScope = ref<gsap.Context[]>();
+const root = ref<HTMLElement | null>(null);
+const coverBgImg = ref<HTMLElement | null>(null);
+const coverUptitle = ref<HTMLElement | null>(null);
+const coverTitle = ref<HTMLElement | null>(null);
+const coverSubtitle = ref<HTMLElement | null>(null);
+const coverInfo = ref<HTMLElement | null>(null);
+
 let ctx: gsap.Context;
 
 onMounted(() => {
   if (!process.client) return;
 
-  const scrollTriggerConfig: ScrollTrigger.Vars = {
-    markers: false,
-    start: "bottom 90%",
-    end: ScrollTrigger.isTouch === 1 ? "bottom 30%" : "bottom 50%",
-    scrub: ScrollTrigger.isTouch === 1 ? true : 2.8,
-  };
-
+  // Context.
   ctx = gsap.context((self) => {
-    if (!self || !self.selector) return;
+    if (!self || !self.selector || !root.value) return;
 
-    const trigger = self.selector(".cover__background");
+    // Intro Timeline
+    const tlIntro = gsap.timeline({
+      onStart: () => {
+        console.log("Intro Timeline start");
+      },
+      defaults: {
+        ease: "power2.Out",
+        overwrite: "auto",
+      },
+      overwrite: "auto",
+    });
 
+    tlIntro.set(root.value, {
+      autoAlpha: 1,
+    });
+
+    tlIntro.from(
+      coverBgImg.value,
+      {
+        autoAlpha: 0,
+        duration: 0.4,
+        ease: "linear",
+      },
+      0,
+    );
+    tlIntro.from(
+      coverUptitle.value,
+      {
+        autoAlpha: 0,
+        x: 10,
+        duration: 0.8,
+      },
+      "-=0.1",
+    );
+    tlIntro.from(
+      coverTitle.value,
+      {
+        autoAlpha: 0,
+        x: 10,
+        duration: 0.8,
+      },
+      "-=0.5",
+    );
+    tlIntro.from(
+      coverSubtitle.value,
+      {
+        autoAlpha: 0,
+        x: 10,
+        duration: 0.8,
+      },
+      "-=0.5",
+    );
+    if (props.info) {
+      tlIntro.from(
+        coverInfo.value,
+        {
+          autoAlpha: 0,
+          x: 10,
+          duration: 0.8,
+        },
+        "-=0.5",
+      );
+    }
+
+    // Scrub Timeline
     const tl = gsap.timeline({
       scrollTrigger: {
-        ...scrollTriggerConfig,
-        trigger,
+        markers: false,
+        start: "bottom 90%",
+        end: ScrollTrigger.isTouch === 1 ? "bottom 30%" : "bottom 50%",
+        scrub: ScrollTrigger.isTouch === 1 ? 0.8 : 2.8,
+        trigger: root.value,
+        toggleActions: "restart none none none",
+      },
+      onStart: () => {
+        console.log("Scrub Timeline start");
+        tlIntro.pause();
+        tlIntro.time(tlIntro.totalDuration());
+        tlIntro.kill();
+      },
+      overwrite: "auto",
+      defaults: {
+        overwrite: "auto",
       },
     });
 
+    tl.set(root.value, {
+      autoAlpha: 1,
+    });
+
     tl.to(
-      self.selector("#cover__uptitle"),
+      coverBgImg.value,
       {
-        opacity: -0.3,
+        autoAlpha: 0,
+      },
+      "<",
+    );
+
+    tl.to(
+      coverUptitle.value,
+      {
+        autoAlpha: 0,
         y: -200,
       },
-      0,
+      "<",
     );
+
     tl.to(
-      self.selector("#cover__title"),
+      coverTitle.value,
       {
-        opacity: -0.2,
+        autoAlpha: 0,
         y: -110,
       },
-      0,
+      "<",
     );
+
     tl.to(
-      self.selector("#cover__subtitle"),
+      coverSubtitle.value,
       {
-        opacity: -0.1,
+        autoAlpha: 0,
         y: -60,
       },
-      0,
+      "<",
     );
 
     if (props.info) {
       tl.to(
-        self.selector("#cover__info"),
+        coverInfo.value,
         {
-          opacity: 0,
+          autoAlpha: 0,
           y: -15,
         },
-        0,
+        "<",
       );
     }
-
-    tl.to(
-      self.selector("#cover__bg-img"),
-      {
-        opacity: -0.5,
-      },
-      0,
-    );
-  }, contextScope.value);
+  }, root.value || undefined);
 });
 
-onUnmounted(() => {
+onBeforeUnmount(() => {
   if (!process.client) return;
   ctx.revert();
 });
 </script>
 
 <template>
-  <div ref="contextScope" class="cover">
+  <div ref="root" class="cover">
     <div class="cover__background">
       <img
-        id="cover__bg-img"
+        ref="coverBgImg"
         alt="Pascal Achard - Senior Frontend Developer"
         class="cover__bg-image"
         height="1280"
         sizes="(max-width: 1024px) 100vw, 2560px"
-        src="@/assets/images/pascal-achard/pascal-achard.jpg"
+        src="/images/pascal-achard/pascal-achard.jpg"
         srcset="
-          @/assets/images/pascal-achard/20102017-DSC06728_ufitab_c_scale_w_1024.jpg 1024w,
-          @/assets/images/pascal-achard/20102017-DSC06728_ufitab_c_scale_w_1936.jpg 1936w,
-          @/assets/images/pascal-achard/20102017-DSC06728_ufitab_c_scale_w_2560.jpg 2560w
+          /images/pascal-achard/20102017-DSC06728_ufitab_c_scale_w_1024.jpg 1024w,
+          /images/pascal-achard/20102017-DSC06728_ufitab_c_scale_w_1936.jpg 1936w,
+          /images/pascal-achard/20102017-DSC06728_ufitab_c_scale_w_2560.jpg 2560w
         "
         width="1920"
       />
@@ -122,23 +212,23 @@ onUnmounted(() => {
     <div class="container mx-auto px-container md:px-container-md relative">
       <div>
         <p
-          id="cover__uptitle"
+          ref="coverUptitle"
           class="text-polarnight-nord-0 dark:text-white block"
         >
           {{ uptitle }}
         </p>
-        <h1 id="cover__title" class="text-polarnight-nord-0 dark:text-white">
+        <h1 ref="coverTitle" class="text-polarnight-nord-0 dark:text-white">
           {{ title }}
         </h1>
         <h2
-          id="cover__subtitle"
+          ref="coverSubtitle"
           class="text-polarnight-nord-0 dark:text-white h3"
         >
           {{ subtitle }}
         </h2>
         <p
           v-if="info"
-          id="cover__info"
+          ref="coverInfo"
           class="text-polarnight-nord-0 dark:text-white mt-0"
         >
           {{ info }}
@@ -150,7 +240,7 @@ onUnmounted(() => {
 
 <style scoped lang="scss">
 .cover {
-  @apply relative flex items-end overflow-hidden py-6 md:py-32;
+  @apply invisible relative flex items-end overflow-hidden py-6 md:py-32;
 
   &__background {
     @apply absolute inset-0 block w-full h-full;
