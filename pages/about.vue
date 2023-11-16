@@ -71,7 +71,7 @@ useIntersectionObserver(depsTarget, ([{ isIntersecting }]) => {
 </script>
 
 <template>
-  <div>
+  <main>
     <NuxtLayout v-if="data" name="content">
       <template #heroBackground>
         <img
@@ -148,7 +148,7 @@ useIntersectionObserver(depsTarget, ([{ isIntersecting }]) => {
         </ul>
       </div>
     </NuxtLayout>
-  </div>
+  </main>
 </template>
 
 <style scoped></style>

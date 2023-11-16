@@ -175,6 +175,31 @@ export default defineNuxtConfig({
     },
   },
 
+  sitemap: {
+    strictNuxtContentPaths: false,
+    sitemaps: false,
+    /* cacheTtl: 0, */
+    cacheMaxAgeSeconds: 360,
+    defaults: {
+      changefreq: "hourly",
+      lastmod: new Date(),
+    },
+    discoverImages: true,
+  },
+
+  nitro: {
+    prerender: {
+      // enabled by default with nuxt generate, not required
+      crawlLinks: true,
+      // add any routes to prerender
+      // routes: ['/']
+    },
+  },
+
+  experimental: {
+    inlineRouteRules: true,
+  },
+
   modules: [
     "@nuxtjs/tailwindcss",
     "@vueuse/nuxt",
