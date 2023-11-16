@@ -16,7 +16,7 @@ const { data } = await useAsyncData(`home-${currentLocale.value}`, () =>
 if (data) useContentHead(data as any); // TODO: fix type
 
 // Animation setup
-const contextScope = ref<gsap.Context[]>();
+const contextScope = ref<HTMLElement | null>(null);
 let ctx: gsap.Context;
 
 onMounted(() => {
@@ -78,7 +78,7 @@ onMounted(() => {
 
       return tl;
     });
-  }, contextScope.value);
+  }, contextScope.value || undefined);
 });
 
 onUnmounted(() => {
