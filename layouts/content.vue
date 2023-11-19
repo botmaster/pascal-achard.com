@@ -27,7 +27,7 @@ const head = useLocaleHead({
       </Head>
       <Body>
         <div class="flex flex-col min-h-screen">
-          <the-header />
+          <TheHeader />
           <HeroComponent>
             <template #content>
               <slot name="heroContent" />
@@ -41,7 +41,7 @@ const head = useLocaleHead({
               <slot />
             </SheetElevation>
           </div>
-          <the-footer class="mt-auto" />
+          <TheFooter class="mt-auto" />
         </div>
       </Body>
     </Html>

@@ -83,25 +83,6 @@ export default defineNuxtConfig({
   },
 
   content: {
-    markdown: {
-      // Workaround for this issue: https://github.com/nuxt/content/issues/1856#issuecomment-1406737835
-      remarkAutolinkHeadings: {
-        // Option 1
-        linkProperties: {
-          ariaHidden: "true",
-          tabIndex: -1,
-          title: "Link to Section",
-        },
-
-        // Option 2
-        content: {
-          type: "element",
-          tagName: "span",
-          properties: { className: ["icon", "icon-link"] },
-          children: [{ type: "text", value: "Link to Section" }],
-        },
-      },
-    },
     highlight: {
       theme: {
         // Default theme (same as single string)
@@ -142,21 +123,6 @@ export default defineNuxtConfig({
       redirectOn: "root", // recommended
     },
   },
-
-  // Simple robots.txt
-  /* robots: {
-    disallow: ["/test", "/en/test"],
-  }, */
-
-  // Simple sitemap
-  /* routeRules: {
-    "/test": {
-      index: false,
-    },
-    "en/test": {
-      index: false,
-    },
-  }, */
 
   router: {
     options: {

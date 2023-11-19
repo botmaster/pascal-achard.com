@@ -16,25 +16,21 @@ const { data } = await useAsyncData(`home-${currentLocale.value}`, () =>
 if (data) useContentHead(data as any); // TODO: fix type
 
 // Animation setup
-const contextScope = ref<gsap.Context[]>();
+const contextScope = ref<HTMLElement | null>(null);
 let ctx: gsap.Context;
 
 onMounted(() => {
   if (!process.client) return;
-
-  const scrollTriggerConfig: ScrollTrigger.Vars = {
-    start: "top 90%",
-    end: "100 84%",
-    scrub: ScrollTrigger.isTouch === 1 ? true : 2.8,
-    markers: false,
-  };
 
   ctx = gsap.context((self) => {
     if (!self || !self.selector) return;
     self.selector(".sheet-elevation").map((sheet: HTMLElement) => {
       const tl = gsap.timeline({
         scrollTrigger: {
-          ...scrollTriggerConfig,
+          start: "top 90%",
+          end: "100 84%",
+          scrub: ScrollTrigger.isTouch === 1 ? true : 2.8,
+          markers: false,
           trigger: sheet,
         },
       });
@@ -54,31 +50,8 @@ onMounted(() => {
       );
 
       return tl;
-    }, contextScope.value);
-
-    self.selector(["h2", "h3"]).map((sheet: HTMLElement) => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          ...scrollTriggerConfig,
-          trigger: sheet,
-        },
-      });
-
-      tl.fromTo(
-        sheet,
-        {
-          opacity: 0,
-          x: 20,
-        },
-        {
-          opacity: 1,
-          x: 0,
-        },
-      );
-
-      return tl;
-    });
-  }, contextScope.value);
+    }, contextScope.value || undefined);
+  }, contextScope.value || undefined);
 });
 
 onUnmounted(() => {

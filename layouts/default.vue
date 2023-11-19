@@ -29,9 +29,9 @@ const head = useLocaleHead({
       </Head>
       <Body>
         <div class="flex flex-col min-h-screen">
-          <the-header />
+          <TheHeader />
           <slot />
-          <the-footer class="mt-auto" />
+          <TheFooter class="mt-auto" />
         </div>
       </Body>
     </Html>
