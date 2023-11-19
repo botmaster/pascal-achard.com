@@ -124,12 +124,6 @@ export default defineNuxtConfig({
     },
   },
 
-  router: {
-    options: {
-      scrollBehaviorType: "smooth",
-    },
-  },
-
   vite: {
     plugins: [svgLoader()],
   },
@@ -153,13 +147,8 @@ export default defineNuxtConfig({
     discoverImages: true,
   },
 
-  nitro: {
-    prerender: {
-      // enabled by default with nuxt generate, not required
-      crawlLinks: true,
-      // add any routes to prerender
-      // routes: ['/']
-    },
+  build: {
+    transpile: ["gsap"],
   },
 
   experimental: {
