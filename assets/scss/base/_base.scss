@@ -58,3 +58,12 @@ button {
     //scroll-behavior: smooth;
   }
 }
+
+
+// Gsap
+// FOUC
+// https://greensock.com/forums/topic/19077-fouc-with-gsap-animations/
+
+.fouc-hidden {
+  visibility: hidden;
+}

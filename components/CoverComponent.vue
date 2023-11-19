@@ -51,8 +51,10 @@ onMounted(() => {
         console.log("Intro Timeline start");
       },
       defaults: {
-        ease: "power2.Out",
+        ease: "expo.out",
         overwrite: "auto",
+        duration: 3,
+        force3D: true,
       },
       overwrite: "auto",
     });
@@ -65,49 +67,29 @@ onMounted(() => {
       coverBgImg.value,
       {
         autoAlpha: 0,
-        duration: 0.4,
+        duration: 3.4,
         ease: "linear",
       },
       0,
     );
+
     tlIntro.from(
-      coverUptitle.value,
+      self.selector(".line-mask"),
       {
-        autoAlpha: 0,
-        x: 10,
-        duration: 0.8,
+        y: 310,
+        stagger: 0.3,
       },
-      "-=0.1",
+      0.2,
     );
+
     tlIntro.from(
-      coverTitle.value,
+      self.selector(".line-mask > *"),
       {
-        autoAlpha: 0,
-        x: 10,
-        duration: 0.8,
+        y: 50,
+        stagger: 0.5,
       },
-      "-=0.5",
+      0.2,
     );
-    tlIntro.from(
-      coverSubtitle.value,
-      {
-        autoAlpha: 0,
-        x: 10,
-        duration: 0.8,
-      },
-      "-=0.5",
-    );
-    if (props.info) {
-      tlIntro.from(
-        coverInfo.value,
-        {
-          autoAlpha: 0,
-          x: 10,
-          duration: 0.8,
-        },
-        "-=0.5",
-      );
-    }
 
     // Scrub Timeline
     const tl = gsap.timeline({
@@ -120,7 +102,13 @@ onMounted(() => {
         toggleActions: "restart none none none",
       },
       onStart: () => {
-        console.log("Scrub Timeline start");
+        if (!self || !self.selector) return;
+        self.selector(".line-mask").map((el: HTMLElement) => {
+          return gsap.set(el, {
+            overflow: "visible",
+          });
+        });
+
         tlIntro.pause();
         tlIntro.time(tlIntro.totalDuration());
         tlIntro.kill();
@@ -211,28 +199,32 @@ onBeforeUnmount(() => {
     <div class="cover__dimmer"></div>
     <div class="container mx-auto px-container md:px-container-md relative">
       <div>
-        <p
-          ref="coverUptitle"
-          class="text-polarnight-nord-0 dark:text-white block"
-        >
-          {{ uptitle }}
-        </p>
-        <h1 ref="coverTitle" class="text-polarnight-nord-0 dark:text-white">
-          {{ title }}
-        </h1>
-        <h2
-          ref="coverSubtitle"
-          class="text-polarnight-nord-0 dark:text-white h3"
-        >
-          {{ subtitle }}
-        </h2>
-        <p
-          v-if="info"
-          ref="coverInfo"
-          class="text-polarnight-nord-0 dark:text-white mt-0"
-        >
-          {{ info }}
-        </p>
+        <div class="line-mask">
+          <p ref="coverUptitle" class="text-polarnight-nord-0 dark:text-white">
+            {{ uptitle }}
+          </p>
+        </div>
+        <div class="line-mask">
+          <h1 ref="coverTitle" class="text-polarnight-nord-0 dark:text-white">
+            {{ title }}
+          </h1>
+        </div>
+        <div class="line-mask">
+          <h2
+            ref="coverSubtitle"
+            class="text-polarnight-nord-0 dark:text-white h3"
+          >
+            {{ subtitle }}
+          </h2>
+        </div>
+        <div v-if="info" class="line-mask">
+          <p
+            ref="coverInfo"
+            class="text-polarnight-nord-0 dark:text-white mt-0"
+          >
+            {{ info }}
+          </p>
+        </div>
       </div>
     </div>
   </div>
@@ -240,7 +232,7 @@ onBeforeUnmount(() => {
 
 <style scoped lang="scss">
 .cover {
-  @apply invisible relative flex items-end overflow-hidden py-6 md:py-32;
+  @apply fouc-hidden relative flex items-end overflow-hidden py-6 md:py-32;
 
   &__background {
     @apply absolute inset-0 block w-full h-full;
@@ -253,6 +245,14 @@ onBeforeUnmount(() => {
   &__bg-image {
     object-fit: cover;
     @apply inset-0 w-full h-full object-cover;
+  }
+}
+
+.line-mask {
+  @apply relative block overflow-hidden;
+  //will-change: opacity, transform;
+  > * {
+    will-change: opacity, transform;
   }
 }
 </style>
