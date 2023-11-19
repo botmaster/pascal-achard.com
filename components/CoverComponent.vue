@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useImage } from "@vueuse/core";
+import coverImageSrc from "@/assets/images/pascal-achard/pascal-achard.jpg";
+import coverImage1024 from "@/assets/images/pascal-achard/20102017-DSC06728_ufitab_c_scale_w_1024.jpg";
+import coverImage1936 from "@/assets/images/pascal-achard/20102017-DSC06728_ufitab_c_scale_w_1936.jpg";
+import coverImage2560 from "@/assets/images/pascal-achard/20102017-DSC06728_ufitab_c_scale_w_2560.jpg";
 
 const props = defineProps({
   uptitle: {
@@ -22,11 +27,15 @@ const props = defineProps({
 });
 
 // Loading images
-/* const { isReady } = useImage({
+const { isReady, isLoading } = useImage({
   src: coverImageSrc,
-  srcset: [coverImage1024, coverImage1936, coverImage2560].join(", "),
+  srcset: [
+    `${coverImage1024} 1024w`,
+    `${coverImage1936} 1936w`,
+    `${coverImage2560} 2560w`,
+  ].join(", "),
   sizes: "(max-width: 1024px) 100vw, 2560px",
-}); */
+});
 
 // Effects setup
 const root = ref<HTMLElement | null>(null);
@@ -47,16 +56,11 @@ onMounted(() => {
 
     // Intro Timeline
     const tlIntro = gsap.timeline({
-      onStart: () => {
-        console.log("Intro Timeline start");
-      },
       defaults: {
         ease: "expo.out",
-        overwrite: "auto",
         duration: 3,
         force3D: true,
       },
-      overwrite: "auto",
     });
 
     tlIntro.set(root.value, {
@@ -66,8 +70,8 @@ onMounted(() => {
     tlIntro.from(
       coverBgImg.value,
       {
-        autoAlpha: 0,
-        duration: 3.4,
+        opacity: 0,
+        duration: 1.5,
         ease: "linear",
       },
       0,
@@ -180,19 +184,16 @@ onBeforeUnmount(() => {
 <template>
   <div ref="root" class="cover">
     <div class="cover__background">
+      <div v-if="isLoading" class="cover__bg-image">LOADING</div>
       <img
+        v-else-if="isReady"
         ref="coverBgImg"
         alt="Pascal Achard - Senior Frontend Developer"
         class="cover__bg-image"
         height="1280"
         sizes="(max-width: 1024px) 100vw, 2560px"
-        src="/images/pascal-achard/pascal-achard.jpg"
-        srcset="
-          /images/pascal-achard/20102017-DSC06728_ufitab_c_scale_w_1024.jpg 1024w,
-          /images/pascal-achard/20102017-DSC06728_ufitab_c_scale_w_1936.jpg 1936w,
-          /images/pascal-achard/20102017-DSC06728_ufitab_c_scale_w_2560.jpg 2560w
-        "
-        width="1920"
+        :src="coverImageSrc"
+        :srcset="`${coverImage1024} 1024w, ${coverImage1936} 1936w, ${coverImage2560} 2560w`"
       />
     </div>
 
@@ -232,7 +233,7 @@ onBeforeUnmount(() => {
 
 <style scoped lang="scss">
 .cover {
-  @apply fouc-hidden relative flex items-end overflow-hidden py-6 md:py-32;
+  @apply opacity-0 relative flex items-end overflow-hidden py-6 md:py-32;
 
   &__background {
     @apply absolute inset-0 block w-full h-full;
@@ -243,7 +244,6 @@ onBeforeUnmount(() => {
   }
 
   &__bg-image {
-    object-fit: cover;
     @apply inset-0 w-full h-full object-cover;
   }
 }
