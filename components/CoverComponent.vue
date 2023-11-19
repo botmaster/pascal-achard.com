@@ -35,6 +35,8 @@ const { isReady, isLoading } = useImage({
     `${coverImage2560} 2560w`,
   ].join(", "),
   sizes: "(max-width: 1024px) 100vw, 2560px",
+  crossorigin: "anonymous",
+  referrerPolicy: "no-referrer",
 });
 
 // Effects setup
@@ -47,10 +49,8 @@ const coverInfo = ref<HTMLElement | null>(null);
 
 let ctx: gsap.Context;
 
-onMounted(() => {
-  if (!process.client) return;
-
-  // Context.
+function initEffects() {
+  console.log("initEffects");
   ctx = gsap.context((self) => {
     if (!self || !self.selector || !root.value) return;
 
@@ -173,6 +173,26 @@ onMounted(() => {
       );
     }
   }, root.value || undefined);
+}
+
+onMounted(() => {
+  console.log("onMounted");
+  console.log("isReady", isReady.value);
+  if (!process.client) return;
+
+  if (isReady.value) {
+    initEffects();
+  } else {
+    // watch isReady
+    watch(isReady, async (value, oldValue) => {
+      console.log("isReady old value", oldValue);
+      console.log("isReady", value);
+      if (value) {
+        await nextTick();
+        initEffects();
+      }
+    });
+  }
 });
 
 onBeforeUnmount(() => {
@@ -182,11 +202,12 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div ref="root" class="cover">
+  <div v-if="isLoading" class="flex justify-center items-center h-full">
+    <p>...</p>
+  </div>
+  <div v-else ref="root" class="cover">
     <div class="cover__background">
-      <div v-if="isLoading" class="cover__bg-image">LOADING</div>
       <img
-        v-else-if="isReady"
         ref="coverBgImg"
         alt="Pascal Achard - Senior Frontend Developer"
         class="cover__bg-image"

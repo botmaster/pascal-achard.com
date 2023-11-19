@@ -86,10 +86,7 @@ onUnmounted(() => {
   $self: &;
 
   &__cover {
-    transition: min-height 0.25s;
-    transition-timing-function: ease-out;
     min-height: 99svh; // Because of lighthouse LCP issue with 100svh.  //TODO: fix LCP issue
-
     @apply flex flex-col;
 
     > * {
