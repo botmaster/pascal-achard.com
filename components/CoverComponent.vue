@@ -70,7 +70,7 @@ onMounted(() => {
     tlIntro.from(
       coverBgImg.value,
       {
-        opacity: 0.5,
+        opacity: 0,
         duration: 1.5,
         ease: "linear",
       },
