@@ -1,3 +1,6 @@
+// suppress eslint warning
+/* eslint-disable no-console */
+
 export default defineNuxtPlugin((nuxtApp) => {
   const titleStyles = [
     "color: #5E81AC",
