@@ -86,7 +86,9 @@ onUnmounted(() => {
   $self: &;
 
   &__cover {
-    min-height: 99svh; // Because of lighthouse LCP issue with 100svh.  //TODO: fix LCP issue
+    min-height: calc(
+      100svh - 2px
+    ); // Because of lighthouse LCP issue with 100svh.  //TODO: fix LCP issue
     @apply flex flex-col;
 
     > * {

@@ -6,15 +6,20 @@ const props = defineProps<{ id?: string }>();
 const { headings } = useRuntimeConfig().public.mdc;
 const generate = computed(() => props.id && headings?.anchorLinks?.h3);
 
-const { root } = useProseHeadingEffect();
+const { root, splitMe } = useProseHeadingEffect();
 </script>
 
 <template>
-  <h3 :id="id" ref="root" class="fouc-hidden overflow-hidden">
-    <a v-if="id && generate" :href="`#${id}`" class="inline-block">
+  <h3 :id="id" ref="root" class="fouc-hidden">
+    <a
+      v-if="id && generate"
+      ref="splitMe"
+      :href="`#${id}`"
+      class="inline-block"
+    >
       <slot />
     </a>
-    <slot v-else />
+    <slot v-else><span ref="splitMe"></span></slot>
   </h3>
 </template>
 

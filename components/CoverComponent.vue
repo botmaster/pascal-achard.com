@@ -1,11 +1,6 @@
 <script setup lang="ts">
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useImage } from "@vueuse/core";
-import coverImageSrc from "@/assets/images/pascal-achard/pascal-achard.jpg";
-import coverImage1024 from "@/assets/images/pascal-achard/20102017-DSC06728_ufitab_c_scale_w_1024.jpg";
-import coverImage1936 from "@/assets/images/pascal-achard/20102017-DSC06728_ufitab_c_scale_w_1936.jpg";
-import coverImage2560 from "@/assets/images/pascal-achard/20102017-DSC06728_ufitab_c_scale_w_2560.jpg";
 
 const props = defineProps({
   uptitle: {
@@ -26,22 +21,10 @@ const props = defineProps({
   },
 });
 
-// Loading images
-const { isReady, isLoading } = useImage({
-  src: coverImageSrc,
-  srcset: [
-    `${coverImage1024} 1024w`,
-    `${coverImage1936} 1936w`,
-    `${coverImage2560} 2560w`,
-  ].join(", "),
-  sizes: "(max-width: 1024px) 100vw, 2560px",
-  crossorigin: "anonymous",
-  referrerPolicy: "no-referrer",
-});
-
 // Effects setup
 const root = ref<HTMLElement | null>(null);
-const coverBgImg = ref<HTMLElement | null>(null);
+const coverBg = ref<HTMLElement | null>(null);
+// const coverBgImg = ref<HTMLElement | null>(null);
 const coverUptitle = ref<HTMLElement | null>(null);
 const coverTitle = ref<HTMLElement | null>(null);
 const coverSubtitle = ref<HTMLElement | null>(null);
@@ -50,7 +33,6 @@ const coverInfo = ref<HTMLElement | null>(null);
 let ctx: gsap.Context;
 
 function initEffects() {
-  console.log("initEffects");
   ctx = gsap.context((self) => {
     if (!self || !self.selector || !root.value) return;
 
@@ -60,6 +42,7 @@ function initEffects() {
         ease: "expo.out",
         duration: 3,
         force3D: true,
+        immediateRender: true,
       },
     });
 
@@ -67,32 +50,41 @@ function initEffects() {
       autoAlpha: 1,
     });
 
-    tlIntro.from(
-      coverBgImg.value,
+    tlIntro.to(
+      coverBg.value,
       {
-        opacity: 0,
-        duration: 1.5,
+        opacity: 1,
+        duration: 0.8,
         ease: "linear",
+        startAt: {
+          opacity: 0,
+        },
+      },
+      0.1,
+    );
+
+    tlIntro.to(
+      self.selector(".line-mask"),
+      {
+        startAt: {
+          y: 310,
+        },
+        y: 0,
+        stagger: 0.3,
       },
       0,
     );
 
-    tlIntro.from(
-      self.selector(".line-mask"),
-      {
-        y: 310,
-        stagger: 0.3,
-      },
-      0.2,
-    );
-
-    tlIntro.from(
+    tlIntro.to(
       self.selector(".line-mask > *"),
       {
-        y: 50,
+        startAt: {
+          y: 50,
+        },
+        y: 0,
         stagger: 0.5,
       },
-      0.2,
+      0,
     );
 
     // Scrub Timeline
@@ -128,7 +120,7 @@ function initEffects() {
     });
 
     tl.to(
-      coverBgImg.value,
+      coverBg.value,
       {
         autoAlpha: 0,
       },
@@ -176,23 +168,8 @@ function initEffects() {
 }
 
 onMounted(() => {
-  console.log("onMounted");
-  console.log("isReady", isReady.value);
   if (!process.client) return;
-
-  if (isReady.value) {
-    initEffects();
-  } else {
-    // watch isReady
-    watch(isReady, async (value, oldValue) => {
-      console.log("isReady old value", oldValue);
-      console.log("isReady", value);
-      if (value) {
-        await nextTick();
-        initEffects();
-      }
-    });
-  }
+  initEffects();
 });
 
 onBeforeUnmount(() => {
@@ -202,21 +179,8 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div v-if="isLoading" class="flex justify-center items-center h-full">
-    <p>...</p>
-  </div>
-  <div v-else ref="root" class="cover">
-    <div class="cover__background">
-      <img
-        ref="coverBgImg"
-        alt="Pascal Achard - Senior Frontend Developer"
-        class="cover__bg-image"
-        height="1280"
-        sizes="(max-width: 1024px) 100vw, 2560px"
-        :src="coverImageSrc"
-        :srcset="`${coverImage1024} 1024w, ${coverImage1936} 1936w, ${coverImage2560} 2560w`"
-      />
-    </div>
+  <div ref="root" class="cover">
+    <div ref="coverBg" class="cover__background"></div>
 
     <div class="cover__dimmer"></div>
     <div class="container mx-auto px-container md:px-container-md relative">
@@ -257,7 +221,16 @@ onBeforeUnmount(() => {
   @apply opacity-0 relative flex items-end overflow-hidden py-6 md:py-32;
 
   &__background {
-    @apply absolute inset-0 block w-full h-full;
+    background-image: url("@/assets/images/pascal-achard/20102017-DSC06728_ufitab_c_scale_w_1024.jpg");
+    @apply absolute inset-0 block w-full h-full bg-center bg-no-repeat bg-cover;
+
+    @media screen and (min-width: 1024px) {
+      background-image: url("@/assets/images/pascal-achard/20102017-DSC06728_ufitab_c_scale_w_1936.jpg");
+    }
+
+    @media screen and (min-width: 1280px) {
+      background-image: url("@/assets/images/pascal-achard/20102017-DSC06728_ufitab_c_scale_w_2560.jpg");
+    }
   }
 
   &__dimmer {
