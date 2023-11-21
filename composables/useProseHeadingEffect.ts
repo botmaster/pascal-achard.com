@@ -17,7 +17,7 @@ export const useProseHeadingEffect = () => {
 
       await nextTick();
       Splitting({
-        target: splitMe.value,
+        target: splitMe.value || undefined,
         by: "chars",
       });
 
