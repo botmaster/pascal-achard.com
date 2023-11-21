@@ -3,14 +3,25 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export const useProseHeadingEffect = () => {
   const root = ref<HTMLElement | null>(null);
+  const splitMe = ref<HTMLElement | null>(null);
   let ctx: gsap.Context;
 
   onMounted(() => {
     if (!process.client) return;
 
-    ctx = gsap.context((self) => {
+    ctx = gsap.context(async (self) => {
       if (!self || !self.selector) return;
 
+      // Split the heading into characters
+      const { $Splitting: Splitting } = useNuxtApp();
+
+      await nextTick();
+      Splitting({
+        target: splitMe.value || undefined,
+        by: "chars",
+      });
+
+      // Animate the characters
       const tl = gsap.timeline({
         scrollTrigger: {
           markers: false,
@@ -35,14 +46,17 @@ export const useProseHeadingEffect = () => {
       );
 
       tl.fromTo(
-        self.selector('a[href^="#"]'),
+        self.selector(".char"),
         {
           opacity: 0,
-          y: "100%",
+          x: "-100%",
+          scaleX: 0,
         },
         {
           opacity: 1,
-          y: "0%",
+          x: "0%",
+          scaleX: 1,
+          stagger: 0.2,
         },
         0,
       );
@@ -56,5 +70,6 @@ export const useProseHeadingEffect = () => {
 
   return {
     root,
+    splitMe,
   };
 };

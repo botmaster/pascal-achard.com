@@ -76,6 +76,7 @@ export default defineNuxtConfig({
   tailwindcss: {
     cssPath: "~/assets/scss/main.scss",
     configPath: "~/tailwind.config.js",
+    viewer: false,
   },
 
   colorMode: {
