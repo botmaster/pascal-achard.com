@@ -25,10 +25,20 @@ const { data } = await useAsyncData(`about-${currentLocale.value}`, () =>
 if (data) useContentHead(data as any); // TODO: fix type
 
 const dependencies = computed(() => {
-  return {
+  const merged = {
     ...pkg.dependencies,
     ...pkg.devDependencies,
   };
+  // Sort by key alphabetically
+  return Object.keys(merged)
+    .sort()
+    .reduce(
+      (obj, key) => {
+        obj[key] = merged[key];
+        return obj;
+      },
+      {} as Record<string, string>,
+    );
 });
 
 const latestVersions = ref<Record<string, string>>({});
