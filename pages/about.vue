@@ -94,61 +94,111 @@ useIntersectionObserver(depsTarget, ([{ isIntersecting }]) => {
       </template>
       <ContentRenderer class="nuxt-content" :value="data" />
       <div class="nuxt-content mt-2">
-        <ul ref="depsTarget" class="!list-none">
-          <li
-            v-for="(value, key, index) in dependencies"
-            :key="index"
-            class="md:flex gap-2 align-baseline"
-          >
-            <p class="!mb-0">
-              {{ key }}: <span class="text-primary-content">{{ value }}</span>
-            </p>
+        <table ref="depsTarget" class="deps-table">
+          <thead>
+            <tr>
+              <th class=""></th>
+              <th class=""></th>
+              <th class="autowidth"></th>
+              <th class=""></th>
+              <th class=""></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(value, key, index) in dependencies" :key="index">
+              <td>{{ key }}</td>
+              <template v-if="latestVersions[key] === 'error'">
+                <td colspan="4" class="right">
+                  <span title="Failed to fetch latest version">
+                    <Icon
+                      name="ic:baseline-error"
+                      class="text-aurora-nord-11"
+                    ></Icon>
+                  </span>
+                </td>
+              </template>
 
-            <ClientOnly>
-              <p class="m-0 leading-[inherit] ml-auto">
-                <span
-                  v-if="latestVersions[key] === 'error'"
-                  title="Failed to fetch latest version"
-                >
-                  <Icon
-                    name="ic:baseline-error"
-                    class="text-aurora-nord-11"
-                  ></Icon>
-                </span>
+              <template v-else-if="latestVersions[key] === 'loading'">
+                <td colspan="4" class="right">
+                  <span title="Loading">
+                    <Icon
+                      name="eos-icons:three-dots-loading"
+                      class="text-primary"
+                    ></Icon>
+                  </span>
+                </td>
+              </template>
 
-                <span
-                  v-else-if="latestVersions[key] === 'loading'"
-                  title="Loading"
-                >
-                  <Icon
-                    name="eos-icons:three-dots-loading"
-                    class="text-primary"
-                  ></Icon>
-                </span>
-                <span v-else-if="latestVersions[key]" class="text-xs">
-                  latest: {{ latestVersions[key] }}
-                  <span
-                    v-if="latestVersions[key] !== value.replace('^', '').trim()"
-                    title="Update available"
+              <template
+                v-else-if="
+                  latestVersions[key] !== value.replace('^', '').trim()
+                "
+              >
+                <td class="right">{{ value }}</td>
+                <td class="text-center">
+                  <Icon name="mdi:arrow-right-thin"></Icon>
+                </td>
+                <td class="right">{{ latestVersions[key] }}</td>
+                <td>
+                  <span title="Update available"
                     ><Icon
                       name="material-symbols:arrow-circle-up"
                       class="text-base text-aurora-nord-14"
                     ></Icon
                   ></span>
-                  <span v-else title="Up to date"
+                </td>
+              </template>
+
+              <template v-else-if="latestVersions[key]">
+                <td colspan="3" class="right">{{ value }}</td>
+                <td>
+                  <span title="Up to date"
                     ><Icon
                       name="material-symbols:check-box-rounded"
                       class="text-base text-primary"
                     ></Icon
                   ></span>
-                </span>
-              </p>
-            </ClientOnly>
-          </li>
-        </ul>
+                </td>
+              </template>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </NuxtLayout>
   </main>
 </template>
 
-<style scoped></style>
+<style scoped lang="scss">
+.deps-table {
+  @apply table-auto w-full font-code;
+
+  tr {
+    @apply text-xs lg:text-sm;
+  }
+
+  th,
+  td {
+    @apply text-left align-middle;
+  }
+
+  td {
+    @apply border-b border-b-snowstorm-nord-4 py-1 dark:border-b-polarnight-nord-2;
+
+    &:not(:first-child) {
+      @apply w-px whitespace-nowrap;
+    }
+
+    &:not(:first-child):not(:last-child) {
+      @apply px-1 lg:px-2;
+    }
+  }
+
+  td.autowidth {
+    @apply w-px;
+  }
+
+  td.right {
+    @apply text-right;
+  }
+}
+</style>

@@ -9,7 +9,6 @@ const generate = computed(() => props.id && headings?.anchorLinks?.h1);
 
 <template>
   <h1 :id="id">
-    toto
     <a v-if="generate" :href="`#${id}`">
       <slot />
     </a>

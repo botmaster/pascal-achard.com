@@ -7,19 +7,31 @@ const { headings } = useRuntimeConfig().public.mdc;
 const generate = computed(() => props.id && headings?.anchorLinks?.h4);
 
 const { root, splitMe } = useProseHeadingEffect();
+
+const slots = useSlots();
+
+// Computed - Slot content
+const slotContent = computed(() => {
+  if (slots.default) {
+    return slots.default()[0].children;
+  }
+});
 </script>
 
 <template>
   <h4 :id="id" ref="root" class="fouc-hidden">
+    <span class="sr-only">{{ slotContent }}</span>
     <a
       v-if="id && generate"
       ref="splitMe"
       :href="`#${id}`"
       class="inline-block"
+      tabindex="-1"
+      aria-hidden="true"
     >
       <slot />
     </a>
-    <slot v-else><span ref="splitMe"></span></slot>
+    <span v-else ref="splitMe" aria-hidden="true"><slot /></span>
   </h4>
 </template>
 
