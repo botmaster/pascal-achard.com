@@ -1,6 +1,8 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+gsap.registerPlugin(ScrollTrigger);
+
 export const useProseHeadingEffect = () => {
   const root = ref<HTMLElement | null>(null);
   const splitMe = ref<HTMLElement | null>(null);
@@ -10,14 +12,14 @@ export const useProseHeadingEffect = () => {
     if (!process.client) return;
 
     ctx = gsap.context(async (self) => {
-      if (!self || !self.selector) return;
+      if (!self || !self.selector || !splitMe.value) return;
 
       // Split the heading into characters
       const { $Splitting: Splitting } = useNuxtApp();
 
       await nextTick();
       Splitting({
-        target: splitMe.value || undefined,
+        target: splitMe.value,
         by: "chars",
       });
 
@@ -27,7 +29,7 @@ export const useProseHeadingEffect = () => {
           markers: false,
           trigger: root.value,
           start: "top 90%",
-          end: "100 84%",
+          end: "200 90%",
           scrub: ScrollTrigger.isTouch === 1 ? true : 2.8,
           toggleActions: "play none none reverse",
         },

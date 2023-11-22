@@ -57,6 +57,7 @@ module.exports = {
       "rubik-medium": ["rubik_mediumregular", "sans-serif"],
       "rubik-regular": ["rubikregular", "sans-serif"],
       "rubik-light": ["rubik_lightregular", "sans-serif"],
+      code: ["monospace"],
     },
     container: {
       padding: {
