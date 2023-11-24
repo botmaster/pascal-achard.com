@@ -2,7 +2,7 @@
 coverTitle: Pascal Achard
 coverSubtitle: Développeur frontend senior
 coverUpTitle: Salut, je suis
-title: Développeur frontend senior !!!
+title: Développeur frontend senior
 description: Pascal Achard, développeur frontend senior, 20+ ans d'expérience, Vue.js, Nuxt.js, TypeScript, Craftcms, Tailwindcss, Docker, Node.js, Webpack, Prettier, Notion, Netlify, render...
 ---
 
