@@ -75,7 +75,7 @@ if (process.client) {
     if (isIntersecting) {
       // If latest versions are not yet fetched, fetch them
       if (Object.keys(latestVersions.value).length === 0) {
-        fetchLatestVersions();
+        // fetchLatestVersions();
       }
     }
   });
@@ -143,6 +143,7 @@ if (process.client) {
 
               <template
                 v-else-if="
+                  latestVersions[key] &&
                   latestVersions[key] !== value.replace('^', '').trim()
                 "
               >
@@ -174,7 +175,7 @@ if (process.client) {
               </template>
 
               <template v-else>
-                <td colspan="4" class="right"></td>
+                <td colspan="4" class="right">{{ value }}</td>
               </template>
             </tr>
           </tbody>
