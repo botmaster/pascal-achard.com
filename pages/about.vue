@@ -70,14 +70,16 @@ const fetchLatestVersions = async () => {
 
 const depsTarget = ref<HTMLElement | null>(null);
 
-useIntersectionObserver(depsTarget, ([{ isIntersecting }]) => {
-  if (isIntersecting) {
-    // If latest versions are not yet fetched, fetch them
-    if (Object.keys(latestVersions.value).length === 0) {
-      fetchLatestVersions();
+if (process.client) {
+  useIntersectionObserver(depsTarget, ([{ isIntersecting }]) => {
+    if (isIntersecting) {
+      // If latest versions are not yet fetched, fetch them
+      if (Object.keys(latestVersions.value).length === 0) {
+        fetchLatestVersions();
+      }
     }
-  }
-});
+  });
+}
 </script>
 
 <template>
@@ -141,6 +143,7 @@ useIntersectionObserver(depsTarget, ([{ isIntersecting }]) => {
 
               <template
                 v-else-if="
+                  latestVersions[key] &&
                   latestVersions[key] !== value.replace('^', '').trim()
                 "
               >
@@ -169,6 +172,10 @@ useIntersectionObserver(depsTarget, ([{ isIntersecting }]) => {
                     ></Icon
                   ></span>
                 </td>
+              </template>
+
+              <template v-else>
+                <td colspan="4" class="right">{{ value }}</td>
               </template>
             </tr>
           </tbody>
