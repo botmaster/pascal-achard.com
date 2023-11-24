@@ -75,7 +75,7 @@ if (process.client) {
     if (isIntersecting) {
       // If latest versions are not yet fetched, fetch them
       if (Object.keys(latestVersions.value).length === 0) {
-        // fetchLatestVersions();
+        fetchLatestVersions();
       }
     }
   });
