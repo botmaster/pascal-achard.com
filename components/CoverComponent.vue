@@ -21,6 +21,17 @@ const props = defineProps({
   },
 });
 
+// Preload image with rel="preload" and as="image" with head
+useHead({
+  link: [
+    {
+      rel: "preload",
+      as: "image",
+      href: "/images/pascal-achard/20102017-DSC06728_ufitab_c_scale_w_2560.jpg",
+    },
+  ],
+});
+
 // Effects setup
 const root = ref<HTMLElement | null>(null);
 const coverBg = ref<HTMLElement | null>(null);
@@ -221,15 +232,15 @@ onBeforeUnmount(() => {
   @apply opacity-0 relative flex items-end overflow-hidden py-6 md:py-32;
 
   &__background {
-    background-image: url("@/assets/images/pascal-achard/20102017-DSC06728_ufitab_c_scale_w_1024.jpg");
+    background-image: url("/images/pascal-achard/20102017-DSC06728_ufitab_c_scale_w_1024.jpg");
     @apply absolute inset-0 block w-full h-full bg-center bg-no-repeat bg-cover;
 
     @media screen and (min-width: 1024px) {
-      background-image: url("@/assets/images/pascal-achard/20102017-DSC06728_ufitab_c_scale_w_1936.jpg");
+      background-image: url("/images/pascal-achard/20102017-DSC06728_ufitab_c_scale_w_1936.jpg");
     }
 
     @media screen and (min-width: 1280px) {
-      background-image: url("@/assets/images/pascal-achard/20102017-DSC06728_ufitab_c_scale_w_2560.jpg");
+      background-image: url("/images/pascal-achard/20102017-DSC06728_ufitab_c_scale_w_2560.jpg");
     }
   }
 

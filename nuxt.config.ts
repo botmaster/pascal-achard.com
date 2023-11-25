@@ -169,4 +169,10 @@ export default defineNuxtConfig({
     "nuxt-simple-sitemap",
     "@nuxt/devtools",
   ],
+
+  devtools: {
+    timeline: {
+      enabled: true,
+    },
+  },
 });
