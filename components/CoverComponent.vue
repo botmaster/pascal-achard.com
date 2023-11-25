@@ -2,6 +2,8 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+import bg from "@/assets/images/pascal-achard/20102017-DSC06728_ufitab_c_scale_w_2560.jpg";
+
 const props = defineProps({
   uptitle: {
     type: String,
@@ -19,6 +21,17 @@ const props = defineProps({
     type: String,
     default: null,
   },
+});
+
+// Preload image with rel="preload" and as="image" with head
+useHead({
+  link: [
+    {
+      rel: "preload",
+      as: "image",
+      href: bg,
+    },
+  ],
 });
 
 // Effects setup
