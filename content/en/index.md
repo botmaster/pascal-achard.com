@@ -46,7 +46,7 @@ tools. I have an interest in graphic design and music.
 ::sheetElevation
 ### Last experience
 
-Senior frontend software engineer at <img src="/images/content/jsk.png" alt="Jellysmack logo" width="64" height="64" class="inline-block w-[1.3em] !mb-0"> [Jellysmack](https://jellysmack.com/fr/){target="_blank" rel="noopener"} since March 7, 2022.
+Senior frontend software engineer at <img src="/images/content/jsk.png" alt="Jellysmack logo" width="64" height="64" class="inline-block w-[1.3em] !mb-0"> [Jellysmack](https://jellysmack.com/fr/){target="_blank" rel="noopener"} from March 2022 to November 2023.
 ::
 
 ::sheetElevation
