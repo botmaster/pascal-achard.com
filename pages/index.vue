@@ -28,7 +28,7 @@ onMounted(() => {
       const tl = gsap.timeline({
         scrollTrigger: {
           start: "top 90%",
-          end: "100 84%",
+          end: "top 64%",
           scrub: ScrollTrigger.isTouch === 1 ? true : 2.8,
           markers: false,
           trigger: sheet,
@@ -40,7 +40,7 @@ onMounted(() => {
         {
           filter: "saturate(0%) blur(5px)",
           opacity: 0,
-          y: 120,
+          y: 160,
         },
         {
           filter: "saturate(100%) blur(0px)",
@@ -63,13 +63,14 @@ onUnmounted(() => {
 <template>
   <main class="page-index">
     <div class="page-index__cover">
-      <cover-component
+      <AppLoader class="!absolute inset-0 m-auto z-0"></AppLoader>
+      <CoverComponent
         v-if="data"
         :title="data.coverTitle"
         :subtitle="data.coverSubtitle ?? ''"
         :uptitle="data.coverUpTitle ?? ''"
         :info="data.coverInfo"
-      ></cover-component>
+      ></CoverComponent>
     </div>
     <div class="page-index__content-wrapper">
       <div class="container mx-auto mt-8">
@@ -89,7 +90,7 @@ onUnmounted(() => {
     min-height: calc(
       100svh - 2px
     ); // Because of lighthouse LCP issue with 100svh.  //TODO: fix LCP issue
-    @apply flex flex-col;
+    @apply relative flex flex-col;
 
     > * {
       @apply flex-grow;

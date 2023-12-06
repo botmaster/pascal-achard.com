@@ -35,7 +35,7 @@ useHead({
 // Effects setup
 const root = ref<HTMLElement | null>(null);
 const coverBg = ref<HTMLElement | null>(null);
-// const coverBgImg = ref<HTMLElement | null>(null);
+const coverDimmer = ref<HTMLElement | null>(null);
 const coverUptitle = ref<HTMLElement | null>(null);
 const coverTitle = ref<HTMLElement | null>(null);
 const coverSubtitle = ref<HTMLElement | null>(null);
@@ -62,13 +62,13 @@ function initEffects() {
     });
 
     tlIntro.to(
-      coverBg.value,
+      coverDimmer.value,
       {
-        opacity: 1,
+        opacity: 0.6,
         duration: 0.8,
         ease: "linear",
         startAt: {
-          opacity: 0,
+          opacity: 1,
         },
       },
       0.1,
@@ -131,9 +131,9 @@ function initEffects() {
     });
 
     tl.to(
-      coverBg.value,
+      coverDimmer.value,
       {
-        autoAlpha: 0,
+        autoAlpha: 1,
       },
       "<",
     );
@@ -193,7 +193,7 @@ onBeforeUnmount(() => {
   <div ref="root" class="cover">
     <div ref="coverBg" class="cover__background"></div>
 
-    <div class="cover__dimmer"></div>
+    <div ref="coverDimmer" class="cover__dimmer"></div>
     <div class="container mx-auto px-container md:px-container-md relative">
       <div>
         <div class="line-mask">
@@ -229,11 +229,11 @@ onBeforeUnmount(() => {
 
 <style scoped lang="scss">
 .cover {
-  @apply opacity-0 relative flex items-end overflow-hidden py-6 md:py-32;
+  @apply relative invisible flex items-end overflow-hidden py-6 md:py-32;
 
   &__background {
-    background-image: url("/images/pascal-achard/20102017-DSC06728_ufitab_c_scale_w_1024.jpg");
     @apply absolute inset-0 block w-full h-full bg-center bg-no-repeat bg-cover;
+    background-image: url("/images/pascal-achard/20102017-DSC06728_ufitab_c_scale_w_1024.jpg");
 
     @media screen and (min-width: 1024px) {
       background-image: url("/images/pascal-achard/20102017-DSC06728_ufitab_c_scale_w_1936.jpg");

@@ -28,7 +28,8 @@
 }
 
 body {
-  @apply relative font-rubik-regular text-base text-polarnight-nord-3 dark:text-snowstorm-nord-4 bg-body-background dark:bg-body-backgrounddark;
+  @apply relative font-rubik-regular text-base text-polarnight-nord-3 bg-body-background
+  dark:text-snowstorm-nord-4  dark:bg-body-backgrounddark;
 }
 
 // Liens
