@@ -118,7 +118,7 @@ export default defineNuxtConfig({
     defaultLocale: "fr",
     baseUrl: process.env.NUXT_PUBLIC_SITE_URL || "http://localhost:3000",
     detectBrowserLanguage: {
-      useCookie: true,
+      useCookie: false,
       alwaysRedirect: false,
       cookieKey: "i18n_redirected",
       redirectOn: "root", // recommended
