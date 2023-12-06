@@ -47,16 +47,24 @@ export const useProseHeadingEffect = () => {
         0,
       );
 
+      tl.set(
+        self.selector(".word"),
+        {
+          transformOrigin: "left left",
+        },
+        0,
+      );
+
       tl.fromTo(
         self.selector(".word"),
         {
           opacity: 0,
-          y: 20,
+          x: 40,
         },
         {
           opacity: 1,
-          y: 0,
-          stagger: 0.2,
+          x: 0,
+          stagger: 0.1,
         },
         0,
       );

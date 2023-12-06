@@ -28,9 +28,9 @@ onMounted(() => {
       const tl = gsap.timeline({
         scrollTrigger: {
           start: "top 90%",
-          end: "100 84%",
+          end: "top 64%",
           scrub: ScrollTrigger.isTouch === 1 ? true : 2.8,
-          markers: false,
+          markers: true,
           trigger: sheet,
         },
       });
@@ -40,7 +40,7 @@ onMounted(() => {
         {
           filter: "saturate(0%) blur(5px)",
           opacity: 0,
-          y: 120,
+          y: 160,
         },
         {
           filter: "saturate(100%) blur(0px)",
