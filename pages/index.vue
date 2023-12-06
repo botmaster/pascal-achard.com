@@ -30,7 +30,7 @@ onMounted(() => {
           start: "top 90%",
           end: "top 64%",
           scrub: ScrollTrigger.isTouch === 1 ? true : 2.8,
-          markers: true,
+          markers: false,
           trigger: sheet,
         },
       });
