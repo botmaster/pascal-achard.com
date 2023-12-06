@@ -20,7 +20,7 @@ export const useProseHeadingEffect = () => {
       await nextTick();
       Splitting({
         target: splitMe.value,
-        by: "chars",
+        by: "words",
       });
 
       // Animate the characters
@@ -34,7 +34,7 @@ export const useProseHeadingEffect = () => {
           toggleActions: "play none none reverse",
         },
         defaults: {
-          ease: "Expo.easeOut",
+          ease: "Linear.easeNone",
           duration: 1.2,
         },
       });
@@ -48,16 +48,14 @@ export const useProseHeadingEffect = () => {
       );
 
       tl.fromTo(
-        self.selector(".char"),
+        self.selector(".word"),
         {
           opacity: 0,
-          x: "-100%",
-          scaleX: 0,
+          y: 20,
         },
         {
           opacity: 1,
-          x: "0%",
-          scaleX: 1,
+          y: 0,
           stagger: 0.2,
         },
         0,

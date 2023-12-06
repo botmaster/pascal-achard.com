@@ -63,13 +63,14 @@ onUnmounted(() => {
 <template>
   <main class="page-index">
     <div class="page-index__cover">
-      <cover-component
+      <AppLoader class="!absolute inset-0 m-auto z-0"></AppLoader>
+      <CoverComponent
         v-if="data"
         :title="data.coverTitle"
         :subtitle="data.coverSubtitle ?? ''"
         :uptitle="data.coverUpTitle ?? ''"
         :info="data.coverInfo"
-      ></cover-component>
+      ></CoverComponent>
     </div>
     <div class="page-index__content-wrapper">
       <div class="container mx-auto mt-8">
@@ -89,7 +90,7 @@ onUnmounted(() => {
     min-height: calc(
       100svh - 2px
     ); // Because of lighthouse LCP issue with 100svh.  //TODO: fix LCP issue
-    @apply flex flex-col;
+    @apply relative flex flex-col;
 
     > * {
       @apply flex-grow;
