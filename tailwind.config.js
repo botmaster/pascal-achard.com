@@ -29,6 +29,7 @@ const nord = {
   },
 };
 
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: "class",
   content: [`${srcDir}/content/**/*.{vue,md}`],
@@ -50,13 +51,13 @@ module.exports = {
       ...nord,
     },
     fontFamily: {
-      display: ["rubik_blackregular", "sans-serif"],
-      body: ["rubikregular", "sans-serif"],
-      "rubik-black": ["rubik_blackregular", "sans-serif"],
-      "rubik-bold": ["rubikbold", "sans-serif"],
-      "rubik-medium": ["rubik_mediumregular", "sans-serif"],
-      "rubik-regular": ["rubikregular", "sans-serif"],
-      "rubik-light": ["rubik_lightregular", "sans-serif"],
+      display: ["rubik-black", "sans-serif"],
+      body: ["rubik-regular", "sans-serif"],
+      "rubik-black": ["rubik-black", "sans-serif"],
+      "rubik-bold": ["rubik-bold", "sans-serif"],
+      "rubik-medium": ["rubik-medium", "sans-serif"],
+      "rubik-regular": ["rubik-regular", "sans-serif"],
+      "rubik-light": ["rubik-light", "sans-serif"],
       code: ["monospace"],
     },
     container: {

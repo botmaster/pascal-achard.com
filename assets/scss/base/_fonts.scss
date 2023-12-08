@@ -1,52 +1,43 @@
-//
-//
-// Created by PhpStorm.
-// User: pascal
-// Date: 2019-07-16
-// Time: 17:54
-//
+@use "@fontsource/rubik/scss/mixins" as Rubik with (
+        $directory: "@fontsource/rubik/files"
+);
 
-@font-face {
-  font-family: "rubik_blackregular";
-  font-display: swap;
-  src: url("~/assets/fonts/rubik-black-webfont.woff2") format("woff2"),
-    url("~/assets/fonts/rubik-black-webfont.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
+// Doc here:
+// https://fontsource.org/docs/getting-started/faces-mixin
 
-@font-face {
-  font-family: "rubikbold";
-  font-display: swap;
-  src: url("~/assets/fonts/rubik-bold-webfont.woff2") format("woff2"),
-    url("~/assets/fonts/rubik-bold-webfont.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
+@include Rubik.faces(
+        $subsets: latin,
+        $weights: 300,
+        $styles: normal,
+        $family: "rubik-light",
+);
 
-@font-face {
-  font-family: "rubik_mediumregular";
-  font-display: swap;
-  src: url("~/assets/fonts/rubik-medium-webfont.woff2") format("woff2"),
-    url("~/assets/fonts/rubik-medium-webfont.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
+@include Rubik.faces(
+        $subsets: latin,
+        $weights: 400,
+        $styles: normal,
+        $family: "rubik-regular",
+);
 
-@font-face {
-  font-family: "rubikregular";
-  font-display: swap;
-  src: url("~/assets/fonts/rubik-regular-webfont.woff2") format("woff2"),
-    url("~/assets/fonts/rubik-regular-webfont.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
+@include Rubik.faces(
+        $subsets: latin,
+        $weights: 500,
+        $styles: normal,
+        $family: "rubik-medium",
+);
 
-@font-face {
-  font-family: "rubik_lightregular";
-  font-display: swap;
-  src: url("~/assets/fonts/rubik-light-webfont.woff2") format("woff2"),
-    url("~/assets/fonts/rubik-light-webfont.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
+@include Rubik.faces(
+        $subsets: latin,
+        $weights: 700,
+        $styles: normal,
+        $family: "rubik-bold"
+);
+
+@include Rubik.faces(
+        $subsets: latin,
+        $weights: 900,
+        $styles: normal,
+        $family: "rubik-black"
+);
+
+
