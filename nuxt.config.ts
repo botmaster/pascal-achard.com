@@ -73,6 +73,14 @@ export default defineNuxtConfig({
     typeCheck: false,
   },
 
+  /* css: [
+    "@fontsource/rubik/300.css",
+    "@fontsource/rubik/400.css",
+    "@fontsource/rubik/500.css",
+    "@fontsource/rubik/700.css",
+    "@fontsource/rubik/900.css",
+  ], */
+
   tailwindcss: {
     cssPath: "~/assets/scss/main.scss",
     configPath: "~/tailwind.config.js",

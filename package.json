@@ -39,6 +39,7 @@
     "vue-tsc": "^1.8.25"
   },
   "dependencies": {
+    "@fontsource/rubik": "^5.0.18",
     "@studio-freight/lenis": "^1.0.29",
     "@vueuse/nuxt": "^10.7.0",
     "gsap": "^3.12.3",
