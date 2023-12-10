@@ -13,6 +13,11 @@
   }
 }
 
+:root {
+  --toto: 41 46 57;
+  --tutu: 32 36 45;
+}
+
 // Named colors
 :root {
   --color-primary: #{red($nord-10) green($nord-10) blue($nord-10)};
