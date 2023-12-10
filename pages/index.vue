@@ -22,14 +22,40 @@ let ctx: gsap.Context;
 const colorMode = useColorMode();
 
 // map of color mode colors
-
-const colors = {
+const colors: { [key: string]: string[] } = {
   light: ["--color-nord-4", "--color-nord-5", "--color-nord-6"],
-  dark: ["--toto", "--tutu"],
+  dark: ["--color-nord-1", "--color-nord-2", "--color-nord-3"],
 };
+
+const colorMap = ref([""]);
+
+/*
+watch(
+  colorMode,
+  (newValue, oldValue) => {
+    console.log("colorMode changed newValue, oldValue", newValue, oldValue);
+    if (!process.client) return;
+    colorMap.value = colors[newValue.value] || [];
+  },
+  { immediate: false },
+);
+*/
+
+// WatchEffect
+watchEffect(
+  () => {
+    if (!process.client) return;
+    colorMap.value = colors[colorMode.value] || [];
+  },
+  { flush: "post" },
+);
+
+const isClient = computed(() => process.client);
 
 onMounted(() => {
   if (!process.client) return;
+
+  // colorMap.value = colors[colorMode.value] || [];
 
   ctx = gsap.context((self) => {
     if (!self || !self.selector) return;
@@ -67,13 +93,6 @@ onUnmounted(() => {
   if (!process.client) return;
   ctx.revert();
 });
-
-const backgroundColor = (index: number) => {
-  if (!process.client) return;
-  const mode = colorMode.value;
-  const colorsMode = colors[mode as keyof typeof colors];
-  return colorsMode[index % colorsMode.length];
-};
 </script>
 
 <template>
@@ -89,11 +108,15 @@ const backgroundColor = (index: number) => {
       ></CoverComponent>
     </div>
     <div ref="contextScope">
-      <div
+      <section
         v-for="(element, index) in data?.body?.children"
         :key="index"
+        :style="
+          isClient
+            ? `background-color: rgb(var(${colorMap[index % colorMap.length]}))`
+            : ''
+        "
         class="page-index__content-wrapper"
-        :style="{ backgroundColor: `rgb(var(${backgroundColor(index)}))` }"
       >
         <div class="container mx-auto">
           <div class="page-index__content">
@@ -106,7 +129,7 @@ const backgroundColor = (index: number) => {
             </Component>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   </main>
 </template>
