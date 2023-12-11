@@ -58,7 +58,7 @@ const localePath = useLocalePath();
 
   &__nav {
     @apply relative flex items-center gap-4 ml-auto px-4 pt-2 pb-2 text-xl uppercase leading-none bg-body-background
-    dark:bg-body-backgrounddark rounded-lg ring-1 ring-inset ring-snowstorm-nord-4 dark:ring-polarnight-nord-2;
+     rounded-lg ring-1 ring-inset ring-snowstorm-nord-4 dark:ring-polarnight-nord-2;
   }
 
   &__nav-item {

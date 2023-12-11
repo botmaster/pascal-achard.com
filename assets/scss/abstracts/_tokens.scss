@@ -1,0 +1,19 @@
+@use '../abstracts/variables' as *;
+/**
+ Tokens
+ */
+
+
+// body
+$body-background: #f2f4f8;
+$body-background-dark: #242933;
+$body-text: $nord-3;
+$body-text-dark: $nord-4;
+
+// Texts
+$text-muted-color: $color-gray-600;
+
+// Fonts
+//$font-family-body: $font-family-sans;
+//$font-family-display: $font-family-sans;
+//$font-family-heading: 'Rubik', sans-serif;

@@ -23,8 +23,8 @@ const colorMode = useColorMode();
 
 // map of color mode colors
 const colors: { [key: string]: string[] } = {
-  light: ["--color-nord-4", "--color-nord-5", "--color-nord-6"],
-  dark: ["--color-nord-1", "--color-nord-2", "--color-nord-3"],
+  light: [],
+  dark: [],
 };
 
 const colorMap = ref([""]);
@@ -55,27 +55,28 @@ const isClient = computed(() => process.client);
 onMounted(() => {
   if (!process.client) return;
 
-  // colorMap.value = colors[colorMode.value] || [];
-
   ctx = gsap.context((self) => {
     if (!self || !self.selector) return;
     self.selector(".sheet-elevation").map((sheet: HTMLElement) => {
       const tl = gsap.timeline({
         scrollTrigger: {
           start: "top 90%",
-          end: "top 64%",
+          end: "top 44%",
           scrub: ScrollTrigger.isTouch === 1 ? true : 2.8,
           markers: true,
           trigger: sheet,
+        },
+        defaults: {
+          ease: "power2.out",
         },
       });
 
       tl.fromTo(
         sheet,
         {
-          filter: "saturate(0%) blur(5px)",
+          filter: "saturate(0%) blur(11px)",
           opacity: 0,
-          x: -40,
+          x: -100,
         },
         {
           filter: "saturate(100%) blur(0px)",
@@ -113,7 +114,7 @@ onUnmounted(() => {
         :key="index"
         :style="
           isClient
-            ? `background-color: rgb(var(${colorMap[index % colorMap.length]}))`
+            ? `background-color: hsl(var(${colorMap[index % colorMap.length]}))`
             : ''
         "
         class="page-index__content-wrapper"

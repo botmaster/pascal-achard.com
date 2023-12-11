@@ -83,7 +83,7 @@ const clickHandler = (theme: ITheme) => {
 
   &-items {
     @apply absolute min-w-min top-full right-0 mt-3 px-5 py-4 space-y-3 rounded-lg bg-body-background
-    dark:bg-body-backgrounddark ring-1 ring-inset ring-snowstorm-nord-4 dark:ring-polarnight-nord-2 focus:outline-none;
+     ring-1 ring-inset ring-snowstorm-nord-4 dark:ring-polarnight-nord-2 focus:outline-none;
   }
 }
 

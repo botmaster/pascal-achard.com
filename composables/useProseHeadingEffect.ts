@@ -29,12 +29,12 @@ export const useProseHeadingEffect = () => {
           markers: false,
           trigger: root.value,
           start: "top 90%",
-          end: "200 90%",
+          end: "top 44%",
           scrub: ScrollTrigger.isTouch === 1 ? true : 2.8,
           toggleActions: "play none none reverse",
         },
         defaults: {
-          ease: "Linear.easeNone",
+          ease: "power2.out",
           duration: 1.2,
         },
       });
@@ -59,12 +59,12 @@ export const useProseHeadingEffect = () => {
         self.selector(".word"),
         {
           opacity: 0,
-          x: 40,
+          x: 150,
         },
         {
           opacity: 1,
           x: 0,
-          stagger: 0.1,
+          stagger: 0.12,
         },
         0,
       );

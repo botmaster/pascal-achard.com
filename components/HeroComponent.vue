@@ -30,7 +30,7 @@
   }
 
   &__dimmer {
-    @apply absolute inset-0 bg-body-background/50 dark:bg-body-backgrounddark/50;
+    @apply absolute inset-0 bg-body-background/50;
   }
 
   &__content {

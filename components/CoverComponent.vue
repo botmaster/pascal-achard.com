@@ -245,7 +245,7 @@ onBeforeUnmount(() => {
   }
 
   &__dimmer {
-    @apply absolute inset-0 bg-body-background dark:bg-body-backgrounddark opacity-60;
+    @apply absolute inset-0 bg-body-background opacity-60;
   }
 
   &__bg-image {

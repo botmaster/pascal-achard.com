@@ -6,7 +6,8 @@
 // Time: 16:53
 //
 
-@import "fonts";
-@import "base";
-@import "typography";
-@import "nuxt-content";
+@forward "root";
+@forward "fonts";
+@forward "base";
+@forward "typography";
+@forward "nuxt-content";
