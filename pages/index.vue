@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import type { IPage } from "@/types/types";
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import type { IPage } from '@/types/types';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -9,11 +9,11 @@ const { locale: currentLocale } = useI18n();
 
 const { data } = await useAsyncData(`home-${currentLocale.value}`, () =>
   queryContent<IPage>()
-    .where({ _locale: currentLocale.value, _path: "/" })
-    .findOne(),
-);
+    .where({ _locale: currentLocale.value, _path: '/' })
+    .findOne());
 
-if (data) useContentHead(data as any); // TODO: fix type
+if (data)
+  useContentHead(data as any); // TODO: fix type
 
 // Animation setup
 const contextScope = ref<HTMLElement | null>(null);
@@ -27,7 +27,7 @@ const colors: { [key: string]: string[] } = {
   dark: [],
 };
 
-const colorMap = ref([""]);
+const colorMap = ref(['']);
 
 /*
 watch(
@@ -44,42 +44,45 @@ watch(
 // WatchEffect
 watchEffect(
   () => {
-    if (!process.client) return;
+    if (!process.client)
+      return;
     colorMap.value = colors[colorMode.value] || [];
   },
-  { flush: "post" },
+  { flush: 'post' },
 );
 
 const isClient = computed(() => process.client);
 
 onMounted(() => {
-  if (!process.client) return;
+  if (!process.client)
+    return;
 
   ctx = gsap.context((self) => {
-    if (!self || !self.selector) return;
-    self.selector(".sheet-elevation").map((sheet: HTMLElement) => {
+    if (!self || !self.selector)
+      return;
+    self.selector('.sheet-elevation').map((sheet: HTMLElement) => {
       const tl = gsap.timeline({
         scrollTrigger: {
-          start: "top 90%",
-          end: "top 44%",
+          start: 'top 90%',
+          end: 'top 44%',
           scrub: ScrollTrigger.isTouch === 1 ? true : 2.8,
           markers: true,
           trigger: sheet,
         },
         defaults: {
-          ease: "power2.out",
+          ease: 'power2.out',
         },
       });
 
       tl.fromTo(
         sheet,
         {
-          filter: "saturate(0%) blur(11px)",
+          filter: 'saturate(0%) blur(11px)',
           opacity: 0,
           x: -100,
         },
         {
-          filter: "saturate(100%) blur(0px)",
+          filter: 'saturate(100%) blur(0px)',
           opacity: 1,
           x: 0,
         },
@@ -91,7 +94,8 @@ onMounted(() => {
 });
 
 onUnmounted(() => {
-  if (!process.client) return;
+  if (!process.client)
+    return;
   ctx.revert();
 });
 </script>
@@ -99,14 +103,14 @@ onUnmounted(() => {
 <template>
   <main class="page-index">
     <div class="page-index__cover">
-      <AppLoader class="!absolute inset-0 m-auto z-0"></AppLoader>
+      <AppLoader class="!absolute inset-0 m-auto z-0" />
       <CoverComponent
         v-if="data"
         :title="data.coverTitle"
         :subtitle="data.coverSubtitle ?? ''"
         :uptitle="data.coverUpTitle ?? ''"
         :info="data.coverInfo"
-      ></CoverComponent>
+      />
     </div>
     <div ref="contextScope">
       <section

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, useRuntimeConfig } from "#imports";
+import { computed, useRuntimeConfig } from '#imports';
 
 const props = defineProps<{ id?: string }>();
 

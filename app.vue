@@ -4,8 +4,8 @@ const { t } = useI18n();
 useHead({
   titleTemplate: (titleChunk) => {
     return titleChunk
-      ? t("layouts.title", { title: titleChunk })
-      : "Pascal Achard";
+      ? t('layouts.title', { title: titleChunk })
+      : 'Pascal Achard';
   },
 });
 </script>

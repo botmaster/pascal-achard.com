@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const props = defineProps({
   uptitle: {
@@ -25,9 +25,9 @@ const props = defineProps({
 useHead({
   link: [
     {
-      rel: "preload",
-      as: "image",
-      href: "/images/pascal-achard/20102017-DSC06728_ufitab_c_scale_w_2560.jpg",
+      rel: 'preload',
+      as: 'image',
+      href: '/images/pascal-achard/20102017-DSC06728_ufitab_c_scale_w_2560.jpg',
     },
   ],
 });
@@ -45,12 +45,13 @@ let ctx: gsap.Context;
 
 function initEffects() {
   ctx = gsap.context((self) => {
-    if (!self || !self.selector || !root.value) return;
+    if (!self || !self.selector || !root.value)
+      return;
 
     // Intro Timeline
     const tlIntro = gsap.timeline({
       defaults: {
-        ease: "expo.out",
+        ease: 'expo.out',
         duration: 3,
         force3D: true,
         immediateRender: true,
@@ -66,7 +67,7 @@ function initEffects() {
       {
         opacity: 0.6,
         duration: 0.8,
-        ease: "linear",
+        ease: 'linear',
         startAt: {
           opacity: 1,
         },
@@ -75,7 +76,7 @@ function initEffects() {
     );
 
     tlIntro.to(
-      self.selector(".line-mask"),
+      self.selector('.line-mask'),
       {
         startAt: {
           y: 310,
@@ -87,7 +88,7 @@ function initEffects() {
     );
 
     tlIntro.to(
-      self.selector(".line-mask > *"),
+      self.selector('.line-mask > *'),
       {
         startAt: {
           y: 50,
@@ -102,17 +103,18 @@ function initEffects() {
     const tl = gsap.timeline({
       scrollTrigger: {
         markers: false,
-        start: "bottom 90%",
-        end: ScrollTrigger.isTouch === 1 ? "bottom 30%" : "bottom 50%",
+        start: 'bottom 90%',
+        end: ScrollTrigger.isTouch === 1 ? 'bottom 30%' : 'bottom 50%',
         scrub: ScrollTrigger.isTouch === 1 ? 0.8 : 2.8,
         trigger: root.value,
-        toggleActions: "restart none none none",
+        toggleActions: 'restart none none none',
       },
       onStart: () => {
-        if (!self || !self.selector) return;
-        self.selector(".line-mask").map((el: HTMLElement) => {
+        if (!self || !self.selector)
+          return;
+        self.selector('.line-mask').map((el: HTMLElement) => {
           return gsap.set(el, {
-            overflow: "visible",
+            overflow: 'visible',
           });
         });
 
@@ -120,9 +122,9 @@ function initEffects() {
         tlIntro.time(tlIntro.totalDuration());
         tlIntro.kill();
       },
-      overwrite: "auto",
+      overwrite: 'auto',
       defaults: {
-        overwrite: "auto",
+        overwrite: 'auto',
       },
     });
 
@@ -135,7 +137,7 @@ function initEffects() {
       {
         autoAlpha: 1,
       },
-      "<",
+      '<',
     );
 
     tl.to(
@@ -144,7 +146,7 @@ function initEffects() {
         autoAlpha: 0,
         y: -200,
       },
-      "<",
+      '<',
     );
 
     tl.to(
@@ -153,7 +155,7 @@ function initEffects() {
         autoAlpha: 0,
         y: -110,
       },
-      "<",
+      '<',
     );
 
     tl.to(
@@ -162,7 +164,7 @@ function initEffects() {
         autoAlpha: 0,
         y: -60,
       },
-      "<",
+      '<',
     );
 
     if (props.info) {
@@ -172,28 +174,30 @@ function initEffects() {
           autoAlpha: 0,
           y: -15,
         },
-        "<",
+        '<',
       );
     }
   }, root.value || undefined);
 }
 
 onMounted(() => {
-  if (!process.client) return;
+  if (!process.client)
+    return;
   initEffects();
 });
 
 onBeforeUnmount(() => {
-  if (!process.client) return;
+  if (!process.client)
+    return;
   ctx.revert();
 });
 </script>
 
 <template>
   <div ref="root" class="cover">
-    <div ref="coverBg" class="cover__background"></div>
+    <div ref="coverBg" class="cover__background" />
 
-    <div ref="coverDimmer" class="cover__dimmer"></div>
+    <div ref="coverDimmer" class="cover__dimmer" />
     <div class="container mx-auto px-container md:px-container-md relative">
       <div>
         <div class="line-mask">

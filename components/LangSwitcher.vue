@@ -1,25 +1,25 @@
 <script setup lang="ts">
-import type { Ref } from "vue";
+import type { Ref } from 'vue';
 
-const { locale: currentLocale, locales }: { locale: Ref; locales: Ref<any[]> } =
-  useI18n();
+const { locale: currentLocale, locales }: { locale: Ref, locales: Ref<any[]> }
+  = useI18n();
 
 const switchLocalePath = useSwitchLocalePath();
 const availableLocales = computed(() => {
-  return locales.value?.filter((i) => i.code !== currentLocale.value);
+  return locales.value?.filter(i => i.code !== currentLocale.value);
 });
 
 const localeIcon = computed(() => (locale: string) => {
   let icon: string;
   switch (locale) {
-    case "fr":
-      icon = "material-symbols:language-french";
+    case 'fr':
+      icon = 'material-symbols:language-french';
       break;
-    case "en":
-      icon = "material-symbols:language-us";
+    case 'en':
+      icon = 'material-symbols:language-us';
       break;
     default:
-      icon = "material-symbols:language-us";
+      icon = 'material-symbols:language-us';
       break;
   }
   return icon;
@@ -33,9 +33,7 @@ const localeIcon = computed(() => (locale: string) => {
       :key="locale.code"
       :to="switchLocalePath(locale.code) || ''"
       :title="locale.name"
-      ><Icon :name="localeIcon(locale.code)"></Icon
-      ><span class="sr-only">{{ locale.name }}</span></NuxtLink
-    >
+    ><Icon :name="localeIcon(locale.code)" /><span class="sr-only">{{ locale.name }}</span></NuxtLink>
   </span>
 </template>
 

@@ -6,15 +6,15 @@ const colorMode = useColorMode();
 
 const themeList = computed(() => [
   {
-    name: "system",
-    label: t("theme.auto"),
-    icon: "material-symbols:computer",
+    name: 'system',
+    label: t('theme.auto'),
+    icon: 'material-symbols:computer',
   },
-  { name: "dark", label: t("theme.dark"), icon: "material-symbols:dark-mode" },
+  { name: 'dark', label: t('theme.dark'), icon: 'material-symbols:dark-mode' },
   {
-    name: "light",
-    label: t("theme.light"),
-    icon: "material-symbols:light-mode",
+    name: 'light',
+    label: t('theme.light'),
+    icon: 'material-symbols:light-mode',
   },
 ]);
 const localePath = useLocalePath();
@@ -27,16 +27,16 @@ const localePath = useLocalePath();
         class="the-header__nav-item the-header__nav-link"
         :to="localePath({ name: 'index' })"
         :title="t('navigation.home')"
-        ><Icon name="material-symbols:home"></Icon
-        ><span class="sr-only">{{ t("navigation.home") }}</span></NuxtLink
       >
+        <Icon name="material-symbols:home" /><span class="sr-only">{{ t("navigation.home") }}</span>
+      </NuxtLink>
       <NuxtLink
         class="the-header__nav-item the-header__nav-link"
         :to="localePath({ name: 'about' })"
         :title="t('navigation.about')"
-        ><Icon name="material-symbols:info"></Icon
-        ><span class="sr-only">{{ t("navigation.about") }}</span></NuxtLink
       >
+        <Icon name="material-symbols:info" /><span class="sr-only">{{ t("navigation.about") }}</span>
+      </NuxtLink>
       <ThemeMenuComponent
         v-model="colorMode.preference"
         :is-unkown="colorMode.unknown"

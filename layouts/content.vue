@@ -4,6 +4,7 @@ const head = useLocaleHead({
   addSeoAttributes: true,
 });
 </script>
+
 <template>
   <Html :lang="head.htmlAttrs?.lang" :dir="head.htmlAttrs?.dir">
     <Head>

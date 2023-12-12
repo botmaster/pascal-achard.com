@@ -6,8 +6,6 @@ title: Développeur frontend senior
 description: Pascal Achard, développeur frontend senior, 20+ ans d'expérience, Vue.js, Nuxt.js, TypeScript, Craftcms, Tailwindcss, Docker, Node.js, Webpack, Prettier, Notion, Netlify, render...
 ---
 
-
-
 ::sheetElevation
 ## À propos de moi
 
@@ -70,7 +68,6 @@ Software engineer frontend sénior chez <img src="/images/content/jsk.png" alt="
 
 Zégut PG est une application web qui me permet de créer des playlists Spotify à partir des épisodes du podcast de l'émission RTL2 Pop-Rock Station présentée par Francis Zégut & Marjorie Hache. C'est aussi un prétexte pour moi de faire mumuse avec Vue.js et l'API Spotify 🤓. J'en parle [ici](https://www.linkedin.com/pulse/z%25C3%25A9gut-pg-cr%25C3%25A9ez-des-playlists-spotify-%25C3%25A0-partir-de-l%25C3%25A9mission-achard).
 
-
 #### Pascal is listening
 
 [https://pascal-is-listening.onrender.com/](https://pascal-is-listening.onrender.com/){target="_blank" rel="noopener"}
@@ -94,7 +91,7 @@ beaucoup à Netlify en plus riche.
 ### Projets coup de cœur
 
 > <span class="mr-2">ℹ️</span>  <span class="font-rubik-medium text-primary-content">Info</span>
->   
+>
 > La version actuellement en ligne du site antidiscriminations.fr n'est plus celle dont je parle ici 😕.
 
 [antidiscriminations.fr](https://www.antidiscriminations.fr/){target="_blank" rel="noopener"}
@@ -105,5 +102,3 @@ Agir contre les discriminations, un projet pas comme les autres. J'en
 parle [ici](https://www.linkedin.com/pulse/un-projet-pas-comme-les-autres-pascal-achard/){target="_blank" rel="
 noopener"}.
 ::
-
-

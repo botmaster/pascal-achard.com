@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, useRuntimeConfig } from "#imports";
+import { computed, useRuntimeConfig } from '#imports';
 
 const props = defineProps<{ id?: string }>();
 
@@ -12,9 +12,8 @@ const slots = useSlots();
 
 // Computed - Slot content
 const slotContent = computed(() => {
-  if (slots.default) {
+  if (slots.default)
     return slots.default()[0].children;
-  }
 });
 </script>
 

@@ -1,35 +1,35 @@
 <script setup lang="ts">
-import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
-import type { ITheme } from "@/types/types";
+import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue';
+import type { ITheme } from '@/types/types';
 
 const props = withDefaults(
   defineProps<{
-    themeList: ITheme[];
-    modelValue: string;
-    isUnknown?: boolean;
+    themeList: ITheme[]
+    modelValue: string
+    isUnknown?: boolean
   }>(),
   {},
 );
 
 const emit = defineEmits<{
-  (event: "update:modelValue", value: string): void;
+  (event: 'update:modelValue', value: string): void
 }>();
 
 const { t } = useI18n();
 
 const currentTheme = computed<ITheme | undefined>(() => {
-  return props.themeList.find((theme) => theme.name === props.modelValue);
+  return props.themeList.find(theme => theme.name === props.modelValue);
 });
 
-const clickHandler = (theme: ITheme) => {
-  emit("update:modelValue", theme.name);
-};
+function clickHandler(theme: ITheme) {
+  emit('update:modelValue', theme.name);
+}
 </script>
 
 <template>
   <Menu as="div" class="menu">
-    <MenuButton class="menu-button"
-      ><span class="sr-only">{{ t("navigation.themeSelector") }}</span>
+    <MenuButton class="menu-button">
+      <span class="sr-only">{{ t("navigation.themeSelector") }}</span>
       <ClientOnly>
         <Icon :name="currentTheme?.icon || 'material-symbols:computer'" />
         <template #fallback>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const props = defineProps<{
-  name: string;
+  name: string
 }>();
 
 const icon = defineAsyncComponent(

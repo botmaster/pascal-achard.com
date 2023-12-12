@@ -4,11 +4,11 @@
   <div class="hero">
     <div class="hero__background">
       <slot name="background">
-        <img src="https://picsum.photos/1920/1080" alt="" />
+        <img src="https://picsum.photos/1920/1080" alt="">
       </slot>
     </div>
 
-    <div class="hero__dimmer"></div>
+    <div class="hero__dimmer" />
     <div class="hero__content">
       <slot name="content">
         <h1>Titre</h1>
