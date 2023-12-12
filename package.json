@@ -4,6 +4,7 @@
   "description": "Pascal Achard's personal website",
   "author": "Pascal Achard",
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
@@ -14,6 +15,7 @@
     "lintfix": "yarn lint --fix"
   },
   "devDependencies": {
+    "@antfu/eslint-config": "^2.4.5",
     "@nuxt/content": "^2.9.0",
     "@nuxt/devtools": "^1.0.5",
     "@nuxtjs/color-mode": "^3.3.2",
