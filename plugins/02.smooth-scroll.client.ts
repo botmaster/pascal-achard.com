@@ -6,10 +6,14 @@ export default defineNuxtPlugin(() => {
   const lenis = new Lenis({
     lerp: 0.1, // Lower values create a smoother scroll effect
     smoothWheel: true, // Enables smooth scrolling for mouse wheel events
+    wrapper: document.getElementById('lenisTarget') || window, // The element that wraps the content
+    content: document.getElementById('lenisContent') || document.body, // The element that contains the content
   });
 
   // Update ScrollTrigger each time the user scrolls
-  lenis.on('scroll', () => ScrollTrigger.update());
+  lenis.on('scroll', () => {
+    return ScrollTrigger.update();
+  });
 
   // Define a function to run at each animation frame
   const scrollFn = (time: any) => {

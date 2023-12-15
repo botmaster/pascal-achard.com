@@ -36,7 +36,11 @@ const props = defineProps({
   @apply relative px-3 py-6 md:px-8 md:py-8;
 
   &__shadow {
-    @apply absolute inset-0 bg-white dark:bg-polarnight-nord-0 rounded-lg -z-10;
+    @apply absolute inset-0 bg-white dark:bg-polarnight-nord-0 rounded-lg z-0;
+  }
+
+  &__content {
+    @apply relative z-10;
   }
 
   &--is-borderless {

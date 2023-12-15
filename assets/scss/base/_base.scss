@@ -34,7 +34,7 @@ html {
 }
 
 body {
-  @apply relative font-body text-base text-body-txt bg-body-background;
+  @apply relative font-body text-base text-body-txt bg-body-background leading-snug;
 }
 
 // Liens
@@ -72,4 +72,24 @@ button {
 
 .fouc-hidden {
   visibility: hidden;
+}
+
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
 }

@@ -179,8 +179,8 @@ export default defineNuxtConfig({
   ],
 
   devtools: {
-    timeline: {
-      enabled: true,
-    },
+    // Enable devtools (default: true)
+    enabled: false,
+    // VS Code Server options
   },
 });
