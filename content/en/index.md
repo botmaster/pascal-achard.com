@@ -6,8 +6,6 @@ title: Senior frontend developer
 description: Pascal Achard, senior frontend developer, 20+ years of experience, Vue.js, Nuxt.js, TypeScript, Craftcms, Tailwindcss, Docker, Node.js, Webpack, Prettier, Notion, Netlify, render...
 ---
 
-
-
 ::sheetElevation
 ## About me
 
@@ -64,7 +62,6 @@ Senior frontend software engineer at <img src="/images/content/jsk.png" alt="Jel
 ![Image site 'Zégut PG'](/images/content/zégut-pg.webp){width="1024" height="620" loading="lazy"}
 
 Zégut PG is a web application that allows me to create Spotify playlists from the podcast episodes of the {link} show presented by Francis Zégut & Marjorie Hache. It's also an excuse for me to play around with Vue.js and the Spotify API 🤓. I talk about it [here](https://www.linkedin.com/pulse/z%25C3%25A9gut-pg-cr%25C3%25A9ez-des-playlists-spotify-%25C3%25A0-partir-de-l%25C3%25A9mission-achard).
-
 
 #### Pascal is listening
 

@@ -16,7 +16,7 @@ Langage : [Typescript](https://www.typescriptlang.org/){target="_blank" rel="noo
 Framework js : [Nuxt.js](https://nuxtjs.org){target="_blank" rel="noopener"}  
 Framework css : [Tailwindcss](https://tailwindcss.com/){target="_blank" rel="noopener"}  
 Hébergement : [Netlify](https://www.netlify.com/){target="_blank" rel="noopener"}  
-CMS : [NuxtContent](https://content.nuxtjs.org/){target="_blank" rel="noopener"}. Contenu sous forme de fichiers `.md`, `.yml`, `.csv` et `.json`.
+CMS : [NuxtContent](https://content.nuxtjs.org/){target="_blank" rel="noopener"}. Contenu sous forme de fichiers `.md`, `.yml`, `.csv` et `.json`.  
 
 ### Les performances
 

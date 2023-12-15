@@ -1,11 +1,11 @@
 <script setup lang="ts">
 interface ILink {
-  href: string;
-  "aria-label": string;
+  href: string
+  'aria-label': string
   icon: {
-    title: string;
-    name: string;
-  };
+    title: string
+    name: string
+  }
 }
 
 const { t } = useI18n();
@@ -13,51 +13,51 @@ const { t } = useI18n();
 // links
 const links: ILink[] = [
   {
-    href: "https://github.com/botmaster",
-    "aria-label": "GitHub",
-    icon: {
-      title: "GitHub icon",
-      name: "cib:github",
+    'href': 'https://github.com/botmaster',
+    'aria-label': 'GitHub',
+    'icon': {
+      title: 'GitHub icon',
+      name: 'cib:github',
     },
   },
   {
-    href: "https://www.linkedin.com/in/pascal-achard",
-    "aria-label": "LinkedIn",
-    icon: {
-      title: "LinkedIn icon",
-      name: "cib:linkedin",
+    'href': 'https://www.linkedin.com/in/pascal-achard',
+    'aria-label': 'LinkedIn',
+    'icon': {
+      title: 'LinkedIn icon',
+      name: 'cib:linkedin',
     },
   },
   {
-    href: "https://codepen.io/botmaster/",
-    "aria-label": "CodePen",
-    icon: {
-      title: "CodePen icon",
-      name: "cib:codepen",
+    'href': 'https://codepen.io/botmaster/',
+    'aria-label': 'CodePen',
+    'icon': {
+      title: 'CodePen icon',
+      name: 'cib:codepen',
     },
   },
   {
-    href: "https://www.instagram.com/botmaster/",
-    "aria-label": "Instagram",
-    icon: {
-      title: "Instagram icon",
-      name: "cib:instagram",
+    'href': 'https://www.instagram.com/botmaster/',
+    'aria-label': 'Instagram',
+    'icon': {
+      title: 'Instagram icon',
+      name: 'cib:instagram',
     },
   },
   {
-    href: "https://twitter.com/botmaster",
-    "aria-label": "Twitter",
-    icon: {
-      title: "Twitter icon",
-      name: "cib:twitter",
+    'href': 'https://twitter.com/botmaster',
+    'aria-label': 'Twitter',
+    'icon': {
+      title: 'Twitter icon',
+      name: 'cib:twitter',
     },
   },
   {
-    href: "https://www.last.fm/user/botmaster",
-    "aria-label": "Last.fm",
-    icon: {
-      title: "Last.fm icon",
-      name: "cib:last-fm",
+    'href': 'https://www.last.fm/user/botmaster',
+    'aria-label': 'Last.fm',
+    'icon': {
+      title: 'Last.fm icon',
+      name: 'cib:last-fm',
     },
   },
 ];
@@ -74,21 +74,21 @@ useIntersectionObserver(target, ([{ isIntersecting }]) => {
 const colorMode = useColorMode();
 const themeList = computed(() => [
   {
-    name: "system",
-    label: t("theme.auto"),
-    icon: "material-symbols:computer",
+    name: 'system',
+    label: t('theme.auto'),
+    icon: 'material-symbols:computer',
   },
-  { name: "dark", label: t("theme.dark"), icon: "material-symbols:dark-mode" },
+  { name: 'dark', label: t('theme.dark'), icon: 'material-symbols:dark-mode' },
   {
-    name: "light",
-    label: t("theme.light"),
-    icon: "material-symbols:light-mode",
+    name: 'light',
+    label: t('theme.light'),
+    icon: 'material-symbols:light-mode',
   },
 ]);
 </script>
 
 <template>
-  <footer ref="target" class="py-6 md:py-8">
+  <footer ref="target" class="relative py-6 md:py-8">
     <div class="mx-4 md:mx-8">
       <div class="md:flex md:justify-between md:items-center">
         <div class="flex gap-4 mb-4 md:mb-0">

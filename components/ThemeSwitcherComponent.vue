@@ -1,3 +1,35 @@
+<script setup lang="ts">
+import type { ITheme } from '~/types/types';
+
+const props = withDefaults(
+  defineProps<{
+    themeList: ITheme[]
+    modelValue: string
+    size?: 'xs' | 'sm' | 'md' | 'lg'
+  }>(),
+  {
+    size: 'lg',
+  },
+);
+
+const emit = defineEmits<{
+  (event: 'update:modelValue', value: string): void
+}>();
+
+const classes = computed(() => {
+  return {
+    'theme-switcher--is-xs': props.size === 'xs',
+    'theme-switcher--is-sm': props.size === 'sm',
+    'theme-switcher--is-md': props.size === 'md',
+    'theme-switcher--is-lg': props.size === 'lg',
+  };
+});
+
+function clickHandler(theme: ITheme) {
+  emit('update:modelValue', theme.name);
+}
+</script>
+
 <template>
   <div class="theme-switcher" :class="classes">
     <client-only>
@@ -14,38 +46,6 @@
     </client-only>
   </div>
 </template>
-
-<script setup lang="ts">
-import type { ITheme } from "~/types/types";
-
-const props = withDefaults(
-  defineProps<{
-    themeList: ITheme[];
-    modelValue: string;
-    size?: "xs" | "sm" | "md" | "lg";
-  }>(),
-  {
-    size: "lg",
-  },
-);
-
-const emit = defineEmits<{
-  (event: "update:modelValue", value: string): void;
-}>();
-
-const classes = computed(() => {
-  return {
-    "theme-switcher--is-xs": props.size === "xs",
-    "theme-switcher--is-sm": props.size === "sm",
-    "theme-switcher--is-md": props.size === "md",
-    "theme-switcher--is-lg": props.size === "lg",
-  };
-});
-
-const clickHandler = (theme: ITheme) => {
-  emit("update:modelValue", theme.name);
-};
-</script>
 
 <style lang="scss" scoped>
 .theme-switcher {

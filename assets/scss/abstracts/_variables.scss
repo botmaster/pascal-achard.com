@@ -1,4 +1,11 @@
-// Nord
+@use '../abstracts/functions' as *;
+@use 'sass:color';
+
+/**
+  Colors
+ */
+
+// Named colors
 $nord-0: #2e3440;
 $nord-1: #3b4252;
 $nord-2: #434c5e;
@@ -16,7 +23,49 @@ $nord-13: #ebcb8b;
 $nord-14: #a3be8c;
 $nord-15: #b48ead;
 
-$nords: (
+
+$color-red: #bf616a;
+$color-green: #a3be8c;
+$color-blue: #5e81ac;
+$color-yellow: #ebcb8b;
+$color-pink: #b48ead;
+
+$color-white: #fff;
+$color-black: #000;
+
+// gray colors
+$color-gray-50: #f9fafb;
+$color-gray-100: #f3f4f6;
+$color-gray-200: #e5e7eb;
+$color-gray-300: #d1d5db;
+$color-gray-400: #9ca3af;
+$color-gray-500: #6b7280;
+$color-gray-600: #4b5563;
+$color-gray-700: #374151;
+$color-gray-800: #1f2937;
+$color-gray-900: #111827;
+$color-gray-950: #030712;
+
+// Colors map
+$colors: (
+        "red": $color-red,
+        "green": $color-green,
+        "blue": $color-blue,
+        "yellow": $color-yellow,
+        "pink": $color-pink,
+        "white": $color-white,
+        "black": $color-black,
+        "gray-50": $color-gray-50,
+        "gray-100": $color-gray-100,
+        "gray-200": $color-gray-200,
+        "gray-300": $color-gray-300,
+        "gray-400": $color-gray-400,
+        "gray-500": $color-gray-500,
+        "gray-600": $color-gray-600,
+        "gray-700": $color-gray-700,
+        "gray-800": $color-gray-800,
+        "gray-900": $color-gray-900,
+        "gray-950": $color-gray-950,
         "nord-0": $nord-0,
         "nord-1": $nord-1,
         "nord-2": $nord-2,
@@ -34,3 +83,62 @@ $nords: (
         "nord-14": $nord-14,
         "nord-15": $nord-15,
 );
+
+
+// Theme colors
+$color-primary: $color-blue;
+$color-secondary: $nord-8;
+$color-accent: $color-green;
+$color-neutral: $color-gray-600;
+
+
+// Theme colors dark
+$color-primary-dark: $nord-8;
+$color-secondary-dark: $nord-11;
+$color-accent-dark: $color-green;
+$color-neutral-dark: $color-gray-600;
+
+// Darken and lighten amount
+$darken-amount: -20%;
+$lighten-amount: 20%;
+
+// Theme colors map
+$theme-colors: (
+        "primary": $color-primary,
+        "primary-content": color.scale($color-primary, $lightness: $lighten-amount),
+        "secondary": $color-secondary,
+        "secondary-content": color.scale($color-secondary, $lightness: $lighten-amount),
+        "accent": $color-accent,
+        "accent-content": color.scale($color-accent, $lightness: $lighten-amount),
+        "neutral": $color-neutral,
+        "neutral-content": color.scale($color-neutral, $lightness: $lighten-amount),
+);
+$theme-colors-dark: (
+        "primary": $color-primary-dark,
+        "primary-content": color.scale($color-primary-dark, $lightness: $darken-amount),
+        "secondary": $color-secondary-dark,
+        "secondary-content": color.scale($color-secondary-dark, $lightness: $darken-amount),
+        "accent": $color-accent-dark,
+        "accent-content": color.scale($color-accent-dark, $lightness: $darken-amount),
+        "neutral": $color-neutral-dark,
+        "neutral-content": color.scale($color-neutral-dark, $lightness: $darken-amount),
+);
+
+// Feedback colors
+$color-success: $color-green;
+$color-info: $color-blue;
+$color-warning: $color-yellow;
+$color-danger: $color-red;
+
+// Feedback colors map
+$feedback-colors: (
+        "success": $color-success,
+        "success-content": color.scale($color-success, $lightness: $darken-amount),
+        "info": $color-info,
+        "info-content": color.scale($color-info, $lightness: $lighten-amount),
+        "warning": $color-warning,
+        "warning-content": color.scale($color-warning, $lightness: $darken-amount),
+        "danger": $color-danger,
+        "danger-content": color.scale($color-danger, $lightness: $lighten-amount),
+);
+
