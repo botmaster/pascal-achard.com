@@ -119,7 +119,7 @@ function initEffects() {
     const tl = gsap.timeline({
       scrollTrigger: {
 
-        start: 'bottom 99%',
+        start: 'bottom 92%',
         end: ScrollTrigger.isTouch === 1 ? 'bottom 30%' : 'bottom 50%',
         scrub: ScrollTrigger.isTouch === 1 ? 0.8 : 2.8,
         trigger: root.value,
@@ -254,10 +254,10 @@ onBeforeUnmount(() => {
         </div>
       </div>
     </div>
-    <div class="container mx-auto absolute left-0 bottom-1.5 xl:bottom-4 right-0">
+    <div class="container mx-auto absolute left-0 bottom-4 xl:bottom-4 right-0">
       <div class="xl:w-1/2 xl:ml-auto text-center">
         <span ref="iconScroll" class="inline-block">
-          <Icon name="pajamas:scroll-down" class="xl:text-2xl" />
+          <Icon name="pajamas:scroll-down" class="text-xl xl:text-2xl" />
         </span>
       </div>
     </div>
@@ -266,7 +266,7 @@ onBeforeUnmount(() => {
 
 <style scoped lang="scss">
 .cover {
-  @apply relative invisible flex items-end overflow-hidden py-6 md:py-32 text-polarnight-nord-0 dark:text-white;
+  @apply relative invisible flex items-end overflow-hidden py-12 md:py-32 text-polarnight-nord-0 dark:text-white;
 
   &__background {
     @apply absolute inset-0 block w-full h-full bg-center bg-no-repeat bg-cover z-0;

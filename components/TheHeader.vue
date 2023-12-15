@@ -54,7 +54,7 @@ const localePath = useLocalePath();
 
 <style scoped lang="scss">
 .the-header {
-  @apply flex justify-between items-center mx-2 mt-1 md:mx-8 md:mt-4 z-10 fixed inset-x-0 top-0 py-1 md:py-0;
+  @apply flex justify-between items-center mx-2 mt-1 md:mx-8 md:mt-4 z-20 fixed inset-x-0 top-0 py-1 md:py-0;
 
   &__nav {
     @apply relative flex items-center gap-4 ml-auto px-4 pt-2 pb-2 text-xl uppercase leading-none bg-body-background
