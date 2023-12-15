@@ -159,7 +159,7 @@ onUnmounted(() => {
   }
 
   &__content-wrapper {
-    @apply py-16 md:py-24;
+    @apply py-8 md:py-24;
   }
 
   &__content {

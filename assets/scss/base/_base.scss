@@ -5,7 +5,7 @@ html {
 }
 
 body {
-  @apply relative font-body text-base text-body-txt bg-body-background leading-snug;
+  @apply relative min-h-[100svh] font-body text-base text-body-txt bg-body-background leading-snug;
 }
 
 // Liens

@@ -22,7 +22,7 @@ export function useProseHeadingEffect() {
       await nextTick();
       Splitting({
         target: splitMe.value,
-        by: 'words',
+        by: 'chars',
       });
 
       // Animate the characters
@@ -58,15 +58,15 @@ export function useProseHeadingEffect() {
       );
 
       tl.fromTo(
-        self.selector('.word'),
+        self.selector('.char'),
         {
           opacity: 0,
-          x: 60,
+          x: 10,
         },
         {
           opacity: 1,
           x: 0,
-          stagger: 0.12,
+          stagger: 0.08,
         },
         0,
       );
