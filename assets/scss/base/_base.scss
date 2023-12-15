@@ -1,36 +1,7 @@
 
-// Nord css variables
-//@each $name, $color in $nords {
-//  :root {
-//    --color-#{$name}: #{hue($color)} #{saturation($color)} #{lightness($color)};
-//  }
-//}
-//
-//// Named colors
-//:root {
-//  --color-primary: #{hue($nord-10) saturation($nord-10) lightness($nord-10)};
-//  --color-primary-content: #{hue(darken($nord-10, 10%)) saturation(darken($nord-10, 10%)) lightness(darken($nord-10, 10%))};
-//  --color-secondary: #{hue($nord-11) saturation($nord-11) lightness($nord-11)};
-//  --color-secondary-content: #{hue(darken($nord-11, 10%)) saturation(darken($nord-11, 10%)) lightness(darken($nord-11, 10%))};
-//}
-//
-//.dark {
-//  --color-primary: #{hue($nord-8) saturation($nord-8) lightness($nord-8)};
-//  --color-primary-content: #{hue(lighten($nord-8, 10%)) saturation(lighten($nord-8, 10%)) lightness(lighten($nord-8, 10%))};
-//  --color-secondary: #{hue($nord-11) saturation($nord-11) lightness($nord-11)};
-//}
-//
-//// Backgrounds
-//:root {
-//  --color-body-background: #{hue(#f2f4f8) saturation(#f2f4f8) lightness(#f2f4f8)};
-//}
-//
-//.dark {
-//  --color-body-background: #{hue(#242933) saturation(#242933) lightness(#242933)};
-//}
 
 html {
-  @apply antialiased text-base;
+  @apply antialiased text-base overflow-x-hidden;
 }
 
 body {

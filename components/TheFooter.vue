@@ -88,7 +88,7 @@ const themeList = computed(() => [
 </script>
 
 <template>
-  <footer ref="target" class="py-6 md:py-8">
+  <footer ref="target" class="relative py-6 md:py-8">
     <div class="mx-4 md:mx-8">
       <div class="md:flex md:justify-between md:items-center">
         <div class="flex gap-4 mb-4 md:mb-0">

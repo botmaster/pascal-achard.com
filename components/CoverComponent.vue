@@ -40,6 +40,7 @@ const coverUptitle = ref<HTMLElement | null>(null);
 const coverTitle = ref<HTMLElement | null>(null);
 const coverSubtitle = ref<HTMLElement | null>(null);
 const coverInfo = ref<HTMLElement | null>(null);
+const iconScroll = ref<HTMLElement | null>(null);
 
 let ctx: gsap.Context;
 
@@ -99,15 +100,31 @@ function initEffects() {
       0,
     );
 
+    tlIntro.to(
+      iconScroll.value,
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: 'back.out(1.7)',
+        startAt: {
+          y: -60,
+          opacity: 0,
+        },
+      },
+      '-=1.5',
+    );
+
     // Scrub Timeline
     const tl = gsap.timeline({
       scrollTrigger: {
-        markers: false,
-        start: 'bottom 90%',
+
+        start: 'bottom 99%',
         end: ScrollTrigger.isTouch === 1 ? 'bottom 30%' : 'bottom 50%',
         scrub: ScrollTrigger.isTouch === 1 ? 0.8 : 2.8,
         trigger: root.value,
         toggleActions: 'restart none none none',
+        markers: true,
       },
       onStart: () => {
         if (!self || !self.selector)
@@ -135,7 +152,7 @@ function initEffects() {
     tl.to(
       coverDimmer.value,
       {
-        autoAlpha: 1,
+        autoAlpha: 0.8,
       },
       '<',
     );
@@ -177,6 +194,15 @@ function initEffects() {
         '<',
       );
     }
+
+    tl.to(
+      iconScroll.value,
+      {
+        autoAlpha: 0,
+        y: 100,
+      },
+      '<',
+    );
   }, root.value || undefined);
 }
 
@@ -198,10 +224,10 @@ onBeforeUnmount(() => {
     <div ref="coverBg" class="cover__background" />
 
     <div ref="coverDimmer" class="cover__dimmer" />
-    <div class="container mx-auto px-container md:px-container-md relative">
-      <div>
+    <div class="cover__content">
+      <div class="container mx-auto">
         <div class="line-mask">
-          <p ref="coverUptitle" class="text-polarnight-nord-0 dark:text-white">
+          <p ref="coverUptitle">
             {{ uptitle }}
           </p>
         </div>
@@ -228,15 +254,22 @@ onBeforeUnmount(() => {
         </div>
       </div>
     </div>
+    <div class="container mx-auto absolute left-0 bottom-1.5 xl:bottom-4 right-0">
+      <div class="xl:w-1/2 xl:ml-auto text-center">
+        <span ref="iconScroll" class="inline-block">
+          <Icon name="pajamas:scroll-down" class="xl:text-2xl" />
+        </span>
+      </div>
+    </div>
   </div>
 </template>
 
 <style scoped lang="scss">
 .cover {
-  @apply relative invisible flex items-end overflow-hidden py-6 md:py-32;
+  @apply relative invisible flex items-end overflow-hidden py-6 md:py-32 text-polarnight-nord-0 dark:text-white;
 
   &__background {
-    @apply absolute inset-0 block w-full h-full bg-center bg-no-repeat bg-cover;
+    @apply absolute inset-0 block w-full h-full bg-center bg-no-repeat bg-cover z-0;
     background-image: url("/images/pascal-achard/20102017-DSC06728_ufitab_c_scale_w_1024.jpg");
 
     @media screen and (min-width: 1024px) {
@@ -254,6 +287,10 @@ onBeforeUnmount(() => {
 
   &__bg-image {
     @apply inset-0 w-full h-full object-cover;
+  }
+
+  &__content {
+    @apply relative z-10;
   }
 }
 

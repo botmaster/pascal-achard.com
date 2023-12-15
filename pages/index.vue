@@ -64,27 +64,27 @@ onMounted(() => {
       const tl = gsap.timeline({
         scrollTrigger: {
           start: 'top 90%',
-          end: 'top 44%',
+          end: 'top 64%',
           scrub: ScrollTrigger.isTouch === 1 ? true : 2.8,
-          markers: true,
+          markers: false,
           trigger: sheet,
         },
         defaults: {
-          ease: 'power2.out',
+          ease: 'power1.out',
         },
       });
 
       tl.fromTo(
         sheet,
         {
-          filter: 'saturate(0%) blur(11px)',
-          opacity: 0,
-          x: -100,
+          filter: 'brightness(200%) blur(100px)',
+          opacity: 0.6,
+          y: 100,
         },
         {
-          filter: 'saturate(100%) blur(0px)',
+          filter: 'brightness(100%) blur(0px)',
           opacity: 1,
-          x: 0,
+          y: 0,
         },
       );
 
@@ -112,7 +112,7 @@ onUnmounted(() => {
         :info="data.coverInfo"
       />
     </div>
-    <div ref="contextScope">
+    <div ref="contextScope" class="page-index__section-wrapper">
       <section
         v-for="(element, index) in data?.body?.children"
         :key="index"
@@ -147,25 +147,23 @@ onUnmounted(() => {
     min-height: calc(
       100svh - 2px
     ); // Because of lighthouse LCP issue with 100svh.  //TODO: fix LCP issue
-    @apply relative flex flex-col;
+    @apply relative xl:fixed xl:top-0 w-full flex flex-col;
 
     > * {
       @apply flex-grow;
     }
   }
 
+  &__section-wrapper {
+    @apply relative xl:mt-[calc(100vh)];
+  }
+
   &__content-wrapper {
-    @apply py-16 md:py-24 overflow-hidden;
+    @apply py-16 md:py-24;
   }
 
   &__content {
-    @apply xl:w-8/12;
+    @apply xl:w-1/2 ml-auto;
   }
-
-  /*& :deep(.nuxt-content) {
-    .sheet-elevation + .sheet-elevation {
-      @apply mt-8 lg:mt-14 xl:mt-20;
-    }
-  }*/
 }
 </style>

@@ -36,7 +36,7 @@ export function useProseHeadingEffect() {
           toggleActions: 'play none none reverse',
         },
         defaults: {
-          ease: 'power2.out',
+          ease: 'power1.out',
           duration: 1.2,
         },
       });
@@ -61,7 +61,7 @@ export function useProseHeadingEffect() {
         self.selector('.word'),
         {
           opacity: 0,
-          x: 150,
+          x: 60,
         },
         {
           opacity: 1,
