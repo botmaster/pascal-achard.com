@@ -22,4 +22,10 @@ export default defineNuxtPlugin(() => {
   };
   // Start the animation frame loop
   requestAnimationFrame(scrollFn);
+
+  return {
+    provide: {
+      lenisInstance: lenis,
+    },
+  };
 });

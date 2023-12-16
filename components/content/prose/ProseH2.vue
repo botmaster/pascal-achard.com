@@ -34,4 +34,8 @@ const slotContent = computed(() => {
   </h2>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+a {
+  will-change: transform;
+}
+</style>

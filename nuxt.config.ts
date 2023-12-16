@@ -73,14 +73,6 @@ export default defineNuxtConfig({
     typeCheck: false,
   },
 
-  /* css: [
-    "@fontsource/rubik/300.css",
-    "@fontsource/rubik/400.css",
-    "@fontsource/rubik/500.css",
-    "@fontsource/rubik/700.css",
-    "@fontsource/rubik/900.css",
-  ], */
-
   tailwindcss: {
     cssPath: '~/assets/scss/main.scss',
     configPath: '~/tailwind.config.js',
@@ -156,12 +148,21 @@ export default defineNuxtConfig({
     discoverImages: true,
   },
 
+  fontMetrics: {
+    fonts: [
+      {
+        family: 'Rubik',
+      },
+    ],
+  },
+
   build: {
     transpile: ['gsap'],
   },
 
   experimental: {
     inlineRouteRules: true,
+    inlineSSRStyles: false,
   },
 
   modules: [
@@ -180,7 +181,6 @@ export default defineNuxtConfig({
 
   devtools: {
     // Enable devtools (default: true)
-    enabled: false,
-    // VS Code Server options
+    enabled: true,
   },
 });

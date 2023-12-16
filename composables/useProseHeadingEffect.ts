@@ -28,15 +28,14 @@ export function useProseHeadingEffect() {
       // Animate the characters
       const tl = gsap.timeline({
         scrollTrigger: {
-          markers: false,
           trigger: root.value,
           start: 'top 90%',
-          end: 'top 44%',
+          end: ScrollTrigger.isTouch === 1 ? 'top 30%' : 'top 44%',
           scrub: ScrollTrigger.isTouch === 1 ? true : 2.8,
           toggleActions: 'play none none reverse',
         },
         defaults: {
-          ease: 'power1.out',
+          ease: 'power3.out',
           duration: 1.2,
         },
       });
@@ -50,7 +49,7 @@ export function useProseHeadingEffect() {
       );
 
       tl.set(
-        self.selector('.word'),
+        self.selector('.char'),
         {
           transformOrigin: 'left left',
         },
@@ -61,12 +60,14 @@ export function useProseHeadingEffect() {
         self.selector('.char'),
         {
           opacity: 0,
-          x: 10,
+          x: 30,
+          scaleX: 1.6,
         },
         {
           opacity: 1,
           x: 0,
-          stagger: 0.08,
+          scaleX: 1,
+          stagger: 0.09,
         },
         0,
       );

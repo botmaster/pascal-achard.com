@@ -9,7 +9,7 @@ description: Pascal Achard, développeur frontend senior, 20+ ans d'expérience,
 ::sheetElevation
 ## À propos de moi
 
-> <span class="mr-2">💡</span>  <span class="font-rubik-medium text-primary-content">Info</span>
+> <span class="mr-2">💡</span>  <span class="font-rubik-medium font-medium text-primary">Info</span>
 >
 > Ce site est un prétexte pour expérimenter des technologies et des méthodes de développement. Il est en constante évolution.
 
@@ -90,7 +90,7 @@ beaucoup à Netlify en plus riche.
 ::sheetElevation
 ### Projets coup de cœur
 
-> <span class="mr-2">ℹ️</span>  <span class="font-rubik-medium text-primary-content">Info</span>
+> <span class="mr-2">ℹ️</span>  <span class="font-rubik-medium font-medium text-primary">Info</span>
 >
 > La version actuellement en ligne du site antidiscriminations.fr n'est plus celle dont je parle ici 😕.
 

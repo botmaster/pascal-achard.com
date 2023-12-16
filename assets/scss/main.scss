@@ -4,6 +4,7 @@
 
 @tailwind base;
 @tailwind components;
+@import "vendors/index"; // <-- Placed here because to prevent to be removed by unused CSS purge. See https://tailwindcss.com/docs/content-configuration#working-with-third-party-libraries
 @tailwind utilities;
 
 // Import abstracts
