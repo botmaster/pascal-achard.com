@@ -53,13 +53,10 @@ module.exports = {
       ...nord,
     },
     fontFamily: {
-      'display': ['rubik-black', 'system-ui', 'sans-serif'],
+      'display': ['rubik-black', 'Rubik fallback', 'system-ui', 'sans-serif'],
       'body': ['system-ui', 'sans-serif'],
       'rubik-black': ['rubik-black', 'system-ui', 'sans-serif'],
-      'rubik-bold': ['rubik-bold', 'system-ui', 'sans-serif'],
       'rubik-medium': ['rubik-medium', 'system-ui', 'sans-serif'],
-      'rubik-regular': ['rubik-regular', 'system-ui', 'sans-serif'],
-      'rubik-light': ['rubik-light', 'system-ui', 'sans-serif'],
       'code': ['monospace'],
     },
     container: {

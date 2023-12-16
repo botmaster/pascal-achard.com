@@ -5,33 +5,13 @@
 // Doc here:
 // https://fontsource.org/docs/getting-started/faces-mixin
 
+
 @include Rubik.faces(
-        $subsets: latin,
-        $weights: 300,
-        $styles: normal,
-        $family: "rubik-light",
-);
-
-/*@include Rubik.faces(
-        $subsets: latin,
-        $weights: 400,
-        $styles: normal,
-        $family: "rubik-regular",
-);*/
-
-/*@include Rubik.faces(
         $subsets: latin,
         $weights: 500,
         $styles: normal,
         $family: "rubik-medium",
-);*/
-
-/*@include Rubik.faces(
-        $subsets: latin,
-        $weights: 700,
-        $styles: normal,
-        $family: "rubik-bold"
-);*/
+);
 
 @include Rubik.faces(
         $subsets: latin,

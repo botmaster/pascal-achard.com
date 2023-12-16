@@ -9,7 +9,7 @@ description: Pascal Achard, senior frontend developer, 20+ years of experience, 
 ::sheetElevation
 ## About me
 
-> <span class="mr-2">💡</span>  <span class="font-rubik-medium text-primary-content">Info</span>
+> <span class="mr-2">💡</span>  <span class="font-rubik-medium font-medium text-primary">Info</span>
 >
 > This site is a pretext to experiment with technologies and development methods. It is in constant evolution.
 
@@ -79,7 +79,7 @@ This project allowed me to put into practice Redis of which I only knew the theo
 ::sheetElevation
 ### Favourite projects
 
-> <span class="mr-2">ℹ️</span>  <span class="font-rubik-medium text-primary-content">Info</span>
+> <span class="mr-2">ℹ️</span>  <span class="font-rubik-medium font-medium text-primary">Info</span>
 >
 > The current online version of the antidiscriminations.fr website is no longer the one I am talking about here 😕.
 

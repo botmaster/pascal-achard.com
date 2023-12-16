@@ -124,7 +124,6 @@ function initEffects() {
         scrub: ScrollTrigger.isTouch === 1 ? 0.8 : 2.8,
         trigger: root.value,
         toggleActions: 'restart none none none',
-        markers: false,
       },
       onStart: () => {
         if (!self || !self.selector)

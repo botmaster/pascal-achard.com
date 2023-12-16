@@ -64,9 +64,8 @@ onMounted(() => {
       const tl = gsap.timeline({
         scrollTrigger: {
           start: 'top 90%',
-          end: 'top 64%',
+          end: ScrollTrigger.isTouch === 1 ? 'top 50%' : 'top 64%',
           scrub: ScrollTrigger.isTouch === 1 ? true : 2.8,
-          markers: false,
           trigger: sheet,
         },
         defaults: {
@@ -77,7 +76,7 @@ onMounted(() => {
       tl.fromTo(
         sheet,
         {
-          filter: 'brightness(200%) blur(100px)',
+          filter: 'brightness(200%) blur(200px)',
           opacity: 0.6,
           y: 100,
         },
@@ -159,7 +158,7 @@ onUnmounted(() => {
   }
 
   &__content-wrapper {
-    @apply py-8 md:py-24;
+    @apply py-8 md:py-24 overflow-x-clip;
   }
 
   &__content {

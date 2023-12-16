@@ -15,3 +15,9 @@ const generate = computed(() => props.id && headings?.anchorLinks?.h1);
     <slot v-else />
   </h1>
 </template>
+
+<style lang="scss" scoped>
+a {
+will-change: transform;
+}
+</style>
