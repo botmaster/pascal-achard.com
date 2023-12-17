@@ -17,5 +17,8 @@
     "auto": "Auto",
     "dark": "Dark",
     "light": "Light"
+  },
+  "miscellaneous": {
+    "scrollToContent": "Scroll to content"
   }
 }

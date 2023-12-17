@@ -109,9 +109,10 @@ onUnmounted(() => {
         :subtitle="data.coverSubtitle ?? ''"
         :uptitle="data.coverUpTitle ?? ''"
         :info="data.coverInfo"
+        scroll-to-target="[data-scrollTarget]"
       />
     </div>
-    <div ref="contextScope" class="page-index__section-wrapper">
+    <div ref="contextScope" class="page-index__section-wrapper" data-scrollTarget>
       <section
         v-for="(element, index) in data?.body?.children"
         :key="index"
