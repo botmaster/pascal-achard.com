@@ -37,11 +37,12 @@ const localePath = useLocalePath();
       >
         <Icon name="material-symbols:info" /><span class="sr-only">{{ t("navigation.about") }}</span>
       </NuxtLink>
+      <div class="the-header__nav-separator" />
       <ThemeMenuComponent
         v-model="colorMode.preference"
         :is-unkown="colorMode.unknown"
         :theme-list="themeList"
-        class="the-header__nav-item leading-tight"
+        class="the-header__nav-item"
         :title="t('navigation.themeSelector')"
       />
       <LangSwitcher
@@ -57,12 +58,16 @@ const localePath = useLocalePath();
   @apply flex justify-between items-center mx-2 mt-1 md:mx-8 md:mt-4 z-20 fixed inset-x-0 top-0 py-1 md:py-0;
 
   &__nav {
-    @apply relative flex items-center gap-4 ml-auto px-4 pt-2 pb-2 text-xl uppercase leading-none bg-body-background
+    @apply relative flex items-center gap-3 ml-auto px-4 py-2.5 text-xl leading-[0px] bg-body-background
      rounded-lg ring-1 ring-inset ring-snowstorm-nord-4 dark:ring-polarnight-nord-2;
   }
 
   &__nav-item {
     @apply min-w-[1em];
+  }
+
+  &__nav-separator {
+    @apply w-0.5 bg-snowstorm-nord-4 dark:bg-polarnight-nord-2 h-3 mx-1.5;
   }
 
   &__nav-link {
