@@ -1,25 +1,17 @@
 <script setup lang="ts">
-import { gsap } from 'gsap';
+import { Expo, gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-const props = defineProps({
-  uptitle: {
-    type: String,
-    required: true,
-  },
-  title: {
-    type: String,
-    required: true,
-  },
-  subtitle: {
-    type: String,
-    required: true,
-  },
-  info: {
-    type: String,
-    default: null,
-  },
-});
+// Props type definition
+interface IProps {
+  uptitle: string
+  title: string
+  subtitle: string
+  info?: string
+  scrollToTarget?: HTMLElement | string
+}
+
+const props = defineProps<IProps>();
 
 // Preload image with rel="preload" and as="image" with head
 useHead({
@@ -31,6 +23,8 @@ useHead({
     },
   ],
 });
+
+const { t } = useI18n();
 
 // Effects setup
 const root = ref<HTMLElement | null>(null);
@@ -255,9 +249,16 @@ onBeforeUnmount(() => {
     </div>
     <div class="container mx-auto absolute left-0 bottom-4 xl:bottom-4 right-0">
       <div class="xl:w-1/2 xl:ml-auto text-center">
-        <span ref="iconScroll" class="inline-block">
-          <Icon name="pajamas:scroll-down" class="text-xl xl:text-2xl" />
-        </span>
+        <template v-if="props.scrollToTarget">
+          <button ref="iconScroll" :title="t('miscellaneous.scrollToContent')" class="inline-block" @click.prevent="$lenisInstance.scrollTo(scrollToTarget, { easing: Expo.easeInOut, lerp: 0 })">
+            <Icon name="pajamas:scroll-down" class="text-xl xl:text-2xl" />
+          </button>
+        </template>
+        <template v-else>
+          <span ref="iconScroll" :title="t('miscellaneous.scrollToContent')" class="inline-block">
+            <Icon name="pajamas:scroll-down" class="text-xl xl:text-2xl" />
+          </span>
+        </template>
       </div>
     </div>
   </div>

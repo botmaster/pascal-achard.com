@@ -55,8 +55,8 @@ module.exports = {
     fontFamily: {
       'display': ['rubik-black', 'Rubik fallback', 'system-ui', 'sans-serif'],
       'body': ['system-ui', 'sans-serif'],
-      'rubik-black': ['rubik-black', 'system-ui', 'sans-serif'],
-      'rubik-medium': ['rubik-medium', 'system-ui', 'sans-serif'],
+      'rubik-black': ['rubik-black', 'Rubik fallback', 'system-ui', 'sans-serif'],
+      'rubik-medium': ['rubik-medium', 'Rubik fallback', 'system-ui', 'sans-serif'],
       'code': ['monospace'],
     },
     container: {
