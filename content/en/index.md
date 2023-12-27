@@ -6,7 +6,7 @@ title: Senior frontend developer
 description: Pascal Achard, senior frontend developer, 20+ years of experience, Vue.js, Nuxt.js, TypeScript, Craftcms, Tailwindcss, Docker, Node.js, Webpack, Prettier, Notion, Netlify, render...
 ---
 
-::sheetElevation
+::Sheetelevation
 ## About me
 
 > <span class="mr-2">💡</span>  <span class="font-rubik-medium font-medium text-primary">Info</span>
@@ -41,19 +41,19 @@ tools. I have an interest in graphic design and music.
 </p>
 ::
 
-::sheetElevation
+::Sheetelevation
 ### Last experience
 
 Senior frontend software engineer at <img src="/images/content/jsk.png" alt="Jellysmack logo" width="64" height="64" class="inline-block w-[1.3em] !mb-0"> [Jellysmack](https://jellysmack.com/fr/){target="_blank" rel="noopener"} from March 2022 to November 2023.
 ::
 
-::sheetElevation
+::Sheetelevation
 ### At the moment, I am a fan of:
 
 [Vue.js](https://vuejs.org/){target="_blank" rel="noopener"}, [Nuxt.js](https://nuxt.com/){target="_blank" rel="noopener"}, [Pinia](https://pinia.vuejs.org/){target="_blank" rel="noopener"}, [TypeScript](https://www.typescriptlang.org/){target="_blank" rel="noopener"}, [Craftcms](https://craftcms.com/){target="_blank" rel="noopener"}, [Twig](https://twig.symfony.com/){target="_blank" rel="noopener"}, [Tailwindcss](https://tailwindcss.com/){target="_blank" rel="noopener"}, [Docker](https://www.docker.com/){target="_blank" rel="noopener"}, [Node.js](https://nodejs.org/){target="_blank" rel="noopener"}, [Webpack](https://webpack.js.org/){target="_blank" rel="noopener"}, [Vite](https://vitejs.dev/){target="_blank" rel="noopener"}, [Prettier](https://prettier.io/){target="_blank" rel="noopener"}, [Notion](https://www.notion.so){target="_blank" rel="noopener"}, [Netlify](https://www.netlify.com/){target="_blank" rel="noopener"}, [render](https://www.render.com/){target="_blank" rel="noopener"}...
 ::
 
-::sheetElevation
+::Sheetelevation
 ### Last experiments
 
 #### Zégut PG
@@ -76,7 +76,7 @@ Project built using Node.js and npm ecosystems, Github to store the code, Render
 This project allowed me to put into practice Redis of which I only knew the theory. The Spotify API is very well done and particularly well documented. Nuxt.js allowed me to capitalize on my Vue.js knowledge and to quickly build a server-side rendered application. The Render platform is very useful and easy to use. It is very similar to Netlify but richer.
 ::
 
-::sheetElevation
+::Sheetelevation
 ### Favourite projects
 
 > <span class="mr-2">ℹ️</span>  <span class="font-rubik-medium font-medium text-primary">Info</span>

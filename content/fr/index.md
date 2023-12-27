@@ -6,7 +6,7 @@ title: Développeur frontend senior
 description: Pascal Achard, développeur frontend senior, 20+ ans d'expérience, Vue.js, Nuxt.js, TypeScript, Craftcms, Tailwindcss, Docker, Node.js, Webpack, Prettier, Notion, Netlify, render...
 ---
 
-::sheetElevation
+::Sheetelevation
 ## À propos de moi
 
 > <span class="mr-2">💡</span>  <span class="font-rubik-medium font-medium text-primary">Info</span>
@@ -46,19 +46,19 @@ outils. J'ai une appétence pour le graphisme et la musique.
 </p>
 ::
 
-::sheetElevation
+::Sheetelevation
 ### Dernière expérience
 
 Software engineer frontend sénior chez <img src="/images/content/jsk.png" alt="Logo Jellysmack" width="64" height="64" class="inline-block w-[1.3em] !mb-0"> [Jellysmack](https://jellysmack.com/fr/){target="_blank" rel="noopener"} de mars 2022 à novembre 2023.
 ::
 
-::sheetElevation
+::Sheetelevation
 ### En ce moment, je suis fan de :
 
 [Vue.js](https://vuejs.org/){target="_blank" rel="noopener"}, [Nuxt.js](https://nuxt.com/){target="_blank" rel="noopener"}, [Pinia](https://pinia.vuejs.org/){target="_blank" rel="noopener"}, [TypeScript](https://www.typescriptlang.org/){target="_blank" rel="noopener"}, [Craftcms](https://craftcms.com/){target="_blank" rel="noopener"}, [Twig](https://twig.symfony.com/){target="_blank" rel="noopener"}, [Tailwindcss](https://tailwindcss.com/){target="_blank" rel="noopener"}, [Docker](https://www.docker.com/){target="_blank" rel="noopener"}, [Node.js](https://nodejs.org/){target="_blank" rel="noopener"}, [Webpack](https://webpack.js.org/){target="_blank" rel="noopener"}, [Vite](https://vitejs.dev/){target="_blank" rel="noopener"}, [Prettier](https://prettier.io/){target="_blank" rel="noopener"}, [Notion](https://www.notion.so){target="_blank" rel="noopener"}, [Netlify](https://www.netlify.com/){target="_blank" rel="noopener"}, [render](https://www.render.com/){target="_blank" rel="noopener"}...
 ::
 
-::sheetElevation
+::Sheetelevation
 ### Dernières expérimentations
 
 #### Zégut PG
@@ -87,7 +87,7 @@ rapidement une application rendue côté serveur. La plateforme Render est très
 beaucoup à Netlify en plus riche.
 ::
 
-::sheetElevation
+::Sheetelevation
 ### Projets coup de cœur
 
 > <span class="mr-2">ℹ️</span>  <span class="font-rubik-medium font-medium text-primary">Info</span>
