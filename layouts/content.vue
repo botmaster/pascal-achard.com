@@ -32,9 +32,9 @@ const head = useLocaleHead({
           </template>
         </HeroComponent>
         <div class="container mx-auto mt-8 mb-12 md:mt-20 md:mb-24">
-          <SheetElevation shadow="lg" class="lg:w-9/12">
+          <Sheetelevation shadow="lg" class="lg:w-9/12">
             <slot />
-          </SheetElevation>
+          </Sheetelevation>
         </div>
         <TheFooter class="mt-auto" />
       </div>
