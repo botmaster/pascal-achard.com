@@ -18,7 +18,7 @@ const slotContent = computed(() => {
 </script>
 
 <template>
-  <h3 :id="id" ref="root" class="fouc-hidden">
+  <h3 :id="id" ref="root" class="heading fouc-hidden">
     <span class="sr-only">{{ slotContent }}</span>
     <a
       v-if="id && generate"
@@ -35,7 +35,13 @@ const slotContent = computed(() => {
 </template>
 
 <style lang="scss" scoped>
-a {
+.heading {
+  @apply overflow-x-visible overflow-y-clip;
+
   will-change: transform;
+
+  :deep(.word) {
+    will-change: transform;
+  }
 }
 </style>

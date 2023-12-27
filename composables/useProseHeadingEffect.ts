@@ -22,21 +22,23 @@ export function useProseHeadingEffect() {
       await nextTick();
       Splitting({
         target: splitMe.value,
-        by: 'chars',
+        by: 'words',
       });
 
       // Animate the characters
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: root.value,
-          start: 'top 90%',
-          end: ScrollTrigger.isTouch === 1 ? 'top 30%' : 'top 44%',
-          scrub: ScrollTrigger.isTouch === 1 ? true : 2.8,
-          toggleActions: 'play none none reverse',
+          start: 'top 75%',
+          end: ScrollTrigger.isTouch === 1 ? 'top 30%' : 'top 24%',
+          /* scrub: ScrollTrigger.isTouch === 1 ? true : 2.8, */
+          scrub: false,
+          /* toggleActions: 'play none none reverse', */
         },
         defaults: {
-          ease: 'power3.out',
-          duration: 1.2,
+          ease: 'expo.out',
+          duration: 1.5,
+          force3D: true,
         },
       });
 
@@ -48,26 +50,25 @@ export function useProseHeadingEffect() {
         0,
       );
 
-      tl.set(
-        self.selector('.char'),
+      tl.fromTo(
+        root.value,
         {
-          transformOrigin: 'left left',
+          y: 30,
+        },
+        {
+          y: 0,
         },
         0,
       );
 
       tl.fromTo(
-        self.selector('.char'),
+        self.selector('.word'),
         {
-          opacity: 0,
-          x: 30,
-          scaleX: 1.6,
+          y: 60,
         },
         {
-          opacity: 1,
-          x: 0,
-          scaleX: 1,
-          stagger: 0.09,
+          y: 0,
+          stagger: 0.08,
         },
         0,
       );

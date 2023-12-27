@@ -7,8 +7,6 @@ export default defineNuxtPlugin(() => {
   const lenis = new Lenis({
     lerp: 0.1, // Lower values create a smoother scroll effect
     smoothWheel: true, // Enables smooth scrolling for mouse wheel events
-    wrapper: document.getElementById('lenisTarget') || window, // The element that wraps the content
-    content: document.getElementById('lenisContent') || document.body, // The element that contains the content
   });
 
   // Update ScrollTrigger each time the user scrolls
@@ -30,6 +28,7 @@ export default defineNuxtPlugin(() => {
 
   gsap.ticker.lagSmoothing(0);
 
+  // Return the Lenis instance
   return {
     provide: {
       lenisInstance: lenis,

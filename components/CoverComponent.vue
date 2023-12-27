@@ -295,7 +295,7 @@ onBeforeUnmount(() => {
 }
 
 .line-mask {
-  @apply relative block overflow-hidden;
+  @apply relative block overflow-y-clip;
   //will-change: opacity, transform;
   > * {
     will-change: opacity, transform;

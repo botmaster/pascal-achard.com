@@ -143,6 +143,8 @@ onUnmounted(() => {
 .page-index {
   $self: &;
 
+  @apply mb-8 lg:mb-16;
+
   &__cover {
     min-height: calc(
       100svh - 2px
@@ -159,7 +161,7 @@ onUnmounted(() => {
   }
 
   &__content-wrapper {
-    @apply py-8 md:py-24 overflow-x-clip;
+    @apply py-8 md:py-14 overflow-x-clip;
   }
 
   &__content {
