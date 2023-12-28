@@ -162,7 +162,6 @@ export default defineNuxtConfig({
 
   experimental: {
     inlineRouteRules: true,
-    inlineSSRStyles: false,
   },
 
   modules: [
