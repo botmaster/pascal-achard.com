@@ -12,6 +12,8 @@ export function useProseHeadingEffect() {
     if (!process.client)
       return;
 
+    const route = useRoute();
+
     ctx = gsap.context(async (self) => {
       if (!self || !self.selector || !splitMe.value)
         return;
@@ -25,11 +27,11 @@ export function useProseHeadingEffect() {
         by: 'words',
       });
 
-      // Animate the characters
+      // Animate the words.
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: root.value,
-          start: 'top 75%',
+          start: route.path === '/' ? 'top 75%' : 'top bottom',
           end: ScrollTrigger.isTouch === 1 ? 'top 30%' : 'top 24%',
           /* scrub: ScrollTrigger.isTouch === 1 ? true : 2.8, */
           scrub: false,
