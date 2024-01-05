@@ -24,11 +24,11 @@ $nord-14: #a3be8c;
 $nord-15: #b48ead;
 
 
-$color-red: #bf616a;
-$color-green: #a3be8c;
-$color-blue: #5e81ac;
-$color-yellow: #ebcb8b;
-$color-pink: #b48ead;
+$color-red: $nord-11;
+$color-green: $nord-14;
+$color-blue: $nord-10;
+$color-yellow: $nord-13;
+$color-pink: $nord-15;
 
 $color-white: #fff;
 $color-black: #000;
@@ -86,7 +86,7 @@ $colors: (
 
 
 // Theme colors
-$color-primary: $color-blue;
+$color-primary: color.scale($color-blue, $lightness: -7%);
 $color-secondary: $nord-8;
 $color-accent: $color-green;
 $color-neutral: $color-gray-600;

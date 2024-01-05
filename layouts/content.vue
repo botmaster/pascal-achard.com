@@ -1,43 +1,33 @@
 <script setup lang="ts">
-const head = useLocaleHead({
+const i18nHead = useLocaleHead({
   addDirAttribute: true,
   addSeoAttributes: true,
+});
+useHead({
+  htmlAttrs: {
+    lang: i18nHead.value.htmlAttrs!.lang,
+  },
+  link: [...(i18nHead.value.link || [])],
+  meta: [...(i18nHead.value.meta || [])],
 });
 </script>
 
 <template>
-  <Html :lang="head.htmlAttrs?.lang" :dir="head.htmlAttrs?.dir">
-    <Head>
-      <template v-for="link in head.link" :key="link.id">
-        <Link
-          :id="link.id"
-          :rel="link.rel"
-          :href="link.href"
-          :hreflang="link.hreflang"
-        />
+  <div class="flex flex-col min-h-screen">
+    <TheHeader />
+    <HeroComponent>
+      <template #content>
+        <slot name="heroContent" />
       </template>
-      <template v-for="meta in head.meta" :key="meta.id">
-        <Meta :id="meta.id" :property="meta.property" :content="meta.content" />
+      <template #background>
+        <slot name="heroBackground" />
       </template>
-    </Head>
-    <Body>
-      <div class="flex flex-col min-h-screen">
-        <TheHeader />
-        <HeroComponent>
-          <template #content>
-            <slot name="heroContent" />
-          </template>
-          <template #background>
-            <slot name="heroBackground" />
-          </template>
-        </HeroComponent>
-        <div class="container mx-auto mt-8 mb-12 md:mt-20 md:mb-24">
-          <Sheetelevation shadow="lg" class="lg:w-9/12">
-            <slot />
-          </Sheetelevation>
-        </div>
-        <TheFooter class="mt-auto" />
-      </div>
-    </Body>
-  </Html>
+    </HeroComponent>
+    <div class="container mx-auto mt-8 mb-12 md:mt-20 md:mb-24">
+      <Sheetelevation shadow="lg" class="lg:w-9/12">
+        <slot />
+      </Sheetelevation>
+    </div>
+    <TheFooter class="mt-auto" />
+  </div>
 </template>

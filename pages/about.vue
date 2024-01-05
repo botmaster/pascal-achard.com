@@ -3,7 +3,8 @@ import { definePageMeta } from '#imports';
 import type { IPage } from '@/types/types';
 
 definePageMeta({
-  layout: false,
+  layout: false, // Disable default layout to use custom layout below instead (see <NuxtLayout> in template).
+  // More info: https://nuxt.com/docs/guide/directory-structure/layouts#overriding-a-layout-on-a-per-page-basis
 });
 
 const runtimeConfig = useRuntimeConfig();
