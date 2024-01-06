@@ -7,18 +7,19 @@
   "layouts": {
     "title": "Pascal Achard - {title}"
   },
+  "miscellaneous": {
+    "scrollToContent": "Aller au contenu"
+  },
   "navigation": {
     "about": "Page d'accueil",
     "home": "Page d'info",
     "languageSelector": "Sélecteur de langue",
+    "music": "Page musique",
     "themeSelector": "Sélecteur de thème"
   },
   "theme": {
     "auto": "Auto",
     "dark": "Sombre",
     "light": "Claire"
-  },
-  "miscellaneous": {
-    "scrollToContent": "Aller au contenu"
   }
 }

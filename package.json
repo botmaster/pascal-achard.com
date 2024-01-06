@@ -44,6 +44,7 @@
     "nuxt-simple-sitemap": "^4.4.1",
     "sass": "^1.69.7",
     "typescript": "^5.3.3",
+    "uuid": "^9.0.1",
     "vite-svg-loader": "^5.1.0",
     "vue-tsc": "^1.8.27"
   }
