@@ -1,6 +1,6 @@
 ---
-coverTitle: Musique
-description: Pascal Achard, développeur frontend senior. Music.
+coverTitle: Music
+description: Pascal Achard, senior frontend developer. Music.
 ---
 
 ## Listening <Icon class='text-primary' name="brandico:lastfm"></Icon>

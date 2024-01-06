@@ -68,6 +68,12 @@ export default defineNuxtConfig({
     },
   },
 
+  components: {
+    dirs: [
+      { path: '~/components', pathPrefix: false },
+    ],
+  },
+
   typescript: {
     strict: true,
     typeCheck: false,

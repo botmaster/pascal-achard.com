@@ -3,8 +3,6 @@
  * A component for pagination.
  */
 
-import { defineProps } from 'vue';
-
 interface IProps {
   tag?: string
   max?: number

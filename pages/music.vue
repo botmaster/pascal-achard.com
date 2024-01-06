@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { v4 as uuidv4 } from 'uuid';
 import type { IPage, Recenttracks, Track } from '~/types/types';
-import AppPaginate from '~/components/AppPaginate.vue';
 
 definePageMeta({
   layout: false,
@@ -79,23 +78,9 @@ const {
       </template>
       <template #heroContent>
         <h1>
-          Music
+          {{ data?.coverTitle }}
         </h1>
       </template>
-      <!--    <pre class="grid gap-x-4 gap-y-2 grid-cols-2 items-center content-start">
-        <code>total:</code>
-        <code>{{ recentTracksData?.["@attr"].total }}</code>
-        <code>pageCount:</code>
-        <code>{{ pageCount }}</code>
-        <code>currentPageSize:</code>
-        <code>{{ currentPageSize }}</code>
-        <code>currentPage:</code>
-        <code>{{ currentPage }}</code>
-        <code>isFirstPage:</code>
-        <code>{{ isFirstPage }}</code>
-        <code>isLastPage:</code>
-        <code>{{ isLastPage }}</code>
-      </pre> -->
 
       <ContentRenderer v-if="data" class="nuxt-content" :value="data" />
 
@@ -139,10 +124,12 @@ const {
           {{ currentPageSize }} scrobbles per page. Ordered by date. Newest first.
         </p>
 
-        <ul v-if="recentTracksData" class="grid gap-6 mt-2 max-h-[50vh] overflow-y-auto rounded bg-primary/5 p-2 dark:bg-primary/15" data-lenis-prevent>
-          <li v-for="track in trackList" :key="track.id" class="flex gap-6 items-start">
+        <ul v-if="recentTracksData" class="grid gap-6 mt-2 max-h-[50vh] overflow-y-auto rounded bg-primary/5 px-3 py-3 dark:bg-primary/15" data-lenis-prevent>
+          <li v-for="track in trackList" :key="track.id" class="flex gap-3 items-start">
             <!-- Image     -->
-            <img v-if="track.image[3]['#text']" :src="track.image[3]['#text']" alt="" loading="lazy" class="w-20 aspect-square object-cover shrink-0">
+            <a v-if="track.image[3]['#text']" :href="track.url" target="_blank" class="shrink-0">
+              <img :src="track.image[3]['#text']" alt="" loading="lazy" class="w-20 aspect-square object-cover">
+            </a>
 
             <!--  Meta    -->
             <div class="flex-grow">
