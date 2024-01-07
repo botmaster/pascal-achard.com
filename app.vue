@@ -17,6 +17,7 @@ useHead({
 </script>
 
 <template>
+  <NuxtLoadingIndicator color="hsl(var(--color-secondary))" :throttle="150" />
   <NuxtLayout>
     <NuxtPage />
   </NuxtLayout>

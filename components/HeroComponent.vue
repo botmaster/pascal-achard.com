@@ -22,7 +22,7 @@
   @apply relative flex items-end overflow-hidden py-6 min-h-[30vh] md:py-32 md:min-h-[60vh];
 
   &__background {
-    @apply absolute inset-0 block w-full h-full mix-blend-luminosity;
+    @apply absolute inset-0 block w-full h-full mix-blend-luminosity opacity-85;
 
     :slotted(img) {
       @apply w-full h-full object-cover object-center;
@@ -30,7 +30,7 @@
   }
 
   &__dimmer {
-    @apply absolute inset-0 bg-body-background/50;
+    @apply absolute inset-0 bg-primary/20;
   }
 
   &__content {

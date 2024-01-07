@@ -77,7 +77,7 @@ const {
         >
       </template>
       <template #heroContent>
-        <h1>
+        <h1 class="text-white">
           {{ data?.coverTitle }}
         </h1>
       </template>
