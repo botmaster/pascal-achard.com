@@ -11,8 +11,8 @@
     "scrollToContent": "Aller au contenu"
   },
   "navigation": {
-    "about": "Page d'accueil",
-    "home": "Page d'info",
+    "about": "Page d'info",
+    "home": "Page d'accueil",
     "languageSelector": "Sélecteur de langue",
     "music": "Page musique",
     "themeSelector": "Sélecteur de thème"
