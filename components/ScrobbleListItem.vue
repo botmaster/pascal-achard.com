@@ -41,7 +41,7 @@ const trackImage = computed(() => {
 
 <template>
   <Component :is="tag" class="track-item" :class="sizeClass">
-    <a v-if="trackImage?.['#text']" :href="props.track.url" class="track-item__media">
+    <a v-if="trackImage?.['#text']" target="_blank" rel="noopener" :href="props.track.url" class="track-item__media">
       <img :src="trackImage['#text']" alt="">
     </a>
     <div class="track-item__content">

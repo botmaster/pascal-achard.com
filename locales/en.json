@@ -1,5 +1,7 @@
 {
   "common": {
+    "go": "Go",
+    "goToPage": "Go to page",
     "languages": "Language",
     "no": "No",
     "yes": "Yes"
@@ -13,9 +15,20 @@
   "navigation": {
     "about": "About page",
     "home": "Home page",
-    "languageSelector": "Language selector",
     "lab": "Lab page",
+    "languageSelector": "Language selector",
     "themeSelector": "Theme selector"
+  },
+  "pages": {
+    "lab": {
+      "listeningNothing": "Listen to nothing",
+      "newestFirst": "",
+      "nowPlaying": "Now playing",
+      "orderedByDate": "",
+      "scrobbles": "Scrobbles",
+      "scrobblesHistory": "Scrobbles history",
+      "tracksPerPage": ""
+    }
   },
   "theme": {
     "auto": "Auto",

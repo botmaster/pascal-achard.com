@@ -8,7 +8,7 @@ definePageMeta({
 
 const config = useRuntimeConfig();
 
-const { locale: currentLocale } = useI18n();
+const { locale: currentLocale, t } = useI18n();
 
 const playlistListRef = ref<HTMLElement | null>(null);
 
@@ -115,32 +115,35 @@ function scrollListToTop() {
 
       <ContentRenderer v-if="contentData" class="nuxt-content" :value="contentData" />
 
-      <div class="flex flex-col gap-4 lg:flex-row lg:gap-14 mt-6">
+      <div class="flex flex-col gap-4 lg:flex-row lg:gap-14 mt-6 lg:mt-8">
         <div>
           <p class="uppercase text-sm text-primary">
-            Scrobbles
+            {{ t('pages.lab.scrobbles') }}
           </p>
-          <p class="flex gap-4 font-display text-4xl  leading-none">
+          <p class="flex gap-4 font-display text-4xl leading-none">
             <i18n-n tag="span" :value="Number(lastFmData?.['@attr'].total || 0)" />
             🤯
           </p>
         </div>
 
-        <div v-if="nowPlayingTrack">
+        <div>
           <p class="uppercase text-sm text-primary">
-            Now Playing
+            {{ t('pages.lab.nowPlaying') }}
           </p>
-          <ScrobbleListItem :track="nowPlayingTrack" size="large" tag="div" title-tag="p" />
+          <ScrobbleListItem v-if="nowPlayingTrack" :track="nowPlayingTrack" size="large" tag="div" title-tag="p" />
+          <p v-else class="flex gap-4 font-display text-4xl leading-none">
+            {{ t('pages.lab.listeningNothing') }}<span>😴</span>
+          </p>
         </div>
       </div>
-      <h4 class="mt-10 flex items-center gap-2">
-        Scrobbles history <Transition name="fade">
+      <h4 class="mt-16 flex items-center gap-2">
+        {{ t('pages.lab.scrobblesHistory') }}<Transition name="fade">
           <AppLoader v-if="pending" class="inline-block text-[0.8em]" />
         </Transition>
       </h4>
 
       <p class="mt-4 text-sm text-muted-text">
-        {{ currentPageSize }} scrobbles per page. Ordered by date. Newest first.
+        {{ t('pages.lab.tracksPerPage', currentPageSize) }}. {{ t('pages.lab.orderedByDate') }}. {{ t('pages.lab.newestFirst') }}.
       </p>
 
       <pre v-if="error" class="text-xs overflow-x-auto">{{ error }}</pre>

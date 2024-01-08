@@ -16,6 +16,7 @@ const props = withDefaults(defineProps<IProps>(), {
 });
 
 const emit = defineEmits(['update:modelValue']);
+const { t } = useI18n();
 
 const goToPageValue = ref<HTMLInputElement>();
 
@@ -102,7 +103,7 @@ function onFormSubmit(event: Event) {
 
     <!--  Input go to page     -->
     <form class="paginate__form" @submit.prevent="onFormSubmit">
-      <label for="goToPageValue">Go to page</label>
+      <label for="goToPageValue">{{ t('common.goToPage') }}</label>
       <input
         id="goToPageValue"
         ref="goToPageValue"
@@ -110,7 +111,7 @@ function onFormSubmit(event: Event) {
         :value="props.modelValue"
       >
       <button type="submit">
-        Go<Icon name="mdi:chevron-right" />
+        {{ t('common.go') }}<Icon name="mdi:chevron-right" />
       </button>
     </form>
   </nav>

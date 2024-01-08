@@ -7,3 +7,4 @@ description: Pascal Achard, développeur frontend senior. Lab. Je teste l'api de
 
 ## Listening <Icon title='Last.fm' class='text-primary' name="brandico:lastfm"></Icon>
 
+Quelques stats sur la musique que j'écoute.

@@ -1,5 +1,7 @@
 {
   "common": {
+    "go": "Allez",
+    "goToPage": "Aller à la page",
     "languages": "Langue",
     "no": "Non",
     "yes": "Oui"
@@ -13,9 +15,20 @@
   "navigation": {
     "about": "Page d'info",
     "home": "Page d'accueil",
-    "languageSelector": "Sélecteur de langue",
     "lab": "Page lab",
+    "languageSelector": "Sélecteur de langue",
     "themeSelector": "Sélecteur de thème"
+  },
+  "pages": {
+    "lab": {
+      "listeningNothing": "Écoute rien du tout",
+      "newestFirst": "Nouveaux en premier",
+      "nowPlaying": "En cours de lecture",
+      "orderedByDate": "Trié par date",
+      "scrobbles": "Scrobbles",
+      "scrobblesHistory": "Scrobbles historique",
+      "tracksPerPage": "{n} pistes par pages"
+    }
   },
   "theme": {
     "auto": "Auto",

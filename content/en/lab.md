@@ -7,6 +7,6 @@ description: Pascal Achard, senior frontend developer. Lab.
 
 ## Listening <Icon class='text-primary' name="brandico:lastfm"></Icon>
 
-sdfsdf 
+Some stats on the music I listen to.
 
 
