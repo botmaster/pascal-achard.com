@@ -39,10 +39,10 @@ const localePath = useLocalePath();
       </NuxtLink>
       <NuxtLink
         class="the-header__nav-item the-header__nav-link"
-        :to="localePath({ name: 'music' })"
-        :title="t('navigation.music')"
+        :to="localePath({ name: 'lab' })"
+        :title="t('navigation.lab')"
       >
-        <Icon name="material-symbols:library-music" /><span class="sr-only">{{ t("navigation.music") }}</span>
+        <Icon name="material-symbols:experiment" /><span class="sr-only">{{ t("navigation.lab") }}</span>
       </NuxtLink>
       <div class="the-header__nav-separator" />
       <ThemeMenuComponent

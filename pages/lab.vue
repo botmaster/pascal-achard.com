@@ -10,10 +10,12 @@ const config = useRuntimeConfig();
 
 const { locale: currentLocale } = useI18n();
 
+const playlistListRef = ref<HTMLElement | null>(null);
+
 // Fetch Content data
-const { data: contentData } = await useAsyncData(`music-${currentLocale.value}`, () =>
+const { data: contentData } = await useAsyncData(`lab-${currentLocale.value}`, () =>
   queryContent<IPage>()
-    .where({ _locale: currentLocale.value, _path: '/music' })
+    .where({ _locale: currentLocale.value, _path: '/lab' })
     .findOne());
 
 if (contentData)
@@ -69,8 +71,20 @@ const {
   pageSize,
   onPageChange(returnValue) {
     page.value = returnValue.currentPage;
+    scrollListToTop();
   },
 });
+
+// Scroll to top of the list when page changes
+function scrollListToTop() {
+  const listElement = playlistListRef.value as HTMLElement;
+  if (listElement) {
+    listElement.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }
+}
 </script>
 
 <template>
@@ -85,80 +99,75 @@ const {
         >
       </template>
       <template #heroContent>
+        <p class="h3">
+          🧪
+        </p><p />
         <h1 class="text-white">
           {{ contentData?.coverTitle }}
         </h1>
+        <p class="text-white h3">
+          {{ contentData?.coverSubtitle }}
+        </p>
+        <p class="text-white">
+          {{ contentData?.coverDescription }}
+        </p>
       </template>
 
       <ContentRenderer v-if="contentData" class="nuxt-content" :value="contentData" />
 
-      <div class="mt-8">
-        <p class="uppercase text-sm text-muted-text">
-          Scrobbles
-        </p>
-        <p class="flex gap-[1ch] font-display text-4xl text-primary leading-none">
-          <i18n-n tag="span" :value="Number(lastFmData?.['@attr'].total || 0)" />
-          🤯
-        </p>
+      <div class="flex flex-col gap-4 lg:flex-row lg:gap-14 mt-6">
+        <div>
+          <p class="uppercase text-sm text-primary">
+            Scrobbles
+          </p>
+          <p class="flex gap-4 font-display text-4xl  leading-none">
+            <i18n-n tag="span" :value="Number(lastFmData?.['@attr'].total || 0)" />
+            🤯
+          </p>
+        </div>
+
+        <div v-if="nowPlayingTrack">
+          <p class="uppercase text-sm text-primary">
+            Now Playing
+          </p>
+          <ScrobbleListItem :track="nowPlayingTrack" size="large" tag="div" title-tag="p" />
+        </div>
       </div>
+      <h4 class="mt-10 flex items-center gap-2">
+        Scrobbles history <Transition name="fade">
+          <AppLoader v-if="pending" class="inline-block text-[0.8em]" />
+        </Transition>
+      </h4>
 
-      <div class="mt-8">
-        <p class="uppercase text-sm text-muted-text">
-          Now Playing
-        </p>
-        <p class="flex gap-[1ch] font-display text-4xl text-primary leading-none">
-          <span v-if="nowPlayingTrack">
-            {{ nowPlayingTrack.name }}
-          </span>
-          <span v-else>
-            Nothing 😢
-          </span>
-        </p>
-        <!--  Track now playing meta        -->
-        <div v-if="nowPlayingTrack" class="flex flex-wrap mt-1 leading-tight text-sm">
-          <span>Artist: {{ nowPlayingTrack.artist.name }}</span><span>&nbsp;-&nbsp;</span>
-          <span>Album: {{ nowPlayingTrack.album["#text"] }}</span><span>&nbsp;-&nbsp;</span>
+      <p class="mt-4 text-sm text-muted-text">
+        {{ currentPageSize }} scrobbles per page. Ordered by date. Newest first.
+      </p>
 
-          <!-- Link         -->
-          <span v-if="nowPlayingTrack.url">
-            Track on : <a :href="nowPlayingTrack.url">Last.fm</a>
-          </span>
-        </div>
+      <pre v-if="error" class="text-xs overflow-x-auto">{{ error }}</pre>
 
-        <h4 class="mt-10">
-          Scrobbles history
-        </h4>
-
-        <p class="mt-4 text-sm text-muted-text">
-          {{ currentPageSize }} scrobbles per page. Ordered by date. Newest first.
-        </p>
-        <p v-if="pending">
-          Fetching...
-        </p>
-        <pre v-else-if="error" class="text-xs overflow-x-auto">{{ error }}</pre>
-
-        <ul
-          v-else-if="trackList?.length"
-          class="grid gap-6 mt-2 max-h-[50vh] overflow-y-auto"
-          data-lenis-prevent
-        >
-          <ScrobbleListItem v-for="track in trackList" :key="track.id" :track="track" tag="li" title-tag="p" />
-        </ul>
-        <div class="mt-6 text-center">
-          <AppPaginate v-model="currentPage" :page-count="pageCount" />
-        </div>
-        <p>
-          pending: {{ pending }}
-        </p>
-
-        <p>
-          error: {{ error }}
-        </p>
+      <ul
+        v-else-if="trackList?.length"
+        ref="playlistListRef"
+        class="grid gap-6 mt-2 max-h-[50vh] overflow-y-auto pl-4 -ml-4"
+        data-lenis-prevent
+      >
+        <ScrobbleListItem v-for="track in trackList" :key="track.id" :track="track" tag="li" title-tag="p" />
+      </ul>
+      <div class="mt-6 text-center">
+        <AppPaginate v-model="currentPage" :page-count="pageCount" />
       </div>
     </NuxtLayout>
   </main>
 </template>
 
 <style scoped lang="scss">
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
 
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
 </style>

@@ -6,22 +6,41 @@ interface Props {
   track: Track
   tag?: string
   titleTag?: string
+  size?: 'small' | 'medium' | 'large'
 }
 
 const props = withDefaults(defineProps<Props>(), {
   tag: 'article',
   titleTag: 'h3',
+  size: 'medium',
 });
+
+const sizeMap = {
+  small: '--small',
+  medium: '--medium',
+  large: '--large',
+};
+
+const sizeClass = computed(() => `track-item${sizeMap[props.size]}`);
 
 // Computed - Get track image
 const trackImage = computed(() => {
   // Get the Medium image
-  return props.track?.image?.find(image => image.size === Size.Medium);
+  let size = Size.Large;
+  switch (props.size) {
+    case 'small':
+      size = Size.Medium;
+      break;
+    case 'large':
+      size = Size.Large;
+      break;
+  }
+  return props.track?.image?.find(image => image.size === size);
 });
 </script>
 
 <template>
-  <Component :is="tag" class="track-item">
+  <Component :is="tag" class="track-item" :class="sizeClass">
     <a v-if="trackImage?.['#text']" :href="props.track.url" class="track-item__media">
       <img :src="trackImage['#text']" alt="">
     </a>
@@ -43,8 +62,8 @@ const trackImage = computed(() => {
           <a :href="props.track.url" target="_blank">Détails</a>
         </span>
       </p>
-      <p class="track-item__meta">
-        <span v-if="props.track.date?.uts" class="block">
+      <p v-if="props.track.date?.uts" class="track-item__meta">
+        <span class="block">
           <time :datetime="new Date(props.track.date.uts * 1000).toISOString()">
             <ClientOnly>
               <span v-if="track.date">
@@ -67,20 +86,19 @@ const trackImage = computed(() => {
 
 <style scoped lang="scss">
 .track-item {
-  @apply grid gap-3 grid-cols-[auto,1fr] items-start;
+  $self: &;
+
+  @apply grid  grid-cols-[auto,1fr] items-start;
 
   &__media {
+    @apply shadow-lg shadow-primary dark:shadow-primary/30 rounded-md overflow-hidden;
     > img {
-      @apply w-20 aspect-square object-cover;
+      @apply  aspect-square object-cover;
     }
   }
 
-  &__content {
-    //
-  }
-
   &__meta {
-    @apply  text-sm text-muted-text leading-tight;
+    @apply text-muted-text leading-tight;
 
     > span {
       &:not(:last-of-type) {
@@ -94,7 +112,52 @@ const trackImage = computed(() => {
   }
 
   &__title {
-    @apply font-display text-xl leading-none mb-1;
+    @apply font-display leading-[1] mb-[0.1em];
+  }
+
+  &--small {
+    @apply gap-2;
+    #{$self}__media {
+      > img {
+        @apply w-12;
+      }
+    }
+    #{$self}__title {
+      @apply text-base leading-none;;
+    }
+    #{$self}__meta {
+      @apply text-xs;
+    }
+  }
+
+  &--medium {
+    @apply gap-3;
+    #{$self}__media {
+      > img {
+        @apply w-20;
+      }
+    }
+    #{$self}__title {
+      @apply text-xl leading-none;;
+    }
+    #{$self}__meta {
+      @apply text-sm;
+    }
+  }
+
+  &--large {
+    @apply gap-5;
+    #{$self}__media {
+      > img {
+        @apply w-28;
+      }
+    }
+    #{$self}__title {
+      @apply text-4xl leading-none;
+    }
+    #{$self}__meta {
+      @apply text-base;
+    }
   }
 }
 </style>
