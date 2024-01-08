@@ -102,7 +102,7 @@ onUnmounted(() => {
 <template>
   <main class="page-index">
     <div class="page-index__cover">
-      <AppLoader class="!absolute inset-0 m-auto z-0" />
+      <AppLoader class="!absolute inset-0 m-auto z-0 text-[58px]" />
       <CoverComponent
         v-if="data"
         :title="data.coverTitle"

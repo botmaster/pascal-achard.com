@@ -8,12 +8,12 @@
 
 <style scoped>
 .app-loader {
-  --uib-size: 45px;
+  --uib-size: 1em;
   --uib-color: black;
   --uib-speed: 2s;
   position: relative;
-  height: var(--uib-size);
   width: var(--uib-size);
+  height: var(--uib-size);
 }
 
 .app-loader::before,

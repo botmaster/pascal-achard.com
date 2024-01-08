@@ -1,5 +1,7 @@
 {
   "common": {
+    "go": "Go",
+    "goToPage": "Go to page",
     "languages": "Language",
     "no": "No",
     "yes": "Yes"
@@ -7,18 +9,30 @@
   "layouts": {
     "title": "Pascal Achard - {title}"
   },
+  "miscellaneous": {
+    "scrollToContent": "Scroll to content"
+  },
   "navigation": {
     "about": "About page",
     "home": "Home page",
+    "lab": "Lab page",
     "languageSelector": "Language selector",
     "themeSelector": "Theme selector"
+  },
+  "pages": {
+    "lab": {
+      "listeningNothing": "Listen to nothing",
+      "newestFirst": "",
+      "nowPlaying": "Now playing",
+      "orderedByDate": "",
+      "scrobbles": "Scrobbles",
+      "scrobblesHistory": "Scrobbles history",
+      "tracksPerPage": ""
+    }
   },
   "theme": {
     "auto": "Auto",
     "dark": "Dark",
     "light": "Light"
-  },
-  "miscellaneous": {
-    "scrollToContent": "Scroll to content"
   }
 }

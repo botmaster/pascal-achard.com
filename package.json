@@ -33,6 +33,7 @@
     "@nuxtjs/tailwindcss": "^6.10.3",
     "@types/node": "^20.10.6",
     "@types/splitting": "^1.0.5",
+    "@types/uuid": "^9.0.7",
     "@typescript-eslint/parser": "^6.18.0",
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
@@ -44,6 +45,7 @@
     "nuxt-simple-sitemap": "^4.4.1",
     "sass": "^1.69.7",
     "typescript": "^5.3.3",
+    "uuid": "^9.0.1",
     "vite-svg-loader": "^5.1.0",
     "vue-tsc": "^1.8.27"
   }

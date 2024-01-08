@@ -50,6 +50,9 @@ module.exports = {
         background: 'hsl(var(--color-body-background) / <alpha-value>)',
         txt: 'hsl(var(--color-body-text) / <alpha-value>)',
       },
+      'muted': {
+        text: 'var(--color-muted-text-hex)',
+      },
       ...nord,
     },
     fontFamily: {

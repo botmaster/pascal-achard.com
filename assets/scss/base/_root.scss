@@ -39,6 +39,7 @@ $mergedColors: map-merge($colors, (
   @include css-variables((
     "body-background": $body-background-dark,
     "body-text": $body-text-dark,
+    "muted-text": $text-muted-color-dark,
   ));
 }
 

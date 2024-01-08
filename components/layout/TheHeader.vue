@@ -37,6 +37,13 @@ const localePath = useLocalePath();
       >
         <Icon name="material-symbols:info" /><span class="sr-only">{{ t("navigation.about") }}</span>
       </NuxtLink>
+      <NuxtLink
+        class="the-header__nav-item the-header__nav-link"
+        :to="localePath({ name: 'lab' })"
+        :title="t('navigation.lab')"
+      >
+        <Icon name="material-symbols:experiment" /><span class="sr-only">{{ t("navigation.lab") }}</span>
+      </NuxtLink>
       <div class="the-header__nav-separator" />
       <ThemeMenuComponent
         v-model="colorMode.preference"

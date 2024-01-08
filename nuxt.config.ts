@@ -68,6 +68,12 @@ export default defineNuxtConfig({
     },
   },
 
+  components: {
+    dirs: [
+      { path: '~/components', pathPrefix: false },
+    ],
+  },
+
   typescript: {
     strict: true,
     typeCheck: false,
@@ -133,6 +139,7 @@ export default defineNuxtConfig({
     public: {
       pkg: JSON.stringify(pkg),
       siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'http://localhost:3000',
+      lastFmApiKey: process.env.NUXT_PUBLIC_LASTFM_API_KEY,
     },
   },
 
@@ -146,6 +153,11 @@ export default defineNuxtConfig({
       lastmod: new Date(),
     },
     discoverImages: true,
+    exclude: ['/test'],
+  },
+
+  robots: {
+    disallow: ['/test'],
   },
 
   fontMetrics: {
