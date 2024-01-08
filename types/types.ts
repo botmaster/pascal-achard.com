@@ -74,6 +74,6 @@ export enum Size {
 }
 
 export interface DateClass {
-  uts: string
+  uts: number
   '#text': string
 }
