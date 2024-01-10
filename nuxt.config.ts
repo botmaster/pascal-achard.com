@@ -143,21 +143,15 @@ export default defineNuxtConfig({
     },
   },
 
+  routeRules: {
+    '/test': { robots: false },
+  },
+
   sitemap: {
     strictNuxtContentPaths: false,
     sitemaps: false,
-    /* cacheTtl: 0, */
-    cacheMaxAgeSeconds: 360,
-    defaults: {
-      changefreq: 'hourly',
-      lastmod: new Date(),
-    },
     discoverImages: true,
-    exclude: ['/test'],
-  },
-
-  robots: {
-    disallow: ['/test'],
+    autoLastmod: true,
   },
 
   fontMetrics: {
@@ -186,8 +180,8 @@ export default defineNuxtConfig({
     '@nuxtjs/fontaine',
     '@nuxtjs/i18n',
     'nuxt-simple-robots',
-    'nuxt-simple-sitemap',
     '@nuxt/devtools',
+    '@nuxtjs/sitemap',
   ],
 
   devtools: {
