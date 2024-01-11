@@ -87,7 +87,7 @@ if (process.client) {
   <main>
     <NuxtLayout v-if="data" name="content">
       <template #heroBackground>
-        <img
+        <!--        <img
           sizes="(max-width: 2170px) 100vw, 2170px"
           srcset="
             @/assets/images/infos/hero_rsbr7p_c_scale_w_768.jpg   768w,
@@ -98,18 +98,18 @@ if (process.client) {
           width="2170"
           height="1074"
           alt=""
-        >
+        > -->
       </template>
       <template #heroContent>
-        <p class="dark:text-white">
-          v{{ pkg.version }}
-        </p>
         <h1 class="dark:text-white">
           {{ data.coverTitle }}
         </h1>
         <h2 class="dark:text-white h3">
           {{ pkg.name }}
         </h2>
+        <p class="dark:text-white">
+          v{{ pkg.version }}
+        </p>
       </template>
       <ContentRenderer class="nuxt-content" :value="data" />
       <div class="nuxt-content mt-2">
