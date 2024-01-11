@@ -37,7 +37,7 @@ export function useBubblesEffect(refRoot: Ref<HTMLElement | null>, refBubbles: R
     const animateBubble = (bubble: HTMLElement) => {
       gsap.to(bubble, {
         force3D: true,
-        duration: gsap.utils.random(3, 10),
+        duration: gsap.utils.random(5, 15),
         opacity: 0,
         scale: gsap.utils.random(0.5, 0.8),
         y: refRoot.value?.clientHeight ? refRoot.value.clientHeight * 0.5 * -1 + (bubble.clientHeight / 2) : 0,

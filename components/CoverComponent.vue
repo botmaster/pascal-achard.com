@@ -40,7 +40,7 @@ const bubbles = ref<HTMLElement | null>(null);
 
 let ctx: gsap.Context;
 
-useBubblesEffect(root, bubbles, { bubbleCount: 5, bubbleSizeMin: 200, bubbleSizeMax: 250 });
+useBubblesEffect(root, bubbles, { bubbleCount: 10 });
 
 function initEffects() {
   ctx = gsap.context((self) => {
@@ -157,24 +157,31 @@ function initEffects() {
     tl.to(
       coverDimmer.value,
       {
-        autoAlpha: 0.9,
-      },
-      '<',
-    );
-
-    tl.to(
-      coverBg.value,
-      {
         autoAlpha: 0,
       },
       '<',
     );
 
     tl.to(
+      bubbles.value,
+      {
+        autoAlpha: 0,
+      },
+      '<',
+    );
+
+    /* tl.to(
+      coverBg.value,
+      {
+        autoAlpha: 0,
+      },
+      '<',
+    ); */
+
+    tl.to(
       coverImg.value,
       {
-        filter: 'blur(2px)',
-        scale: 1,
+        autoAlpha: 0,
       },
       '<',
     );
