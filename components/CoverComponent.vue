@@ -29,14 +29,18 @@ const { t } = useI18n();
 // Effects setup
 const root = ref<HTMLElement | null>(null);
 const coverBg = ref<HTMLElement | null>(null);
+const coverImg = ref<HTMLElement | null>(null);
 const coverDimmer = ref<HTMLElement | null>(null);
 const coverUptitle = ref<HTMLElement | null>(null);
 const coverTitle = ref<HTMLElement | null>(null);
 const coverSubtitle = ref<HTMLElement | null>(null);
 const coverInfo = ref<HTMLElement | null>(null);
 const iconScroll = ref<HTMLElement | null>(null);
+const bubbles = ref<HTMLElement | null>(null);
 
 let ctx: gsap.Context;
+
+useBubblesEffect(root, bubbles, { bubbleCount: 10 });
 
 function initEffects() {
   ctx = gsap.context((self) => {
@@ -145,7 +149,31 @@ function initEffects() {
     tl.to(
       coverDimmer.value,
       {
-        autoAlpha: 0.8,
+        autoAlpha: 0,
+      },
+      '<',
+    );
+
+    tl.to(
+      bubbles.value,
+      {
+        autoAlpha: 0,
+      },
+      '<',
+    );
+
+    /* tl.to(
+      coverBg.value,
+      {
+        autoAlpha: 0,
+      },
+      '<',
+    ); */
+
+    tl.to(
+      coverImg.value,
+      {
+        autoAlpha: 0,
       },
       '<',
     );
@@ -215,7 +243,8 @@ onBeforeUnmount(() => {
 <template>
   <div ref="root" class="cover">
     <div ref="coverBg" class="cover__background" />
-
+    <div ref="coverImg" class="cover__bg-image" />
+    <div ref="bubbles" class="cover__bubbles" />
     <div ref="coverDimmer" class="cover__dimmer" />
     <div class="cover__content">
       <div class="container mx-auto">
@@ -247,7 +276,7 @@ onBeforeUnmount(() => {
         </div>
       </div>
     </div>
-    <div class="container mx-auto absolute left-0 bottom-4 xl:bottom-4 right-0">
+    <div class="container mx-auto absolute left-0 bottom-4 xl:bottom-4 right-0 z-40">
       <div class="xl:w-1/2 xl:ml-auto text-center">
         <template v-if="props.scrollToTarget">
           <button ref="iconScroll" :title="t('miscellaneous.scrollToContent')" class="inline-block" @click.prevent="$lenisInstance.scrollTo(scrollToTarget, { easing: Expo.easeInOut, lerp: 0 })">
@@ -269,7 +298,11 @@ onBeforeUnmount(() => {
   @apply relative invisible flex items-end overflow-hidden py-12 md:py-32 text-polarnight-nord-0 dark:text-white;
 
   &__background {
-    @apply absolute inset-0 block w-full h-full bg-center bg-no-repeat bg-cover z-0;
+    @apply absolute inset-0 block w-full h-full bg-body-background z-0;
+  }
+
+  &__bg-image {
+    @apply absolute inset-0 w-full h-full bg-center bg-no-repeat bg-cover z-10 origin-top;
     background-image: url("/images/pascal-achard/20102017-DSC06728_ufitab_c_scale_w_1024.jpg");
 
     @media screen and (min-width: 1024px) {
@@ -281,17 +314,21 @@ onBeforeUnmount(() => {
     }
   }
 
-  &__dimmer {
-    @apply absolute inset-0 bg-body-background opacity-60;
+  &__bubbles {
+    @apply absolute inset-0 z-[20] block w-full h-full overflow-hidden  blur-2xl mix-blend-plus-lighter;
   }
 
-  &__bg-image {
-    @apply inset-0 w-full h-full object-cover;
+  &__dimmer {
+    @apply absolute inset-0 bg-body-background z-30;
   }
 
   &__content {
-    @apply relative z-10;
+    @apply relative z-40;
   }
+}
+
+:deep(.bubble) {
+  @apply absolute block rounded-full bottom-0  will-change-transform bg-[red];
 }
 
 .line-mask {
