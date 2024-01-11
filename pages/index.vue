@@ -29,18 +29,6 @@ const colors: { [key: string]: string[] } = {
 
 const colorMap = ref(['']);
 
-/*
-watch(
-  colorMode,
-  (newValue, oldValue) => {
-    console.log("colorMode changed newValue, oldValue", newValue, oldValue);
-    if (!process.client) return;
-    colorMap.value = colors[newValue.value] || [];
-  },
-  { immediate: false },
-);
-*/
-
 // WatchEffect
 watchEffect(
   () => {
@@ -147,8 +135,8 @@ onUnmounted(() => {
 
   &__cover {
     min-height: calc(
-      100svh - 2px
-    ); // Because of lighthouse LCP issue with 100svh.  //TODO: fix LCP issue
+      100svh
+    );
     @apply relative xl:fixed xl:top-0 w-full flex flex-col;
 
     > * {

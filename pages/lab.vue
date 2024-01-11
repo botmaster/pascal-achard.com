@@ -90,6 +90,14 @@ function scrollListToTop() {
 <template>
   <main>
     <NuxtLayout name="content">
+      <!--      <template #heroBackground>
+        <img
+          src="~/assets/images/lab/hero-bg.jpg"
+          width="2170"
+          height="1074"
+          alt=""
+        >
+      </template> -->
       <template #heroContent>
         <p class="h3">
           🧪

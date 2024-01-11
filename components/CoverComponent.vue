@@ -29,6 +29,7 @@ const { t } = useI18n();
 // Effects setup
 const root = ref<HTMLElement | null>(null);
 const coverBg = ref<HTMLElement | null>(null);
+const coverImg = ref<HTMLElement | null>(null);
 const coverDimmer = ref<HTMLElement | null>(null);
 const coverUptitle = ref<HTMLElement | null>(null);
 const coverTitle = ref<HTMLElement | null>(null);
@@ -151,6 +152,14 @@ function initEffects() {
     );
 
     tl.to(
+      coverBg.value,
+      {
+        autoAlpha: 0,
+      },
+      '<',
+    );
+
+    tl.to(
       coverUptitle.value,
       {
         autoAlpha: 0,
@@ -215,7 +224,7 @@ onBeforeUnmount(() => {
 <template>
   <div ref="root" class="cover">
     <div ref="coverBg" class="cover__background" />
-
+    <div ref="coverImg" class="cover__bg-image" />
     <div ref="coverDimmer" class="cover__dimmer" />
     <div class="cover__content">
       <div class="container mx-auto">
@@ -269,7 +278,11 @@ onBeforeUnmount(() => {
   @apply relative invisible flex items-end overflow-hidden py-12 md:py-32 text-polarnight-nord-0 dark:text-white;
 
   &__background {
-    @apply absolute inset-0 block w-full h-full bg-center bg-no-repeat bg-cover z-0;
+    @apply absolute inset-0 block w-full h-full bg-body-background z-0;
+  }
+
+  &__bg-image {
+    @apply absolute inset-0 w-full h-full bg-center bg-no-repeat bg-cover z-10;
     background-image: url("/images/pascal-achard/20102017-DSC06728_ufitab_c_scale_w_1024.jpg");
 
     @media screen and (min-width: 1024px) {
@@ -282,15 +295,11 @@ onBeforeUnmount(() => {
   }
 
   &__dimmer {
-    @apply absolute inset-0 bg-body-background opacity-60;
-  }
-
-  &__bg-image {
-    @apply inset-0 w-full h-full object-cover;
+    @apply absolute inset-0 bg-body-background z-20;
   }
 
   &__content {
-    @apply relative z-10;
+    @apply relative z-30;
   }
 }
 
