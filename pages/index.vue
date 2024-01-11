@@ -64,12 +64,12 @@ onMounted(() => {
       tl.fromTo(
         sheet,
         {
-          filter: 'brightness(200%) blur(200px)',
-          opacity: 0.6,
+          /* filter: 'brightness(200%) blur(5px)', */
+          opacity: 0,
           y: 100,
         },
         {
-          filter: 'brightness(100%) blur(0px)',
+          /* filter: 'brightness(100%) blur(0px)', */
           opacity: 1,
           y: 0,
         },
