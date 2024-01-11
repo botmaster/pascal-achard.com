@@ -61,14 +61,6 @@ function initEffects() {
       autoAlpha: 1,
     });
 
-    tlIntro.set(
-      coverImg.value,
-      {
-        scale: 1.05,
-      },
-      0,
-    );
-
     tlIntro.to(
       coverDimmer.value,
       {
