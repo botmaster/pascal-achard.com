@@ -36,8 +36,11 @@ const coverTitle = ref<HTMLElement | null>(null);
 const coverSubtitle = ref<HTMLElement | null>(null);
 const coverInfo = ref<HTMLElement | null>(null);
 const iconScroll = ref<HTMLElement | null>(null);
+const bubbles = ref<HTMLElement | null>(null);
 
 let ctx: gsap.Context;
+
+useBubblesEffect(root, bubbles, { bubbleCount: 5, bubbleSizeMin: 200, bubbleSizeMax: 250 });
 
 function initEffects() {
   ctx = gsap.context((self) => {
@@ -57,6 +60,14 @@ function initEffects() {
     tlIntro.set(root.value, {
       autoAlpha: 1,
     });
+
+    tlIntro.set(
+      coverImg.value,
+      {
+        scale: 1.05,
+      },
+      0,
+    );
 
     tlIntro.to(
       coverDimmer.value,
@@ -146,7 +157,7 @@ function initEffects() {
     tl.to(
       coverDimmer.value,
       {
-        autoAlpha: 0.8,
+        autoAlpha: 0.9,
       },
       '<',
     );
@@ -155,6 +166,15 @@ function initEffects() {
       coverBg.value,
       {
         autoAlpha: 0,
+      },
+      '<',
+    );
+
+    tl.to(
+      coverImg.value,
+      {
+        filter: 'blur(2px)',
+        scale: 1,
       },
       '<',
     );
@@ -225,6 +245,7 @@ onBeforeUnmount(() => {
   <div ref="root" class="cover">
     <div ref="coverBg" class="cover__background" />
     <div ref="coverImg" class="cover__bg-image" />
+    <div ref="bubbles" class="cover__bubbles" />
     <div ref="coverDimmer" class="cover__dimmer" />
     <div class="cover__content">
       <div class="container mx-auto">
@@ -256,7 +277,7 @@ onBeforeUnmount(() => {
         </div>
       </div>
     </div>
-    <div class="container mx-auto absolute left-0 bottom-4 xl:bottom-4 right-0">
+    <div class="container mx-auto absolute left-0 bottom-4 xl:bottom-4 right-0 z-40">
       <div class="xl:w-1/2 xl:ml-auto text-center">
         <template v-if="props.scrollToTarget">
           <button ref="iconScroll" :title="t('miscellaneous.scrollToContent')" class="inline-block" @click.prevent="$lenisInstance.scrollTo(scrollToTarget, { easing: Expo.easeInOut, lerp: 0 })">
@@ -282,7 +303,7 @@ onBeforeUnmount(() => {
   }
 
   &__bg-image {
-    @apply absolute inset-0 w-full h-full bg-center bg-no-repeat bg-cover z-10;
+    @apply absolute inset-0 w-full h-full bg-center bg-no-repeat bg-cover z-10 origin-top;
     background-image: url("/images/pascal-achard/20102017-DSC06728_ufitab_c_scale_w_1024.jpg");
 
     @media screen and (min-width: 1024px) {
@@ -294,13 +315,21 @@ onBeforeUnmount(() => {
     }
   }
 
+  &__bubbles {
+    @apply absolute inset-0 z-[20] block w-full h-full overflow-hidden  blur-2xl mix-blend-plus-lighter;
+  }
+
   &__dimmer {
-    @apply absolute inset-0 bg-body-background z-20;
+    @apply absolute inset-0 bg-body-background z-30;
   }
 
   &__content {
-    @apply relative z-30;
+    @apply relative z-40;
   }
+}
+
+:deep(.bubble) {
+  @apply absolute block rounded-full bottom-0  will-change-transform bg-[red];
 }
 
 .line-mask {

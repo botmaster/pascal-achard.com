@@ -4,64 +4,16 @@ import { gsap } from 'gsap';
 const root = ref<HTMLElement | null>(null);
 const bubbles = ref<HTMLElement | null>(null);
 
+useBubblesEffect(root, bubbles, { bubbleCount: 50 });
+
 onMounted(() => {
   if (!process.client)
     return;
-
-  const bubbleCount = 20;
-  const bubbleSizeMin = 300;
-  const bubbleSizeMax = 800;
-  const bubbleColors = [
-    'hsl(var(--color-primary)/100)',
-    'hsl(var(--color-red)/100)',
-    'hsl(var(--color-yellow)/100)',
-  ];
-
-  const createBubble = () => {
-    const size = gsap.utils.random(bubbleSizeMin, bubbleSizeMax);
-    const bubble = document.createElement('span');
-    bubble.dataset.size = `${size}`;
-    bubble.classList.add('bubble');
-    bubble.style.width = `${size}px`;
-    bubble.style.height = `${size}px`;
-    bubble.style.backgroundColor = bubbleColors[Math.floor(Math.random() * bubbleColors.length)];
-    bubble.style.left = `${gsap.utils.random(-15, 100)}%`;
-    return bubble;
-  };
-
-  const animateBubble = (bubble: HTMLElement) => {
-    gsap.to(bubble, {
-      force3D: true,
-      duration: gsap.utils.random(3, 10),
-      opacity: 0,
-      scale: gsap.utils.random(0.5, 0.8),
-      y: root.value?.clientHeight ? root.value.clientHeight * 0.5 * -1 + (bubble.clientHeight / 2) : 0,
-      ease: 'linear',
-      repeat: -1,
-      delay: gsap.utils.random(0, 30) * -1,
-      startAt: { y: bubble.clientHeight, opacity: 1.3 },
-      onRepeat: (self) => {
-        gsap.set(self, { left: `${gsap.utils.random(-15, 100)}%` });
-      },
-      onRepeatParams: [bubble],
-    });
-  };
-
-  const createBubbles = () => {
-    for (let i = 0; i < bubbleCount; i++) {
-      const bubble = createBubble();
-      bubbles.value?.appendChild(bubble);
-      animateBubble(bubble);
-    }
-  };
-
-  createBubbles();
-
   gsap.to(bubbles.value, {
     force3D: true,
-    duration: 1,
+    duration: 2,
     opacity: 1,
-    ease: 'none',
+    ease: 'linear',
     startAt: { opacity: 0 },
   });
 });
@@ -75,9 +27,7 @@ onMounted(() => {
       </slot>
     </div>
 
-    <div ref="bubbles" class="hero__bubbles">
-      coucou
-    </div>
+    <div ref="bubbles" class="hero__bubbles" />
 
     <div class="hero__dimmer" />
     <div class="hero__content">
