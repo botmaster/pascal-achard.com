@@ -40,7 +40,7 @@ const bubbles = ref<HTMLElement | null>(null);
 
 let ctx: gsap.Context;
 
-useBubblesEffect(root, bubbles, { bubbleCount: 10 });
+useBubblesEffect(root, bubbles);
 
 function initEffects() {
   ctx = gsap.context((self) => {
@@ -154,13 +154,13 @@ function initEffects() {
       '<',
     );
 
-    tl.to(
+    /* tl.to(
       bubbles.value,
       {
         autoAlpha: 0,
       },
       '<',
-    );
+    ); */
 
     /* tl.to(
       coverBg.value,
@@ -276,6 +276,7 @@ onBeforeUnmount(() => {
         </div>
       </div>
     </div>
+    <div class="cover__bottom-gradient" />
     <div class="container mx-auto absolute left-0 bottom-4 xl:bottom-4 right-0 z-40">
       <div class="xl:w-1/2 xl:ml-auto text-center">
         <template v-if="props.scrollToTarget">
@@ -299,6 +300,7 @@ onBeforeUnmount(() => {
 
   &__background {
     @apply absolute inset-0 block w-full h-full bg-body-background z-0;
+    background-image: linear-gradient(to right top, #88c0d0, #84c4d2, #7fc7d4, #7bcbd5, #77ced5, #74d1d5, #72d3d4, #70d6d3, #6fd9d1, #6edccf, #6fdfcc, #71e2c9);
   }
 
   &__bg-image {
@@ -315,7 +317,7 @@ onBeforeUnmount(() => {
   }
 
   &__bubbles {
-    @apply absolute inset-0 z-[20] block w-full h-full overflow-hidden  blur-2xl mix-blend-plus-lighter;
+    @apply absolute inset-0 z-[20] block w-full h-full overflow-hidden blur-2xl mix-blend-plus-lighter dark:mix-blend-luminosity;
   }
 
   &__dimmer {
@@ -324,6 +326,10 @@ onBeforeUnmount(() => {
 
   &__content {
     @apply relative z-40;
+  }
+
+  &__bottom-gradient {
+    @apply absolute inset-x-0 z-[25] bottom-0 h-[80%] bg-gradient-to-t from-body-background to-transparent;
   }
 }
 

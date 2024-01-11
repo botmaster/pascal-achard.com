@@ -53,7 +53,7 @@ onMounted(() => {
   }
 
   &__bubbles {
-    @apply absolute inset-0 z-[2] block w-full h-full overflow-hidden  blur-2xl mix-blend-plus-lighter;
+    @apply absolute inset-0 z-[2] block w-full h-full overflow-hidden  blur-2xl mix-blend-plus-lighter dark:mix-blend-luminosity;
 
   }
 

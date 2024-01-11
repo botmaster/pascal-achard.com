@@ -102,13 +102,13 @@ function scrollListToTop() {
         <p class="h3">
           🧪
         </p><p />
-        <h1 class="">
+        <h1 class="dark:text-white">
           {{ contentData?.coverTitle }}
         </h1>
-        <p class=" h3">
+        <p class="dark:text-white h3">
           {{ contentData?.coverSubtitle }}
         </p>
-        <p class="">
+        <p class="dark:text-white">
           {{ contentData?.coverDescription }}
         </p>
       </template>
