@@ -2,14 +2,13 @@
 import { gsap } from 'gsap';
 
 const root = ref<HTMLElement | null>(null);
-const bubbles = ref<HTMLElement | null>(null);
 
-useBubblesEffect(root, bubbles);
+const { bubblesContainer } = useBubblesEffect();
 
 onMounted(() => {
   if (!process.client)
     return;
-  gsap.to(bubbles.value, {
+  gsap.to(bubblesContainer.value, {
     force3D: true,
     duration: 2,
     opacity: 1,
@@ -27,7 +26,7 @@ onMounted(() => {
       </slot>
     </div>
 
-    <div ref="bubbles" class="hero__bubbles" />
+    <div ref="bubblesContainer" class="hero__bubbles" />
 
     <div class="hero__dimmer" />
     <div class="hero__content">

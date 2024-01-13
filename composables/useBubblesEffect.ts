@@ -7,8 +7,10 @@ interface BubblesOptions {
   bubbleColors?: string[]
 }
 
-export function useBubblesEffect(refRoot: Ref<HTMLElement | null>, refBubbles: Ref<HTMLElement | null>, options: BubblesOptions = {}) {
+export function useBubblesEffect(options: BubblesOptions = {}) {
   let ctx: gsap.Context;
+
+  const bubblesContainer = ref<HTMLElement | null>(null);
 
   onMounted(() => {
     if (!process.client)
@@ -37,7 +39,7 @@ export function useBubblesEffect(refRoot: Ref<HTMLElement | null>, refBubbles: R
       } = options;
 
       const spawnBubbleX = (buubleWidth: number) => {
-        return gsap.utils.random(-buubleWidth, (refBubbles.value?.clientWidth || 0) - buubleWidth / 2);
+        return gsap.utils.random(-buubleWidth, (bubblesContainer.value?.clientWidth || 0) - buubleWidth / 2);
       };
 
       const createBubble = () => {
@@ -58,7 +60,7 @@ export function useBubblesEffect(refRoot: Ref<HTMLElement | null>, refBubbles: R
           duration: gsap.utils.random(5, 15),
           opacity: 0,
           scale: gsap.utils.random(0.5, 0.8),
-          y: refRoot.value?.clientHeight ? refRoot.value.clientHeight * 0.5 * -1 + (bubble.clientHeight / 2) : 0,
+          y: bubblesContainer.value?.clientHeight ? bubblesContainer.value.clientHeight * 0.5 * -1 + (bubble.clientHeight / 2) : 0,
           ease: 'linear',
           repeat: -1,
           delay: gsap.utils.random(0, 30) * -1,
@@ -74,7 +76,7 @@ export function useBubblesEffect(refRoot: Ref<HTMLElement | null>, refBubbles: R
         const list = [];
         for (let i = 0; i < bubbleCount; i++) {
           const bubble = createBubble();
-          refBubbles.value?.appendChild(bubble);
+          bubblesContainer.value?.appendChild(bubble);
           list.push(bubble);
         }
         return list;
@@ -84,10 +86,14 @@ export function useBubblesEffect(refRoot: Ref<HTMLElement | null>, refBubbles: R
       bubbleList.forEach((bubble) => {
         animateBubble(bubble);
       });
-    }, refRoot.value || undefined); // <- Scope!
+    }, bubblesContainer.value || undefined); // <- Scope!
   });
 
   onUnmounted(() => {
     ctx.revert(); // <- Easy Cleanup!
   });
+
+  return {
+    bubblesContainer,
+  };
 }

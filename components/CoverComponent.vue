@@ -36,11 +36,10 @@ const coverTitle = ref<HTMLElement | null>(null);
 const coverSubtitle = ref<HTMLElement | null>(null);
 const coverInfo = ref<HTMLElement | null>(null);
 const iconScroll = ref<HTMLElement | null>(null);
-const bubbles = ref<HTMLElement | null>(null);
+
+const { bubblesContainer } = useBubblesEffect();
 
 let ctx: gsap.Context;
-
-useBubblesEffect(root, bubbles);
 
 function initEffects() {
   ctx = gsap.context((self) => {
@@ -244,7 +243,7 @@ onBeforeUnmount(() => {
   <div ref="root" class="cover">
     <div ref="coverBg" class="cover__background" />
     <div ref="coverImg" class="cover__bg-image" />
-    <div ref="bubbles" class="cover__bubbles" />
+    <div ref="bubblesContainer" class="cover__bubbles" />
     <div ref="coverDimmer" class="cover__dimmer" />
     <div class="cover__content">
       <div class="container mx-auto">
