@@ -334,7 +334,8 @@ onBeforeUnmount(() => {
 }
 
 :deep(.bubble) {
-  @apply absolute block rounded-full bottom-0  will-change-transform bg-[red];
+  @apply absolute block rounded-full bottom-0 bg-[red];
+  will-change: transform, opacity, filter;
 }
 
 .line-mask {

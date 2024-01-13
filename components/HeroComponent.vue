@@ -4,7 +4,7 @@ import { gsap } from 'gsap';
 const root = ref<HTMLElement | null>(null);
 const bubbles = ref<HTMLElement | null>(null);
 
-useBubblesEffect(root, bubbles, { bubbleCount: 50 });
+useBubblesEffect(root, bubbles);
 
 onMounted(() => {
   if (!process.client)
@@ -53,7 +53,7 @@ onMounted(() => {
   }
 
   &__bubbles {
-    @apply absolute inset-0 z-[2] block w-full h-full overflow-hidden  blur-2xl mix-blend-plus-lighter dark:mix-blend-luminosity;
+    @apply absolute inset-0 z-[2] block w-full h-full overflow-hidden blur-lg lg:blur-2xl mix-blend-plus-lighter dark:mix-blend-luminosity;
 
   }
 
