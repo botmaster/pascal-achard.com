@@ -62,14 +62,6 @@ const links: ILink[] = [
   },
 ];
 
-// IntersectionObserver
-const target = ref(null);
-const targetIsVisible = ref(false);
-
-useIntersectionObserver(target, ([{ isIntersecting }]) => {
-  targetIsVisible.value = isIntersecting;
-});
-
 // Color mode
 const colorMode = useColorMode();
 const themeList = computed(() => [
@@ -88,10 +80,10 @@ const themeList = computed(() => [
 </script>
 
 <template>
-  <footer ref="target" class="relative py-6 md:py-8">
-    <div class="mx-4 md:mx-8">
-      <div class="md:flex md:justify-between md:items-center">
-        <div class="flex gap-4 mb-4 md:mb-0">
+  <footer class="the-footer">
+    <div class="the-footer__container">
+      <div class="the-footer__socials wrapper-outline">
+        <div class="the-footer__socials-icons">
           <a
             v-for="(item, index) in links"
             :key="index"
@@ -99,7 +91,6 @@ const themeList = computed(() => [
             target="_blank"
             rel="noopener"
             class="social-item"
-            :class="{ 'is-inview': targetIsVisible }"
             :aria-label="item['aria-label']"
             :title="item['aria-label']"
           >
@@ -108,21 +99,50 @@ const themeList = computed(() => [
             </span>
           </a>
         </div>
-        <div
-          class="theme-switcher-wrapper"
-          :class="{ 'is-inview': targetIsVisible }"
-        >
-          <theme-switcher-component
-            v-model="colorMode.preference"
-            :theme-list="themeList"
-          />
-        </div>
+        <p class="the-footer__copyright">
+          <span class="sr-only">copyright</span>Pascal Achard <sup><Icon name="material-symbols:copyright-outline" size="0.8em" /></sup> {{ new Date().getFullYear() }}
+        </p>
+      </div>
+
+      <div
+        class="the-footer__theme-switcher"
+      >
+        <theme-switcher-component
+          v-model="colorMode.preference"
+          :theme-list="themeList"
+          size="md"
+          class="wrapper-outline"
+        />
       </div>
     </div>
   </footer>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
+.the-footer {
+  @apply relative py-6;
+
+  &__container {
+    @apply mx-4 md:mx-8 flex flex-col gap-y-4 items-start md:flex-row md:justify-between md:items-center;
+  }
+
+  &__socials {
+    @apply overflow-y-clip md:flex md:gap-4 md:items-baseline;
+  }
+
+  &__socials-icons {
+    @apply flex flex-wrap items-baseline gap-4;
+  }
+
+  &__copyright {
+    @apply text-muted-text text-xs mt-2 md:mt-0;
+  }
+
+  &__theme-switcher {
+    @apply inline-flex md:block;
+  }
+}
+
 .social-item {
   $self: &;
 
@@ -143,32 +163,9 @@ const themeList = computed(() => [
 
   &__icon {
     display: inline-block;
-    width: 24px;
-    height: 24px;
-    font-size: 24px;
-
-    opacity: 0;
-    transform: translateY(30px);
-    transition:
-      opacity 0.4s cubic-bezier(0.215, 0.61, 0.355, 1),
-      transform 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
-
     svg {
       fill: currentColor;
     }
-  }
-}
-
-.theme-switcher-wrapper {
-  opacity: 0;
-  transform: translateY(30px);
-  transition:
-    opacity 0.4s cubic-bezier(0.215, 0.61, 0.355, 1),
-    transform 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
-  &.is-inview {
-    transition-delay: 0.7s;
-    transform: none;
-    opacity: 1;
   }
 }
 </style>

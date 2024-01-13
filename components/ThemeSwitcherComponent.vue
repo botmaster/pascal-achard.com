@@ -54,6 +54,8 @@ function clickHandler(theme: ITheme) {
   gap: 1rem;
 
   .btn-theme {
+    @apply leading-[0];
+
     &.is-current {
       @apply text-primary;
     }
@@ -61,25 +63,25 @@ function clickHandler(theme: ITheme) {
 
   &--is-xs {
     .btn-theme {
-      @apply text-base leading-none;
+      @apply text-base leading-[0];
     }
   }
 
   &--is-sm {
     .btn-theme {
-      @apply text-lg leading-none;
+      @apply text-lg leading-[0];
     }
   }
 
   &--is-md {
     .btn-theme {
-      @apply text-xl leading-none;
+      @apply text-xl leading-[0];
     }
   }
 
   &--is-lg {
     .btn-theme {
-      @apply text-2xl leading-none;
+      @apply text-2xl leading-[0];
     }
   }
 }
