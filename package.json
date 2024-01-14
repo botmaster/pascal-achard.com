@@ -48,8 +48,5 @@
     "uuid": "^9.0.1",
     "vite-svg-loader": "^5.1.0",
     "vue-tsc": "^1.8.27"
-  },
-  "engines": {
-    "pnpm": ">=8"
   }
 }
