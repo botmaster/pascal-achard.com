@@ -13,6 +13,16 @@ export interface IPage extends MarkdownParsedContent {
   coverInfo?: string
 }
 
+// Socials links
+export interface ISocialLink {
+  href: string
+  'aria-label': string
+  icon: {
+    title: string
+    name: string
+  }
+}
+
 /**
  * LastFM API
  * Recent tracks

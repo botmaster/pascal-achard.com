@@ -1,14 +1,7 @@
 <script setup lang="ts">
-export interface ILink {
-  href: string
-  'aria-label': string
-  icon: {
-    title: string
-    name: string
-  }
-}
+import type { ISocialLink } from '~/types/types';
 
-const props = defineProps<{ links?: Array<ILink> }>();
+const props = defineProps<{ links?: Array<ISocialLink> }>();
 </script>
 
 <template>
