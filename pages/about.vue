@@ -104,7 +104,7 @@ if (process.client) {
         <h1 class="dark:text-white">
           {{ data.coverTitle }}
         </h1>
-        <h2 class="dark:text-white h3">
+        <h2 class="h3 dark:text-white">
           {{ pkg.name }}
         </h2>
         <p class="dark:text-white">

@@ -2,7 +2,7 @@
 
 <template>
   <div>
-    <h2 class="mb-8">
+    <h2 class="mb-8 flex-row overflow-hidden">
       Test
     </h2>
   </div>

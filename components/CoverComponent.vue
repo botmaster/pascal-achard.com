@@ -260,7 +260,7 @@ onBeforeUnmount(() => {
         <div class="line-mask">
           <h2
             ref="coverSubtitle"
-            class="text-polarnight-nord-0 dark:text-white h3"
+            class="h3 text-polarnight-nord-0 dark:text-white"
           >
             {{ subtitle }}
           </h2>
@@ -268,7 +268,7 @@ onBeforeUnmount(() => {
         <div v-if="info" class="line-mask">
           <p
             ref="coverInfo"
-            class="text-polarnight-nord-0 dark:text-white mt-0"
+            class="mt-0 text-polarnight-nord-0 dark:text-white"
           >
             {{ info }}
           </p>
@@ -276,8 +276,8 @@ onBeforeUnmount(() => {
       </div>
     </div>
     <div class="cover__bottom-gradient" />
-    <div class="container mx-auto absolute left-0 bottom-4 xl:bottom-4 right-0 z-40">
-      <div class="xl:w-1/2 xl:ml-auto text-center">
+    <div class="container absolute inset-x-0 bottom-4 z-40 mx-auto xl:bottom-4">
+      <div class="text-center xl:ml-auto xl:w-1/2">
         <template v-if="props.scrollToTarget">
           <button ref="iconScroll" :title="t('miscellaneous.scrollToContent')" class="inline-block" @click.prevent="$lenisInstance.scrollTo(scrollToTarget, { easing: Expo.easeInOut, lerp: 0 })">
             <Icon name="pajamas:scroll-down" class="text-xl xl:text-2xl" />
