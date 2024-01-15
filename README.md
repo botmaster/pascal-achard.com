@@ -1,5 +1,5 @@
 # pascal-achard.com
-[![Netlify Status](https://api.netlify.com/api/v1/badges/39211acd-87fe-4556-8658-a9ced321164a/deploy-status)](https://app.netlify.com/sites/pascal-achard/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/39211acd-87fe-4556-8658-a9ced321164a/deploy-status)](https://app.netlify.com/sites/pascal-achard/deploys)  [![code style](https://antfu.me/badge-code-style.svg)](https://github.com/antfu/eslint-config)
 
 My personnal website built with [Nuxt.js](https://nuxtjs.org) and hosted by [Netlify](https://www.netlify.com/).
 ## Setup
