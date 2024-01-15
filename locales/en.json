@@ -10,6 +10,7 @@
     "title": "Pascal Achard - {title}"
   },
   "miscellaneous": {
+    "contactMe": "Contact me",
     "scrollToContent": "Scroll to content"
   },
   "navigation": {
@@ -22,12 +23,12 @@
   "pages": {
     "lab": {
       "listeningNothing": "Listen to nothing",
-      "newestFirst": "",
+      "newestFirst": "New first",
       "nowPlaying": "Now playing",
-      "orderedByDate": "",
+      "orderedByDate": "Sorted by date",
       "scrobbles": "Scrobbles",
       "scrobblesHistory": "Listening history",
-      "tracksPerPage": ""
+      "tracksPerPage": "{n} tracks per page"
     }
   },
   "theme": {

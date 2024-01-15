@@ -289,7 +289,7 @@ onBeforeUnmount(() => {
             href="https://www.linkedin.com/in/pascal-achard" target="_blank" rel="noopener"
           >
             <Icon class="mr-1" size="1.2em" name="mdi:linkedin" />
-            <span class=" leading-none">Contactez-moi</span>
+            <span class="leading-none">{{ t('miscellaneous.contactMe') }}</span>
           </a>
           <a
             class="inline-flex items-center leading-[0]"
