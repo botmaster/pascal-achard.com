@@ -17,12 +17,13 @@ const themeList = computed(() => [
     icon: 'material-symbols:light-mode',
   },
 ]);
+
 const localePath = useLocalePath();
 </script>
 
 <template>
   <header class="the-header">
-    <nav class="the-header__nav">
+    <nav class="the-header__nav wrapper-outline">
       <NuxtLink
         class="the-header__nav-item the-header__nav-link"
         :to="localePath({ name: 'index' })"
@@ -66,8 +67,7 @@ const localePath = useLocalePath();
   @apply flex justify-between items-center mx-2 mt-1 md:mx-8 md:mt-4 z-20 fixed inset-x-0 top-0 py-1 md:py-0;
 
   &__nav {
-    @apply relative flex items-center gap-3 ml-auto px-4 py-2.5 text-xl leading-[0px] bg-body-background
-     rounded-lg ring-1 ring-inset ring-snowstorm-nord-4 dark:ring-polarnight-nord-2;
+    @apply relative flex items-center gap-3 ml-auto px-4 py-2.5 text-xl leading-[0px];
   }
 
   &__nav-item {
@@ -84,6 +84,10 @@ const localePath = useLocalePath();
     &.router-link-exact-active {
       @apply text-primary;
     }
+  }
+
+  &__socials {
+    @apply text-xl leading-[0px];
   }
 }
 </style>
