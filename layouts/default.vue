@@ -13,7 +13,7 @@ useHead({
 </script>
 
 <template>
-  <div class="flex flex-col min-h-screen">
+  <div class="flex min-h-screen flex-col">
     <TheHeader />
     <slot />
     <TheFooter class="mt-auto" />

@@ -13,7 +13,7 @@ useHead({
 </script>
 
 <template>
-  <div class="flex flex-col min-h-screen">
+  <div class="flex min-h-screen flex-col">
     <TheHeader />
     <HeroComponent>
       <template #content>
@@ -23,7 +23,7 @@ useHead({
         <slot name="heroBackground" />
       </template>
     </HeroComponent>
-    <div class="container mx-auto mt-8 mb-12 md:mt-20 md:mb-24">
+    <div class="container mx-auto mb-12 mt-8 md:mb-24 md:mt-20">
       <Sheetelevation shadow="lg" class="lg:w-9/12">
         <slot />
       </Sheetelevation>

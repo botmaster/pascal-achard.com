@@ -105,7 +105,7 @@ function scrollListToTop() {
         <h1 class="dark:text-white">
           {{ contentData?.coverTitle }}
         </h1>
-        <p class="dark:text-white h3">
+        <p class="h3 dark:text-white">
           {{ contentData?.coverSubtitle }}
         </p>
         <p class="dark:text-white">
@@ -115,9 +115,9 @@ function scrollListToTop() {
 
       <ContentRenderer v-if="contentData" class="nuxt-content" :value="contentData" />
 
-      <div class="flex flex-col gap-4 lg:flex-row lg:gap-14 mt-6 lg:mt-8">
+      <div class="mt-6 flex flex-col gap-4 lg:mt-8 lg:flex-row lg:gap-14">
         <div>
-          <p class="uppercase text-sm text-primary">
+          <p class="text-sm uppercase text-primary">
             {{ t('pages.lab.scrobbles') }}
           </p>
           <p class="flex gap-4 font-display text-4xl leading-none">
@@ -127,7 +127,7 @@ function scrollListToTop() {
         </div>
 
         <div>
-          <p class="uppercase text-sm text-primary">
+          <p class="text-sm uppercase text-primary">
             {{ t('pages.lab.nowPlaying') }}
           </p>
           <ScrobbleListItem v-if="nowPlayingTrack" :track="nowPlayingTrack" size="large" tag="div" title-tag="p" />
@@ -146,17 +146,17 @@ function scrollListToTop() {
         {{ t('pages.lab.tracksPerPage', currentPageSize) }}. {{ t('pages.lab.orderedByDate') }}. {{ t('pages.lab.newestFirst') }}.
       </p>
 
-      <pre v-if="error" class="text-xs overflow-x-auto">{{ error }}</pre>
+      <pre v-if="error" class="overflow-x-auto text-xs">{{ error }}</pre>
 
       <ul
         v-else-if="trackList?.length"
         ref="playlistListRef"
-        class="grid gap-6 mt-2 max-h-[50vh] overflow-y-auto pl-4 -ml-4"
+        class="-ml-4 mt-2 grid max-h-[50vh] gap-6 overflow-y-auto pl-4"
         data-lenis-prevent
       >
         <ScrobbleListItem v-for="track in trackList" :key="track.id" :track="track" tag="li" title-tag="p" />
       </ul>
-      <div class="mt-6 text-center">
+      <div class="mt-6 overflow-hidden text-center">
         <AppPaginate v-model="currentPage" :page-count="pageCount" />
       </div>
     </NuxtLayout>
