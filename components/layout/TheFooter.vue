@@ -84,20 +84,7 @@ const themeList = computed(() => [
     <div class="the-footer__container">
       <div class="the-footer__socials wrapper-outline">
         <div class="the-footer__socials-icons">
-          <a
-            v-for="(item, index) in links"
-            :key="index"
-            :href="item.href"
-            target="_blank"
-            rel="noopener"
-            class="social-item"
-            :aria-label="item['aria-label']"
-            :title="item['aria-label']"
-          >
-            <span class="social-item__icon">
-              <Icon :name="item.icon.name" />
-            </span>
-          </a>
+          <SocialIcons :links="links" />
         </div>
         <p class="the-footer__copyright">
           <span class="sr-only">copyright</span>Pascal Achard <sup><Icon name="material-symbols:copyright-outline" size="0.8em" /></sup> {{ new Date().getFullYear() }}
@@ -127,11 +114,7 @@ const themeList = computed(() => [
   }
 
   &__socials {
-    @apply overflow-y-clip md:flex md:gap-4 md:items-baseline;
-  }
-
-  &__socials-icons {
-    @apply flex flex-wrap items-baseline gap-4;
+    @apply overflow-y-clip md:flex md:gap-4 md:items-baseline text-xl leading-[0px];
   }
 
   &__copyright {
@@ -140,32 +123,6 @@ const themeList = computed(() => [
 
   &__theme-switcher {
     @apply inline-flex md:block;
-  }
-}
-
-.social-item {
-  $self: &;
-
-  &.is-inview {
-    #{$self}__icon {
-      transform: none;
-      opacity: 1;
-    }
-
-    @for $i from 1 through 6 {
-      &:nth-child(#{$i}) {
-        #{$self}__icon {
-          transition-delay: $i * 0.1s;
-        }
-      }
-    }
-  }
-
-  &__icon {
-    display: inline-block;
-    svg {
-      fill: currentColor;
-    }
   }
 }
 </style>

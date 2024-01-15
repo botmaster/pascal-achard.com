@@ -36,6 +36,7 @@ const coverTitle = ref<HTMLElement | null>(null);
 const coverSubtitle = ref<HTMLElement | null>(null);
 const coverInfo = ref<HTMLElement | null>(null);
 const iconScroll = ref<HTMLElement | null>(null);
+const shortcuts = ref<HTMLElement | null>(null);
 
 const { bubblesContainer } = useBubblesEffect();
 
@@ -73,7 +74,7 @@ function initEffects() {
       0.1,
     );
 
-    tlIntro.to(
+    /* tlIntro.to(
       self.selector('.line-mask'),
       {
         startAt: {
@@ -95,7 +96,7 @@ function initEffects() {
         stagger: 0.5,
       },
       0,
-    );
+    ); */
 
     tlIntro.to(
       iconScroll.value,
@@ -209,11 +210,20 @@ function initEffects() {
         coverInfo.value,
         {
           autoAlpha: 0,
-          y: -15,
+          y: -30,
         },
         '<',
       );
     }
+
+    tl.to(
+      shortcuts.value,
+      {
+        autoAlpha: 0,
+        y: props.info ? -15 : -30,
+      },
+      '<',
+    );
 
     tl.to(
       iconScroll.value,
@@ -273,6 +283,24 @@ onBeforeUnmount(() => {
             {{ info }}
           </p>
         </div>
+        <p ref="shortcuts" class="mt-0.5 flex flex-wrap gap-3 md:gap-5">
+          <a
+            class="inline-flex items-center leading-[0]"
+            href="https://www.linkedin.com/in/pascal-achard" target="_blank" rel="noopener"
+          >
+            <Icon class="mr-1" size="1.2em" name="mdi:linkedin" />
+            <span class=" leading-none">Contactez-moi</span>
+          </a>
+          <a
+            class="inline-flex items-center leading-[0]"
+            href="/pdf/CV-Pascal-Achard-2023.pdf"
+            target="_blank"
+            rel="noopener"
+          >
+            <Icon class="mr-1 " name="mdi:file-document" size="1.2em" />
+            <span class=" leading-none">CV <span class="text-xs no-underline">(PDF, 46Ko)</span></span>
+          </a>
+        </p>
       </div>
     </div>
     <div class="cover__bottom-gradient" />
