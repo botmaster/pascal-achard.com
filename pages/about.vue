@@ -22,8 +22,8 @@ const { data } = await useAsyncData(`about-${currentLocale.value}`, () =>
       return data;
     }));
 
-if (data)
-  useContentHead(data as any); // TODO: fix type
+if (data?.value)
+  useContentHead(data as Ref<IPage>);
 
 const dependencies = computed(() => {
   const merged = {

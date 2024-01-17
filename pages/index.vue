@@ -12,34 +12,12 @@ const { data } = await useAsyncData(`home-${currentLocale.value}`, () =>
     .where({ _locale: currentLocale.value, _path: '/' })
     .findOne());
 
-if (data)
-  useContentHead(data as any); // TODO: fix type
+if (data?.value)
+  useContentHead(data as Ref<IPage>);
 
 // Animation setup
 const contextScope = ref<HTMLElement | null>(null);
 let ctx: gsap.Context;
-
-const colorMode = useColorMode();
-
-// map of color mode colors
-const colors: { [key: string]: string[] } = {
-  light: [],
-  dark: [],
-};
-
-const colorMap = ref(['']);
-
-// WatchEffect
-watchEffect(
-  () => {
-    if (!process.client)
-      return;
-    colorMap.value = colors[colorMode.value] || [];
-  },
-  { flush: 'post' },
-);
-
-const isClient = computed(() => process.client);
 
 onMounted(() => {
   if (!process.client)
@@ -104,11 +82,6 @@ onUnmounted(() => {
       <section
         v-for="(element, index) in data?.body?.children"
         :key="index"
-        :style="
-          isClient
-            ? `background-color: hsl(var(${colorMap[index % colorMap.length]}))`
-            : ''
-        "
         class="page-index__content-wrapper"
       >
         <div class="container mx-auto">

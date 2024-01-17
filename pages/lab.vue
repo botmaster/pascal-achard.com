@@ -18,8 +18,8 @@ const { data: contentData } = await useAsyncData(`lab-${currentLocale.value}`, (
     .where({ _locale: currentLocale.value, _path: '/lab' })
     .findOne());
 
-if (contentData)
-  useContentHead(contentData as any); // TODO: fix type
+if (contentData?.value)
+  useContentHead(contentData as Ref<IPage>);
 
 // Fetch Last.fm data
 const page = ref(1);
