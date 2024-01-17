@@ -13,11 +13,11 @@ export default defineNuxtConfig({
         },
         {
           property: 'og:image',
-          content: 'https://www.pascal-achard.com/images/social/social-fb.jpg',
+          content: `${process.env.NUXT_PUBLIC_SITE_URL}/images/social/social-fb.jpg`,
         },
         {
           property: 'og:url',
-          content: 'https://www.pascal-achard.com',
+          content: process.env.NUXT_PUBLIC_SITE_URL,
         },
         {
           property: 'og:type',
@@ -25,7 +25,7 @@ export default defineNuxtConfig({
         },
         {
           property: 'twitter:image',
-          content: 'https://www.pascal-achard.com/images/social/social-fb.jpg',
+          content: `${process.env.NUXT_PUBLIC_SITE_URL}/images/social/social-fb.jpg`,
         },
         {
           name: 'msapplication-TileColor',
