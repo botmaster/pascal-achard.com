@@ -29,7 +29,6 @@ const { t } = useI18n();
 // Effects setup
 const root = ref<HTMLElement | null>(null);
 const coverBg = ref<HTMLElement | null>(null);
-const coverImg = ref<HTMLElement | null>(null);
 const coverDimmer = ref<HTMLElement | null>(null);
 const coverUptitle = ref<HTMLElement | null>(null);
 const coverTitle = ref<HTMLElement | null>(null);
@@ -51,7 +50,7 @@ function initEffects() {
     const tlIntro = gsap.timeline({
       defaults: {
         ease: 'expo.out',
-        duration: 3,
+        duration: 1.4,
         force3D: true,
         immediateRender: true,
       },
@@ -74,14 +73,14 @@ function initEffects() {
       0.1,
     );
 
-    /* tlIntro.to(
+    tlIntro.to(
       self.selector('.line-mask'),
       {
         startAt: {
           y: 310,
         },
         y: 0,
-        stagger: 0.3,
+        stagger: 0.15,
       },
       0,
     );
@@ -90,13 +89,27 @@ function initEffects() {
       self.selector('.line-mask > *'),
       {
         startAt: {
-          y: 50,
+          y: 60,
         },
         y: 0,
-        stagger: 0.5,
+        stagger: 0.25,
       },
       0,
-    ); */
+    );
+
+    tlIntro.to(
+      shortcuts.value?.children as HTMLCollection,
+      {
+        startAt: {
+          x: 15,
+          opacity: 0,
+        },
+        x: 0,
+        opacity: 1,
+        stagger: 0.2,
+      },
+      '>-0.8',
+    );
 
     tlIntro.to(
       iconScroll.value,
@@ -110,7 +123,7 @@ function initEffects() {
           opacity: 0,
         },
       },
-      '-=1.5',
+      '>-0.8',
     );
 
     // Scrub Timeline
@@ -148,30 +161,6 @@ function initEffects() {
 
     tl.to(
       coverDimmer.value,
-      {
-        autoAlpha: 0,
-      },
-      '<',
-    );
-
-    /* tl.to(
-      bubbles.value,
-      {
-        autoAlpha: 0,
-      },
-      '<',
-    ); */
-
-    /* tl.to(
-      coverBg.value,
-      {
-        autoAlpha: 0,
-      },
-      '<',
-    ); */
-
-    tl.to(
-      coverImg.value,
       {
         autoAlpha: 0,
       },
@@ -252,7 +241,6 @@ onBeforeUnmount(() => {
 <template>
   <div ref="root" class="cover">
     <div ref="coverBg" class="cover__background" />
-    <div ref="coverImg" class="cover__bg-image" />
     <div ref="bubblesContainer" class="cover__bubbles" />
     <div ref="coverDimmer" class="cover__dimmer" />
     <div class="cover__content">
@@ -298,7 +286,7 @@ onBeforeUnmount(() => {
             rel="noopener"
           >
             <Icon class="mr-1 " name="mdi:file-document" size="1.2em" />
-            <span class=" leading-none">CV <span class="text-xs no-underline">(PDF, 46Ko)</span></span>
+            <span class="leading-none">CV <span class="text-xs no-underline">(PDF, 46Ko)</span></span>
           </a>
         </p>
       </div>
@@ -323,24 +311,11 @@ onBeforeUnmount(() => {
 
 <style scoped lang="scss">
 .cover {
-  @apply relative invisible flex items-end overflow-hidden py-12 md:py-32 text-polarnight-nord-0 dark:text-white;
+  @apply relative opacity-0 flex items-end overflow-hidden py-12 md:py-32 text-polarnight-nord-0 dark:text-white;
 
   &__background {
-    @apply absolute inset-0 block w-full h-full bg-body-background z-0;
+    @apply absolute inset-0 block w-full h-full bg-transparent z-0;
     background-image: linear-gradient(to right top, #88c0d0, #84c4d2, #7fc7d4, #7bcbd5, #77ced5, #74d1d5, #72d3d4, #70d6d3, #6fd9d1, #6edccf, #6fdfcc, #71e2c9);
-  }
-
-  &__bg-image {
-    @apply absolute inset-0 w-full h-full bg-center bg-no-repeat bg-cover z-10 origin-top;
-    background-image: url("/images/pascal-achard/20102017-DSC06728_ufitab_c_scale_w_1024.jpg");
-
-    @media screen and (min-width: 1024px) {
-      background-image: url("/images/pascal-achard/20102017-DSC06728_ufitab_c_scale_w_1936.jpg");
-    }
-
-    @media screen and (min-width: 1280px) {
-      background-image: url("/images/pascal-achard/20102017-DSC06728_ufitab_c_scale_w_2560.jpg");
-    }
   }
 
   &__bubbles {
