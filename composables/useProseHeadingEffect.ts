@@ -48,7 +48,7 @@ export function useProseHeadingEffect() {
       tl.set(
         root.value,
         {
-          visibility: 'visible',
+          opacity: 1,
         },
         0,
       );

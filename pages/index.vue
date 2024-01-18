@@ -70,11 +70,10 @@ onUnmounted(() => {
     <div class="page-index__cover">
       <AppLoader class="!absolute inset-0 z-0 m-auto text-[58px]" />
       <CoverComponent
-        v-if="data"
-        :title="data.coverTitle"
-        :subtitle="data.coverSubtitle ?? ''"
-        :uptitle="data.coverUpTitle ?? ''"
-        :info="data.coverInfo"
+        :title="data?.coverTitle"
+        :subtitle="data?.coverSubtitle ?? ''"
+        :uptitle="data?.coverUpTitle ?? ''"
+        :info="data?.coverInfo"
         scroll-to-target="[data-scrollTarget]"
       />
     </div>
