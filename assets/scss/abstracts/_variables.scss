@@ -89,14 +89,14 @@ $colors: (
 $color-primary: color.scale($color-blue, $lightness: -7%);
 $color-secondary: $nord-8;
 $color-accent: $color-green;
-$color-neutral: $color-gray-600;
+$color-neutral: $nord-3;
 
 
 // Theme colors dark
 $color-primary-dark: $nord-8;
 $color-secondary-dark: $nord-11;
 $color-accent-dark: $color-green;
-$color-neutral-dark: $color-gray-600;
+$color-neutral-dark: $nord-6;
 
 // Darken and lighten amount
 $darken-amount: -60%;

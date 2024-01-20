@@ -70,7 +70,7 @@ onUnmounted(() => {
     <div class="page-index__cover">
       <AppLoader class="!absolute inset-0 z-0 m-auto text-[58px]" />
       <CoverComponent
-        :title="data?.coverTitle"
+        :title="data?.coverTitle ?? ''"
         :subtitle="data?.coverSubtitle ?? ''"
         :uptitle="data?.coverUpTitle ?? ''"
         :info="data?.coverInfo"

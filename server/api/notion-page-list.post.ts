@@ -2,12 +2,17 @@ import { Client } from '@notionhq/client';
 
 export interface SanitizedResponse {
   title: string
-  description: string
+  description?: string
   tags: string[]
-  image: string
+  image?: string
   url: string
   date: string
   id: string
+  score?: string
+  status: {
+    name: 'À lire' | 'En train de lire' | 'Lu' | 'Abandonné'
+    color: string
+  }
 }
 
 export default defineEventHandler(async (event) => {
@@ -25,16 +30,22 @@ export default defineEventHandler(async (event) => {
   // Get the limit
   const limit = Number(query.limit) || 20;
 
+  // Get the cursor
+  const cursor = query.start_cursor ? String(query.start_cursor) : undefined;
+
+  console.log('strartCursor ---->', cursor);
+
   // Fetch the database
   const response = await notion.databases.query(
     {
       database_id: String(databaseId),
       page_size: limit,
+      start_cursor: cursor,
     },
   );
 
   // Sanitize the response
-  const sanitizedResponse = response.results.map<SanitizedResponse | undefined>((result) => {
+  const results = response.results.map<SanitizedResponse | undefined>((result) => {
     // Check if result has the necessary properties
     if ('id' in result && 'properties' in result) {
       const id = result.id;
@@ -47,6 +58,11 @@ export default defineEventHandler(async (event) => {
       const image = properties.Image?.url || '';
       const url = properties.URL?.url || '';
       const date = properties.Date?.date?.start || '';
+      const score = properties.Score?.select?.name;
+      const status = {
+        name: properties.Status?.select?.name,
+        color: properties.Status?.select?.color,
+      };
 
       return {
         title,
@@ -55,6 +71,8 @@ export default defineEventHandler(async (event) => {
         image,
         url,
         date,
+        score,
+        status,
         id,
       };
     }
@@ -65,9 +83,7 @@ export default defineEventHandler(async (event) => {
 
   // return
   return {
-    results: response.results,
-    has_more: response.has_more,
-    next_cursor: response.next_cursor,
-    sanitizedResponse,
+    response,
+    results,
   };
 });
