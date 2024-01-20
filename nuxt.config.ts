@@ -136,10 +136,12 @@ export default defineNuxtConfig({
   },
 
   runtimeConfig: {
+    notionApiKey: process.env.NUXT_NOTION_API_PRIVATE_KEY,
     public: {
       pkg: JSON.stringify(pkg),
       siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'http://localhost:3000',
       lastFmApiKey: process.env.NUXT_PUBLIC_LASTFM_API_KEY,
+      notionDatabaseId: process.env.NUXT_NOTION_DATABASE_ID,
     },
   },
 

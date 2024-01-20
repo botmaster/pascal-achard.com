@@ -79,3 +79,10 @@ h6,
 /*strong {
   @apply font-rubik-bold;
 }*/
+
+// Flow
+// -------------------------
+
+.flow > *:where(:not(:first-child)) {
+    margin-top: 1em;
+}

@@ -18,6 +18,7 @@
   "dependencies": {
     "@fontsource/inter": "^5.0.16",
     "@fontsource/rubik": "^5.0.18",
+    "@notionhq/client": "^2.2.14",
     "@studio-freight/lenis": "^1.0.34",
     "@vueuse/nuxt": "^10.7.2",
     "gsap": "^3.12.5",
