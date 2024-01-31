@@ -16,6 +16,7 @@
   "navigation": {
     "about": "Page d'info",
     "home": "Page d'accueil",
+    "reading": "Page lecture",
     "lab": "Page lab",
     "languageSelector": "Sélecteur de langue",
     "themeSelector": "Sélecteur de thème"
@@ -29,6 +30,20 @@
       "scrobbles": "Scrobbles",
       "scrobblesHistory": "Historique d'écoute",
       "tracksPerPage": "{n} pistes par pages"
+    },
+    "reading": {
+      "bdd": "Base de données",
+      "articleList": "Liste des articles",
+      "filtres": {
+        "status": {
+          "all": "Tous",
+          "read": "Lus",
+          "toRead": "À lire",
+          "canceled": "Annulés",
+          "inProgress": "En cours"
+        },
+        "pageSizes": "Articles par page"
+      }
     }
   },
   "theme": {

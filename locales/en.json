@@ -16,6 +16,7 @@
   "navigation": {
     "about": "About page",
     "home": "Home page",
+    "reading": "Reading page",
     "lab": "Lab page",
     "languageSelector": "Language selector",
     "themeSelector": "Theme selector"

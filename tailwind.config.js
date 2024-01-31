@@ -31,6 +31,12 @@ const nord = {
 module.exports = {
   darkMode: 'class',
   content: [`${srcDir}/content/**/*.{vue,md}`],
+  safelist: [
+    'fade-enter-active',
+    'fade-leave-active',
+    'fade-enter-from',
+    'fade-leave-to',
+  ],
   theme: {
     colors: {
       'transparent': 'transparent',
@@ -77,4 +83,7 @@ module.exports = {
       },
     },
   },
+  plugins: [
+    require('@tailwindcss/forms'),
+  ],
 };
