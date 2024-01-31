@@ -13,17 +13,6 @@ interface IProps {
 
 const props = defineProps<IProps>();
 
-// Preload image with rel="preload" and as="image" with head
-useHead({
-  link: [
-    {
-      rel: 'preload',
-      as: 'image',
-      href: '/images/pascal-achard/20102017-DSC06728_ufitab_c_scale_w_2560.jpg',
-    },
-  ],
-});
-
 const { t } = useI18n();
 
 // Effects setup
