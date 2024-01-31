@@ -10,37 +10,40 @@ export interface SanitizedResponse {
   id: string
   score?: string
   status: {
-    name: 'À lire' | 'En train de lire' | 'Lu' | 'Abandonné'
+    name: 'To read' | 'Reading' | 'Read' | 'Canceled'
     color: string
+    id: string
   }
 }
 
 export default defineEventHandler(async (event) => {
   // ... Do whatever you want here
 
-  const query = getQuery(event);
+  const body = await readBody(event);
+  console.log('query ---->', { ...body });
   const config = useRuntimeConfig();
 
   // Initialize Notion Client
   const notion = new Client({ auth: config.notionApiKey });
 
   // Get the database id from the query
-  const databaseId = query.database_id;
+  const database_id = String(body.database_id);
 
   // Get the limit
-  const limit = Number(query.limit) || 20;
+  const page_size = Number(body.page_size) || 20;
 
   // Get the cursor
-  const cursor = query.start_cursor ? String(query.start_cursor) : undefined;
+  const start_cursor = body.start_cursor ? String(body.start_cursor) : undefined;
 
-  console.log('strartCursor ---->', cursor);
+  // console.log('startCursor ---->', cursor);
 
   // Fetch the database
   const response = await notion.databases.query(
     {
-      database_id: String(databaseId),
-      page_size: limit,
-      start_cursor: cursor,
+      ...body,
+      database_id,
+      start_cursor,
+      page_size,
     },
   );
 
@@ -62,6 +65,7 @@ export default defineEventHandler(async (event) => {
       const status = {
         name: properties.Status?.select?.name,
         color: properties.Status?.select?.color,
+        id: properties.Status?.select?.id,
       };
 
       return {

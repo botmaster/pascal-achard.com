@@ -1,16 +1,14 @@
 import { Client } from '@notionhq/client';
 
 export default defineEventHandler(async (event) => {
-  // ... Do whatever you want here
-
-  const query = getQuery(event);
+  const body = await readBody(event);
   const config = useRuntimeConfig();
 
   // Initialize Notion Client
   const notion = new Client({ auth: config.notionApiKey });
 
-  // Get page id from query
-  const pageId = query.page_id;
+  // Get page id from body
+  const pageId = body.page_id;
 
   // Get the page
   const blockResponse = await notion.blocks.children.list({

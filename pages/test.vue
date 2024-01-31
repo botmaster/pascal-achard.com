@@ -1,21 +1,38 @@
 <script setup lang="ts">
+import { useRouteQuery } from '@vueuse/router';
 import type { SanitizedResponse } from '~/server/api/notion-page-list.post';
 
 const config = useRuntimeConfig();
 
+const DEFAULT_LIMIT = 6;
+
 const pageListCollection = ref<SanitizedResponse[]>([]);
-const limit = ref(20);
-const startCursor = ref<string | null>(null);
+const cursor = ref<string | null>(null);
+const pageSize = useRouteQuery('pageSize', DEFAULT_LIMIT, { transform: Number });
+const status = useRouteQuery('status', '', { transform: String });
 
 // Fetch page list
-const { data, error, pending } = await useFetch('/api/notion-page-list', {
-  query: {
-    database_id: config.public.notionDatabaseId,
-    limit,
-    start_cursor: startCursor,
-  },
-  method: 'POST',
-});
+const { data, error, pending, refresh } = await useAsyncData('page-list', () =>
+  $fetch('/api/notion-page-list', {
+    body: {
+      database_id: config.public.notionDatabaseId,
+      page_size: pageSize.value,
+      start_cursor: cursor.value,
+      sorts: [
+        {
+          property: 'Created time',
+          direction: 'descending',
+        },
+      ],
+      filter: {
+        property: 'Status',
+        select: {
+          equals: status.value.replace(/\+/g, ' '),
+        },
+      },
+    },
+    method: 'POST',
+  }));
 
 const imageUrls = ref<Record<string, string>>({});
 
@@ -25,7 +42,7 @@ async function getImageUrl(pageId: string) {
   if (!process.client)
     return '';
   return await $fetch('/api/notion-page-image', {
-    query: {
+    body: {
       page_id: pageId,
     },
     method: 'POST',
@@ -33,7 +50,7 @@ async function getImageUrl(pageId: string) {
 }
 
 function loadMore() {
-  startCursor.value = data.value?.response.next_cursor || null;
+  cursor.value = data.value?.response.next_cursor || null;
 }
 
 // Computed - Has more
@@ -56,6 +73,7 @@ watch(
     if (!newVal)
       return;
     pageListCollection.value = [...pageListCollection.value, ...newVal.results as SanitizedResponse[]];
+    // pageListCollection.value = newVal.results as SanitizedResponse[];
 
     if (!process.client)
       return;
@@ -65,6 +83,43 @@ watch(
     }));
   },
   { immediate: true },
+);
+
+// Watch cursor change
+watch(
+  () => cursor.value,
+  async (newVal) => {
+    if (!newVal)
+      return;
+    await refresh();
+  },
+  { immediate: false },
+);
+
+// Watch status change
+watch(
+  () => status.value,
+  async (newVal) => {
+    if (!newVal && newVal !== '')
+      return;
+    cursor.value = null;
+    pageListCollection.value = [];
+    await refresh();
+  },
+  { immediate: false },
+);
+
+// Watch page size change
+watch(
+  () => pageSize.value,
+  async (newVal) => {
+    if (!newVal)
+      return;
+    cursor.value = null;
+    pageListCollection.value = [];
+    await refresh();
+  },
+  { immediate: false },
 );
 </script>
 
@@ -87,7 +142,44 @@ watch(
       </pre>
 
         <h3>Database list <span class="font-body text-xs font-normal capitalize">{{ pageListCollection.length }} articles</span></h3>
-        <ul v-if="pageListCollection && pageListCollection.length > 0" class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div class="flex gap-2">
+          <label for="status">Status</label>
+          <select id="status" v-model="status">
+            <option value="">
+              All
+            </option>
+            <option value="To read">
+              To read
+            </option>
+            <option value="Read">
+              Read
+            </option>
+            <option value="Reading">
+              Reading
+            </option>
+            <option value="Canceled">
+              Canceled
+            </option>
+          </select>
+        </div>
+        <div class="flex gap-2">
+          <label for="status">Page size</label>
+          <select id="status" v-model="pageSize">
+            <option :value="DEFAULT_LIMIT">
+              {{ DEFAULT_LIMIT }}
+            </option>
+            <option :value="12">
+              12
+            </option>
+            <option :value="24">
+              24
+            </option>
+            <option :value="48">
+              48
+            </option>
+          </select>
+        </div>
+        <ul v-if="pageListCollection && pageListCollection.length > 0" class="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           <li v-for="item in pageListCollection" :key="item.id as string">
             <article class="wrapper-outline relative flex h-full flex-col bg-white px-3 dark:bg-polarnight-nord-0">
               <header class="relative aspect-video overflow-hidden rounded bg-snowstorm-nord-4 dark:bg-polarnight-nord-3">
