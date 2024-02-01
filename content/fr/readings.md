@@ -1,8 +1,9 @@
 ---
-coverTitle: Lecture
+coverTitle: Lectures
 coverSubtitle: Frontend, développement, design, etc.
-coverDescription: Base de donnée d'articles que j'ai collecté au fil du temps.
+coverDescription: Base de données d’articles collectés au fil du temps.
 description: Pascal Achard, développeur frontend senior. Lecture. Liste d'articles à lire.
 ---
 
 
+## Articles

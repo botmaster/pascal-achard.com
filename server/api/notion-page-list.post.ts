@@ -16,15 +16,16 @@ export interface SanitizedResponse {
   }
 }
 
+const config = useRuntimeConfig();
+
+// Initialize Notion Client
+const notion = new Client({ auth: config.notionApiKey });
+
 export default defineEventHandler(async (event) => {
   // ... Do whatever you want here
 
   const body = await readBody(event);
   console.log('query ---->', { ...body });
-  const config = useRuntimeConfig();
-
-  // Initialize Notion Client
-  const notion = new Client({ auth: config.notionApiKey });
 
   // Get the database id from the query
   const database_id = String(body.database_id);

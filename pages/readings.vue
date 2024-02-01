@@ -7,9 +7,9 @@ const config = useRuntimeConfig();
 const { locale: currentLocale, t } = useI18n();
 
 // Fetch Content data
-const { data: contentData } = await useAsyncData(`reading-${currentLocale.value}`, () =>
+const { data: contentData } = await useAsyncData(`readings-${currentLocale.value}`, () =>
   queryContent<IPage>()
-    .where({ _locale: currentLocale.value, _path: '/reading' })
+    .where({ _locale: currentLocale.value, _path: '/readings' })
     .findOne());
 
 if (contentData?.value)
@@ -21,6 +21,7 @@ const pageListCollection = ref<SanitizedResponse[]>([]);
 const cursor = ref<string | null>(null);
 const pageSize = useRouteQuery('pageSize', DEFAULT_LIMIT, { transform: Number });
 const status = useRouteQuery('status', '', { transform: String });
+const search = useRouteQuery('search', '', { transform: String });
 const isLoadingMore = ref(false);
 
 // Fetch page list
@@ -37,10 +38,20 @@ const { data, error, pending, refresh } = await useAsyncData('page-list', () =>
         },
       ],
       filter: {
-        property: 'Status',
-        select: {
-          equals: status.value.replace(/\+/g, ' '),
-        },
+        and: [
+          {
+            property: 'Status',
+            select: {
+              equals: status.value.replace(/\+/g, ' '),
+            },
+          },
+          {
+            property: 'Name',
+            rich_text: {
+              contains: search.value,
+            },
+          },
+        ],
       },
     },
     method: 'POST',
@@ -65,6 +76,17 @@ function loadMore() {
   isLoadingMore.value = true;
   cursor.value = data.value?.response.next_cursor || null;
 }
+
+function clearFilters() {
+  cursor.value = null;
+  status.value = '';
+  search.value = '';
+}
+
+// Computed - Has any filters
+const hasFilters = computed<boolean>(() => {
+  return status.value !== '' || search.value !== '';
+});
 
 // Computed - Has more
 const hasMore = computed<boolean>(() => {
@@ -138,6 +160,18 @@ watch(
   },
   { immediate: false },
 );
+
+// Watch search change
+watch(
+  () => search.value,
+  async (newVal) => {
+    if (!newVal && newVal !== '')
+      return;
+    cursor.value = null;
+    await refresh();
+  },
+  { immediate: false },
+);
 </script>
 
 <template>
@@ -158,9 +192,7 @@ watch(
     </template>
   </HeroComponent>
   <div class="container mx-auto mb-12 mt-8 md:mb-24 md:mt-20">
-    <h2 class="mb-8 flex-row overflow-hidden">
-      {{ t('pages.reading.bdd') }}
-    </h2>
+    <ContentRenderer v-if="contentData" class="nuxt-content mb-10" :value="contentData" />
     <div class="flow">
       <template v-if="error">
         <p class="font-code">
@@ -169,46 +201,36 @@ watch(
         <p>{{ error }}</p>
       </template>
       <template v-else>
-        <h3>
-          {{ t('pages.reading.articleList') }}
-        </h3>
-        <div class="flex items-center gap-6">
-          <div class="flex items-center gap-2">
+        <div class="flex flex-col flex-wrap gap-x-6 gap-y-1.5 lg:flex-row lg:items-center">
+          <div class="items-center gap-2 lg:flex">
             <label class="" for="selectStatus">Status</label>
             <select id="selectStatus" v-model="status">
               <option value="">
-                {{ t('pages.reading.filtres.status.all') }}
+                {{ t('pages.readings.filtres.status.all') }}
               </option>
               <option value="To read">
-                {{ t('pages.reading.filtres.status.toRead') }}
+                {{ t('pages.readings.filtres.status.toRead') }}
               </option>
               <option value="Read">
-                {{ t('pages.reading.filtres.status.read') }}
+                {{ t('pages.readings.filtres.status.read') }}
               </option>
               <option value="Reading">
-                {{ t('pages.reading.filtres.status.inProgress') }}
+                {{ t('pages.readings.filtres.status.inProgress') }}
               </option>
               <option value="Canceled">
-                {{ t('pages.reading.filtres.status.canceled') }}
+                {{ t('pages.readings.filtres.status.canceled') }}
               </option>
             </select>
           </div>
-          <div v-if="pageListCollection.length >= DEFAULT_LIMIT" class="flex items-center gap-2">
-            <label class="flex-none" for="selectPageSize">{{ t('pages.reading.filtres.pageSizes') }}</label>
-            <select id="selectPageSize" v-model="pageSize">
-              <option :value="DEFAULT_LIMIT">
-                {{ DEFAULT_LIMIT }}
-              </option>
-              <option :value="12">
-                12
-              </option>
-              <option :value="24">
-                24
-              </option>
-              <option :value="48">
-                48
-              </option>
-            </select>
+
+          <div>
+            <input v-model.lazy="search" type="text" placeholder="Search">
+          </div>
+
+          <div v-if="hasFilters">
+            <button @click="clearFilters">
+              Effacer les filtres
+            </button>
           </div>
           <Transition name="fade">
             <AppLoader v-if="pending" class="text-2xl" />
@@ -254,15 +276,33 @@ watch(
             </AppCard>
           </li>
         </ul>
-        <p v-if="hasMore" class="flex items-center gap-2 leading-none">
-          <button :disabled="pending" @click="loadMore">
-            <Icon name="material-symbols:refresh" />
-            Load more
-          </button>
-          <Transition name="fade">
-            <AppLoader v-if="isLoadingMore" class="text-base" />
-          </Transition>
-        </p>
+        <div class="mt-10 flex flex-col items-center gap-2 lg:flex-row">
+          <div v-if="hasMore" class="flex items-center gap-2 leading-none">
+            <button :disabled="pending" class="group" @click="loadMore">
+              {{ t('common.loadMore') }}<Icon class="ml-1 block transition-transform group-hover:animate-spin" name="material-symbols:refresh" />
+            </button>
+            <Transition name="fade">
+              <AppLoader v-if="isLoadingMore" class="text-base" />
+            </Transition>
+          </div>
+          <div v-if="pageListCollection.length >= DEFAULT_LIMIT" class="flex items-center gap-2 lg:ml-auto">
+            <label class="flex-none" for="selectPageSize">{{ t('pages.readings.filtres.pageSizes') }}</label>
+            <select id="selectPageSize" v-model="pageSize" class="w-auto lg:w-full">
+              <option :value="DEFAULT_LIMIT">
+                {{ DEFAULT_LIMIT }}
+              </option>
+              <option :value="12">
+                12
+              </option>
+              <option :value="24">
+                24
+              </option>
+              <option :value="48">
+                48
+              </option>
+            </select>
+          </div>
+        </div>
       </template>
     </div>
   </div>

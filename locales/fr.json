@@ -4,7 +4,8 @@
     "goToPage": "Aller à la page",
     "languages": "Langue",
     "no": "Non",
-    "yes": "Oui"
+    "yes": "Oui",
+    "loadMore": "Charger la suite"
   },
   "layouts": {
     "title": "Pascal Achard - {title}"
@@ -31,7 +32,7 @@
       "scrobblesHistory": "Historique d'écoute",
       "tracksPerPage": "{n} pistes par pages"
     },
-    "reading": {
+    "readings": {
       "bdd": "Base de données",
       "articleList": "Liste des articles",
       "filtres": {
