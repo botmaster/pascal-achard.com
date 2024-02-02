@@ -1,11 +1,12 @@
 import { Client } from '@notionhq/client';
 
+const config = useRuntimeConfig();
+
+// Initialize Notion Client
+const notion = new Client({ auth: config.notionApiKey });
+
 export default defineEventHandler(async (event) => {
   const body = await readBody(event);
-  const config = useRuntimeConfig();
-
-  // Initialize Notion Client
-  const notion = new Client({ auth: config.notionApiKey });
 
   // Get page id from body
   const pageId = body.page_id;
