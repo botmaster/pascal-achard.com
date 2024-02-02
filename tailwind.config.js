@@ -31,6 +31,12 @@ const nord = {
 module.exports = {
   darkMode: 'class',
   content: [`${srcDir}/content/**/*.{vue,md}`],
+  safelist: [
+    'fade-enter-active',
+    'fade-leave-active',
+    'fade-enter-from',
+    'fade-leave-to',
+  ],
   theme: {
     colors: {
       'transparent': 'transparent',
@@ -44,6 +50,14 @@ module.exports = {
       'accent-content': 'hsl(var(--color-accent-content) / <alpha-value>)',
       'neutral': 'hsl(var(--color-neutral) / <alpha-value>)',
       'neutral-content': 'hsl(var(--color-neutral-content) / <alpha-value>)',
+      'warning': 'hsl(var(--color-warning) / <alpha-value>)',
+      'warning-content': 'hsl(var(--color-warning-content) / <alpha-value>)',
+      'success': 'hsl(var(--color-success) / <alpha-value>)',
+      'success-content': 'hsl(var(--color-success-content) / <alpha-value>)',
+      'danger': 'hsl(var(--color-danger) / <alpha-value>)',
+      'danger-content': 'hsl(var(--color-danger-content) / <alpha-value>)',
+      'info': 'hsl(var(--color-info) / <alpha-value>)',
+      'info-content': 'hsl(var(--color-info-content) / <alpha-value>)',
       'white': 'hsl(var(--color-white) / <alpha-value>)',
       'black': 'hsl(var(--color-black) / <alpha-value>)',
       'body': {
@@ -69,4 +83,7 @@ module.exports = {
       },
     },
   },
+  plugins: [
+    require('@tailwindcss/forms'),
+  ],
 };

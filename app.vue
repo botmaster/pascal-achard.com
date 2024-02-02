@@ -3,7 +3,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
-ScrollTrigger.defaults({ markers: process.env.NODE_ENV === 'development' });
+// ScrollTrigger.defaults({ markers: process.env.NODE_ENV === 'development' });
 
 const { t } = useI18n();
 

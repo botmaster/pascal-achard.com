@@ -18,8 +18,10 @@
   "dependencies": {
     "@fontsource/inter": "^5.0.16",
     "@fontsource/rubik": "^5.0.18",
+    "@notionhq/client": "^2.2.14",
     "@studio-freight/lenis": "^1.0.34",
     "@vueuse/nuxt": "^10.7.2",
+    "@vueuse/router": "^10.7.2",
     "gsap": "^3.12.5",
     "splitting": "^1.0.6"
   },
@@ -34,6 +36,7 @@
     "@nuxtjs/i18n": "^8.0.1",
     "@nuxtjs/sitemap": "^5.1.0",
     "@nuxtjs/tailwindcss": "^6.11.2",
+    "@tailwindcss/forms": "^0.5.7",
     "@types/node": "^20.11.16",
     "@types/splitting": "^1.0.5",
     "@types/uuid": "^9.0.8",

@@ -33,6 +33,13 @@ const localePath = useLocalePath();
       </NuxtLink>
       <NuxtLink
         class="the-header__nav-item the-header__nav-link"
+        :to="localePath({ name: 'readings' })"
+        :title="t('navigation.reading')"
+      >
+        <Icon name="fluent:reading-mode-mobile-20-filled" /><span class="sr-only">{{ t("navigation.reading") }}</span>
+      </NuxtLink>
+      <NuxtLink
+        class="the-header__nav-item the-header__nav-link"
         :to="localePath({ name: 'lab' })"
         :title="t('navigation.lab')"
       >

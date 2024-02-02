@@ -101,7 +101,7 @@ function scrollListToTop() {
       <template #heroContent>
         <p class="h3">
           🧪
-        </p><p />
+        </p>
         <h1 class="dark:text-white">
           {{ contentData?.coverTitle }}
         </h1>
@@ -162,15 +162,3 @@ function scrollListToTop() {
     </NuxtLayout>
   </main>
 </template>
-
-<style scoped lang="scss">
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.3s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-</style>
