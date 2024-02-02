@@ -22,6 +22,7 @@ const cursor = ref<string | null>(null);
 const pageSize = useRouteQuery('pageSize', DEFAULT_LIMIT, { transform: Number });
 const status = useRouteQuery('status', '', { transform: String });
 const search = useRouteQuery('search', '', { transform: String });
+const sort = useRouteQuery('sort', 'Created time', { transform: String });
 const isLoadingMore = ref(false);
 
 // Fetch page list
@@ -33,8 +34,8 @@ const { data, error, pending, refresh } = await useAsyncData('page-list', () =>
       start_cursor: cursor.value,
       sorts: [
         {
-          property: 'Created time',
-          direction: 'descending',
+          property: sort.value.replace(/\+/g, ' '),
+          direction: sort.value === 'Name' ? 'ascending' : 'descending',
         },
       ],
       filter: {
@@ -118,7 +119,7 @@ watch(
 
     if (!process.client)
       return;
-    await nextTick();
+    // await nextTick();
     await Promise.all(newVal.results.map(async (item) => {
       imageUrls.value[item!.id] = await getImageUrl(item!.id);
     }));
@@ -172,6 +173,18 @@ watch(
   },
   { immediate: false },
 );
+
+// Watch sort change
+watch(
+  () => sort.value,
+  async (newVal) => {
+    if (!newVal && newVal !== '')
+      return;
+    cursor.value = null;
+    await refresh();
+  },
+  { immediate: false },
+);
 </script>
 
 <template>
@@ -201,30 +214,50 @@ watch(
         <p>{{ error }}</p>
       </template>
       <template v-else>
+        <!-- Action bar       -->
+
         <div class="flex flex-col flex-wrap gap-x-6 gap-y-1.5 lg:flex-row lg:items-center">
+          <div>
+            <input v-model.lazy="search" type="text" placeholder="Search an article">
+          </div>
+
           <div class="items-center gap-2 lg:flex">
-            <label class="" for="selectStatus">Status</label>
+            <label class="" for="selectStatus">{{ t('pages.readings.filters.statusLabel') }}</label>
             <select id="selectStatus" v-model="status">
               <option value="">
-                {{ t('pages.readings.filtres.status.all') }}
+                {{ t('pages.readings.filters.status.all') }}
               </option>
               <option value="To read">
-                {{ t('pages.readings.filtres.status.toRead') }}
+                {{ t('pages.readings.filters.status.toRead') }}
               </option>
               <option value="Read">
-                {{ t('pages.readings.filtres.status.read') }}
+                {{ t('pages.readings.filters.status.read') }}
               </option>
               <option value="Reading">
-                {{ t('pages.readings.filtres.status.inProgress') }}
+                {{ t('pages.readings.filters.status.inProgress') }}
               </option>
               <option value="Canceled">
-                {{ t('pages.readings.filtres.status.canceled') }}
+                {{ t('pages.readings.filters.status.canceled') }}
               </option>
             </select>
           </div>
 
-          <div>
-            <input v-model.lazy="search" type="text" placeholder="Search">
+          <div class="items-center gap-2 lg:flex">
+            <label class="flex-shrink-0" for="selectSort">{{ t('pages.readings.sort.sortLabel') }}</label>
+            <select id="selectSort" v-model="sort">
+              <option value="Created time">
+                {{ t('pages.readings.sort.createdTime') }}
+              </option>
+              <option value="Last edited time">
+                {{ t('pages.readings.sort.lastEditedTime') }}
+              </option>
+              <option value="Name">
+                {{ t('pages.readings.sort.name') }}
+              </option>
+              <option value="Score">
+                {{ t('pages.readings.sort.score') }}
+              </option>
+            </select>
           </div>
 
           <div v-if="hasFilters">
@@ -244,7 +277,7 @@ watch(
           <li v-for="item in pageListCollection" :key="item.id as string">
             <AppCard class="h-full">
               <template #image>
-                <img v-if="imageUrls[item!.id]" loading="lazy" :src="imageUrls[item.id]" alt="">
+                <img v-if="imageUrls[item.id]" loading="lazy" :src="imageUrls[item.id]" alt="">
                 <div v-if="item.status" class="absolute right-2 top-1.5">
                   <span
                     class="badge shadow-md"
@@ -286,7 +319,7 @@ watch(
             </Transition>
           </div>
           <div v-if="pageListCollection.length >= DEFAULT_LIMIT" class="flex items-center gap-2 lg:ml-auto">
-            <label class="flex-none" for="selectPageSize">{{ t('pages.readings.filtres.pageSizes') }}</label>
+            <label class="flex-none" for="selectPageSize">{{ t('pages.readings.filters.pageSizes') }}</label>
             <select id="selectPageSize" v-model="pageSize" class="w-auto lg:w-full">
               <option :value="DEFAULT_LIMIT">
                 {{ DEFAULT_LIMIT }}

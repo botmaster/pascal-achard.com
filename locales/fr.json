@@ -3,9 +3,9 @@
     "go": "Allez",
     "goToPage": "Aller à la page",
     "languages": "Langue",
+    "loadMore": "Charger la suite",
     "no": "Non",
-    "yes": "Oui",
-    "loadMore": "Charger la suite"
+    "yes": "Oui"
   },
   "layouts": {
     "title": "Pascal Achard - {title}"
@@ -17,9 +17,9 @@
   "navigation": {
     "about": "Page d'info",
     "home": "Page d'accueil",
-    "reading": "Page lecture",
     "lab": "Page lab",
     "languageSelector": "Sélecteur de langue",
+    "reading": "Page lecture",
     "themeSelector": "Sélecteur de thème"
   },
   "pages": {
@@ -33,17 +33,25 @@
       "tracksPerPage": "{n} pistes par pages"
     },
     "readings": {
-      "bdd": "Base de données",
       "articleList": "Liste des articles",
-      "filtres": {
+      "bdd": "Base de données",
+      "filters": {
+        "pageSizes": "Articles par page",
         "status": {
           "all": "Tous",
-          "read": "Lus",
-          "toRead": "À lire",
           "canceled": "Annulés",
-          "inProgress": "En cours"
+          "inProgress": "En cours",
+          "read": "Lus",
+          "toRead": "À lire"
         },
-        "pageSizes": "Articles par page"
+        "statusLabel": "Statut"
+      },
+      "sort": {
+        "createdTime": "Date de création",
+        "lastEditedTime": "Date de dernière édition",
+        "name": "Nom",
+        "score": "⭐️⭐️⭐️⭐️⭐️",
+        "sortLabel": "Trier par"
       }
     }
   },

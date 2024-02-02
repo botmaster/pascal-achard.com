@@ -28,7 +28,7 @@ export function useBubblesEffect(options: BubblesOptions = {}) {
       const vwPercent = vw * 0.4;
 
       const {
-        bubbleCount = 10,
+        bubbleCount = 2,
         bubbleSizeMin = vwPercent * 0.35,
         bubbleSizeMax = vwPercent,
         bubbleColors = [
@@ -38,8 +38,8 @@ export function useBubblesEffect(options: BubblesOptions = {}) {
         ],
       } = options;
 
-      const spawnBubbleX = (buubleWidth: number) => {
-        return gsap.utils.random(-buubleWidth, (bubblesContainer.value?.clientWidth || 0) - buubleWidth / 2);
+      const spawnBubbleX = (bubbleWidth: number) => {
+        return gsap.utils.random(-bubbleWidth, (bubblesContainer.value?.clientWidth || 0) - bubbleWidth / 2);
       };
 
       const createBubble = () => {
