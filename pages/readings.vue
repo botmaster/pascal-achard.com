@@ -92,20 +92,8 @@ async function onIntersectionObserver([{ isIntersecting, target }]: Intersection
     const id = (target as HTMLElement).dataset.pageid;
     if (!id)
       return;
-    if (!imageUrls[id]) {
-      $fetch('/api/notion-page-image', {
-        body: {
-          page_id: id,
-        },
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Cache-Control': 'no-cache',
-        },
-      }).then((res) => {
-        imageUrls[id] = res;
-      });
-    }
+    /* if (!imageUrls[id])
+      imageUrls[id] = await getImageUrl(id); */
   }
 }
 
@@ -303,7 +291,7 @@ watch(
           <li v-for="item in pageListCollection" :key="item.id as string">
             <AppCard v-intersection-observer="[onIntersectionObserver, { root: observerRoot }]" :data-pageid="item.id" class="h-full">
               <template #image>
-                <img v-if="imageUrls[item.id]" :src="imageUrls[item.id]" alt="">
+                <img v-if="item.image" :src="item.image" alt="">
                 <div v-if="item.status" class="absolute right-2 top-1.5">
                   <span
                     class="badge shadow-md"

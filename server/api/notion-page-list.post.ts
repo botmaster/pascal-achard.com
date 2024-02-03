@@ -21,6 +21,15 @@ const config = useRuntimeConfig();
 // Initialize Notion Client
 const notion = new Client({ auth: config.notionApiKey });
 
+async function getImageUrl(pageId: string) {
+  return await $fetch('/api/notion-page-image', {
+    body: {
+      page_id: pageId,
+    },
+    method: 'POST',
+  });
+}
+
 export default defineEventHandler(async (event) => {
   // ... Do whatever you want here
 
@@ -48,6 +57,10 @@ export default defineEventHandler(async (event) => {
     },
   );
 
+  await Promise.all(response.results.map(async (item) => {
+    item.imageUrl = await getImageUrl(item!.id);
+  }));
+
   // Sanitize the response
   const results = response.results.map<SanitizedResponse | undefined>((result) => {
     // Check if result has the necessary properties
@@ -59,7 +72,7 @@ export default defineEventHandler(async (event) => {
       const title = properties.Name.title[0]?.plain_text || '';
       const description = properties.Description?.rich_text?.[0]?.plain_text || '';
       const tags = properties.Tags?.multi_select?.map(tag => tag.name) || [];
-      const image = properties.Image?.url || '';
+      const image = result.imageUrl || properties.Image?.url || '';
       const url = properties.URL?.url || '';
       const date = properties.Date?.date?.start || '';
       const score = properties.Score?.select?.name;
