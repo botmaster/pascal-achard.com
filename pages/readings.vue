@@ -89,7 +89,7 @@ function clearFilters() {
 
 async function onIntersectionObserver([{ isIntersecting, target }]: IntersectionObserverEntry[]) {
   if (isIntersecting) {
-    const id = target.dataset.pageid;
+    const id = (target as HTMLElement).dataset.pageid;
     if (!id)
       return;
     if (!imageUrls.value[id])
