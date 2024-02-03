@@ -98,6 +98,7 @@ async function onIntersectionObserver([{ isIntersecting, target }]: Intersection
           page_id: id,
         },
         method: 'POST',
+        cache: 'no-cache',
       }).then((res) => {
         imageUrls[id] = res;
       });
