@@ -98,7 +98,10 @@ async function onIntersectionObserver([{ isIntersecting, target }]: Intersection
           page_id: id,
         },
         method: 'POST',
-        cache: 'no-cache',
+        headers: {
+          'Content-Type': 'application/json',
+          'Cache-Control': 'no-cache',
+        },
       }).then((res) => {
         imageUrls[id] = res;
       });
