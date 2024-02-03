@@ -92,8 +92,16 @@ async function onIntersectionObserver([{ isIntersecting, target }]: Intersection
     const id = (target as HTMLElement).dataset.pageid;
     if (!id)
       return;
-    if (!imageUrls[id])
-      imageUrls[id] = await getImageUrl(id);
+    if (!imageUrls[id]) {
+      $fetch('/api/notion-page-image', {
+        body: {
+          page_id: id,
+        },
+        method: 'POST',
+      }).then((res) => {
+        imageUrls[id] = res;
+      });
+    }
   }
 }
 
