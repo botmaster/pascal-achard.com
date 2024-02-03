@@ -21,6 +21,7 @@ const config = useRuntimeConfig();
 // Initialize Notion Client
 const notion = new Client({ auth: config.notionApiKey });
 
+// Fetch the image url for a page
 async function getImageUrl(pageId: string) {
   return await $fetch('/api/notion-page-image', {
     body: {
@@ -30,6 +31,7 @@ async function getImageUrl(pageId: string) {
   });
 }
 
+// Define the event handler
 export default defineEventHandler(async (event) => {
   const body = await readBody(event);
 

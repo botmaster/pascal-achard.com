@@ -5,11 +5,26 @@ const config = useRuntimeConfig();
 // Initialize Notion Client
 const notion = new Client({ auth: config.notionApiKey });
 
+// Cache the image url
+const imageUrlCache = new Map<string, string>();
+
+// Cache duration: 1 day
+const CACHE_DURATION = 1000 * 60 * 60 * 24;
+
+// Cache the image url for 1 entire day
+setInterval(() => {
+  imageUrlCache.clear();
+}, CACHE_DURATION);
+
 export default defineEventHandler(async (event) => {
   const body = await readBody(event, { strict: true });
 
   // Get page id from body
   const pageId = body.page_id;
+
+  // Check if the image url is already cached
+  if (imageUrlCache.has(pageId))
+    return imageUrlCache.get(pageId);
 
   // Get the page
   const blockResponse = await notion.blocks.children.list({
@@ -21,5 +36,8 @@ export default defineEventHandler(async (event) => {
   if (!imageBlock)
     return '';
 
-  return imageBlock.image.type === 'external' ? imageBlock.image.external.url : imageBlock.image.file.url;
+  // Cache the image url
+  const imageUrl = imageBlock.image.type === 'external' ? imageBlock.image.external.url : imageBlock.image.file.url;
+  imageUrlCache.set(pageId, imageUrl);
+  return imageUrl;
 });
