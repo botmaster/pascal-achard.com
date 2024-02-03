@@ -21,20 +21,8 @@ const config = useRuntimeConfig();
 // Initialize Notion Client
 const notion = new Client({ auth: config.notionApiKey });
 
-// Cache the image url
-const imageUrlCache = new Map<string, string>();
-
-// Cache the image url for 1 entire day
-setInterval(() => {
-  imageUrlCache.clear();
-}, 1000 * 60 * 60 * 24);
-
 // Fetch the image url for a page
 async function getImageUrl(pageId: string) {
-  // Check if the image url is already cached
-  if (imageUrlCache.has(pageId))
-    return imageUrlCache.get(pageId);
-
   return await $fetch('/api/notion-page-image', {
     body: {
       page_id: pageId,
@@ -67,17 +55,7 @@ export default defineEventHandler(async (event) => {
   );
 
   await Promise.all(response.results.map(async (item) => {
-    // item.imageUrl = await getImageUrl(item.id);
-    // item.imageUrl = imageUrlCache.get(item.id) || await getImageUrl(item.id);
-
-    if (!imageUrlCache.has(item.id)) {
-      const imageUrl = await getImageUrl(item.id);
-      imageUrlCache.set(item.id, imageUrl);
-      item.imageUrl = imageUrl;
-    }
-    else {
-      item.imageUrl = imageUrlCache.get(item.id);
-    }
+    item.imageUrl = await getImageUrl(item.id);
   }));
 
   // Sanitize the response
