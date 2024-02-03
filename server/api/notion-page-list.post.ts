@@ -31,10 +31,7 @@ async function getImageUrl(pageId: string) {
 }
 
 export default defineEventHandler(async (event) => {
-  // ... Do whatever you want here
-
   const body = await readBody(event);
-  console.log('query ---->', { ...body });
 
   // Get the database id from the query
   const database_id = String(body.database_id);
@@ -44,8 +41,6 @@ export default defineEventHandler(async (event) => {
 
   // Get the cursor
   const start_cursor = body.start_cursor ? String(body.start_cursor) : undefined;
-
-  // console.log('startCursor ---->', cursor);
 
   // Fetch the database
   const response = await notion.databases.query(
@@ -58,7 +53,7 @@ export default defineEventHandler(async (event) => {
   );
 
   await Promise.all(response.results.map(async (item) => {
-    item.imageUrl = await getImageUrl(item!.id);
+    item.imageUrl = await getImageUrl(item.id);
   }));
 
   // Sanitize the response

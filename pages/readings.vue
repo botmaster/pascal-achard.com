@@ -61,7 +61,7 @@ const { data, error, pending, refresh } = await useAsyncData('page-list', () =>
     method: 'POST',
   }));
 
-const imageUrls = reactive({});
+/* const imageUrls = reactive({});
 
 // Fetch image url
 async function getImageUrl(pageId: string) {
@@ -74,7 +74,7 @@ async function getImageUrl(pageId: string) {
     },
     method: 'POST',
   });
-}
+} */
 
 function loadMore() {
   isLoadingMore.value = true;
@@ -90,9 +90,9 @@ function clearFilters() {
 async function onIntersectionObserver([{ isIntersecting, target }]: IntersectionObserverEntry[]) {
   if (isIntersecting) {
     const id = (target as HTMLElement).dataset.pageid;
-    if (!id)
+    /* if (!id)
       return;
-    /* if (!imageUrls[id])
+    if (!imageUrls[id])
       imageUrls[id] = await getImageUrl(id); */
   }
 }

@@ -11,8 +11,6 @@ export default defineEventHandler(async (event) => {
   // Get page id from body
   const pageId = body.page_id;
 
-  console.log('pageId', pageId);
-
   // Get the page
   const blockResponse = await notion.blocks.children.list({
     block_id: String(pageId),
