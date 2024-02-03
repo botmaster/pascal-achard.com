@@ -6,7 +6,7 @@ const config = useRuntimeConfig();
 const notion = new Client({ auth: config.notionApiKey });
 
 export default defineEventHandler(async (event) => {
-  const body = await readBody(event);
+  const body = await readBody(event, { strict: true });
 
   // Get page id from body
   const pageId = body.page_id;

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useRouteQuery } from '@vueuse/router';
+import { vIntersectionObserver } from '@vueuse/components';
 import type { SanitizedResponse } from '~/server/api/notion-page-list.post';
 import type { IPage } from '~/types/types';
 
@@ -16,6 +17,8 @@ if (contentData?.value)
   useContentHead(contentData as Ref<IPage>);
 
 const DEFAULT_LIMIT = 6;
+
+const observerRoot = ref<HTMLElement | null>(null);
 
 const pageListCollection = ref<SanitizedResponse[]>([]);
 const cursor = ref<string | null>(null);
@@ -58,7 +61,7 @@ const { data, error, pending, refresh } = await useAsyncData('page-list', () =>
     method: 'POST',
   }));
 
-const imageUrls = ref<Record<string, string>>({});
+/* const imageUrls = reactive({});
 
 // Fetch image url
 async function getImageUrl(pageId: string) {
@@ -71,7 +74,7 @@ async function getImageUrl(pageId: string) {
     },
     method: 'POST',
   });
-}
+} */
 
 function loadMore() {
   isLoadingMore.value = true;
@@ -82,6 +85,16 @@ function clearFilters() {
   cursor.value = null;
   status.value = '';
   search.value = '';
+}
+
+async function onIntersectionObserver([{ isIntersecting, target }]: IntersectionObserverEntry[]) {
+  if (isIntersecting) {
+    const id = (target as HTMLElement).dataset.pageid;
+    /* if (!id)
+      return;
+    if (!imageUrls[id])
+      imageUrls[id] = await getImageUrl(id); */
+  }
 }
 
 // Computed - Has any filters
@@ -117,12 +130,12 @@ watch(
       pageListCollection.value = newVal.results as SanitizedResponse[];
     }
 
-    if (!process.client)
+    /* if (!process.client)
       return;
     // await nextTick();
     await Promise.all(newVal.results.map(async (item) => {
       imageUrls.value[item!.id] = await getImageUrl(item!.id);
-    }));
+    })); */
   },
   { immediate: true },
 );
@@ -218,7 +231,7 @@ watch(
 
         <div class="flex flex-col flex-wrap gap-x-6 gap-y-1.5 lg:flex-row lg:items-center">
           <div>
-            <input v-model.lazy="search" type="text" placeholder="Search an article">
+            <input v-model.lazy="search" autocomplete="search" name="search" type="text" placeholder="Search an article">
           </div>
 
           <div class="items-center gap-2 lg:flex">
@@ -272,12 +285,13 @@ watch(
 
         <ul
           v-if="pageListCollection && pageListCollection.length > 0"
+          ref="observerRoot"
           class="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
         >
           <li v-for="item in pageListCollection" :key="item.id as string">
-            <AppCard class="h-full">
+            <AppCard v-intersection-observer="[onIntersectionObserver, { root: observerRoot }]" :data-pageid="item.id" class="h-full">
               <template #image>
-                <img v-if="imageUrls[item.id]" loading="lazy" :src="imageUrls[item.id]" alt="">
+                <img v-if="item.image" :src="item.image" alt="">
                 <div v-if="item.status" class="absolute right-2 top-1.5">
                   <span
                     class="badge shadow-md"
