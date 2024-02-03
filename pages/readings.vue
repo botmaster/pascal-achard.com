@@ -291,7 +291,7 @@ watch(
           <li v-for="item in pageListCollection" :key="item.id as string">
             <AppCard v-intersection-observer="[onIntersectionObserver, { root: observerRoot }]" :data-pageid="item.id" class="h-full">
               <template #image>
-                <img v-if="imageUrls[item.id]" loading="lazy" :src="imageUrls[item.id]" alt="">
+                <img v-if="imageUrls[item.id]" :src="imageUrls[item.id]" alt="">
                 <div v-if="item.status" class="absolute right-2 top-1.5">
                   <span
                     class="badge shadow-md"
