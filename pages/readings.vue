@@ -61,7 +61,7 @@ const { data, error, pending, refresh } = await useAsyncData('page-list', () =>
     method: 'POST',
   }));
 
-const imageUrls = ref<Record<string, string>>({});
+const imageUrls = reactive({});
 
 // Fetch image url
 async function getImageUrl(pageId: string) {
@@ -92,8 +92,8 @@ async function onIntersectionObserver([{ isIntersecting, target }]: Intersection
     const id = (target as HTMLElement).dataset.pageid;
     if (!id)
       return;
-    if (!imageUrls.value[id])
-      imageUrls.value[id] = await getImageUrl(id);
+    if (!imageUrls[id])
+      imageUrls[id] = await getImageUrl(id);
   }
 }
 
