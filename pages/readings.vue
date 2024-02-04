@@ -16,7 +16,7 @@ const { data: contentData } = await useAsyncData(`readings-${currentLocale.value
 if (contentData?.value)
   useContentHead(contentData as Ref<IPage>);
 
-const DEFAULT_LIMIT = 6;
+const DEFAULT_LIMIT = 12;
 
 const observerRoot = ref<HTMLElement | null>(null);
 
@@ -286,7 +286,7 @@ watch(
         <ul
           v-if="pageListCollection && pageListCollection.length > 0"
           ref="observerRoot"
-          class="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
+          class="card-layout mt-12"
         >
           <li v-for="item in pageListCollection" :key="item.id as string">
             <AppCard v-intersection-observer="[onIntersectionObserver, { root: observerRoot }]" :data-pageid="item.id" class="h-full">
@@ -316,8 +316,7 @@ watch(
 
               <template #footer>
                 <p class="truncate">
-                  <Icon name="material-symbols:link" class="text-lg" />
-                  <a :href="item.url" target="_blank">{{ item.url }}</a>
+                  <Icon name="material-symbols:link" class="text-lg" /> <a :href="item.url" target="_blank">{{ item.url }}</a>
                 </p>
               </template>
             </AppCard>
@@ -335,8 +334,8 @@ watch(
           <div v-if="pageListCollection.length >= DEFAULT_LIMIT" class="flex items-center gap-2 lg:ml-auto">
             <label class="flex-none" for="selectPageSize">{{ t('pages.readings.filters.pageSizes') }}</label>
             <select id="selectPageSize" v-model="pageSize" class="w-auto lg:w-full">
-              <option :value="DEFAULT_LIMIT">
-                {{ DEFAULT_LIMIT }}
+              <option :value="6">
+                6
               </option>
               <option :value="12">
                 12
@@ -356,5 +355,14 @@ watch(
 </template>
 
 <style scoped lang="scss">
+.card-layout {
+  --min: 22ch;
+  --gap: 1rem;
 
+  display: grid;
+  grid-gap: var(--gap);
+  /* min() with 100% prevents overflow
+  in extra narrow spaces */
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, var(--min)), 1fr));
+}
 </style>
