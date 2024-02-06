@@ -9,7 +9,7 @@
 <style scoped>
 .app-loader {
   --uib-size: 1em;
-  --uib-color: black;
+  --uib-color: var(--color-body-text-hex, #000);
   --uib-speed: 2s;
   position: relative;
   width: var(--uib-size);

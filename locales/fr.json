@@ -1,5 +1,6 @@
 {
   "common": {
+    "clearFilters": "Effacer les filtres",
     "go": "Allez",
     "goToPage": "Aller à la page",
     "languages": "Langue",

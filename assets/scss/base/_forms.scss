@@ -1,10 +1,14 @@
 // Select
-select {
+select.form-select {
   @apply block w-full rounded-md border-0 py-1.5 text-body-txt shadow-sm ring-1 ring-inset ring-polarnight-nord-3
   focus:ring-2 focus:ring-inset focus:ring-accent sm:max-w-xs sm:text-sm sm:leading-6;
 }
 
-input[type="text"] {
+input[type="text"].form-input, .input-text {
   @apply block w-full rounded-md border-0 py-1.5 text-body-txt shadow-sm ring-1 ring-inset ring-polarnight-nord-3
   focus:ring-2 focus:ring-inset focus:ring-accent sm:max-w-xs sm:text-sm sm:leading-6;
+}
+
+input[type="checkbox"] {
+  @apply rounded border-b-polarnight-nord-0 text-body-txt shadow-sm focus:border-accent focus:ring focus:ring-offset-0 focus:ring-accent focus:ring-opacity-50;
 }
