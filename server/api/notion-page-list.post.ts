@@ -1,4 +1,4 @@
-import { Client } from '@notionhq/client';
+import { Client, isFullPage } from '@notionhq/client';
 
 export interface SanitizedResponse {
   title: string
@@ -60,6 +60,9 @@ export default defineEventHandler(async (event) => {
 
   // Sanitize the response
   const results = response.results.map<SanitizedResponse | undefined>((result) => {
+    if (!isFullPage(result))
+      console.error('Notion response is not a full page or database');
+
     // Check if result has the necessary properties
     if ('id' in result && 'properties' in result) {
       const id = result.id;

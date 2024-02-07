@@ -1,3 +1,4 @@
+/*
 export interface QueryResponse {
   object: string
   results: Result[]
@@ -117,3 +118,4 @@ export interface URL {
   type: string
   url: string
 }
+*/

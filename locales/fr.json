@@ -1,10 +1,12 @@
 {
   "common": {
+    "clearFilters": "Effacer les filtres",
     "go": "Allez",
     "goToPage": "Aller à la page",
     "languages": "Langue",
     "loadMore": "Charger la suite",
     "no": "Non",
+    "noData": "Pas de données",
     "yes": "Oui"
   },
   "layouts": {
@@ -46,6 +48,7 @@
         },
         "statusLabel": "Statut"
       },
+      "filtersTooRestrictive": "🤔 Filtres trop restrictifs ?",
       "sort": {
         "createdTime": "Date de création",
         "lastEditedTime": "Date de dernière édition",

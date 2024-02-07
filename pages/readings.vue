@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { useRouteQuery } from '@vueuse/router';
-import { vIntersectionObserver } from '@vueuse/components';
+
+import type { IPage } from '~/types/last-fm/types';
 import type { SanitizedResponse } from '~/server/api/notion-page-list.post';
-import type { IPage } from '~/types/types';
+import type { IOption } from '~/components/MultiSelectTag.vue';
 
 const config = useRuntimeConfig();
 const { locale: currentLocale, t } = useI18n();
@@ -27,9 +28,25 @@ const status = useRouteQuery('status', '', { transform: String });
 const search = useRouteQuery('search', '', { transform: String });
 const sort = useRouteQuery('sort', 'Created time', { transform: String });
 const isLoadingMore = ref(false);
+const selectedTags = ref<IOption[]>([]);
+
+// Fetch database info
+const { data: database } = await useAsyncData('database-info', () =>
+  $fetch('/api/notion-database-info', {
+    params: {
+      database_id: config.public.notionDatabaseId,
+    },
+    method: 'GET',
+  }));
+
+// Computed - Get "tags" multi-select value from dbResponse
+const tagList = computed<IOption[]>(() => {
+  // @ts-expect-error - TS doesn't know "Tags" exists
+  return database.value?.properties.Tags.multi_select.options || [];
+});
 
 // Fetch page list
-const { data, error, pending, refresh } = await useAsyncData('page-list', () =>
+const { data: pageList, error, pending, refresh } = await useAsyncData('page-list', () =>
   $fetch('/api/notion-page-list', {
     body: {
       database_id: config.public.notionDatabaseId,
@@ -55,56 +72,35 @@ const { data, error, pending, refresh } = await useAsyncData('page-list', () =>
               contains: search.value,
             },
           },
+          {
+            or: selectedTags.value.map(tag => ({
+              property: 'Tags',
+              multi_select: {
+                contains: tag.name,
+              },
+            })),
+          },
         ],
       },
     },
     method: 'POST',
   }));
 
-/* const imageUrls = reactive({});
-
-// Fetch image url
-async function getImageUrl(pageId: string) {
-  // If client side return
-  if (!process.client)
-    return '';
-  return await $fetch('/api/notion-page-image', {
-    body: {
-      page_id: pageId,
-    },
-    method: 'POST',
-  });
-} */
-
-function loadMore() {
-  isLoadingMore.value = true;
-  cursor.value = data.value?.response.next_cursor || null;
-}
-
 function clearFilters() {
   cursor.value = null;
   status.value = '';
   search.value = '';
+  selectedTags.value = [];
 }
 
-async function onIntersectionObserver([{ isIntersecting, target }]: IntersectionObserverEntry[]) {
-  if (isIntersecting) {
-    const id = (target as HTMLElement).dataset.pageid;
-    /* if (!id)
-      return;
-    if (!imageUrls[id])
-      imageUrls[id] = await getImageUrl(id); */
-  }
+function loadMore() {
+  isLoadingMore.value = true;
+  cursor.value = pageList.value?.response.next_cursor || null;
 }
-
-// Computed - Has any filters
-const hasFilters = computed<boolean>(() => {
-  return status.value !== '' || search.value !== '';
-});
 
 // Computed - Has more
 const hasMore = computed<boolean>(() => {
-  return data.value?.response.has_more || false;
+  return pageList.value?.response.has_more || false;
 });
 
 // Computed - Map status color to tailwind color
@@ -117,7 +113,7 @@ const statusColor = computed<Record<string, string>>(() => {
 });
 
 watch(
-  () => data.value,
+  () => pageList.value,
   async (newVal) => {
     if (!newVal)
       return;
@@ -129,13 +125,6 @@ watch(
     else {
       pageListCollection.value = newVal.results as SanitizedResponse[];
     }
-
-    /* if (!process.client)
-      return;
-    // await nextTick();
-    await Promise.all(newVal.results.map(async (item) => {
-      imageUrls.value[item!.id] = await getImageUrl(item!.id);
-    })); */
   },
   { immediate: true },
 );
@@ -198,6 +187,18 @@ watch(
   },
   { immediate: false },
 );
+
+// Watch selectedOptions change
+watch(
+  () => selectedTags.value,
+  async (newVal) => {
+    if (!newVal)
+      return;
+    cursor.value = null;
+    await refresh();
+  },
+  { immediate: false },
+);
 </script>
 
 <template>
@@ -222,81 +223,37 @@ watch(
     <div class="flow">
       <template v-if="error">
         <p class="font-code">
-          <Icon name="material-symbols:error" class="text-xl text-danger" /> Oups
+          <Icon name="material-symbols:error" class="text-xl text-danger" />
+          Oups
         </p>
         <p>{{ error }}</p>
       </template>
       <template v-else>
         <!-- Action bar       -->
+        <ArticleListActionBar
+          v-model:selected-options="selectedTags" v-model:search="search" v-model:status="status"
+          v-model:sort="sort" :tags="tagList" :pending @clear-filters="clearFilters"
+        />
 
-        <div class="flex flex-col flex-wrap gap-x-6 gap-y-1.5 lg:flex-row lg:items-center">
-          <div>
-            <input v-model.lazy="search" autocomplete="search" name="search" type="text" placeholder="Search an article">
-          </div>
-
-          <div class="items-center gap-2 lg:flex">
-            <label class="" for="selectStatus">{{ t('pages.readings.filters.statusLabel') }}</label>
-            <select id="selectStatus" v-model="status">
-              <option value="">
-                {{ t('pages.readings.filters.status.all') }}
-              </option>
-              <option value="To read">
-                {{ t('pages.readings.filters.status.toRead') }}
-              </option>
-              <option value="Read">
-                {{ t('pages.readings.filters.status.read') }}
-              </option>
-              <option value="Reading">
-                {{ t('pages.readings.filters.status.inProgress') }}
-              </option>
-              <option value="Canceled">
-                {{ t('pages.readings.filters.status.canceled') }}
-              </option>
-            </select>
-          </div>
-
-          <div class="items-center gap-2 lg:flex">
-            <label class="flex-shrink-0" for="selectSort">{{ t('pages.readings.sort.sortLabel') }}</label>
-            <select id="selectSort" v-model="sort">
-              <option value="Created time">
-                {{ t('pages.readings.sort.createdTime') }}
-              </option>
-              <option value="Last edited time">
-                {{ t('pages.readings.sort.lastEditedTime') }}
-              </option>
-              <option value="Name">
-                {{ t('pages.readings.sort.name') }}
-              </option>
-              <option value="Score">
-                {{ t('pages.readings.sort.score') }}
-              </option>
-            </select>
-          </div>
-
-          <div v-if="hasFilters">
-            <button @click="clearFilters">
-              Effacer les filtres
-            </button>
-          </div>
-          <Transition name="fade">
-            <AppLoader v-if="pending" class="text-2xl" />
-          </Transition>
-        </div>
-
+        <!--  Article list      -->
         <ul
           v-if="pageListCollection && pageListCollection.length > 0"
           ref="observerRoot"
           class="card-layout mt-12"
         >
           <li v-for="item in pageListCollection" :key="item.id as string">
-            <AppCard v-intersection-observer="[onIntersectionObserver, { root: observerRoot }]" :data-pageid="item.id" class="h-full">
+            <AppCard
+              :data-pageid="item.id"
+              class="h-full"
+            >
               <template #image>
                 <img v-if="item.image" loading="lazy" :src="item.image" alt="">
                 <div v-if="item.status" class="absolute right-2 top-1.5">
                   <span
                     class="badge shadow-md"
                     :class="item.status.color ? statusColor[item.status.color] : 'badge--is-neutral'"
-                  >{{ item.status.name
+                  >{{
+                    item.status.name
                   }}</span>
                 </div>
               </template>
@@ -316,24 +273,33 @@ watch(
 
               <template #footer>
                 <p class="truncate">
-                  <Icon name="material-symbols:link" class="text-lg" /> <a :href="item.url" target="_blank">{{ item.url }}</a>
+                  <Icon name="material-symbols:link" class="text-lg" />
+                  <a :href="item.url" target="_blank">{{ item.url }}</a>
                 </p>
               </template>
             </AppCard>
           </li>
         </ul>
+        <template v-else>
+          <p class="mt-8 lg:text-xl">
+            {{ t('common.noData') }}. {{ t('pages.readings.filtersTooRestrictive') }}
+          </p>
+        </template>
+
+        <!-- Load more and page size selector -->
         <div class="mt-10 flex flex-col items-center gap-2 lg:flex-row">
           <div v-if="hasMore" class="flex items-center gap-2 leading-none">
             <button :disabled="pending" class="group" @click="loadMore">
-              {{ t('common.loadMore') }}<Icon class="ml-1 block transition-transform group-hover:animate-spin" name="material-symbols:refresh" />
+              {{ t('common.loadMore') }}
+              <Icon class="ml-1 block transition-transform group-hover:animate-spin" name="material-symbols:refresh" />
             </button>
             <Transition name="fade">
-              <AppLoader v-if="isLoadingMore" class="text-base" />
+              <AppLoader v-if="isLoadingMore" class="text-2xl" />
             </Transition>
           </div>
-          <div v-if="pageListCollection.length >= DEFAULT_LIMIT" class="flex items-center gap-2 lg:ml-auto">
+          <div v-if="pageListCollection.length >= 6" class="flex items-center gap-2 lg:ml-auto">
             <label class="flex-none" for="selectPageSize">{{ t('pages.readings.filters.pageSizes') }}</label>
-            <select id="selectPageSize" v-model="pageSize" class="w-auto lg:w-full">
+            <select id="selectPageSize" v-model="pageSize" class="form-select w-auto">
               <option :value="6">
                 6
               </option>
