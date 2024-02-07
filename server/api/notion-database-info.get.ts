@@ -9,7 +9,6 @@ const notion = new Client({ auth: config.notionApiKey });
 export default defineEventHandler(async (event) => {
   // Get Query
   const query = getQuery(event);
-  console.log('query ---->', query);
 
   // Get the database id from the query
   const databaseId = query.database_id;

@@ -6,6 +6,7 @@
     "languages": "Language",
     "loadMore": "Load more",
     "no": "No",
+    "noData": "No data",
     "yes": "Yes"
   },
   "layouts": {
@@ -47,6 +48,7 @@
         },
         "statusLabel": "Status"
       },
+      "filtersTooRestrictive": "🤔 Filters too restrictive ?",
       "sort": {
         "createdTime": "Created Time",
         "lastEditedTime": "Last edited time",

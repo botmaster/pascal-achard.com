@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { useRouteQuery } from '@vueuse/router';
 
-import type { IPage } from '~/types/types';
+import type { IPage } from '~/types/last-fm/types';
 import type { SanitizedResponse } from '~/server/api/notion-page-list.post';
+import type { IOption } from '~/components/MultiSelectTag.vue';
 
 const config = useRuntimeConfig();
 const { locale: currentLocale, t } = useI18n();
@@ -27,7 +28,7 @@ const status = useRouteQuery('status', '', { transform: String });
 const search = useRouteQuery('search', '', { transform: String });
 const sort = useRouteQuery('sort', 'Created time', { transform: String });
 const isLoadingMore = ref(false);
-const selectedOptions = ref<string[]>([]);
+const selectedTags = ref<IOption[]>([]);
 
 // Fetch database info
 const { data: database } = await useAsyncData('database-info', () =>
@@ -39,7 +40,8 @@ const { data: database } = await useAsyncData('database-info', () =>
   }));
 
 // Computed - Get "tags" multi-select value from dbResponse
-const tags = computed(() => {
+const tagList = computed<IOption[]>(() => {
+  // @ts-expect-error - TS doesn't know "Tags" exists
   return database.value?.properties.Tags.multi_select.options || [];
 });
 
@@ -71,7 +73,7 @@ const { data: pageList, error, pending, refresh } = await useAsyncData('page-lis
             },
           },
           {
-            or: selectedOptions.value.map(tag => ({
+            or: selectedTags.value.map(tag => ({
               property: 'Tags',
               multi_select: {
                 contains: tag.name,
@@ -84,22 +86,17 @@ const { data: pageList, error, pending, refresh } = await useAsyncData('page-lis
     method: 'POST',
   }));
 
-function loadMore() {
-  isLoadingMore.value = true;
-  cursor.value = pageList.value?.response.next_cursor || null;
-}
-
 function clearFilters() {
   cursor.value = null;
   status.value = '';
   search.value = '';
-  selectedOptions.value = [];
+  selectedTags.value = [];
 }
 
-// Computed - Has any filters
-const hasFilters = computed<boolean>(() => {
-  return status.value !== '' || search.value !== '';
-});
+function loadMore() {
+  isLoadingMore.value = true;
+  cursor.value = pageList.value?.response.next_cursor || null;
+}
 
 // Computed - Has more
 const hasMore = computed<boolean>(() => {
@@ -193,7 +190,7 @@ watch(
 
 // Watch selectedOptions change
 watch(
-  () => selectedOptions.value,
+  () => selectedTags.value,
   async (newVal) => {
     if (!newVal)
       return;
@@ -233,72 +230,12 @@ watch(
       </template>
       <template v-else>
         <!-- Action bar       -->
+        <ArticleListActionBar
+          v-model:selected-options="selectedTags" v-model:search="search" v-model:status="status"
+          v-model:sort="sort" :tags="tagList" :pending @clear-filters="clearFilters"
+        />
 
-        <div class="flex flex-col flex-wrap gap-x-6 gap-y-1.5 lg:flex-row lg:items-center">
-          <div>
-            <input
-              v-model.lazy="search" autocomplete="search" name="search" type="text"
-              placeholder="Search an article" class="form-input"
-            >
-          </div>
-
-          <div class="items-center gap-2 lg:flex">
-            <label class="" for="selectStatus">{{ t('pages.readings.filters.statusLabel') }}</label>
-            <select id="selectStatus" v-model="status" class="form-select">
-              <option value="">
-                {{ t('pages.readings.filters.status.all') }}
-              </option>
-              <option value="To read">
-                {{ t('pages.readings.filters.status.toRead') }}
-              </option>
-              <option value="Read">
-                {{ t('pages.readings.filters.status.read') }}
-              </option>
-              <option value="Reading">
-                {{ t('pages.readings.filters.status.inProgress') }}
-              </option>
-              <option value="Canceled">
-                {{ t('pages.readings.filters.status.canceled') }}
-              </option>
-            </select>
-          </div>
-
-          <div class="items-center gap-2 lg:flex">
-            <label class="flex-shrink-0" for="selectSort">{{ t('pages.readings.sort.sortLabel') }}</label>
-            <select id="selectSort" v-model="sort" class="form-select">
-              <option value="Created time">
-                {{ t('pages.readings.sort.createdTime') }}
-              </option>
-              <option value="Last edited time">
-                {{ t('pages.readings.sort.lastEditedTime') }}
-              </option>
-              <option value="Name">
-                {{ t('pages.readings.sort.name') }}
-              </option>
-              <option value="Score">
-                {{ t('pages.readings.sort.score') }}
-              </option>
-            </select>
-          </div>
-
-          <div class="">
-            <MultiSelectTag v-model="selectedOptions" :options="tags" />
-          </div>
-          <div class="">
-            <TestComponent />
-          </div>
-
-          <div v-if="hasFilters" class="leading-none">
-            <button class="inline-flex items-center" @click="clearFilters">
-              <Icon class="mr-1.5" name="material-symbols:cancel" />
-              {{ t('common.clearFilters') }}
-            </button>
-          </div>
-          <Transition name="fade">
-            <AppLoader v-if="pending" class="text-2xl" />
-          </Transition>
-        </div>
-
+        <!--  Article list      -->
         <ul
           v-if="pageListCollection && pageListCollection.length > 0"
           ref="observerRoot"
@@ -343,6 +280,13 @@ watch(
             </AppCard>
           </li>
         </ul>
+        <template v-else>
+          <p class="mt-8 lg:text-xl">
+            {{ t('common.noData') }}. {{ t('pages.readings.filtersTooRestrictive') }}
+          </p>
+        </template>
+
+        <!-- Load more and page size selector -->
         <div class="mt-10 flex flex-col items-center gap-2 lg:flex-row">
           <div v-if="hasMore" class="flex items-center gap-2 leading-none">
             <button :disabled="pending" class="group" @click="loadMore">
@@ -353,9 +297,9 @@ watch(
               <AppLoader v-if="isLoadingMore" class="text-2xl" />
             </Transition>
           </div>
-          <div v-if="pageListCollection.length >= DEFAULT_LIMIT" class="flex items-center gap-2 lg:ml-auto">
+          <div v-if="pageListCollection.length >= 6" class="flex items-center gap-2 lg:ml-auto">
             <label class="flex-none" for="selectPageSize">{{ t('pages.readings.filters.pageSizes') }}</label>
-            <select id="selectPageSize" v-model="pageSize" class="w-auto lg:w-full">
+            <select id="selectPageSize" v-model="pageSize" class="form-select w-auto">
               <option :value="6">
                 6
               </option>
