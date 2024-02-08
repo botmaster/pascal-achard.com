@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useRouteQuery } from '@vueuse/router';
 
-import type { IPage } from '~/types/last-fm/types';
+import type { IPage } from '~/types/types';
 import type { SanitizedResponse } from '~/server/api/notion-page-list.post';
 import type { IOption } from '~/components/MultiSelectTag.vue';
 
@@ -236,10 +236,10 @@ watch(
         />
 
         <!--  Article list      -->
-        <ul
-          v-if="pageListCollection && pageListCollection.length > 0"
-          ref="observerRoot"
-          class="card-layout mt-12"
+        <TransitionGroup
+          v-if="pageListCollection && pageListCollection.length > 0" ref="observerRoot" tag="ul"
+          name="group-fade"
+          class="card-layout relative mt-12 "
         >
           <li v-for="item in pageListCollection" :key="item.id as string">
             <AppCard
@@ -279,7 +279,7 @@ watch(
               </template>
             </AppCard>
           </li>
-        </ul>
+        </TransitionGroup>
         <template v-else>
           <p class="mt-8 lg:text-xl">
             {{ t('common.noData') }}. {{ t('pages.readings.filtersTooRestrictive') }}
@@ -330,5 +330,30 @@ watch(
   /* min() with 100% prevents overflow
   in extra narrow spaces */
   grid-template-columns: repeat(auto-fill, minmax(min(100%, var(--min)), 1fr));
+
+  > * {
+    will-change: opacity, transform;
+  }
+}
+
+/* 1. declare transition */
+.group-fade-move,
+.group-fade-enter-active,
+.group-fade-leave-active {
+  transition: opacity 0.6s cubic-bezier(0.55, 0, 0.1, 1), transform 0.6s cubic-bezier(0.55, 0, 0.1, 1);
+}
+
+/* 2. declare enter from and leave to state */
+.group-fade-enter-from,
+.group-fade-leave-to {
+  opacity: 0;
+  transform: translate(0, 20px);
+}
+
+/* 3. ensure leaving items are taken out of layout flow so that moving
+      animations can be calculated correctly. */
+.group-fade-leave-active {
+  position: absolute;
+  display: none;
 }
 </style>

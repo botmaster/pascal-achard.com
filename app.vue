@@ -9,7 +9,6 @@ provideUseId(() => useId());
 
 // ScrollTrigger.defaults({ markers: process.env.NODE_ENV === 'development' });
 gsap.registerPlugin(ScrollTrigger);
-// import { Disclosure, DisclosureButton, DisclosurePanel,} from '@headlessui/vue'
 
 const { t } = useI18n();
 
