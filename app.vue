@@ -2,8 +2,14 @@
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-gsap.registerPlugin(ScrollTrigger);
+import { provideUseId } from '@headlessui/vue';
+
+// Fix headlessui warning. See https://github.com/P4sca1/nuxt-headlessui/issues/41
+provideUseId(() => useId());
+
 // ScrollTrigger.defaults({ markers: process.env.NODE_ENV === 'development' });
+gsap.registerPlugin(ScrollTrigger);
+// import { Disclosure, DisclosureButton, DisclosurePanel,} from '@headlessui/vue'
 
 const { t } = useI18n();
 
