@@ -2,7 +2,7 @@
 import { Combobox, ComboboxButton, ComboboxInput, ComboboxLabel, ComboboxOption, ComboboxOptions } from '@headlessui/vue';
 
 // Interfaces
-export interface IOption {
+export interface IMultiSelectTagOption {
   id: string
   name: string
   color: 'blue' | 'brown' | 'default' | 'gray' | 'green' | 'orange' | 'pink' | 'purple' | 'red' | 'yellow'
@@ -10,11 +10,11 @@ export interface IOption {
 
 // Props
 const props = defineProps<{
-  options: IOption[]
+  options: IMultiSelectTagOption[]
 }>();
 
 // Model
-const selectedOptions = defineModel<IOption[]>({ required: true });
+const selectedOptions = defineModel<IMultiSelectTagOption[]>({ required: true });
 
 const query = ref('');
 
@@ -29,7 +29,7 @@ const filteredOption = computed(() =>
     ),
 );
 
-function displayValue(options: IOption[]) {
+function displayValue(options: IMultiSelectTagOption[]) {
   return options.map(option => option.name).join(', ');
 }
 </script>

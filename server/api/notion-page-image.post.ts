@@ -1,9 +1,7 @@
-import { Client } from '@notionhq/client';
-
-const config = useRuntimeConfig();
+import { NotionClient } from '~/server/NotionClient';
 
 // Initialize Notion Client
-const notion = new Client({ auth: config.notionApiKey });
+const notion = NotionClient.getInstance().getClient();
 
 // Cache the image url
 const imageUrlCache = new Map<string, string>();
@@ -32,7 +30,9 @@ export default defineEventHandler(async (event) => {
   });
 
   // Récupérer l'url du premier block image
-  const imageBlock = blockResponse.results.find(block => block.type === 'image');
+  const imageBlock = blockResponse.results.find((block: any) => block.type === 'image') as {
+    image: { type: 'external' | 'file', external: { url: string }, file: { url: string } }
+  } | undefined;
   if (!imageBlock)
     return '';
 
