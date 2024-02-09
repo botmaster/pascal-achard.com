@@ -1,4 +1,4 @@
-import { Client } from '@notionhq/client';
+import { NotionClient } from '~/server/NotionClient';
 
 export interface INotionArticle {
   title: string
@@ -16,10 +16,8 @@ export interface INotionArticle {
   }
 }
 
-const config = useRuntimeConfig();
-
 // Initialize Notion Client
-const notion = new Client({ auth: config.notionApiKey });
+const notion = NotionClient.getInstance().getClient();
 
 // Define the event handler
 export default defineEventHandler(async (event) => {

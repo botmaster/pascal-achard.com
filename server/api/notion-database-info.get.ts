@@ -1,10 +1,7 @@
-import { Client } from '@notionhq/client';
-
-// Get the runtime config
-const config = useRuntimeConfig();
+import { NotionClient } from '~/server/NotionClient';
 
 // Initialize Notion Client
-const notion = new Client({ auth: config.notionApiKey });
+const notion = NotionClient.getInstance().getClient();
 
 export default defineEventHandler(async (event) => {
   // Get Query

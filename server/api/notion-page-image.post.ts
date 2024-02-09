@@ -1,9 +1,7 @@
-import { Client } from '@notionhq/client';
-
-const config = useRuntimeConfig();
+import { NotionClient } from '~/server/NotionClient';
 
 // Initialize Notion Client
-const notion = new Client({ auth: config.notionApiKey });
+const notion = NotionClient.getInstance().getClient();
 
 // Cache the image url
 const imageUrlCache = new Map<string, string>();
