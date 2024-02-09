@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { useRouteQuery } from '@vueuse/router';
 
+import type { PartialDatabaseObjectResponse } from '@notionhq/client/build/src/api-endpoints';
 import type { IPage } from '~/types/types';
-import type { SanitizedResponse } from '~/server/api/notion-page-list.post';
-import type { IOption } from '~/components/MultiSelectTag.vue';
+import type { INotionArticle } from '~/server/api/notion-page-list.post';
+import type { IMultiSelectTagOption } from '~/components/MultiSelectTag.vue';
 
 const config = useRuntimeConfig();
 const { locale: currentLocale, t } = useI18n();
@@ -21,14 +22,14 @@ const DEFAULT_LIMIT = 12;
 
 const observerRoot = ref<HTMLElement | null>(null);
 
-const pageListCollection = ref<SanitizedResponse[]>([]);
+const pageListCollection = ref<INotionArticle[]>([]);
 const cursor = ref<string | null>(null);
 const pageSize = useRouteQuery('pageSize', DEFAULT_LIMIT, { transform: Number });
 const status = useRouteQuery('status', '', { transform: String });
 const search = useRouteQuery('search', '', { transform: String });
 const sort = useRouteQuery('sort', 'Created time', { transform: String });
 const isLoadingMore = ref(false);
-const selectedTags = ref<IOption[]>([]);
+const selectedTags = ref<IMultiSelectTagOption[]>([]);
 
 // Fetch database info
 const { data: database } = await useAsyncData('database-info', () =>
@@ -40,9 +41,17 @@ const { data: database } = await useAsyncData('database-info', () =>
   }));
 
 // Computed - Get "tags" multi-select value from dbResponse
-const tagList = computed<IOption[]>(() => {
-  // @ts-expect-error - TS doesn't know "Tags" exists
-  return database.value?.properties.Tags.multi_select.options || [];
+const tagList = computed<IMultiSelectTagOption[]>(() => {
+  const data = database.value as PartialDatabaseObjectResponse;
+  const selectProperty = data.properties.Tags as {
+    type: 'multi_select'
+    multi_select: {
+      options: Array<IMultiSelectTagOption>
+    }
+    id: string
+    name: string
+  };
+  return selectProperty.multi_select.options || [];
 });
 
 // Fetch page list
@@ -120,10 +129,10 @@ watch(
 
     if (isLoadingMore.value) {
       isLoadingMore.value = false;
-      pageListCollection.value = [...pageListCollection.value, ...newVal.results as SanitizedResponse[]];
+      pageListCollection.value = [...pageListCollection.value, ...newVal.results as INotionArticle[]];
     }
     else {
-      pageListCollection.value = newVal.results as SanitizedResponse[];
+      pageListCollection.value = newVal.results as INotionArticle[];
     }
   },
   { immediate: true },
@@ -232,7 +241,7 @@ watch(
         <!-- Action bar       -->
         <ArticleListActionBar
           v-model:selected-options="selectedTags" v-model:search="search" v-model:status="status"
-          v-model:sort="sort" :tags="tagList" :pending @clear-filters="clearFilters"
+          v-model:sort="sort" :tags="tagList" :pending="pending" @clear-filters="clearFilters"
         />
 
         <!--  Article list      -->

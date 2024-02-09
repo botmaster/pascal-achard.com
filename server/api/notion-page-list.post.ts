@@ -1,6 +1,6 @@
-import { Client, isFullPage } from '@notionhq/client';
+import { Client } from '@notionhq/client';
 
-export interface SanitizedResponse {
+export interface INotionArticle {
   title: string
   description?: string
   tags: string[]
@@ -20,16 +20,6 @@ const config = useRuntimeConfig();
 
 // Initialize Notion Client
 const notion = new Client({ auth: config.notionApiKey });
-
-// Fetch the image url for a page
-async function getImageUrl(pageId: string) {
-  return await $fetch('/api/notion-page-image', {
-    body: {
-      page_id: pageId,
-    },
-    method: 'POST',
-  });
-}
 
 // Define the event handler
 export default defineEventHandler(async (event) => {
@@ -54,50 +44,8 @@ export default defineEventHandler(async (event) => {
     },
   );
 
-  await Promise.all(response.results.map(async (item) => {
-    item.imageUrl = await getImageUrl(item.id);
-  }));
-
-  // Sanitize the response
-  const results = response.results.map<SanitizedResponse | undefined>((result) => {
-    if (!isFullPage(result))
-      console.error('Notion response is not a full page or database');
-
-    // Check if result has the necessary properties
-    if ('id' in result && 'properties' in result) {
-      const id = result.id;
-      const properties = result.properties;
-
-      // Check if properties have the necessary sub-properties
-      const title = properties.Name.title[0]?.plain_text || '';
-      const description = properties.Description?.rich_text?.[0]?.plain_text || '';
-      const tags = properties.Tags?.multi_select?.map(tag => tag.name) || [];
-      const image = result.imageUrl || properties.Image?.url || '';
-      const url = properties.URL?.url || '';
-      const date = properties.Date?.date?.start || '';
-      const score = properties.Score?.select?.name;
-      const status = {
-        name: properties.Status?.select?.name,
-        color: properties.Status?.select?.color,
-        id: properties.Status?.select?.id,
-      };
-
-      return {
-        title,
-        description,
-        tags,
-        image,
-        url,
-        date,
-        score,
-        status,
-        id,
-      };
-    }
-
-    // Return undefined if result does not have the necessary properties
-    return undefined;
-  }).filter(Boolean); // Filter out undefined values
+  // Transform the pages
+  const results = await Promise.all(response.results.map(transformPage));
 
   // return
   return {
@@ -105,3 +53,37 @@ export default defineEventHandler(async (event) => {
     results,
   };
 });
+
+// Fetch the image url for a page
+async function getImageUrl(pageId: string) {
+  return await $fetch('/api/notion-page-image', {
+    body: {
+      page_id: pageId,
+    },
+    method: 'POST',
+  });
+}
+
+// function - transform a page to add imageUrl and sanitize the response
+// @note - page is type any because I don't know how to type it.
+// @param page - the page to transform
+// @returns the transformed page
+//
+async function transformPage(page: any): Promise<INotionArticle> {
+  const imageUrl = await getImageUrl(page.id);
+  return {
+    title: page.properties.Name.title[0]?.plain_text || '',
+    description: page.properties.Description?.rich_text?.[0]?.plain_text || '',
+    tags: page.properties.Tags?.multi_select?.map((tag: any) => tag.name) || [],
+    image: imageUrl || page.properties.Image?.url || '',
+    url: page.properties.URL?.url || '',
+    date: page.properties.Date?.date?.start || '',
+    score: page.properties.Score?.select?.name,
+    status: {
+      name: page.properties.Status?.select?.name,
+      color: page.properties.Status?.select?.color,
+      id: page.properties.Status?.select?.id,
+    },
+    id: page.id,
+  };
+}

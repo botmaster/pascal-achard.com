@@ -32,7 +32,9 @@ export default defineEventHandler(async (event) => {
   });
 
   // Récupérer l'url du premier block image
-  const imageBlock = blockResponse.results.find(block => block.type === 'image');
+  const imageBlock = blockResponse.results.find((block: any) => block.type === 'image') as {
+    image: { type: 'external' | 'file', external: { url: string }, file: { url: string } }
+  } | undefined;
   if (!imageBlock)
     return '';
 
