@@ -2,7 +2,7 @@
 import { Combobox, ComboboxButton, ComboboxInput, ComboboxLabel, ComboboxOption, ComboboxOptions } from '@headlessui/vue';
 
 // Interfaces
-export interface IMultiSelectTagOption {
+interface IMultiSelectTagOption {
   id: string
   name: string
   color: 'blue' | 'brown' | 'default' | 'gray' | 'green' | 'orange' | 'pink' | 'purple' | 'red' | 'yellow'

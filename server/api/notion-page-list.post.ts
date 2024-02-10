@@ -1,20 +1,5 @@
 import { NotionClient } from '~/server/NotionClient';
-
-export interface INotionArticle {
-  title: string
-  description?: string
-  tags: string[]
-  image?: string
-  url: string
-  date: string
-  id: string
-  score?: string
-  status: {
-    name: 'To read' | 'Reading' | 'Read' | 'Canceled'
-    color: string
-    id: string
-  }
-}
+import type { IArticle } from '~/types/types';
 
 // Initialize Notion Client
 const notion = NotionClient.getInstance().getClient();
@@ -67,21 +52,18 @@ async function getImageUrl(pageId: string) {
 // @param page - the page to transform
 // @returns the transformed page
 //
-async function transformPage(page: any): Promise<INotionArticle> {
+async function transformPage(page: any): Promise<IArticle> {
   const imageUrl = await getImageUrl(page.id);
   return {
     title: page.properties.Name.title[0]?.plain_text || '',
     description: page.properties.Description?.rich_text?.[0]?.plain_text || '',
-    tags: page.properties.Tags?.multi_select?.map((tag: any) => tag.name) || [],
+    tags: page.properties.Tags?.multi_select,
     image: imageUrl || page.properties.Image?.url || '',
     url: page.properties.URL?.url || '',
-    date: page.properties.Date?.date?.start || '',
-    score: page.properties.Score?.select?.name,
-    status: {
-      name: page.properties.Status?.select?.name,
-      color: page.properties.Status?.select?.color,
-      id: page.properties.Status?.select?.id,
-    },
+    createdTime: page.created_time,
+    lastEditedTime: page.last_edited_time,
+    score: page.properties.Score?.select,
+    status: page.properties.Status?.select,
     id: page.id,
   };
 }

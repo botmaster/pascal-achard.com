@@ -2,15 +2,13 @@
 import { useRouteQuery } from '@vueuse/router';
 
 import type { PartialDatabaseObjectResponse } from '@notionhq/client/build/src/api-endpoints';
-import type { IPage } from '~/types/types';
-import type { INotionArticle } from '~/server/api/notion-page-list.post';
-import type { IMultiSelectTagOption } from '~/components/MultiSelectTag.vue';
+import type { IArticle, IArticleTag, IPage } from '~/types/types';
 
 const config = useRuntimeConfig();
 const { locale: currentLocale, t } = useI18n();
 
 // Fetch Content data
-const { data: contentData } = await useAsyncData(`readings-${currentLocale.value}`, () =>
+const { data: contentData } = await useAsyncData(`readings-content-${currentLocale.value}`, () =>
   queryContent<IPage>()
     .where({ _locale: currentLocale.value, _path: '/readings' })
     .findOne());
@@ -20,16 +18,19 @@ if (contentData?.value)
 
 const DEFAULT_LIMIT = 12;
 
-const observerRoot = ref<HTMLElement | null>(null);
-
-const pageListCollection = ref<INotionArticle[]>([]);
+const pageListCollection = ref<IArticle[]>([]);
 const cursor = ref<string | null>(null);
+const isLoadingMore = ref(false);
+const selectedTags = ref<IArticleTag[]>([]);
+
+// Route query
 const pageSize = useRouteQuery('pageSize', DEFAULT_LIMIT, { transform: Number });
 const status = useRouteQuery('status', '', { transform: String });
 const search = useRouteQuery('search', '', { transform: String });
 const sort = useRouteQuery('sort', 'Created time', { transform: String });
-const isLoadingMore = ref(false);
-const selectedTags = ref<IMultiSelectTagOption[]>([]);
+
+// Pinia store
+const articlesStore = useArticlesStore();
 
 // Fetch database info
 const { data: database } = await useAsyncData('database-info', () =>
@@ -41,12 +42,12 @@ const { data: database } = await useAsyncData('database-info', () =>
   }));
 
 // Computed - Get "tags" multi-select value from dbResponse
-const tagList = computed<IMultiSelectTagOption[]>(() => {
+const tagList = computed<IArticleTag[]>(() => {
   const data = database.value as PartialDatabaseObjectResponse;
   const selectProperty = data.properties.Tags as {
     type: 'multi_select'
     multi_select: {
-      options: Array<IMultiSelectTagOption>
+      options: Array<IArticleTag>
     }
     id: string
     name: string
@@ -55,45 +56,41 @@ const tagList = computed<IMultiSelectTagOption[]>(() => {
 });
 
 // Fetch page list
-const { data: pageList, error, pending, refresh } = await useAsyncData('page-list', () =>
-  $fetch('/api/notion-page-list', {
-    body: {
-      database_id: config.public.notionDatabaseId,
-      page_size: pageSize.value,
-      start_cursor: cursor.value,
-      sorts: [
-        {
-          property: sort.value.replace(/\+/g, ' '),
-          direction: sort.value === 'Name' ? 'ascending' : 'descending',
-        },
-      ],
-      filter: {
-        and: [
-          {
-            property: 'Status',
-            select: {
-              equals: status.value.replace(/\+/g, ' '),
-            },
-          },
-          {
-            property: 'Name',
-            rich_text: {
-              contains: search.value,
-            },
-          },
-          {
-            or: selectedTags.value.map(tag => ({
-              property: 'Tags',
-              multi_select: {
-                contains: tag.name,
-              },
-            })),
-          },
-        ],
-      },
+const { error, pending, refresh } = await useAsyncData('page-list', () => articlesStore.fetchArticles({
+  database_id: config.public.notionDatabaseId,
+  page_size: pageSize.value,
+  start_cursor: cursor.value,
+  sorts: [
+    {
+      property: sort.value.replace(/\+/g, ' '),
+      direction: sort.value === 'Name' ? 'ascending' : 'descending',
     },
-    method: 'POST',
-  }));
+  ],
+  filter: {
+    and: [
+      {
+        property: 'Status',
+        select: {
+          equals: status.value.replace(/\+/g, ' '),
+        },
+      },
+      {
+        property: 'Name',
+        rich_text: {
+          contains: search.value,
+        },
+      },
+      {
+        or: selectedTags.value.map(tag => ({
+          property: 'Tags',
+          multi_select: {
+            contains: tag.name,
+          },
+        })),
+      },
+    ],
+  },
+}));
 
 function clearFilters() {
   cursor.value = null;
@@ -104,12 +101,12 @@ function clearFilters() {
 
 function loadMore() {
   isLoadingMore.value = true;
-  cursor.value = pageList.value?.response.next_cursor || null;
+  cursor.value = articlesStore.articlesResponse?.response.next_cursor || null;
 }
 
 // Computed - Has more
 const hasMore = computed<boolean>(() => {
-  return pageList.value?.response.has_more || false;
+  return articlesStore.articlesResponse?.response.has_more || false;
 });
 
 // Computed - Map status color to tailwind color
@@ -122,17 +119,17 @@ const statusColor = computed<Record<string, string>>(() => {
 });
 
 watch(
-  () => pageList.value,
+  () => articlesStore.articlesResponse,
   async (newVal) => {
     if (!newVal)
       return;
 
     if (isLoadingMore.value) {
       isLoadingMore.value = false;
-      pageListCollection.value = [...pageListCollection.value, ...newVal.results as INotionArticle[]];
+      pageListCollection.value = [...pageListCollection.value, ...newVal.articles];
     }
     else {
-      pageListCollection.value = newVal.results as INotionArticle[];
+      pageListCollection.value = newVal.articles;
     }
   },
   { immediate: true },
@@ -246,7 +243,7 @@ watch(
 
         <!--  Article list      -->
         <TransitionGroup
-          v-if="pageListCollection && pageListCollection.length > 0" ref="observerRoot" tag="ul"
+          v-if="pageListCollection && pageListCollection.length > 0" tag="ul"
           name="group-fade"
           class="card-layout relative mt-12 "
         >
@@ -268,22 +265,25 @@ watch(
               </template>
 
               <h3 class="font-body text-base font-bold capitalize leading-tight">
-                <span class="mr-[1ch]">{{ item.title }}</span>
+                <span class="mr-[0.3em]">{{ item.title }}</span>
               </h3>
               <p v-if="item.tags.length" class="mt-2 flex flex-wrap gap-2">
                 <span
-                  v-for="(tag, index) in item.tags" :key="index"
+                  v-for="tag in item.tags"
+                  :key="tag.id"
                   class="badge badge--is-neutral badge--is-small"
-                >{{ tag }}</span>
+                >{{ tag.name }}</span>
               </p>
               <p v-if="item.score" class="mt-2 text-xs">
-                {{ item.score }}
+                {{ item.score.name }}
               </p>
 
               <template #footer>
+                <p v-if="item.createdTime" class="mt-2 text-xs font-normal text-muted-text">
+                  {{ new Date(item.createdTime).toLocaleDateString(currentLocale) }}
+                </p>
                 <p class="truncate">
-                  <Icon name="material-symbols:link" class="text-lg" />
-                  <a :href="item.url" target="_blank">{{ item.url }}</a>
+                  <Icon name="material-symbols:link" class="text-lg" /> <a :href="item.url" target="_blank">{{ item.url }}</a>
                 </p>
               </template>
             </AppCard>

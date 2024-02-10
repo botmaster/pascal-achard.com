@@ -1,9 +1,9 @@
 <script setup lang="ts">
 // Define props
-import type { IMultiSelectTagOption } from '~/components/MultiSelectTag.vue';
+import type { IArticleTag } from '~/types/types';
 
 defineProps<{
-  tags: IMultiSelectTagOption[]
+  tags: IArticleTag[]
   pending: boolean
 }>();
 
@@ -13,14 +13,14 @@ const emit = defineEmits(['clearFilters']);
 const { t } = useI18n();
 
 // Define model
-const selectedOptions = defineModel<IMultiSelectTagOption[]>('selectedOptions', { required: true });
+const selectedOptions = defineModel<IArticleTag[]>('selectedOptions', { required: true });
 const search = defineModel<string>('search', { required: true });
 const status = defineModel<string>('status', { required: true });
 const sort = defineModel<string>('sort', { required: true });
 
 // Computed - Has any filters
 const hasFilters = computed<boolean>(() => {
-  return status.value !== '' || search.value !== '';
+  return status.value !== '' || search.value !== '' || selectedOptions.value.length > 0;
 });
 </script>
 
