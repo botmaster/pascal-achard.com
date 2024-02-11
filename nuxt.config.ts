@@ -184,6 +184,7 @@ export default defineNuxtConfig({
     'nuxt-simple-robots',
     '@nuxt/devtools',
     '@nuxtjs/sitemap',
+    '@pinia/nuxt',
   ],
 
   devtools: {

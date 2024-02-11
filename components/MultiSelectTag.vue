@@ -2,16 +2,19 @@
 import { Combobox, ComboboxButton, ComboboxInput, ComboboxLabel, ComboboxOption, ComboboxOptions } from '@headlessui/vue';
 
 // Interfaces
-export interface IMultiSelectTagOption {
+interface IMultiSelectTagOption {
   id: string
   name: string
   color: 'blue' | 'brown' | 'default' | 'gray' | 'green' | 'orange' | 'pink' | 'purple' | 'red' | 'yellow'
 }
 
 // Props
-const props = defineProps<{
+const props = withDefaults(defineProps<{
   options: IMultiSelectTagOption[]
-}>();
+  placeholder?: string
+}>(), {
+  placeholder: 'Select an option',
+});
 
 // Model
 const selectedOptions = defineModel<IMultiSelectTagOption[]>({ required: true });
@@ -44,7 +47,7 @@ function displayValue(options: IMultiSelectTagOption[]) {
         class="multi-select__values-container"
       >
         <p class="multi-select__value">
-          <span v-if="selectedOptions.length === 0" class="multi-select__label">Select an option</span> <span
+          <span v-if="selectedOptions.length === 0" class="multi-select__label">{{ props.placeholder }}</span> <span
             v-else
           >{{ displayValue(selectedOptions) }}</span>
         </p>

@@ -1,5 +1,6 @@
 {
   "common": {
+    "article": "Article | Articles",
     "clearFilters": "Clear filters",
     "go": "Go",
     "goToPage": "Go to page",
@@ -38,7 +39,14 @@
       "articleList": "Article list",
       "bdd": "Data base",
       "filters": {
+        "message": {
+          "sortedBy": "sort by {0}",
+          "withSearch": "matching {0}",
+          "withStatus": "with the status {0}",
+          "withTags": "integrating tags {0}"
+        },
         "pageSizes": "Articles by page",
+        "searchPlaceHolder": "Search an article",
         "status": {
           "all": "All",
           "canceled": "Canceled",
@@ -46,7 +54,8 @@
           "read": "Read",
           "toRead": "To read"
         },
-        "statusLabel": "Status"
+        "statusLabel": "Status",
+        "tagsPlaceHolder": "Select tags"
       },
       "filtersTooRestrictive": "🤔 Filters too restrictive ?",
       "sort": {

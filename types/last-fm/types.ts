@@ -4,7 +4,7 @@
  */
 
 export interface Recenttracks {
-  track: Track[]
+  'track': Track[]
   '@attr': RecenttracksAttr
 }
 
@@ -17,17 +17,17 @@ export interface RecenttracksAttr {
 }
 
 export interface Track {
-  artist: Artist
-  mbid: string
-  name: string
-  image: Image[]
-  streamable: string
-  album: Album
-  url: string
+  'artist': Artist
+  'mbid': string
+  'name': string
+  'image': Image[]
+  'streamable': string
+  'album': Album
+  'url': string
   '@attr'?: TrackAttr
-  loved: string
-  id: string
-  date?: DateClass
+  'loved': string
+  'id': string
+  'date'?: DateClass
 }
 
 export interface TrackAttr {
@@ -35,7 +35,7 @@ export interface TrackAttr {
 }
 
 export interface Album {
-  mbid: string
+  'mbid': string
   '#text': string
 }
 
@@ -47,7 +47,7 @@ export interface Artist {
 }
 
 export interface Image {
-  size: Size
+  'size': Size
   '#text': string
 }
 
@@ -59,6 +59,6 @@ export enum Size {
 }
 
 export interface DateClass {
-  uts: number
+  'uts': number
   '#text': string
 }
