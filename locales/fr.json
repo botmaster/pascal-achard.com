@@ -1,5 +1,6 @@
 {
   "common": {
+    "article": "Article | Articles",
     "clearFilters": "Effacer les filtres",
     "go": "Allez",
     "goToPage": "Aller à la page",
@@ -38,6 +39,12 @@
       "articleList": "Liste des articles",
       "bdd": "Base de données",
       "filters": {
+        "message": {
+          "sortedBy": "triés par {0}",
+          "withSearch": "correspondant à {0}",
+          "withStatus": "avec le status {0}",
+          "withTags": "intégrant les tags {0}"
+        },
         "pageSizes": "Articles par page",
         "searchPlaceHolder": "Rechercher un article",
         "status": {

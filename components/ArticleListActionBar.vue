@@ -22,68 +22,105 @@ const sort = defineModel<string>('sort', { required: true });
 const hasFilters = computed<boolean>(() => {
   return status.value !== '' || search.value !== '' || selectedOptions.value.length > 0;
 });
+
+// Map status
+const mapStatus = computed<Record<string, string>>(() => {
+  return {
+    'all': t('pages.readings.filters.status.all'),
+    'To read': t('pages.readings.filters.status.toRead'),
+    'Read': t('pages.readings.filters.status.read'),
+    'Reading': t('pages.readings.filters.status.inProgress'),
+    'Canceled': t('pages.readings.filters.status.canceled'),
+  };
+});
+
+// Map sort
+const mapSort = computed<Record<string, string>>(() => {
+  return {
+    'Created time': t('pages.readings.sort.createdTime'),
+    'Last edited time': t('pages.readings.sort.lastEditedTime'),
+    'Name': t('pages.readings.sort.name'),
+    'Score': t('pages.readings.sort.score'),
+  };
+});
 </script>
 
 <template>
-  <div class="flex flex-col flex-wrap gap-x-6 gap-y-1.5 lg:flex-row lg:items-end">
-    <div class="lg:mr-8">
-      <input
-        v-model.lazy="search" autocomplete="search" name="search" type="text"
-        :placeholder="t('pages.readings.filters.searchPlaceHolder')" class="form-input min-w-64"
-      >
+  <div>
+    <div class="flex flex-col flex-wrap gap-x-4 gap-y-1.5 md:flex-row md:items-end">
+      <div class="md:mr-8">
+        <input
+          v-model.lazy="search" autocomplete="search" name="search" type="text"
+          :placeholder="t('pages.readings.filters.searchPlaceHolder')" class="form-input min-w-64"
+        >
+      </div>
+
+      <div>
+        <label class="mb-1 block" for="selectStatus">{{ t('pages.readings.filters.statusLabel') }}</label>
+        <select id="selectStatus" v-model="status" class="form-select">
+          <option value="">
+            {{ t('pages.readings.filters.status.all') }}
+          </option>
+          <option value="To read">
+            {{ mapStatus['To read'] }}
+          </option>
+          <option value="Read">
+            {{ mapStatus.Read }}
+          </option>
+          <option value="Reading">
+            {{ mapStatus.Reading }}
+          </option>
+          <option value="Canceled">
+            {{ mapStatus.Canceled }}
+          </option>
+        </select>
+      </div>
+
+      <div>
+        <MultiSelectTag v-model="selectedOptions" :options="tags" :placeholder="t('pages.readings.filters.tagsPlaceHolder')" />
+      </div>
+
+      <div>
+        <label class="mb-1 block" for="selectSort">{{ t('pages.readings.sort.sortLabel') }}</label>
+        <select id="selectSort" v-model="sort" class="form-select">
+          <option value="Created time">
+            {{ mapSort['Created time'] }}
+          </option>
+          <option value="Last edited time">
+            {{ mapSort['Last edited time'] }}
+          </option>
+          <option value="Name">
+            {{ mapSort.Name }}
+          </option>
+          <option value="Score">
+            {{ mapSort.Score }}
+          </option>
+        </select>
+      </div>
+
+      <Transition name="fade">
+        <AppLoader v-if="pending" class="m-1 text-2xl" />
+      </Transition>
     </div>
 
-    <div>
-      <label class="mb-1 block" for="selectStatus">{{ t('pages.readings.filters.statusLabel') }}</label>
-      <select id="selectStatus" v-model="status" class="form-select">
-        <option value="">
-          {{ t('pages.readings.filters.status.all') }}
-        </option>
-        <option value="To read">
-          {{ t('pages.readings.filters.status.toRead') }}
-        </option>
-        <option value="Read">
-          {{ t('pages.readings.filters.status.read') }}
-        </option>
-        <option value="Reading">
-          {{ t('pages.readings.filters.status.inProgress') }}
-        </option>
-        <option value="Canceled">
-          {{ t('pages.readings.filters.status.canceled') }}
-        </option>
-      </select>
-    </div>
-
-    <div>
-      <MultiSelectTag v-model="selectedOptions" :options="tags" :placeholder="t('pages.readings.filters.tagsPlaceHolder')" />
-    </div>
-
-    <div>
-      <label class="mb-1 block" for="selectSort">{{ t('pages.readings.sort.sortLabel') }}</label>
-      <select id="selectSort" v-model="sort" class="form-select">
-        <option value="Created time">
-          {{ t('pages.readings.sort.createdTime') }}
-        </option>
-        <option value="Last edited time">
-          {{ t('pages.readings.sort.lastEditedTime') }}
-        </option>
-        <option value="Name">
-          {{ t('pages.readings.sort.name') }}
-        </option>
-        <option value="Score">
-          {{ t('pages.readings.sort.score') }}
-        </option>
-      </select>
-    </div>
-
-    <div v-if="hasFilters" class="leading-none lg:mb-2">
-      <button class="inline-flex items-center" @click="emit('clearFilters')">
-        <Icon class="mr-1.5" name="material-symbols:cancel" />
-        {{ t('common.clearFilters') }}
-      </button>
-    </div>
     <Transition name="fade">
-      <AppLoader v-if="pending" class="m-1 text-2xl" />
+      <div v-if="hasFilters" class="mt-4 flex items-start gap-6">
+        <p class="flex-grow text-sm">
+          {{ t('common.article', 1) }} <i18n-t v-if="status" keypath="pages.readings.filters.message.withStatus" tag="span" scope="global">
+            <strong>{{ mapStatus[status] }}</strong>
+          </i18n-t> <i18n-t v-if="selectedOptions.length > 0" tag="span" keypath="pages.readings.filters.message.withTags" scope="global">
+            <strong>{{ selectedOptions.map(tag => tag.name).toString() }}</strong>
+          </i18n-t> <i18n-t v-if="search" tag="span" keypath="pages.readings.filters.message.withSearch" scope="global">
+            <strong>{{ search }}</strong>
+          </i18n-t> <i18n-t tag="span" keypath="pages.readings.filters.message.sortedBy" scope="global">
+            <strong>{{ mapSort[sort] }}</strong>
+          </i18n-t>.
+        </p>
+        <button class="inline-flex flex-shrink-0 items-center" @click="emit('clearFilters')">
+          <Icon class="mr-1.5" name="material-symbols:cancel" />
+          {{ t('common.clearFilters') }}
+        </button>
+      </div>
     </Transition>
   </div>
 </template>
