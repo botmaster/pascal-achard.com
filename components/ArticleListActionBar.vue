@@ -29,7 +29,7 @@ const hasFilters = computed<boolean>(() => {
     <div class="lg:mr-8">
       <input
         v-model.lazy="search" autocomplete="search" name="search" type="text"
-        placeholder="Search an article" class="form-input min-w-64"
+        :placeholder="t('pages.readings.filters.searchPlaceHolder')" class="form-input min-w-64"
       >
     </div>
 
@@ -55,7 +55,7 @@ const hasFilters = computed<boolean>(() => {
     </div>
 
     <div>
-      <MultiSelectTag v-model="selectedOptions" :options="tags" />
+      <MultiSelectTag v-model="selectedOptions" :options="tags" :placeholder="t('pages.readings.filters.tagsPlaceHolder')" />
     </div>
 
     <div>

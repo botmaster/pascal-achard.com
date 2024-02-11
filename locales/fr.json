@@ -39,6 +39,7 @@
       "bdd": "Base de données",
       "filters": {
         "pageSizes": "Articles par page",
+        "searchPlaceHolder": "Rechercher un article",
         "status": {
           "all": "Tous",
           "canceled": "Annulés",
@@ -46,7 +47,8 @@
           "read": "Lus",
           "toRead": "À lire"
         },
-        "statusLabel": "Statut"
+        "statusLabel": "Statut",
+        "tagsPlaceHolder": "Sélectionner des tags"
       },
       "filtersTooRestrictive": "🤔 Filtres trop restrictifs ?",
       "sort": {
