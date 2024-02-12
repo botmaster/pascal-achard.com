@@ -63,7 +63,7 @@ function displayValue(options: IMultiSelectTagOption[]) {
       >
         <div class="multi-select__options-header">
           <ComboboxInput
-            class="multi-select__search-input"
+            class="multi-select__search-input form-input"
             placeholder="Search..."
             @change="query = $event.target.value"
           />
@@ -106,7 +106,7 @@ function displayValue(options: IMultiSelectTagOption[]) {
 
 <style scoped lang="scss">
 .multi-select {
-  @apply  w-full relative flex items-center bg-white min-w-48 p-0;
+  @apply  w-full relative flex items-center min-w-48 p-0;
 
   &__values-container {
     @apply min-w-0 max-w-64 flex-grow;
@@ -128,7 +128,7 @@ function displayValue(options: IMultiSelectTagOption[]) {
   }
 
   &__options {
-    @apply absolute left-0 top-[100%] z-10 mt-1  w-full rounded-md bg-white text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm;
+    @apply absolute left-0 top-[100%] z-10 mt-1  w-full rounded-md bg-white dark:bg-polarnight-nord-0 text-base shadow-lg ring-1 ring-inset ring-polarnight-nord-3 focus:outline-none sm:text-sm;
   }
 
   &__options-header {
@@ -136,11 +136,11 @@ function displayValue(options: IMultiSelectTagOption[]) {
   }
 
   &__search-input {
-    @apply w-full px-3 py-1.5 text-body-txt border-0 rounded-md shadow-sm;
+    @apply w-full;
   }
 
   &__option-list {
-    @apply relative overflow-auto max-h-60;
+    @apply relative overflow-auto max-h-60 mr-px;
   }
 
   &__options-footer {

@@ -5,6 +5,8 @@ import { FetchError } from 'ofetch';
 import type { IArticle } from '~/types/types';
 
 export const useArticlesStore = defineStore('articles', () => {
+  const config = useRuntimeConfig();
+
   // State
   const articlesResponse = ref<{
     articles: IArticle[]
@@ -19,12 +21,15 @@ export const useArticlesStore = defineStore('articles', () => {
 
     try {
       const response = await $fetch('/api/notion-page-list', {
-        body,
+        body: {
+          database_id: config.public.notionDatabaseId,
+          ...body,
+        },
         method: 'POST',
       });
       articlesResponse.value = {
         articles: response.results,
-        response,
+        response: response.response,
       };
       return response;
     }
@@ -45,9 +50,9 @@ export const useArticlesStore = defineStore('articles', () => {
     }
   };
 
-  // Hase more
+  // Has more
   const hasMore = computed(() => {
-    return articlesResponse.value?.response.response.has_more;
+    return articlesResponse.value?.response.has_more;
   });
 
   return {
