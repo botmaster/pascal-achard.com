@@ -45,11 +45,17 @@ export const useArticlesStore = defineStore('articles', () => {
     }
   };
 
+  // Hase more
+  const hasMore = computed(() => {
+    return articlesResponse.value?.response.response.has_more;
+  });
+
   return {
     articlesResponse,
     loading,
     error,
     fetchArticles,
+    hasMore,
   };
 });
 

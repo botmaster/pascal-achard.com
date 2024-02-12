@@ -101,13 +101,8 @@ function clearFilters() {
 
 function loadMore() {
   isLoadingMore.value = true;
-  cursor.value = articlesStore.articlesResponse?.response.next_cursor || null;
+  cursor.value = articlesStore.articlesResponse?.response.response.next_cursor || null;
 }
-
-// Computed - Has more
-const hasMore = computed<boolean>(() => {
-  return articlesStore.articlesResponse?.response.has_more || false;
-});
 
 // Computed - Map status color to tailwind color
 const statusColor = computed<Record<string, string>>(() => {
@@ -297,7 +292,7 @@ watch(
 
         <!-- Load more and page size selector -->
         <div class="mt-10 flex flex-col items-center gap-2 lg:flex-row">
-          <div v-if="hasMore" class="flex items-center gap-2 leading-none">
+          <div v-if="articlesStore.hasMore" class="flex items-center gap-2 leading-none">
             <button :disabled="pending" class="group" @click="loadMore">
               {{ t('common.loadMore') }}
               <Icon class="ml-1 block transition-transform group-hover:animate-spin" name="material-symbols:refresh" />
