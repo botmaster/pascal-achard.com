@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import { useRouteQuery } from '@vueuse/router';
 
-import type { PartialDatabaseObjectResponse } from '@notionhq/client/build/src/api-endpoints';
 import type { IArticle, IArticleTag, IPage } from '~/types/types';
+import { useArticleDatabaseInfoStore } from '~/stores/article-database-info.store';
 
-const config = useRuntimeConfig();
 const { locale: currentLocale, t } = useI18n();
 
 // Fetch Content data
@@ -30,34 +29,14 @@ const search = useRouteQuery('search', '', { transform: String });
 const sort = useRouteQuery('sort', 'Created time', { transform: String });
 
 // Pinia store
+const databaseStore = useArticleDatabaseInfoStore();
 const articlesStore = useArticlesStore();
 
 // Fetch database info
-const { data: database } = await useAsyncData('database-info', () =>
-  $fetch('/api/notion-database-info', {
-    params: {
-      database_id: config.public.notionDatabaseId,
-    },
-    method: 'GET',
-  }));
-
-// Computed - Get "tags" multi-select value from dbResponse
-const tagList = computed<IArticleTag[]>(() => {
-  const data = database.value as PartialDatabaseObjectResponse;
-  const selectProperty = data.properties.Tags as {
-    type: 'multi_select'
-    multi_select: {
-      options: Array<IArticleTag>
-    }
-    id: string
-    name: string
-  };
-  return selectProperty.multi_select.options || [];
-});
+const { error: fetchDatabaseError, pending: fetchDatabasePending } = await useAsyncData('database-info', () => databaseStore.fetchDatabase());
 
 // Fetch page list
 const { error, pending, refresh } = await useAsyncData('page-list', () => articlesStore.fetchArticles({
-  database_id: config.public.notionDatabaseId,
   page_size: pageSize.value,
   start_cursor: cursor.value,
   sorts: [
@@ -101,17 +80,8 @@ function clearFilters() {
 
 function loadMore() {
   isLoadingMore.value = true;
-  cursor.value = articlesStore.articlesResponse?.response.response.next_cursor || null;
+  cursor.value = articlesStore.articlesResponse?.response.next_cursor || null;
 }
-
-// Computed - Map status color to tailwind color
-const statusColor = computed<Record<string, string>>(() => {
-  return {
-    red: 'badge--is-danger',
-    green: 'badge--is-success',
-    blue: 'badge--is-info',
-  };
-});
 
 watch(
   () => articlesStore.articlesResponse,
@@ -222,18 +192,23 @@ watch(
   <div class="container mx-auto mb-12 mt-8 md:mb-24 md:mt-20">
     <ContentRenderer v-if="contentData" class="nuxt-content mb-10" :value="contentData" />
     <div class="flow">
-      <template v-if="error">
+      <template v-if="error || fetchDatabaseError">
         <p class="font-code">
           <Icon name="material-symbols:error" class="text-xl text-danger" />
           Oups
         </p>
-        <p>{{ error }}</p>
+        <p v-if="error">
+          {{ error }}
+        </p>
+        <p v-if="fetchDatabaseError">
+          {{ fetchDatabaseError }}
+        </p>
       </template>
       <template v-else>
         <!-- Action bar       -->
         <ArticleListActionBar
           v-model:selected-options="selectedTags" v-model:search="search" v-model:status="status"
-          v-model:sort="sort" :tags="tagList" :pending="pending" @clear-filters="clearFilters"
+          v-model:sort="sort" :tags="databaseStore.tagList" :pending="pending || fetchDatabasePending" @clear-filters="clearFilters"
         />
 
         <!--  Article list      -->
@@ -243,45 +218,7 @@ watch(
           class="card-layout relative mt-12 "
         >
           <li v-for="item in pageListCollection" :key="item.id as string">
-            <AppCard
-              :data-pageid="item.id"
-              class="h-full"
-            >
-              <template #image>
-                <img v-if="item.image" loading="lazy" :src="item.image" alt="">
-                <div v-if="item.status" class="absolute right-2 top-1.5">
-                  <span
-                    class="badge shadow-md"
-                    :class="item.status.color ? statusColor[item.status.color] : 'badge--is-neutral'"
-                  >{{
-                    item.status.name
-                  }}</span>
-                </div>
-              </template>
-
-              <h3 class="font-body text-base font-bold capitalize leading-tight">
-                <span class="mr-[0.3em]">{{ item.title }}</span>
-              </h3>
-              <p v-if="item.tags.length" class="mt-2 flex flex-wrap gap-2">
-                <span
-                  v-for="tag in item.tags"
-                  :key="tag.id"
-                  class="badge badge--is-neutral badge--is-small"
-                >{{ tag.name }}</span>
-              </p>
-              <p v-if="item.score" class="mt-2 text-xs">
-                {{ item.score.name }}
-              </p>
-
-              <template #footer>
-                <p v-if="item.createdTime" class="mt-2 text-xs font-normal text-muted-text">
-                  {{ new Date(item.createdTime).toLocaleDateString(currentLocale) }}
-                </p>
-                <p class="truncate">
-                  <Icon name="material-symbols:link" class="text-lg" /> <a :href="item.url" target="_blank">{{ item.url }}</a>
-                </p>
-              </template>
-            </AppCard>
+            <ArticleCard :item="item" />
           </li>
         </TransitionGroup>
         <template v-else>
