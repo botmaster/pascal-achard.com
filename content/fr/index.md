@@ -49,7 +49,7 @@ outils. J'ai une appétence pour le graphisme et la musique.
 ::Sheetelevation
 ### Dernière expérience
 
-Software engineer frontend sénior chez <img src="/images/content/jsk.png" alt="Logo Jellysmack" width="64" height="64" class="inline-block w-[1.3em] !mb-0"> [Jellysmack](https://jellysmack.com/fr/){target="_blank" rel="noopener"} de mars 2022 à novembre 2023.
+Software engineer frontend sénior chez <img loading="lazy" src="/images/content/jsk.png" alt="Logo Jellysmack" width="64" height="64" class="inline-block w-[1.3em] !mb-0"> [Jellysmack](https://jellysmack.com/fr/){target="_blank" rel="noopener"} de mars 2022 à novembre 2023.
 ::
 
 ::Sheetelevation

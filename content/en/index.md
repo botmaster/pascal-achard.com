@@ -44,7 +44,7 @@ tools. I have an interest in graphic design and music.
 ::Sheetelevation
 ### Last experience
 
-Senior frontend software engineer at <img src="/images/content/jsk.png" alt="Jellysmack logo" width="64" height="64" class="inline-block w-[1.3em] !mb-0"> [Jellysmack](https://jellysmack.com/fr/){target="_blank" rel="noopener"} from March 2022 to November 2023.
+Senior frontend software engineer at <img loading="lazy" src="/images/content/jsk.png" alt="Jellysmack logo" width="64" height="64" class="inline-block w-[1.3em] !mb-0"> [Jellysmack](https://jellysmack.com/fr/){target="_blank" rel="noopener"} from March 2022 to November 2023.
 ::
 
 ::Sheetelevation
@@ -67,7 +67,7 @@ Zégut PG is a web application that allows me to create Spotify playlists from t
 
 [https://pascal-is-listening.onrender.com/](https://pascal-is-listening.onrender.com/){target="_blank" rel="noopener" loading="lazy"}
 
-![Image 'pascal is listening'](/images/content/pascal-is-listening.webp){width="1024" height="620"}
+![Image 'pascal is listening'](/images/content/pascal-is-listening.webp){width="1024" height="620" loading="lazy"}
 
 Web application that displays the titles of the songs I'm listening to on Spotify.
 
