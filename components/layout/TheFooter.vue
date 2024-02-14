@@ -28,7 +28,7 @@ const themeList = computed(() => [
           <SocialIcons :links="socialsLinks" />
         </div>
         <p class="the-footer__copyright">
-          <span class="sr-only">copyright</span>Pascal Achard <sup><Icon name="material-symbols:copyright-outline" size="0.8em" /></sup> {{ new Date().getFullYear() }}
+          © {{ new Date().getFullYear() }} Pascal Achard
         </p>
       </div>
 
@@ -59,7 +59,7 @@ const themeList = computed(() => [
   }
 
   &__copyright {
-    @apply text-muted-text text-xs mt-2 md:mt-0;
+    @apply text-xs text-body-txt opacity-80 mt-2 md:mt-0;
   }
 
   &__theme-switcher {

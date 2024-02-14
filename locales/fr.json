@@ -26,6 +26,16 @@
     "themeSelector": "Sélecteur de thème"
   },
   "pages": {
+    "404": {
+      "goBackHome": "Retour à l'accueil",
+      "sorry": "Désolé, cette page n'existe pas.",
+      "title": "404 !!!"
+    },
+    "error": {
+      "intro": "On dirait que quelque chose s'est cassé.",
+      "sorry": "Désolé 😕",
+      "title": "Oups !!!"
+    },
     "lab": {
       "listeningNothing": "Écoute rien du tout",
       "newestFirst": "Nouveaux en premier",
