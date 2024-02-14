@@ -281,10 +281,10 @@ onBeforeUnmount(() => {
       </div>
     </div>
     <div class="cover__bottom-gradient" />
-    <div class="container absolute inset-x-0 bottom-4 z-40 mx-auto xl:bottom-4">
+    <div class="container absolute inset-x-0 bottom-1.5 z-40 mx-auto xl:bottom-4">
       <div class="text-center xl:ml-auto xl:w-1/2">
         <template v-if="props.scrollToTarget">
-          <button ref="iconScroll" :title="t('miscellaneous.scrollToContent')" class="inline-block" @click.prevent="$lenisInstance.scrollTo(scrollToTarget, { easing: Expo.easeInOut, lerp: 0 })">
+          <button ref="iconScroll" :title="t('miscellaneous.scrollToContent')" class="inline-block size-12" @click.prevent="$lenisInstance.scrollTo(scrollToTarget, { easing: Expo.easeInOut, lerp: 0 })">
             <Icon name="pajamas:scroll-down" class="text-xl xl:text-2xl" />
           </button>
         </template>

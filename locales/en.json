@@ -26,6 +26,16 @@
     "themeSelector": "Theme selector"
   },
   "pages": {
+    "404": {
+      "goBackHome": "Go back home",
+      "sorry": "Sorry, that page doesn't exist.",
+      "title": "404!"
+    },
+    "error": {
+      "intro": "It looks like something broke.",
+      "sorry": "Sorry about that 😕",
+      "title": "Dang!"
+    },
     "lab": {
       "listeningNothing": "Listen to nothing",
       "newestFirst": "New first",
