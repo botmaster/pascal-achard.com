@@ -91,14 +91,6 @@ function scrollListToTop() {
 <template>
   <main>
     <NuxtLayout name="content">
-      <!--      <template #heroBackground>
-        <img
-          src="~/assets/images/lab/hero-bg.jpg"
-          width="2170"
-          height="1074"
-          alt=""
-        >
-      </template> -->
       <template #heroContent>
         <p class="h3">
           🧪
@@ -152,8 +144,9 @@ function scrollListToTop() {
       <ul
         v-else-if="trackList?.length"
         ref="playlistListRef"
-        class="-ml-4 mt-2 grid max-h-[50vh] gap-6 overflow-y-auto pl-4"
+        class="-ml-4 mt-6 grid max-h-[50vh] gap-6 overflow-y-auto pl-4 transition-opacity duration-300 ease-in-out xl:grid-cols-2"
         data-lenis-prevent
+        :class="{ 'opacity-20': pending }"
       >
         <ScrobbleListItem v-for="track in trackList" :key="track.id" :track="track" tag="li" title-tag="p" />
       </ul>

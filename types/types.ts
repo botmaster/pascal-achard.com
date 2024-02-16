@@ -23,6 +23,12 @@ export interface ISocialLink {
   }
 }
 
+// Fan items
+export interface IFanItem {
+  label: string
+  url: string
+}
+
 /**
  * Readings
  */

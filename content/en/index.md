@@ -48,9 +48,8 @@ Senior frontend software engineer at <img loading="lazy" src="/images/content/js
 ::
 
 ::Sheetelevation
-### At the moment, I am a fan of:
-
-[Vue.js](https://vuejs.org/){target="_blank" rel="noopener"}, [Nuxt.js](https://nuxt.com/){target="_blank" rel="noopener"}, [Pinia](https://pinia.vuejs.org/){target="_blank" rel="noopener"}, [TypeScript](https://www.typescriptlang.org/){target="_blank" rel="noopener"}, [Craftcms](https://craftcms.com/){target="_blank" rel="noopener"}, [Twig](https://twig.symfony.com/){target="_blank" rel="noopener"}, [Tailwindcss](https://tailwindcss.com/){target="_blank" rel="noopener"}, [Docker](https://www.docker.com/){target="_blank" rel="noopener"}, [Node.js](https://nodejs.org/){target="_blank" rel="noopener"}, [Webpack](https://webpack.js.org/){target="_blank" rel="noopener"}, [Vite](https://vitejs.dev/){target="_blank" rel="noopener"}, [Prettier](https://prettier.io/){target="_blank" rel="noopener"}, [Notion](https://www.notion.so){target="_blank" rel="noopener"}, [Netlify](https://www.netlify.com/){target="_blank" rel="noopener"}, [render](https://www.render.com/){target="_blank" rel="noopener"}...
+### I'm currently a fan of:
+  :::FanList
 ::
 
 ::Sheetelevation
@@ -61,11 +60,15 @@ Senior frontend software engineer at <img loading="lazy" src="/images/content/js
 
 ![Image site 'Zégut PG'](/images/content/zégut-pg.webp){width="1024" height="620" loading="lazy"}
 
-Zégut PG is a web application that allows me to create Spotify playlists from the podcast episodes of the {link} show presented by Francis Zégut & Marjorie Hache. It's also an excuse for me to play around with Vue.js and the Spotify API 🤓. I talk about it [here](https://www.linkedin.com/pulse/z%25C3%25A9gut-pg-cr%25C3%25A9ez-des-playlists-spotify-%25C3%25A0-partir-de-l%25C3%25A9mission-achard).
+Zégut PG is a web application that allows me to create Spotify playlists from the podcast episodes of the RTL2 Pop-Rock Station show presented by Francis Zégut & Marjorie Hache. It's also an excuse for me to play around with Vue.js and the Spotify API 🤓. I talk about it [here](https://www.linkedin.com/pulse/z%25C3%25A9gut-pg-cr%25C3%25A9ez-des-playlists-spotify-%25C3%25A0-partir-de-l%25C3%25A9mission-achard).
 
 #### Pascal is listening
 
 [https://pascal-is-listening.onrender.com/](https://pascal-is-listening.onrender.com/){target="_blank" rel="noopener" loading="lazy"}
+
+> <span class="mr-2">👉</span>  <span class="font-rubik-medium font-medium text-primary">Please note</span>
+>
+> This application is a technical test. The Redis server may be in standby mode. You may have to wait a few seconds for the application to wake up.
 
 ![Image 'pascal is listening'](/images/content/pascal-is-listening.webp){width="1024" height="620" loading="lazy"}
 
@@ -74,19 +77,4 @@ Web application that displays the titles of the songs I'm listening to on Spotif
 Project built using Node.js and npm ecosystems, Github to store the code, Render as host, Render's Redis to cache Spotify API responses. The application and internal API are built entirely using Nuxt. Nuxt is a js framework based on Vue.js that allows, among other things, server-side rendering (SSR), client-side rendering (SPA) and static site generation.
 
 This project allowed me to put into practice Redis of which I only knew the theory. The Spotify API is very well done and particularly well documented. Nuxt.js allowed me to capitalize on my Vue.js knowledge and to quickly build a server-side rendered application. The Render platform is very useful and easy to use. It is very similar to Netlify but richer.
-::
-
-::Sheetelevation
-### Favourite projects
-
-> <span class="mr-2">ℹ️</span>  <span class="font-rubik-medium font-medium text-primary">Info</span>
->
-> The current online version of the antidiscriminations.fr website is no longer the one I am talking about here 😕.
-
-[antidiscriminations.fr](https://www.antidiscriminations.fr/){target="_blank" rel="noopener"}
-
-![Image 'antidiscriminations.fr'](/images/content/antidiscriminations.fr.webp){width="1024" height="620" loading="lazy"}
-
-Acting against discrimination, a project like no other. I talk about it [here](https://www.linkedin.com/pulse/un-projet-pas-comme-les-autres-pascal-achard/){target="_blank" rel="
-noopener"}.
 ::
