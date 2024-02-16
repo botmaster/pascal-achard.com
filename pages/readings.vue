@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { useRouteQuery } from '@vueuse/router';
-
 import type { IArticle, IArticleTag, IPage } from '~/types/types';
 import { useArticleDatabaseInfoStore } from '~/stores/article-database-info.store';
 
+// i18n
 const { locale: currentLocale, t } = useI18n();
 
 // Fetch Content data
@@ -32,44 +32,64 @@ const sort = useRouteQuery('sort', 'Created time', { transform: String });
 const databaseStore = useArticleDatabaseInfoStore();
 const articlesStore = useArticlesStore();
 
+// Current route
+const route = useRoute();
+
 // Fetch database info
-const { error: fetchDatabaseError, pending: fetchDatabasePending } = await useAsyncData('database-info', () => databaseStore.fetchDatabase());
+const { error: fetchDatabaseError, pending: fetchDatabasePending } = await useAsyncData(`database-info-${route.fullPath}`, () => {
+  /// console.log('Use async data for database info');
+  return databaseStore.fetchDatabase();
+}, {
+  transform: transformData,
+  getCachedData,
+  deep: false,
+});
 
 // Fetch page list
-const { error, pending, refresh } = await useAsyncData('page-list', () => articlesStore.fetchArticles({
-  page_size: pageSize.value,
-  start_cursor: cursor.value,
-  sorts: [
+const { error, pending, refresh } = await useAsyncData(`page-list-${route.fullPath}`, () => {
+  // console.log('Use async data for page list');
+  return articlesStore.fetchArticles(
     {
-      property: sort.value.replace(/\+/g, ' '),
-      direction: sort.value === 'Name' ? 'ascending' : 'descending',
-    },
-  ],
-  filter: {
-    and: [
-      {
-        property: 'Status',
-        select: {
-          equals: status.value.replace(/\+/g, ' '),
+      page_size: pageSize.value,
+      start_cursor: cursor.value,
+      sorts: [
+        {
+          property: sort.value.replace(/\+/g, ' '),
+          direction: sort.value === 'Name' ? 'ascending' : 'descending',
         },
-      },
-      {
-        property: 'Name',
-        rich_text: {
-          contains: search.value,
-        },
-      },
-      {
-        or: selectedTags.value.map(tag => ({
-          property: 'Tags',
-          multi_select: {
-            contains: tag.name,
+      ],
+      filter: {
+        and: [
+          {
+            property: 'Status',
+            select: {
+              equals: status.value.replace(/\+/g, ' '),
+            },
           },
-        })),
+          {
+            property: 'Name',
+            rich_text: {
+              contains: search.value,
+            },
+          },
+          {
+            or: selectedTags.value.map(tag => ({
+              property: 'Tags',
+              multi_select: {
+                contains: tag.name,
+              },
+            })),
+          },
+        ],
       },
-    ],
-  },
-}));
+    },
+  );
+}, {
+  transform: transformData,
+  getCachedData,
+  deep: false,
+
+});
 
 function clearFilters() {
   cursor.value = null;
@@ -206,10 +226,13 @@ watch(
       </template>
       <template v-else>
         <!-- Action bar       -->
-        <ArticleListActionBar
-          v-model:selected-options="selectedTags" v-model:search="search" v-model:status="status"
-          v-model:sort="sort" :tags="databaseStore.tagList" :pending="pending || fetchDatabasePending" @clear-filters="clearFilters"
-        />
+        <Transition name="fade">
+          <ArticleListActionBar
+            v-model:selected-options="selectedTags" v-model:search="search" v-model:status="status"
+            v-model:sort="sort" :tags="databaseStore.tagList" :pending="pending || fetchDatabasePending"
+            @clear-filters="clearFilters"
+          />
+        </Transition>
 
         <!--  Article list      -->
         <TransitionGroup
@@ -217,7 +240,7 @@ watch(
           name="group-fade"
           class="card-layout relative mt-12 "
         >
-          <li v-for="item in pageListCollection" :key="item.id as string">
+          <li v-for="item in pageListCollection" :key="item.id as string" :style="{ opacity: pending || fetchDatabasePending ? 0.2 : 1 }">
             <ArticleCard :item="item" />
           </li>
         </TransitionGroup>
@@ -274,6 +297,7 @@ watch(
 
   > * {
     will-change: opacity, transform;
+    transition: opacity 0.6s cubic-bezier(0.55, 0, 0.1, 1);
   }
 }
 

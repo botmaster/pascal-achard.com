@@ -17,6 +17,7 @@ export const useArticlesStore = defineStore('articles', () => {
 
   // Actions
   const fetchArticles = async (body: any) => {
+    console.log('Fetching articles');
     loading.value = true;
 
     try {
