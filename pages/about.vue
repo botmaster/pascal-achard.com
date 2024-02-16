@@ -19,6 +19,7 @@ const { data } = await useAsyncData(`about-${currentLocale.value}`, () =>
     .then((data) => {
       data.pkg = pkg;
       data.subtitle = pkg.description;
+      data.nuxtVersion = pkg.devDependencies.nuxt;
       return data;
     }));
 
@@ -86,20 +87,6 @@ if (process.client) {
 <template>
   <main>
     <NuxtLayout v-if="data" name="content">
-      <template #heroBackground>
-        <!--        <img
-          sizes="(max-width: 2170px) 100vw, 2170px"
-          srcset="
-            @/assets/images/infos/hero_rsbr7p_c_scale_w_768.jpg   768w,
-            @/assets/images/infos/hero_rsbr7p_c_scale_w_1773.jpg 1773w,
-            @/assets/images/infos/hero_rsbr7p_c_scale_w_2170.jpg 2170w
-          "
-          src="@/assets/images/infos/hero_rsbr7p_c_scale_w_2170.jpg"
-          width="2170"
-          height="1074"
-          alt=""
-        > -->
-      </template>
       <template #heroContent>
         <h1 class="dark:text-white">
           {{ data.coverTitle }}
