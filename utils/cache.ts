@@ -15,12 +15,12 @@ export function getCachedData(key: string) {
     const now = new Date();
     const diff = now.getTime() - data.fetchedAt.getTime();
     if (diff > TTL) {
-      console.log(`Cache expired for ${key}`);
+      // console.log(`Cache expired for ${key}`);
       return null;
     }
   }
 
-  console.log(`Getting value from cache for ${key}`);
+  // console.log(`Getting value from cache for ${key}`);
   return data;
 }
 
