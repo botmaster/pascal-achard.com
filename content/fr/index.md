@@ -54,8 +54,7 @@ Software engineer frontend sénior chez <img loading="lazy" src="/images/content
 
 ::Sheetelevation
 ### En ce moment, je suis fan de :
-
-[Vue.js](https://vuejs.org/){target="_blank" rel="noopener"}, [Nuxt.js](https://nuxt.com/){target="_blank" rel="noopener"}, [Pinia](https://pinia.vuejs.org/){target="_blank" rel="noopener"}, [TypeScript](https://www.typescriptlang.org/){target="_blank" rel="noopener"}, [Craftcms](https://craftcms.com/){target="_blank" rel="noopener"}, [Twig](https://twig.symfony.com/){target="_blank" rel="noopener"}, [Tailwindcss](https://tailwindcss.com/){target="_blank" rel="noopener"}, [Docker](https://www.docker.com/){target="_blank" rel="noopener"}, [Node.js](https://nodejs.org/){target="_blank" rel="noopener"}, [Webpack](https://webpack.js.org/){target="_blank" rel="noopener"}, [Vite](https://vitejs.dev/){target="_blank" rel="noopener"}, [Prettier](https://prettier.io/){target="_blank" rel="noopener"}, [Notion](https://www.notion.so){target="_blank" rel="noopener"}, [Netlify](https://www.netlify.com/){target="_blank" rel="noopener"}, [render](https://www.render.com/){target="_blank" rel="noopener"}...
+  :::FanList
 ::
 
 ::Sheetelevation
@@ -72,6 +71,10 @@ Zégut PG est une application web qui me permet de créer des playlists Spotify 
 
 [https://pascal-is-listening.onrender.com/](https://pascal-is-listening.onrender.com/){target="_blank" rel="noopener"}
 
+> <span class="mr-2">👉</span>  <span class="font-rubik-medium font-medium text-primary">À noter</span>
+>
+> Cette application est un test technique. Le serveur Redis peut être en veille. Il faut parfois attendre quelques secondes pour que l'application se réveille.
+
 ![Image site 'pascal is listening'](/images/content/pascal-is-listening.webp){width="1024" height="620" loading="lazy"}
 
 Application web qui affiche les titres des chansons que je suis en train d'écouter sur Spotify.
@@ -87,18 +90,4 @@ rapidement une application rendue côté serveur. La plateforme Render est très
 beaucoup à Netlify en plus riche.
 ::
 
-::Sheetelevation
-### Projets coup de cœur
 
-> <span class="mr-2">ℹ️</span>  <span class="font-rubik-medium font-medium text-primary">Info</span>
->
-> La version actuellement en ligne du site antidiscriminations.fr n'est plus celle dont je parle ici 😕.
-
-[antidiscriminations.fr](https://www.antidiscriminations.fr/){target="_blank" rel="noopener"}
-
-![Image site 'antidiscriminations.fr'](/images/content/antidiscriminations.fr.webp){width="1024" height="620" loading="lazy"}
-
-Agir contre les discriminations, un projet pas comme les autres. J'en
-parle [ici](https://www.linkedin.com/pulse/un-projet-pas-comme-les-autres-pascal-achard/){target="_blank" rel="
-noopener"}.
-::

@@ -7,6 +7,9 @@ description: Pascal Achard, senior frontend developer. Lab. I'm testing the Last
 
 ## Listening <Icon class='text-primary' name="brandico:lastfm"></Icon>
 
-Some stats on the music I listen to.
+> <span class="mr-2">💡</span>  <span class="font-rubik-medium font-medium text-primary">Info</span>
+>
+> Here, I'm testing the Last.fm API to retrieve the latest tracks I've listened to. 
+> There's a [bug](https://www.last.fm/tag/duplicate+scrobbles+bug/shoutbox){target="_blank" rel="noopener"} going around at Last.fm. Some tracks are duplicated.
 
 

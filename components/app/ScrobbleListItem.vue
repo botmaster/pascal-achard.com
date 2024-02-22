@@ -97,6 +97,10 @@ const trackImage = computed(() => {
     }
   }
 
+  &__content {
+    @apply pr-2;
+  }
+
   &__meta {
     @apply text-muted-text leading-tight;
 
@@ -112,7 +116,7 @@ const trackImage = computed(() => {
   }
 
   &__title {
-    @apply font-display leading-[1] mb-[0.1em];
+    @apply font-display leading-[1] mb-[0.1em] line-clamp-2;
   }
 
   &--small {
