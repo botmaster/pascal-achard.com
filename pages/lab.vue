@@ -82,7 +82,7 @@ function scrollListToTop() {
   if (listElement) {
     listElement.scrollTo({
       top: 0,
-      behavior: 'smooth',
+      behavior: 'auto',
     });
   }
 }
@@ -148,7 +148,7 @@ function scrollListToTop() {
         data-lenis-prevent
         :class="{ 'opacity-20': pending }"
       >
-        <ScrobbleListItem v-for="track in trackList" :key="track.id" :track="track" tag="li" title-tag="p" />
+        <ScrobbleListItem v-for="track in trackList" :key="track.id" :track="track" tag="li" title-tag="p" size="large" />
       </ul>
       <div class="mt-6 overflow-hidden text-center">
         <AppPaginate v-model="currentPage" :page-count="pageCount" />
