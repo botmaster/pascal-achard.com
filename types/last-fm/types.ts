@@ -47,8 +47,8 @@ export interface Artist {
 }
 
 export interface Image {
-  'size': Size
-  '#text': string
+  size: Size
+  ['#text']: string
 }
 
 export enum Size {

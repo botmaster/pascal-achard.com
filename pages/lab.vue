@@ -82,7 +82,7 @@ function scrollListToTop() {
   if (listElement) {
     listElement.scrollTo({
       top: 0,
-      behavior: 'smooth',
+      behavior: 'auto',
     });
   }
 }

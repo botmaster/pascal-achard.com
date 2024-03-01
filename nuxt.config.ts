@@ -168,10 +168,6 @@ export default defineNuxtConfig({
     transpile: ['gsap'],
   },
 
-  experimental: {
-    inlineRouteRules: true,
-  },
-
   modules: [
     '@nuxtjs/tailwindcss',
     '@vueuse/nuxt',
@@ -186,6 +182,10 @@ export default defineNuxtConfig({
     '@nuxtjs/sitemap',
     '@pinia/nuxt',
   ],
+
+  features: {
+    inlineStyles: false,
+  },
 
   devtools: {
     // Enable devtools (default: true)
