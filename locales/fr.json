@@ -31,6 +31,10 @@
       "sorry": "Désolé, cette page n'existe pas.",
       "title": "404 !!!"
     },
+    "about": {
+      "dependencies": "Dépendances ",
+      "devDependencies": "Dépandances de développement"
+    },
     "error": {
       "intro": "On dirait que quelque chose s'est cassé.",
       "sorry": "Désolé 😕",
