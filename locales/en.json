@@ -31,6 +31,10 @@
       "sorry": "Sorry, that page doesn't exist.",
       "title": "404!"
     },
+    "about": {
+      "dependencies": "Dependencies",
+      "devDependencies": "Dev dependencies"
+    },
     "error": {
       "intro": "It looks like something broke.",
       "sorry": "Sorry about that 😕",
