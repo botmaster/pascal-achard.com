@@ -59,12 +59,16 @@ const mapSort = computed<Record<string, string>>(() => {
 <template>
   <div>
     <div class="flex flex-col flex-wrap gap-x-4 gap-y-1.5 md:flex-row md:items-end">
-      <div class="md:mr-8">
+      <div class="flex-grow md:mr-auto lg:max-w-80">
         <input
           v-model.lazy="search" autocomplete="search" name="search" type="text"
           :placeholder="t('pages.readings.filters.searchPlaceHolder')" class="form-input min-w-64"
         >
       </div>
+
+      <Transition name="fade">
+        <AppLoader v-if="pending" class="m-1 text-2xl" />
+      </Transition>
 
       <div>
         <label class="mb-1 block" for="selectStatus">{{ t('pages.readings.filters.statusLabel') }}</label>
@@ -126,10 +130,6 @@ const mapSort = computed<Record<string, string>>(() => {
           </option>
         </select>
       </div>
-
-      <Transition name="fade">
-        <AppLoader v-if="pending" class="m-1 text-2xl" />
-      </Transition>
     </div>
 
     <Transition name="fade">
