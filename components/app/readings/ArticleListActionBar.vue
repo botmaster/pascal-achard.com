@@ -58,77 +58,78 @@ const mapSort = computed<Record<string, string>>(() => {
 
 <template>
   <div>
-    <div class="flex flex-col flex-wrap gap-x-4 gap-y-1.5 md:flex-row md:items-end">
-      <div class="flex-grow md:mr-auto lg:max-w-80">
+    <div class="flex flex-col gap-x-4 gap-y-2 lg:flex-row lg:items-end lg:justify-between">
+      <div class="flex-grow lg:max-w-80">
         <input
           v-model.lazy="search" autocomplete="search" name="search" type="text"
-          :placeholder="t('pages.readings.filters.searchPlaceHolder')" class="form-input min-w-64"
+          :placeholder="t('pages.readings.filters.searchPlaceHolder')" class="form-input"
         >
       </div>
 
-      <Transition name="fade">
-        <AppLoader v-if="pending" class="m-1 text-2xl" />
-      </Transition>
+      <div class="flex flex-wrap items-end gap-x-2 gap-y-1.5">
+        <Transition name="fade">
+          <AppLoader v-if="pending" class="m-1 text-2xl" />
+        </Transition>
+        <div>
+          <label class="mb-0.5 block" for="selectStatus">{{ t('pages.readings.filters.statusLabel') }}</label>
+          <select id="selectStatus" v-model="status" class="form-select">
+            <option value="">
+              {{ t('pages.readings.filters.status.all') }}
+            </option>
+            <option value="To read">
+              {{ mapStatus['To read'] }}
+            </option>
+            <option value="Read">
+              {{ mapStatus.Read }}
+            </option>
+            <option value="Reading">
+              {{ mapStatus.Reading }}
+            </option>
+            <option value="Canceled">
+              {{ mapStatus.Canceled }}
+            </option>
+          </select>
+        </div>
 
-      <div>
-        <label class="mb-1 block" for="selectStatus">{{ t('pages.readings.filters.statusLabel') }}</label>
-        <select id="selectStatus" v-model="status" class="form-select">
-          <option value="">
-            {{ t('pages.readings.filters.status.all') }}
-          </option>
-          <option value="To read">
-            {{ mapStatus['To read'] }}
-          </option>
-          <option value="Read">
-            {{ mapStatus.Read }}
-          </option>
-          <option value="Reading">
-            {{ mapStatus.Reading }}
-          </option>
-          <option value="Canceled">
-            {{ mapStatus.Canceled }}
-          </option>
-        </select>
-      </div>
+        <div>
+          <label class="mb-0.5 block" for="selectType">{{ t('pages.readings.filters.typeLabel') }}</label>
+          <select id="selectType" v-model="type" class="form-select">
+            <option value="">
+              {{ t('pages.readings.filters.type.all') }}
+            </option>
+            <option value="Article">
+              {{ mapType.Article }}
+            </option>
+            <option value="Video">
+              {{ mapType.Video }}
+            </option>
+            <option value="Podcast">
+              {{ mapType.Podcast }}
+            </option>
+          </select>
+        </div>
 
-      <div>
-        <label class="mb-1 block" for="selectType">{{ t('pages.readings.filters.typeLabel') }}</label>
-        <select id="selectType" v-model="type" class="form-select">
-          <option value="">
-            {{ t('pages.readings.filters.type.all') }}
-          </option>
-          <option value="Article">
-            {{ mapType.Article }}
-          </option>
-          <option value="Video">
-            {{ mapType.Video }}
-          </option>
-          <option value="Podcast">
-            {{ mapType.Podcast }}
-          </option>
-        </select>
-      </div>
+        <div>
+          <MultiSelectTag v-model="selectedOptions" :options="tags" :placeholder="t('pages.readings.filters.tagsPlaceHolder')" />
+        </div>
 
-      <div>
-        <MultiSelectTag v-model="selectedOptions" :options="tags" :placeholder="t('pages.readings.filters.tagsPlaceHolder')" />
-      </div>
-
-      <div>
-        <label class="mb-1 block" for="selectSort">{{ t('pages.readings.sort.sortLabel') }}</label>
-        <select id="selectSort" v-model="sort" class="form-select">
-          <option value="Created time">
-            {{ mapSort['Created time'] }}
-          </option>
-          <option value="Last edited time">
-            {{ mapSort['Last edited time'] }}
-          </option>
-          <option value="Name">
-            {{ mapSort.Name }}
-          </option>
-          <option value="Score">
-            {{ mapSort.Score }}
-          </option>
-        </select>
+        <div>
+          <label class="mb-0.5 block" for="selectSort">{{ t('pages.readings.sort.sortLabel') }}</label>
+          <select id="selectSort" v-model="sort" class="form-select">
+            <option value="Created time">
+              {{ mapSort['Created time'] }}
+            </option>
+            <option value="Last edited time">
+              {{ mapSort['Last edited time'] }}
+            </option>
+            <option value="Name">
+              {{ mapSort.Name }}
+            </option>
+            <option value="Score">
+              {{ mapSort.Score }}
+            </option>
+          </select>
+        </div>
       </div>
     </div>
 
