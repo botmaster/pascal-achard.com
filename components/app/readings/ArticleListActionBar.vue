@@ -16,11 +16,12 @@ const { t } = useI18n();
 const selectedOptions = defineModel<IArticleTag[]>('selectedOptions', { required: true });
 const search = defineModel<string>('search', { required: true });
 const status = defineModel<string>('status', { required: true });
+const type = defineModel<string>('type', { required: true });
 const sort = defineModel<string>('sort', { required: true });
 
 // Computed - Has any filters
 const hasFilters = computed<boolean>(() => {
-  return status.value !== '' || search.value !== '' || selectedOptions.value.length > 0;
+  return status.value !== '' || type.value !== '' || search.value !== '' || selectedOptions.value.length > 0;
 });
 
 // Map status
@@ -31,6 +32,16 @@ const mapStatus = computed<Record<string, string>>(() => {
     'Read': t('pages.readings.filters.status.read'),
     'Reading': t('pages.readings.filters.status.inProgress'),
     'Canceled': t('pages.readings.filters.status.canceled'),
+  };
+});
+
+// Map type
+const mapType = computed<Record<string, string>>(() => {
+  return {
+    all: t('pages.readings.filters.type.all'),
+    Article: t('pages.readings.filters.type.article'),
+    Podcast: t('pages.readings.filters.type.podcast'),
+    Video: t('pages.readings.filters.type.video'),
   };
 });
 
@@ -77,6 +88,24 @@ const mapSort = computed<Record<string, string>>(() => {
       </div>
 
       <div>
+        <label class="mb-1 block" for="selectType">{{ t('pages.readings.filters.typeLabel') }}</label>
+        <select id="selectType" v-model="type" class="form-select">
+          <option value="">
+            {{ t('pages.readings.filters.type.all') }}
+          </option>
+          <option value="Article">
+            {{ mapType.Article }}
+          </option>
+          <option value="Video">
+            {{ mapType.Video }}
+          </option>
+          <option value="Podcast">
+            {{ mapType.Podcast }}
+          </option>
+        </select>
+      </div>
+
+      <div>
         <MultiSelectTag v-model="selectedOptions" :options="tags" :placeholder="t('pages.readings.filters.tagsPlaceHolder')" />
       </div>
 
@@ -108,6 +137,8 @@ const mapSort = computed<Record<string, string>>(() => {
         <p class="flex-grow text-sm">
           {{ t('common.article', 1) }} <i18n-t v-if="status" keypath="pages.readings.filters.message.withStatus" tag="span" scope="global">
             <strong>{{ mapStatus[status] }}</strong>
+          </i18n-t>  <i18n-t v-if="type" keypath="pages.readings.filters.message.withType" tag="span" scope="global">
+            <strong>{{ mapType[type] }}</strong>
           </i18n-t> <i18n-t v-if="selectedOptions.length > 0" tag="span" keypath="pages.readings.filters.message.withTags" scope="global">
             <strong>{{ selectedOptions.map(tag => tag.name).toString() }}</strong>
           </i18n-t> <i18n-t v-if="search" tag="span" keypath="pages.readings.filters.message.withSearch" scope="global">

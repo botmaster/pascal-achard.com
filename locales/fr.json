@@ -57,7 +57,8 @@
           "sortedBy": "triés par {0}",
           "withSearch": "correspondant à {0}",
           "withStatus": "avec le status {0}",
-          "withTags": "intégrant les tags {0}"
+          "withTags": "intégrant les tags {0}",
+          "withType": "de type {0}"
         },
         "pageSizes": "Articles par page",
         "searchPlaceHolder": "Rechercher un article",
@@ -69,7 +70,14 @@
           "toRead": "À lire"
         },
         "statusLabel": "Statut",
-        "tagsPlaceHolder": "Sélectionner des tags"
+        "tagsPlaceHolder": "Sélectionner des tags",
+        "type": {
+          "all": "Tous",
+          "article": "Article",
+          "podcast": "Podcast",
+          "video": "Vidéo"
+        },
+        "typeLabel": "Type"
       },
       "filtersTooRestrictive": "🤔 Filtres trop restrictifs ?",
       "sort": {

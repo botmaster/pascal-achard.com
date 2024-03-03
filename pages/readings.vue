@@ -24,9 +24,10 @@ const selectedTags = ref<IArticleTag[]>([]);
 
 // Route query
 const pageSize = useRouteQuery('pageSize', DEFAULT_LIMIT, { transform: Number });
-const status = useRouteQuery('status', '', { transform: String });
+const selectedStatus = useRouteQuery('status', '', { transform: String });
+const selectedType = useRouteQuery('type', '', { transform: String });
 const search = useRouteQuery('search', '', { transform: String });
-const sort = useRouteQuery('sort', 'Created time', { transform: String });
+const selectedSort = useRouteQuery('sort', 'Created time', { transform: String });
 
 // Pinia store
 const databaseStore = useArticleDatabaseInfoStore();
@@ -54,8 +55,8 @@ const { error, pending, refresh } = await useAsyncData(`page-list-${route.fullPa
       start_cursor: cursor.value,
       sorts: [
         {
-          property: sort.value.replace(/\+/g, ' '),
-          direction: sort.value === 'Name' ? 'ascending' : 'descending',
+          property: selectedSort.value.replace(/\+/g, ' '),
+          direction: selectedSort.value === 'Name' ? 'ascending' : 'descending',
         },
       ],
       filter: {
@@ -63,7 +64,13 @@ const { error, pending, refresh } = await useAsyncData(`page-list-${route.fullPa
           {
             property: 'Status',
             select: {
-              equals: status.value.replace(/\+/g, ' '),
+              equals: selectedStatus.value.replace(/\+/g, ' '),
+            },
+          },
+          {
+            property: 'Type',
+            select: {
+              equals: selectedType.value.replace(/\+/g, ' '),
             },
           },
           {
@@ -93,7 +100,8 @@ const { error, pending, refresh } = await useAsyncData(`page-list-${route.fullPa
 
 function clearFilters() {
   cursor.value = null;
-  status.value = '';
+  selectedStatus.value = '';
+  selectedType.value = '';
   search.value = '';
   selectedTags.value = [];
 }
@@ -133,7 +141,19 @@ watch(
 
 // Watch status change
 watch(
-  () => status.value,
+  () => selectedStatus.value,
+  async (newVal) => {
+    if (!newVal && newVal !== '')
+      return;
+    cursor.value = null;
+    await refresh();
+  },
+  { immediate: false },
+);
+
+// Watch type change
+watch(
+  () => selectedType.value,
   async (newVal) => {
     if (!newVal && newVal !== '')
       return;
@@ -169,7 +189,7 @@ watch(
 
 // Watch sort change
 watch(
-  () => sort.value,
+  () => selectedSort.value,
   async (newVal) => {
     if (!newVal && newVal !== '')
       return;
@@ -210,7 +230,9 @@ watch(
     </template>
   </HeroComponent>
   <div class="container mx-auto mb-12 mt-8 md:mb-24 md:mt-20">
-    <ContentRenderer v-if="contentData" class="nuxt-content mb-10" :value="contentData" />
+    <div class="lg:w-9/12">
+      <ContentRenderer v-if="contentData" class="nuxt-content mb-10" :value="contentData" />
+    </div>
     <div class="flow">
       <template v-if="error || fetchDatabaseError">
         <p class="font-code">
@@ -228,8 +250,8 @@ watch(
         <!-- Action bar       -->
         <Transition name="fade">
           <ArticleListActionBar
-            v-model:selected-options="selectedTags" v-model:search="search" v-model:status="status"
-            v-model:sort="sort" :tags="databaseStore.tagList" :pending="pending || fetchDatabasePending"
+            v-model:selected-options="selectedTags" v-model:search="search" v-model:status="selectedStatus" v-model:type="selectedType"
+            v-model:sort="selectedSort" :tags="databaseStore.tagList" :pending="pending || fetchDatabasePending"
             @clear-filters="clearFilters"
           />
         </Transition>
