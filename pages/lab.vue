@@ -43,6 +43,9 @@ const { data: lastFmData, pending, error } = await useFetch(`https://ws.audioscr
     });
     return data.recenttracks;
   },
+  onResponse() {
+    scrollListToTop();
+  },
 });
 
 // Computed data
@@ -72,13 +75,12 @@ const {
   pageSize,
   onPageChange(returnValue) {
     page.value = returnValue.currentPage;
-    scrollListToTop();
   },
 });
 
 // Scroll to top of the list when page changes
 function scrollListToTop() {
-  const listElement = playlistListRef.value as HTMLElement;
+  const listElement = playlistListRef.value;
   if (listElement) {
     listElement.scrollTo({
       top: 0,
