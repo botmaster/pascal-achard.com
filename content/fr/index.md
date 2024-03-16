@@ -52,6 +52,8 @@ outils. J'ai une appétence pour le graphisme et la musique.
 Développeur frontend senior chez <img loading="lazy" src="/images/content/logo-snowsat.png" alt="Logo SNOWsat" width="64" height="64" class="inline-block w-[1.3em] !mb-0"> [SNOWsat](https://www.snowsat.com/fr){target="_blank" rel="noopener"} depuis mars 2024.
 
 Software engineer frontend senior chez <img loading="lazy" src="/images/content/jsk.png" alt="Logo Jellysmack" width="64" height="64" class="inline-block w-[1.3em] !mb-0"> [Jellysmack](https://jellysmack.com/fr/){target="_blank" rel="noopener"} de mars 2022 à novembre 2023.
+
+Plus de détails sur mon profil :Icon{name='logos:linkedin-icon'} [LinkedIn](https://www.linkedin.com/in/pascal-achard/){target="_blank" rel="noopener"}.
 ::
 
 ::Sheetelevation
