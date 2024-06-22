@@ -1,7 +1,7 @@
 {
   "name": "pascal-achard.com",
   "type": "module",
-  "version": "2.24.4",
+  "version": "2.24.5",
   "private": true,
   "packageManager": "pnpm@9.4.0",
   "description": "Pascal Achard's personal website",
