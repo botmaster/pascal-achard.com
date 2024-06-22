@@ -15,7 +15,7 @@ export const useArticleDatabaseInfoStore = defineStore('articleDatabaseInfo', ()
 
   // Actions
   const fetchDatabase = async () => {
-    console.log('Fetching database info');
+    // console.log('Fetching database info');
     loading.value = true;
 
     try {

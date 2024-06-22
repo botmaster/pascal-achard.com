@@ -1,4 +1,4 @@
-import type { MarkdownParsedContent } from '@nuxt/content/dist/runtime/types';
+import type { MarkdownParsedContent } from '@nuxt/content/';
 
 export interface ITheme {
   name: string

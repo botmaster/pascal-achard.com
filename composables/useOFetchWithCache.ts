@@ -8,7 +8,7 @@ export default async <T>(url: string, options: Record<string, any>): Promise<T> 
 
   if (!cached.value) {
     try {
-      console.log(`Fetching value from ${url}`);
+      // console.log(`Fetching value from ${url}`);
       const data = await $fetch<T>(url, { ...options });
       cached.value = data as T;
     }
@@ -18,7 +18,7 @@ export default async <T>(url: string, options: Record<string, any>): Promise<T> 
     }
   }
   else {
-    console.log(`Getting value from cache for ${url}`);
+    // console.log(`Getting value from cache for ${url}`);
   }
 
   return cached.value;
