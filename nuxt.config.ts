@@ -181,6 +181,7 @@ export default defineNuxtConfig({
     '@nuxt/devtools',
     '@nuxtjs/sitemap',
     '@pinia/nuxt',
+    '@nuxt/image',
   ],
 
   features: {

@@ -62,7 +62,7 @@ More details on my :Icon{name='logos:linkedin-icon'} [LinkedIn profile](https://
 #### Zégut PG
 [https://zegut-pg.netlify.app/](https://zegut-pg.netlify.app/){target="_blank" rel="noopener"}
 
-![Image site 'Zégut PG'](/images/content/zégut-pg.webp){width="1024" height="620" loading="lazy"}
+![Image site 'Zégut PG'](/images/content/zegut-pg.webp){width="1024" height="620" loading="lazy"}
 
 Zégut PG is a web application that allows me to create Spotify playlists from the podcast episodes of the RTL2 Pop-Rock Station show presented by Francis Zégut & Marjorie Hache. It's also an excuse for me to play around with Vue.js and the Spotify API 🤓. I talk about it [here](https://www.linkedin.com/pulse/z%25C3%25A9gut-pg-cr%25C3%25A9ez-des-playlists-spotify-%25C3%25A0-partir-de-l%25C3%25A9mission-achard).
 
