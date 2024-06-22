@@ -14,6 +14,7 @@ const slots = useSlots();
 const slotContent = computed(() => {
   if (slots.default)
     return slots.default()[0].children;
+  else return '';
 });
 </script>
 
