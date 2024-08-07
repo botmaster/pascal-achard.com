@@ -26,7 +26,7 @@ tools. I have an interest in graphic design and music.
         class="inline-flex items-center"
         href="https://www.linkedin.com/in/pascal-achard" target="_blank" rel="noopener"
         >
-        <span class="text-2xl"><Icon class="mr-1 text-primary" name="mdi:linkedin"></Icon></span>
+        <Icon class="mr-1 text-primary text-2xl leading-none" name="mdi:linkedin"></Icon>
         <span class="leading-none mt-1">Contact me at</span>
     </a>
     <a
@@ -35,7 +35,7 @@ tools. I have an interest in graphic design and music.
         target="_blank"
         rel="noopener"
         >
-        <span class="text-2xl"><Icon class="mr-1 text-primary" name="mdi:file-document"></Icon></span>
+        <Icon class="mr-1 text-primary text-2xl leading-none" name="mdi:file-document"></Icon>
         <span class="leading-none mt-1">CV <span class="no-underline text-xs">(PDF, 46Ko)</span></span>
     </a>
 </p>

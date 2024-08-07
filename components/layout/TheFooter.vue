@@ -55,7 +55,7 @@ const themeList = computed(() => [
   }
 
   &__socials {
-    @apply overflow-y-clip md:flex md:gap-4 md:items-baseline text-xl leading-[0px];
+    @apply overflow-y-clip md:flex md:gap-4 md:items-center text-xl leading-[0px];
   }
 
   &__copyright {

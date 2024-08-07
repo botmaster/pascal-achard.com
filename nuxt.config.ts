@@ -171,13 +171,13 @@ export default defineNuxtConfig({
   modules: [
     '@nuxtjs/tailwindcss',
     '@vueuse/nuxt',
-    'nuxt-icon',
+    '@nuxt/icon',
     '@nuxtjs/color-mode',
     '@nuxt/content',
     'nuxt-headlessui',
     '@nuxtjs/fontaine',
     '@nuxtjs/i18n',
-    'nuxt-simple-robots',
+    '@nuxtjs/robots',
     '@nuxt/devtools',
     '@nuxtjs/sitemap',
     '@pinia/nuxt',
@@ -192,4 +192,6 @@ export default defineNuxtConfig({
     // Enable devtools (default: true)
     enabled: true,
   },
+
+  compatibilityDate: '2024-08-07',
 });
