@@ -25,7 +25,7 @@ async function fetchLatestVersions() {
     try {
       latestVersions.value[pkgName] = await fetchLatestVersion(pkgName);
     }
-    catch (error) {
+    catch {
       latestVersions.value[pkgName] = 'error';
     }
   });
@@ -34,7 +34,7 @@ async function fetchLatestVersions() {
 
 const depsTarget = ref<HTMLElement | null>(null);
 
-if (process.client) {
+if (import.meta.client) {
   useIntersectionObserver(depsTarget, ([{ isIntersecting }]) => {
     if (isIntersecting) {
       // If latest versions are not yet fetched, fetch them
@@ -91,16 +91,18 @@ if (process.client) {
             {{ value }}
           </td>
           <td class="text-center">
-            <Icon name="mdi:arrow-right-thin" />
+            <Icon name="mdi:arrow-right-thin" mode="svg" />
           </td>
           <td class="right">
             {{ latestVersions[key] }}
           </td>
           <td>
-            <span title="Update available"><Icon
+            <Icon
+              title="Update available"
+              mode="svg"
               name="material-symbols:arrow-circle-up"
               class="text-base text-aurora-nord-14"
-            /></span>
+            />
           </td>
         </template>
 
@@ -109,10 +111,11 @@ if (process.client) {
             {{ value }}
           </td>
           <td>
-            <span title="Up to date"><Icon
+            <Icon
+              title="Up to date" mode="svg"
               name="material-symbols:check-box-rounded"
               class="text-base text-primary"
-            /></span>
+            />
           </td>
         </template>
 

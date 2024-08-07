@@ -5,7 +5,7 @@ coverDescription: I'm currently testing the Last.fm API
 description: Pascal Achard, senior frontend developer. Lab. I'm testing the Last.fm api.
 ---
 
-## Listening <Icon class='text-primary' name="brandico:lastfm"></Icon>
+## Listening <Icon class='text-2xl text-primary' name="brandico:lastfm"></Icon>
 
 > <span class="mr-2">💡</span>  <span class="font-rubik-medium font-medium text-primary">Info</span>
 >

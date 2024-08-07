@@ -171,7 +171,7 @@ export default defineNuxtConfig({
   modules: [
     '@nuxtjs/tailwindcss',
     '@vueuse/nuxt',
-    'nuxt-icon',
+    '@nuxt/icon',
     '@nuxtjs/color-mode',
     '@nuxt/content',
     'nuxt-headlessui',

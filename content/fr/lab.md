@@ -5,7 +5,7 @@ coverDescription: En ce momment, je teste l'API de Last.fm
 description: Pascal Achard, développeur frontend senior. Lab. Je teste l'api de Last.fm.
 ---
 
-## Listening <Icon title='Last.fm' class='text-primary' name="brandico:lastfm"></Icon>
+## Listening <Icon title='Last.fm' class='text-2xl text-primary' name="brandico:lastfm"></Icon>
 
 > <span class="mr-2">💡</span>  <span class="font-rubik-medium font-medium text-primary">Info</span>
 > 
