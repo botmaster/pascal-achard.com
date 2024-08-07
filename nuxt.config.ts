@@ -177,7 +177,7 @@ export default defineNuxtConfig({
     'nuxt-headlessui',
     '@nuxtjs/fontaine',
     '@nuxtjs/i18n',
-    'nuxt-simple-robots',
+    '@nuxtjs/robots',
     '@nuxt/devtools',
     '@nuxtjs/sitemap',
     '@pinia/nuxt',
@@ -192,4 +192,6 @@ export default defineNuxtConfig({
     // Enable devtools (default: true)
     enabled: true,
   },
+
+  compatibilityDate: '2024-08-07',
 });
