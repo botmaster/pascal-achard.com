@@ -1,6 +1,6 @@
-import Lenis from 'lenis';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Lenis from 'lenis';
 
 export default defineNuxtPlugin(() => {
   // Instantiate the Lenis object with specified properties

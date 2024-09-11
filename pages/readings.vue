@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useRouteQuery } from '@vueuse/router';
-import type { IArticle, IArticleTag, IPage } from '~/types/types';
 import { useArticleDatabaseInfoStore } from '~/stores/article-database-info.store';
+import type { IArticle, IArticleTag, IPage } from '~/types/types';
 
 // i18n
 const { locale: currentLocale, t } = useI18n();

@@ -1,8 +1,7 @@
 <script setup lang="ts">
+import { provideUseId } from '@headlessui/vue';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-import { provideUseId } from '@headlessui/vue';
 
 // Fix headlessui warning. See https://github.com/P4sca1/nuxt-headlessui/issues/41
 provideUseId(() => useId());
