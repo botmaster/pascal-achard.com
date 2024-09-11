@@ -1,11 +1,11 @@
 <script setup>
-import { ref } from 'vue';
 import {
   Combobox,
   ComboboxInput,
   ComboboxOption,
   ComboboxOptions,
 } from '@headlessui/vue';
+import { ref } from 'vue';
 
 const people = [
   { id: 1, name: 'Durward Reynolds' },
