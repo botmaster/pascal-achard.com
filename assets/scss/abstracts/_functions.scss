@@ -1,8 +1,10 @@
+@use "sass:color";
 @use 'sass:math';
 
 @function hexToHslValues($color, $round: true) {
   @if $round == true {
-    @return math.round(hue($color)) math.round(saturation($color)) math.round(lightness($color));
+    @return math.round(color.channel($color, 'hue', $space: hsl)) math.round(color.channel($color, 'saturation', $space: hsl)) math.round(color.channel($color, 'lightness', $space: hsl));
+  } @else {
+    @return color.channel($color, 'hue', $space: hsl) color.channel($color, 'saturation', $space: hsl) color.channel($color, 'lightness', $space: hsl);
   }
-  @return hue($color) saturation($color) lightness($color);
 }
