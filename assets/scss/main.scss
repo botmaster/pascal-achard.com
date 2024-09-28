@@ -1,23 +1,24 @@
+@use "sass:meta";
 /**
  * In CSS, the order of the rules in your stylesheet decides which declaration wins when two selectors have the same specificity.
  */
 
 @tailwind base;
 @tailwind components;
-@import "vendors/index"; // <-- Placed here because to prevent to be removed by unused CSS purge. See https://tailwindcss.com/docs/content-configuration#working-with-third-party-libraries
+@include meta.load-css("vendors/index"); // <-- Placed here because to prevent to be removed by unused CSS purge. See https://tailwindcss.com/docs/content-configuration#working-with-third-party-libraries
 @tailwind utilities;
 
 // Import abstracts
-@import 'abstracts/index';
+@include meta.load-css('abstracts/index');
 
 // Styles placed in layers won't be included in your compiled CSS unless you actually use it.
 // https://tailwindcss.com/docs/adding-custom-styles#removing-unused-custom-css
 @layer base {
-  @import 'base/index';
+  @include meta.load-css('base/index');
 }
 
 @layer components {
-  @import 'components/index';
+  @include meta.load-css('components/index');
 }
 
 

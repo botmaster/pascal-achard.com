@@ -133,6 +133,14 @@ export default defineNuxtConfig({
 
   vite: {
     plugins: [svgLoader()],
+
+    css: {
+      preprocessorOptions: {
+        scss: {
+          api: 'modern', // or "modern", "legacy"
+        },
+      },
+    },
   },
 
   runtimeConfig: {
