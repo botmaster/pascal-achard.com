@@ -5,7 +5,7 @@ defineProps<{
   item: IArticle
 }>();
 
-const { locale: currentLocale } = useI18n();
+const { locale: currentLocale, t } = useI18n();
 
 // Computed - Map status color to tailwind color
 const statusColor = computed<Record<string, string>>(() => {
@@ -23,7 +23,9 @@ const statusColor = computed<Record<string, string>>(() => {
     class="h-full"
   >
     <template #image>
-      <img v-if="item.image" loading="lazy" :src="item.image" alt="">
+      <a v-if="item.image" :href="item.url" target="_blank" :aria-label="t('miscellaneous.linkToArticle')">
+        <img loading="lazy" :src="item.image" alt="">
+      </a>
       <div v-if="item.status" class="absolute right-2 top-1.5">
         <span
           class="badge shadow-md"
