@@ -32,7 +32,7 @@ const props = withDefaults(defineProps<Props>(), {
   &__img-wrapper {
     @apply relative aspect-video bg-snowstorm-nord-4 dark:bg-polarnight-nord-3;
 
-    :slotted(img) {
+    :slotted(img), :slotted(a) {
       @apply absolute inset-0 size-full object-cover;
     }
   }
