@@ -1,9 +1,11 @@
+@use "sass:map";
+@use "sass:meta";
 @use '../abstracts/functions' as *;
 @use '../abstracts/variables' as *;
 @use '../abstracts/tokens' as *;
 @use 'sass:color';
 
-$mergedColors: map-merge($colors, (
+$mergedColors: map.merge($colors, (
         "body-background": $body-background,
         "body-text": $body-text,
         "muted-text": $text-muted-color,
@@ -16,7 +18,7 @@ $mergedColors: map-merge($colors, (
   @each $name, $color in $map {
     // if $color is a hex value, convert it to hsl
     // otherwise, use the color as is
-    @if type-of($color) == "color" {
+    @if meta.type-of($color) == "color" {
         --color-#{$name}-hex: #{$color};
         --color-#{$name}: #{hexToHslValues($color)};
     } @else {
