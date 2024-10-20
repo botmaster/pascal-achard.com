@@ -54,8 +54,9 @@ const statusColor = computed<Record<string, string>>(() => {
       <p v-if="item.createdTime" class="mt-2 text-xs font-normal text-muted-text">
         {{ new Date(item.createdTime).toLocaleDateString(currentLocale) }}
       </p>
-      <p class="truncate">
-        <Icon name="material-symbols:link" class="text-lg" /> <a :href="item.url" target="_blank">{{ item.url }}</a>
+      <p>
+        <a class="flex items-center gap-1" :href="item.url" target="_blank"><Icon name="material-symbols:link" class="flex-none text-lg" />
+          <span class="truncate">{{ item.url }}</span></a>
       </p>
     </template>
   </AppCard>
