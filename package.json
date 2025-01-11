@@ -24,8 +24,10 @@
     "@vueuse/nuxt": "^12.4.0",
     "@vueuse/router": "^12.4.0",
     "gsap": "^3.12.5",
+    "install": "^0.13.0",
     "lenis": "^1.1.19",
-    "splitting": "^1.1.0"
+    "splitting": "^1.1.0",
+    "vue-router": "4"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^3.13.0",
