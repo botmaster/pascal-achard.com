@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const i18nHead = useLocaleHead({
-  addDirAttribute: true,
-  addSeoAttributes: true,
+  dir: true,
+  seo: true,
 });
 useHead({
   htmlAttrs: {
