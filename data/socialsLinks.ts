@@ -18,6 +18,14 @@ export const socialsLinks: ISocialLink[] = [
     },
   },
   {
+    'href': 'https://bsky.app/profile/botmaster-p-achard.bsky.social',
+    'aria-label': 'Bluesky',
+    'icon': {
+      title: 'Bluesky icon',
+      name: 'fa6-brands:bluesky',
+    },
+  },
+  {
     'href': 'https://codepen.io/botmaster/',
     'aria-label': 'CodePen',
     'icon': {
@@ -31,14 +39,6 @@ export const socialsLinks: ISocialLink[] = [
     'icon': {
       title: 'Instagram icon',
       name: 'cib:instagram',
-    },
-  },
-  {
-    'href': 'https://twitter.com/botmaster',
-    'aria-label': 'Twitter',
-    'icon': {
-      title: 'Twitter icon',
-      name: 'cib:twitter',
     },
   },
   {
