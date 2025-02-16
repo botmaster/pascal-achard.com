@@ -1,9 +1,9 @@
+import type { GetDatabaseResponse } from '@notionhq/client/build/src/api-endpoints';
+import type { IArticleTag } from '~/types/types';
 /**
  * Pinia Article Database store
  */
 import { FetchError } from 'ofetch';
-import type { GetDatabaseResponse } from '@notionhq/client/build/src/api-endpoints';
-import type { IArticleTag } from '~/types/types';
 
 export const useArticleDatabaseInfoStore = defineStore('articleDatabaseInfo', () => {
   const config = useRuntimeConfig();

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { definePageMeta } from '#imports';
 import type { IPage } from '@/types/types';
+import { definePageMeta } from '#imports';
 
 definePageMeta({
   layout: false, // Disable default layout to use custom layout below instead (see <NuxtLayout> in template).
