@@ -25,11 +25,11 @@ const filteredOption = computed(() =>
   query.value === ''
     ? props.options
     : props.options.filter(option =>
-      option.name
-        .toLowerCase()
-        .replace(/\s+/g, '')
-        .includes(query.value.toLowerCase().replace(/\s+/g, '')),
-    ),
+        option.name
+          .toLowerCase()
+          .replace(/\s+/g, '')
+          .includes(query.value.toLowerCase().replace(/\s+/g, '')),
+      ),
 );
 
 function displayValue(options: IMultiSelectTagOption[]) {

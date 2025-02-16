@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { v4 as uuidv4 } from 'uuid';
 import type { Recenttracks, Track } from '~/types/last-fm/types';
 import type { IPage } from '~/types/types';
+import { v4 as uuidv4 } from 'uuid';
 
 definePageMeta({
   layout: false,

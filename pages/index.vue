@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import type { IPage } from '@/types/types';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import type { IPage } from '@/types/types';
 
 gsap.registerPlugin(ScrollTrigger);
 

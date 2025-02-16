@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { Size, type Track } from '~/types/last-fm/types';
+import type { Track } from '~/types/last-fm/types';
+import { Size } from '~/types/last-fm/types';
 
 // Props type definition
 interface Props {

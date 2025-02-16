@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue';
 import type { ITheme } from '@/types/types';
+import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue';
 
 const props = withDefaults(
   defineProps<{

@@ -1,5 +1,5 @@
-import { NotionClient } from '~/server/NotionClient';
 import type { IArticle } from '~/types/types';
+import { NotionClient } from '~/server/NotionClient';
 
 // Initialize Notion Client
 const notion = NotionClient.getInstance().getClient();

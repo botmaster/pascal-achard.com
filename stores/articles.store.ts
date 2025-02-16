@@ -1,8 +1,8 @@
+import type { IArticle } from '~/types/types';
 /**
  * Pinia Articles store
  */
 import { FetchError } from 'ofetch';
-import type { IArticle } from '~/types/types';
 
 export const useArticlesStore = defineStore('articles', () => {
   const config = useRuntimeConfig();
