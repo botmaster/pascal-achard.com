@@ -1,23 +1,30 @@
-@use "@fontsource/rubik/scss/mixins" as Rubik with (
-        $directory: "@fontsource/rubik/files"
-);
+/*
+@use "@fontsource-utils/scss" as fontsource;
+@use "@fontsource/rubik/scss/mixins" as Rubik;
+
 
 // Doc here:
 // https://fontsource.org/docs/getting-started/faces-mixin
 
 
-@include Rubik.faces(
+@include fontsource.faces(
+        $metadata: Rubik.$metadata,
         $subsets: latin,
         $weights: 500,
         $styles: normal,
         $family: "rubik-medium",
 );
 
-@include Rubik.faces(
+@include fontsource.faces(
+        $metadata: Rubik.$metadata,
         $subsets: latin,
         $weights: 900,
         $styles: normal,
         $family: "rubik-black"
 );
+
+// debug
+*/
+
 
 
