@@ -12,7 +12,7 @@ dist
 
 # Local Netlify folder
 .netlify
-
+.data
 .npmrc
 
 # Unlighthouse

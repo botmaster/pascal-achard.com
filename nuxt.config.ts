@@ -164,14 +164,6 @@ export default defineNuxtConfig({
     autoLastmod: true,
   },
 
-  fontMetrics: {
-    fonts: [
-      {
-        family: 'Rubik',
-      },
-    ],
-  },
-
   build: {
     transpile: ['gsap'],
   },
@@ -183,13 +175,13 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     '@nuxt/content',
     'nuxt-headlessui',
-    '@nuxtjs/fontaine',
     '@nuxtjs/i18n',
     '@nuxtjs/robots',
     '@nuxt/devtools',
     '@nuxtjs/sitemap',
     '@pinia/nuxt',
     '@nuxt/image',
+    '@nuxt/fonts',
   ],
 
   features: {
