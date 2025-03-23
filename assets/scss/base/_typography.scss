@@ -18,7 +18,8 @@ h4,
 h5,
 .h5,
 h6,
-.h6 {
+.h6,
+.display {
     @apply text-polarnight-nord-1 dark:text-snowstorm-nord-4 font-display font-black leading-none uppercase tracking-tight;
 }
 

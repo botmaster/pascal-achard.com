@@ -115,7 +115,7 @@ function scrollListToTop() {
           <p class="text-sm uppercase text-primary">
             {{ t('pages.lab.scrobbles') }}
           </p>
-          <p class="flex gap-4 font-display text-4xl leading-none">
+          <p class="display flex gap-4 text-4xl font-black leading-none">
             <i18n-n tag="span" :value="Number(lastFmData?.['@attr'].total || 0)" />
             🤯
           </p>
@@ -126,7 +126,7 @@ function scrollListToTop() {
             {{ t('pages.lab.nowPlaying') }}
           </p>
           <ScrobbleListItem v-if="nowPlayingTrack" :track="nowPlayingTrack" size="large" tag="div" title-tag="p" />
-          <p v-else class="flex gap-4 font-display text-4xl leading-none">
+          <p v-else class="display flex gap-4 text-4xl leading-none">
             {{ t('pages.lab.listeningNothing') }}<span>😴</span>
           </p>
         </div>
