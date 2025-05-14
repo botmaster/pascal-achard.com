@@ -59,7 +59,7 @@
     "eslint-config-prettier": "^10.1.1",
     "eslint-plugin-prettier": "^5.2.3",
     "eslint-plugin-tailwindcss": "^3.18.0",
-    "nuxt": "^3.16.1",
+    "nuxt": "^3.17.3",
     "nuxt-headlessui": "^1.2.0",
     "sass": "^1.86.0",
     "typescript": "^5.8.2",
@@ -69,7 +69,8 @@
   },
   "pnpm": {
     "onlyBuiltDependencies": [
-      "better-sqlite3"
+      "better-sqlite3",
+      "esbuild"
     ]
   }
 }
