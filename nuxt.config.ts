@@ -131,6 +131,17 @@ export default defineNuxtConfig({
     },
   },
 
+  fonts: {
+    defaults: {
+      weights: [400, 900],
+      styles: ['normal', 'italic'],
+      subsets: [
+        'latin-ext',
+        'latin',
+      ],
+    },
+  },
+
   vite: {
     plugins: [svgLoader()],
 

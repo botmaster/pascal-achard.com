@@ -147,7 +147,7 @@ const image = computed<{
   }
 
   &__title {
-    @apply display leading-[1] mb-[0.1em] line-clamp-2;
+    @apply font-display leading-[1] mb-[0.1em] line-clamp-2;
   }
 
   &--small {
