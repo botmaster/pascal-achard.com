@@ -145,13 +145,13 @@ export default defineNuxtConfig({
   vite: {
     plugins: [svgLoader()],
 
-    css: {
+    /* css: {
       preprocessorOptions: {
         scss: {
           api: 'modern', // or "modern", "legacy"
         },
       },
-    },
+    }, */
   },
 
   runtimeConfig: {
@@ -195,9 +195,9 @@ export default defineNuxtConfig({
     '@nuxt/fonts',
   ],
 
-  features: {
+  /* features: {
     inlineStyles: false,
-  },
+  }, */
 
   devtools: {
     // Enable devtools (default: true)
