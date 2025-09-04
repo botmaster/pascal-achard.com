@@ -31,7 +31,7 @@ tools. I have an interest in graphic design and music.
     </a>
     <a
         class="inline-flex items-center"
-        href="/pdf/CV-Pascal-Achard-2023.pdf"
+        href="/pdf/CV-Pascal-Achard-2025.pdf"
         target="_blank"
         rel="noopener"
         >
