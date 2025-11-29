@@ -320,7 +320,7 @@ onBeforeUnmount(() => {
   }
 
   &__experience {
-    @apply absolute inset-0 z-10;
+    @apply absolute inset-0 z-[55] w-full h-full;
   }
 
   &__content {
