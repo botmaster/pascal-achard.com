@@ -234,7 +234,7 @@ onBeforeUnmount(() => {
     <div ref="bubblesContainer" class="cover__bubbles" />
     <div ref="coverDimmer" class="cover__dimmer" />
     <ClientOnly>
-      <LazyExperienceWrapper></LazyExperienceWrapper>
+      <LazyExperienceWrapper class="cover__experience"></LazyExperienceWrapper>
     </ClientOnly>
     <div class="cover__content">
       <div class="container mx-auto">
@@ -317,6 +317,10 @@ onBeforeUnmount(() => {
 
   &__dimmer {
     @apply absolute inset-0 bg-body-background z-30;
+  }
+
+  &__experience {
+    @apply absolute inset-0 z-10;
   }
 
   &__content {
