@@ -190,6 +190,7 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxt/image',
     '@nuxt/fonts',
+    '@tresjs/nuxt'
   ],
 
   /* features: {
