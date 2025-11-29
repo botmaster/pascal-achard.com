@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Expo, gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import ExperienceWrapper from "~/components/tres/ExperienceWrapper.vue";
 
 // Props type definition
 interface IProps {
@@ -232,6 +233,9 @@ onBeforeUnmount(() => {
     <div ref="coverBg" class="cover__background" />
     <div ref="bubblesContainer" class="cover__bubbles" />
     <div ref="coverDimmer" class="cover__dimmer" />
+    <ClientOnly>
+      <LazyExperienceWrapper></LazyExperienceWrapper>
+    </ClientOnly>
     <div class="cover__content">
       <div class="container mx-auto">
         <div class="line-mask">
