@@ -77,14 +77,14 @@ onUnmounted(() => {
         scroll-to-target="[data-scrollTarget]"
       />
     </div>
-    <div ref="contextScope" class="page-index__section-wrapper" data-scrollTarget>
+    <div ref="contextScope" class="page-index__section-wrapper pointer-events-none" data-scrollTarget>
       <section
         v-for="(element, index) in data?.body?.children"
         :key="index"
         class="page-index__content-wrapper"
       >
         <div class="container mx-auto">
-          <div class="page-index__content">
+          <div class="page-index__content pointer-events-auto">
             <Component :is="element.tag">
               <ContentRendererMarkdown
                 v-if="element"

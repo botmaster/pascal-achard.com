@@ -5,24 +5,26 @@ const { hasFinishLoading, progress } = await useProgress()
 </script>
 
 <template>
-  <Transition
-    name="fade-loader"
-  >
-    <div
-      v-if="!hasFinishLoading"
-      class="absolute t-0 l-0 w-full h-full z-20 flex justify-center items-center font-mono"
+  <div>
+    <Transition
+      name="fade-loader"
     >
-      <div class="-mt-20 flex gap-2 items-center w-200px text-sm">
-        <AppLoader class="text-2xl" />
-        <code >Loading {{ progress }} %</code>
+      <div
+        v-if="!hasFinishLoading"
+        class="absolute t-0 l-0 w-full h-full z-20 flex justify-center items-center font-mono"
+      >
+        <div class="-mt-20 flex gap-2 items-center w-200px text-sm">
+          <AppLoader class="text-2xl" />
+          <code >Loading {{ progress }} %</code>
+        </div>
       </div>
-    </div>
-  </Transition>
-  <TresCanvas
-    :clearAlpha="0"
-  >
-    <TheExperience />
-  </TresCanvas>
+    </Transition>
+    <TresCanvas
+      :clearAlpha="0"
+    >
+      <TheExperience />
+    </TresCanvas>
+  </div>
 </template>
 
 <style scoped lang="scss">
