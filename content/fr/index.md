@@ -64,6 +64,11 @@ Plus de détails sur mon profil :Icon{name='logos:linkedin-icon'} [LinkedIn](htt
 ::Sheetelevation
 ### Dernières expérimentations
 
+#### Three.js + Tres.js + Vue 3 + Vite
+
+::LazyExperienceContentWrapper
+::
+
 #### Zégut PG
 [https://zegut-pg.netlify.app/](https://zegut-pg.netlify.app/){target="_blank" rel="noopener"}
 

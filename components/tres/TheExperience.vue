@@ -15,5 +15,5 @@ import TheDog from './TheDog.vue'
     <Environment preset="sunset" :background="false" :blur="1" />
   </Suspense>
   <TheDog />
-  <!-- Render the animated model here -->
+  <ContactShadows :opacity="0.5" :scale="10" :blur="2" :far="10" />
 </template>
