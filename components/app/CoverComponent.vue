@@ -312,15 +312,15 @@ onBeforeUnmount(() => {
   }
 
   &__bubbles {
-    @apply absolute inset-0 z-[20] block w-full h-full overflow-hidden blur-2xl mix-blend-plus-lighter dark:mix-blend-luminosity;
+    @apply pointer-events-none absolute inset-0 z-[20] block w-full h-full overflow-hidden blur-2xl mix-blend-plus-lighter dark:mix-blend-luminosity;
   }
 
   &__dimmer {
-    @apply absolute inset-0 bg-body-background z-30;
+    @apply pointer-events-none absolute inset-0 bg-body-background z-30;
   }
 
   &__experience {
-    @apply absolute inset-0 z-[55] w-full h-full;
+    @apply absolute inset-0 z-[25] w-full h-full;
   }
 
   &__content {
@@ -328,7 +328,7 @@ onBeforeUnmount(() => {
   }
 
   &__bottom-gradient {
-    @apply absolute inset-x-0 z-[25] bottom-0 h-[80%] bg-gradient-to-t from-body-background to-transparent;
+    @apply pointer-events-none absolute inset-x-0 z-[25] bottom-0 h-[80%] bg-gradient-to-t from-body-background to-transparent;
   }
 }
 
