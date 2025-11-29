@@ -233,7 +233,9 @@ onBeforeUnmount(() => {
     <div ref="coverBg" class="cover__background" />
     <div ref="bubblesContainer" class="cover__bubbles" />
     <div ref="coverDimmer" class="cover__dimmer" />
-    <ExperienceWrapper></ExperienceWrapper>
+    <ClientOnly>
+      <LazyExperienceWrapper></LazyExperienceWrapper>
+    </ClientOnly>
     <div class="cover__content">
       <div class="container mx-auto">
         <div class="line-mask">
