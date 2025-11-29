@@ -59,6 +59,14 @@ More details on my :Icon{name='logos:linkedin-icon'} [LinkedIn profile](https://
 ::Sheetelevation
 ### Last experiments
 
+#### 3D Model glTF animé
+[https://pascal-achard.com](https://pascal-achard.com)
+
+::LazyExperienceContentWrapper
+::
+
+3D experimentation with [Three.js](https://threejs.org/) and [Tres.js](https://tresjs.org/). Addition of an animated glTF 3D model (husky) to the home page of this site.
+
 #### Zégut PG
 [https://zegut-pg.netlify.app/](https://zegut-pg.netlify.app/){target="_blank" rel="noopener"}
 
