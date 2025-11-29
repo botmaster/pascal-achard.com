@@ -64,10 +64,13 @@ Plus de détails sur mon profil :Icon{name='logos:linkedin-icon'} [LinkedIn](htt
 ::Sheetelevation
 ### Dernières expérimentations
 
-#### Three.js + Tres.js + Vue 3 + Vite
+#### 3D Model glTF animé
+[https://pascal-achard.com](https://pascal-achard.com)
 
 ::LazyExperienceContentWrapper
 ::
+
+Expérimentation 3D avec [Three.js](https://threejs.org/) et [Tres.js](https://tresjs.org/). Ajout d'un modèle 3D glTF animé (husky) sur la page d'accueil de ce site.
 
 #### Zégut PG
 [https://zegut-pg.netlify.app/](https://zegut-pg.netlify.app/){target="_blank" rel="noopener"}
