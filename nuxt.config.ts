@@ -166,10 +166,10 @@ export default defineNuxtConfig({
   },
 
   sitemap: {
-    strictNuxtContentPaths: false,
+    strictNuxtContentPaths: true,
     sitemaps: false,
     discoverImages: true,
-    autoLastmod: true,
+    autoLastmod: false,
   },
 
   build: {

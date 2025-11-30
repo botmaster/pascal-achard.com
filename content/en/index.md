@@ -4,6 +4,8 @@ coverSubtitle: Senior frontend developer
 coverUpTitle: Hi, I'm
 title: Senior frontend developer
 description: Pascal Achard, senior frontend developer, 20+ years of experience, Vue.js, Nuxt.js, TypeScript, Craftcms, Tailwindcss, Docker, Node.js, Webpack, Prettier, Notion, Netlify, render...
+sitemap:
+  lastmod: 2025-11-30
 ---
 
 ::Sheetelevation
@@ -59,7 +61,7 @@ More details on my :Icon{name='logos:linkedin-icon'} [LinkedIn profile](https://
 ::Sheetelevation
 ### Last experiments
 
-#### 3D Model glTF animé
+#### Animated glTF 3D Model
 [https://pascal-achard.com](https://pascal-achard.com)
 
 ::LazyExperienceContentWrapper
