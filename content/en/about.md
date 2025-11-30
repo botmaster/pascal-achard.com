@@ -1,6 +1,8 @@
 ---
 coverTitle: Info
 description: Pascal Achard, senior frontend developer, 20+ years of experience, Vue.js, Nuxt.js, TypeScript, Craftcms, Tailwindcss, Docker, Node.js, Webpack, Prettier, Notion, Netlify, render...
+sitemap:
+  lastmod: 2025-11-29
 ---
 
 ## The creative point

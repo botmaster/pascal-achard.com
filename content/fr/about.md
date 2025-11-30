@@ -1,6 +1,8 @@
 ---
 coverTitle: Info
 description: Pascal Achard, développeur frontend senior. À propos de moi.
+sitemap:
+  lastmod: 2025-11-29
 ---
 
 ## Le point créatif

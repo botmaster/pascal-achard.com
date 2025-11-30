@@ -3,6 +3,8 @@ coverTitle: Lab
 coverSubtitle: This is where I test stuff
 coverDescription: I'm currently testing the Last.fm API
 description: Pascal Achard, senior frontend developer. Lab. I'm testing the Last.fm api.
+sitemap:
+  lastmod: 2025-11-29
 ---
 
 ## Listening <Icon class='text-2xl text-primary' name="brandico:lastfm"></Icon>

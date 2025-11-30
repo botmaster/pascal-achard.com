@@ -103,5 +103,3 @@ faite et particulièrement bien documentée. Nuxt.js m'a permis de capitaliser m
 rapidement une application rendue côté serveur. La plateforme Render est très utile et simple à utiliser. Elle ressemble
 beaucoup à Netlify en plus riche.
 ::
-
-
