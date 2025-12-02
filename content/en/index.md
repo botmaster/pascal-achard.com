@@ -5,7 +5,7 @@ coverUpTitle: Hi, I'm
 title: Senior frontend developer
 description: Pascal Achard, senior frontend developer, 20+ years of experience, Vue.js, Nuxt.js, TypeScript, Craftcms, Tailwindcss, Docker, Node.js, Webpack, Prettier, Notion, Netlify, render...
 sitemap:
-  lastmod: 2025-11-30
+  lastmod: 2025-12-02
 ---
 
 ::Sheetelevation
@@ -67,7 +67,7 @@ More details on my :Icon{name='logos:linkedin-icon'} [LinkedIn profile](https://
 ::LazyExperienceContentWrapper
 ::
 
-3D experimentation with [Three.js](https://threejs.org/) and [Tres.js](https://tresjs.org/). Addition of an animated glTF 3D model (husky) to the home page of this site.
+3D experimentation with [Three.js](https://threejs.org/){target="_blank" rel="noopener"} and [Tres.js](https://tresjs.org/){target="_blank" rel="noopener"}. Addition of an animated glTF 3D model (husky) to the home page of this site.
 
 #### Zégut PG
 [https://zegut-pg.netlify.app/](https://zegut-pg.netlify.app/){target="_blank" rel="noopener"}

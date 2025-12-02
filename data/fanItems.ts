@@ -26,12 +26,12 @@ export const fanItems: IFanItem[] = [
     url: 'https://tailwindcss.com/',
   },
   {
-    label: 'CraftCMS',
-    url: 'https://craftcms.com/',
+    label: 'Three.js',
+    url: 'https://threejs.org/',
   },
   {
-    label: 'Twig',
-    url: 'https://twig.symfony.com/',
+    label: 'Tres.js',
+    url: 'https://tresjs.org/',
   },
   {
     label: 'Docker',
