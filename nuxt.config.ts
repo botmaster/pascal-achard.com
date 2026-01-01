@@ -35,6 +35,10 @@ export default defineNuxtConfig({
           name: 'theme-color',
           content: '#ffffff',
         },
+        {
+          name: 'thumbnail',
+          content: '/images/content/zegut-pg.webp',
+        }
       ],
       link: [
         {
