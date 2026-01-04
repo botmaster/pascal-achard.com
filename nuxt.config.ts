@@ -37,7 +37,7 @@ export default defineNuxtConfig({
         },
         {
           name: 'thumbnail',
-          content: '/images/content/zegut-pg.webp',
+          content: '/images/content/pascal-achard-thumbnail.jpg',
         }
       ],
       link: [
