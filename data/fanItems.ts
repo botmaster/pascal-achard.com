@@ -18,6 +18,10 @@ export const fanItems: IFanItem[] = [
     url: 'https://www.typescriptlang.org/',
   },
   {
+    label: 'PrimeVue',
+    url: 'https://primevue.org/',
+  },
+  {
     label: 'GSAP',
     url: 'https://gsap.com/',
   },
