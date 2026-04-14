@@ -15,7 +15,9 @@ sitemap:
 >
 > This site is a pretext to experiment with technologies and development methods. It is in constant evolution.
 
-I am a **senior front-end developer** with 7 years of experience and over 20 years of professional experience building websites and web applications. I specialize in **JavaScript/TypeScript** and have expertise in the **Vue.js/Nuxt.js** framework.
+Senior **front-end developer**, I have accumulated more than **20 years of professional experience** in the design and
+development of websites and web applications, including **8 years of specialization** in **JavaScript/TypeScript** with
+in-depth expertise in the **Vue.js/Nuxt.js** ecosystem.
 
 My professional days are mainly focused on the design and development of web applications built with javascript frameworks (Vue.js, Alpine.js, ...) connected to APIs. I participate in design sessions and agile rituals. I am concerned about respecting the best practices of HTML/CSS integration, **performance**, respect of **graphics** (pixel perfect) and compliance with **accessibility** requirements (RGAA/WCAG).
 
